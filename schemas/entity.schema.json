@@ -38,7 +38,7 @@
             "type": "string",
             "minLength": 1
           },
-          "description": "Names keyed by ISO 639-1 code for the entity's official non-English languages."
+          "description": "Names keyed by ISO 639-1 code for the entity's verified official non-English languages."
         }
       }
     },

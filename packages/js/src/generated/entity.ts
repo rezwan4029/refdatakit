@@ -17,7 +17,7 @@ export interface UniversalDirectoryEntity {
   names: {
     en: string;
     /**
-     * Names keyed by ISO 639-1 code for the entity's official non-English languages.
+     * Names keyed by ISO 639-1 code for the entity's verified official non-English languages.
      */
     languages: {
       [k: string]: string;

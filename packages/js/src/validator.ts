@@ -192,7 +192,7 @@ function officialNonEnglishLanguages(record: unknown, description: string): Set<
     if (!/^[a-z]{2,3}$/.test(code)) {
       throw new Error(`${description} official language ${language} has an invalid code`);
     }
-    if (code.length === 2 && code !== "en") {
+    if (code !== "en") {
       languages.add(code);
     }
   }
@@ -204,10 +204,6 @@ function validateEntityLanguageNames(
   officialLanguages: Set<string>,
   description: string,
 ): void {
-  if (officialLanguages.size === 0) {
-    return;
-  }
-
   const names = isObjectRecord(record) && isObjectRecord(record.names)
     ? record.names.languages
     : undefined;
@@ -215,15 +211,31 @@ function validateEntityLanguageNames(
     throw new Error(`${description} names.languages must be an object`);
   }
 
+  const nameLanguages = new Set([...officialLanguages].filter((language) => language.length === 2));
   const actualLanguages = new Set(Object.keys(names));
-  const missing = [...officialLanguages].filter((language) => !actualLanguages.has(language));
-  const unexpected = [...actualLanguages].filter((language) => !officialLanguages.has(language));
+  const missing = [...nameLanguages].filter((language) => !actualLanguages.has(language));
+  const unexpected = [...actualLanguages].filter((language) => !nameLanguages.has(language));
   if (missing.length > 0 || unexpected.length > 0) {
     const details = [
       ...(missing.length > 0 ? [`missing ${missing.join(", ")}`] : []),
       ...(unexpected.length > 0 ? [`not official ${unexpected.join(", ")}`] : []),
     ].join("; ");
     throw new Error(`${description} names.languages does not match country languages: ${details}`);
+  }
+
+  const aliases = isObjectRecord(record) ? record.localized_aliases ?? [] : [];
+  if (!Array.isArray(aliases)) {
+    throw new Error(`${description} localized_aliases must be an array`);
+  }
+  for (const [index, alias] of aliases.entries()) {
+    const language = requiredString(alias, "language", `${description} localized_aliases[${index}]`)
+      .split("-")[0]
+      .toLowerCase();
+    if (language !== "en" && !officialLanguages.has(language)) {
+      throw new Error(
+        `${description} localized_aliases[${index}] language ${language} is not official`,
+      );
+    }
   }
 }
 
