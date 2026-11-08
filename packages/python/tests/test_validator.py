@@ -17,6 +17,7 @@ def create_fixture(
     city_id: str,
     entities: list[dict[str, object]] | None = None,
     official_languages: list[str] | None = None,
+    entity_tags: list[str] | None = None,
 ) -> None:
     shutil.copytree(REPOSITORY_ROOT / "schemas", root / "schemas")
     if entities is None:
@@ -93,7 +94,22 @@ def create_fixture(
         )
     manifest_path = root / "datasets" / "manifest.json"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_bytes(canonical_json({"datasets": datasets}))
+    if entity_tags is None:
+        entity_tags = [
+            "hospital",
+            "k12_school",
+            "medical_college",
+            "nursing_home",
+            "university",
+        ]
+    manifest_path.write_bytes(
+        canonical_json(
+            {
+                "datasets": datasets,
+                "vocabularies": {"entity_tags": entity_tags},
+            }
+        )
+    )
 
 
 def test_validates_cross_dataset_references_and_canonical_data(tmp_path: Path) -> None:
@@ -163,6 +179,32 @@ def test_accepts_multiple_controlled_tags(tmp_path: Path) -> None:
     }
     create_fixture(tmp_path, "city:1", [entity])
 
+    validate_repository(tmp_path)
+
+def test_accepts_and_sorts_tags_added_to_manifest_vocabulary(tmp_path: Path) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example Community Center", "languages": {}},
+        "entity_type": "university",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["community_center"],
+    }
+    create_fixture(
+        tmp_path,
+        "city:1",
+        [entity],
+        entity_tags=[
+            "hospital",
+            "k12_school",
+            "medical_college",
+            "nursing_home",
+            "university",
+            "community_center",
+        ],
+    )
+
+    sort_repository(tmp_path)
     validate_repository(tmp_path)
 
 

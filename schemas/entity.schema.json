@@ -3,7 +3,14 @@
   "title": "Universal Directory Entity",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "names", "entity_type", "country_code", "city_id", "tags"],
+  "required": [
+    "id",
+    "names",
+    "entity_type",
+    "country_code",
+    "city_id",
+    "tags"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -13,7 +20,10 @@
     "names": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["en", "languages"],
+      "required": [
+        "en",
+        "languages"
+      ],
       "properties": {
         "en": {
           "type": "string",
@@ -97,7 +107,14 @@
   "$defs": {
     "tag": {
       "type": "string",
-      "enum": ["hospital", "medical_college", "university", "nursing_home", "k12_school"]
+      "enum": [
+        "hospital",
+        "k12_school",
+        "medical_college",
+        "nursing_home",
+        "university"
+      ],
+      "description": "Generated from datasets/manifest.json vocabularies.entity_tags."
     },
     "language": {
       "type": "string",
@@ -107,7 +124,10 @@
     "localized_alias": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["language", "value"],
+      "required": [
+        "language",
+        "value"
+      ],
       "properties": {
         "language": {
           "$ref": "#/$defs/language"
@@ -121,7 +141,10 @@
     "external_id": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["system", "value"],
+      "required": [
+        "system",
+        "value"
+      ],
       "properties": {
         "system": {
           "type": "string",

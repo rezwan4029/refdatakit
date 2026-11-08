@@ -9,6 +9,13 @@ import { canonicalJson } from "../dist/canonical-json.js";
 import { sortRepository, validateRepository } from "../dist/validator.js";
 
 const repositoryDirectory = fileURLToPath(new URL("../../..", import.meta.url));
+const defaultEntityTags = [
+  "hospital",
+  "k12_school",
+  "medical_college",
+  "nursing_home",
+  "university",
+];
 
 async function createFixture(cityId, entities = [{
   id: "entity:1",
@@ -18,7 +25,7 @@ async function createFixture(cityId, entities = [{
   city_id: cityId,
   tags: ["k12_school"],
   external_ids: [{ system: "wikidata", value: "Q42" }],
-}], officialLanguages = ["en"]) {
+}], officialLanguages = ["en"], entityTags = defaultEntityTags) {
   const root = await mkdtemp(resolve(tmpdir(), "refdatakit-validation-"));
   await cp(resolve(repositoryDirectory, "schemas"), resolve(root, "schemas"), { recursive: true });
 
@@ -72,7 +79,7 @@ async function createFixture(cityId, entities = [{
   }
   await writeFile(
     resolve(root, "datasets/manifest.json"),
-    canonicalJson({ datasets }),
+    canonicalJson({ datasets, vocabularies: { entity_tags: entityTags } }),
   );
   return root;
 }
@@ -159,6 +166,28 @@ test("accepts multiple controlled tags", async () => {
     tags: ["hospital", "university"],
   }]);
   try {
+    assert.deepEqual(await validateRepository(root), []);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("accepts and sorts tags added to the manifest vocabulary", async () => {
+  const root = await createFixture(
+    "city:1",
+    [{
+      id: "entity:1",
+      names: { en: "Example Community Center", languages: {} },
+      entity_type: "university",
+      country_code: "US",
+      city_id: "city:1",
+      tags: ["community_center"],
+    }],
+    ["en"],
+    [...defaultEntityTags, "community_center"],
+  );
+  try {
+    await sortRepository(root);
     assert.deepEqual(await validateRepository(root), []);
   } finally {
     await rm(root, { recursive: true, force: true });

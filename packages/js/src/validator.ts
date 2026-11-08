@@ -23,6 +23,9 @@ interface DatasetEntry {
 
 interface DatasetManifest {
   datasets: DatasetEntry[];
+  vocabularies: {
+    entity_tags: string[];
+  };
 }
 
 interface DatasetDefinition {
@@ -228,6 +231,27 @@ function definitionForPath(path: string): DatasetDefinition {
   throw new Error(`Unsupported dataset path: ${path}`);
 }
 
+function schemaWithEntityTags(schemaValue: unknown, entityTags: string[]): unknown {
+  if (
+    !isObjectRecord(schemaValue) ||
+    !isObjectRecord(schemaValue.$defs) ||
+    !isObjectRecord(schemaValue.$defs.tag)
+  ) {
+    throw new Error("schemas/entity.schema.json must define $defs.tag");
+  }
+
+  return {
+    ...schemaValue,
+    $defs: {
+      ...schemaValue.$defs,
+      tag: {
+        ...schemaValue.$defs.tag,
+        enum: entityTags,
+      },
+    },
+  };
+}
+
 async function listDatasetFiles(rootDirectory: string): Promise<string[]> {
   const datasetsDirectory = await resolveRepositoryFile(rootDirectory, "datasets");
   const files: string[] = [];
@@ -401,7 +425,11 @@ export async function sortRepository(rootDirectory: string): Promise<void> {
     if (!Array.isArray(recordsValue)) {
       throw new Error(`${entry.path} must contain a JSON array`);
     }
-    const validateRecord = ajv.compile<unknown>(await readJson(schemaPath) as AnySchema);
+    const schemaValue = await readJson(schemaPath);
+    const schema: unknown = definition.domain === "entity"
+      ? schemaWithEntityTags(schemaValue, manifestValue.vocabularies.entity_tags)
+      : schemaValue;
+    const validateRecord: ValidateFunction<unknown> = ajv.compile<unknown>(schema as AnySchema);
     for (const [index, record] of recordsValue.entries()) {
       const description = `${entry.path}[${index}]`;
       assertValid(validateRecord, record, description);
@@ -487,8 +515,11 @@ export async function validateRepository(rootDirectory: string): Promise<string[
       throw new Error(`${entry.path} must contain a JSON array`);
     }
 
-    const schema = await readJson(schemaPath);
-    const validateRecord = ajv.compile<unknown>(schema as AnySchema);
+    const schemaValue = await readJson(schemaPath);
+    const schema: unknown = definition.domain === "entity"
+      ? schemaWithEntityTags(schemaValue, manifestValue.vocabularies.entity_tags)
+      : schemaValue;
+    const validateRecord: ValidateFunction<unknown> = ajv.compile<unknown>(schema as AnySchema);
     for (const [index, record] of recordsValue.entries()) {
       const description = `${entry.path}[${index}]`;
       assertValid(validateRecord, record, description);
