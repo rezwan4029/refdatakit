@@ -4,7 +4,9 @@ RefDataKit standardizes public inputs into validated, versioned reference datase
 
 ## Bangladesh Pilot
 
-The initial data release is limited to Bangladesh (`BD`): country metadata, Dhaka Division, Dhaka, and two universities. Entity records use English and local-language names, coordinates, stable city links, and external identifiers. Volatile street addresses are excluded.
+The initial data release is limited to Bangladesh (`BD`): country metadata, its eight divisions, eight major city markers, and two universities. Country and city records may carry macro-level coordinates. Institution records use English and local-language names, stable city links, and external identifiers; coordinates, addresses, and logos are prohibited.
+
+All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
 ## Repository Layout
 
@@ -27,7 +29,7 @@ packages/python/                 Python SDK and CLI
 
 Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. The Bangladesh seed uses Wikidata structured data, distributed under CC0-1.0; each manifest entry identifies the source item or items.
 
-Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists.
+Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
 
 ## Validation and Sorting
 

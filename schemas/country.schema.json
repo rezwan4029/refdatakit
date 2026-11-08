@@ -29,6 +29,10 @@
         "$ref": "#/$defs/language"
       }
     },
+    "centroid": {
+      "$ref": "#/$defs/coordinates",
+      "description": "Approximate country-level representative point; not a precise address."
+    },
     "localized_names": {
       "type": "array",
       "items": {
@@ -61,6 +65,23 @@
         "name": {
           "type": "string",
           "minLength": 1
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latitude", "longitude"],
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
         }
       }
     }

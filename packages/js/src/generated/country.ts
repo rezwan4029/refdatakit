@@ -14,8 +14,16 @@ export interface Country {
   alpha3_code?: string;
   numeric_code?: string;
   official_languages: Language[];
+  centroid?: Coordinates;
   localized_names?: LocalizedName[];
   aliases?: string[];
+}
+/**
+ * Approximate country-level representative point; not a precise address.
+ */
+export interface Coordinates {
+  latitude: number;
+  longitude: number;
 }
 export interface LocalizedName {
   language: Language;
