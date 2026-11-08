@@ -162,6 +162,56 @@ function optionalString(
   return value;
 }
 
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item: unknown) => typeof item === "string");
+}
+
+function requiredStringArray(record: unknown, field: string, description: string): string[] {
+  const value = isObjectRecord(record) ? record[field] : undefined;
+  if (!isStringArray(value)) {
+    throw new Error(`${description} must have a string array ${field}`);
+  }
+  return value;
+}
+
+function officialNonEnglishLanguages(record: unknown, description: string): Set<string> {
+  const languages = new Set<string>();
+  for (const language of requiredStringArray(record, "official_languages", description)) {
+    const code = language.split("-")[0].toLowerCase();
+    if (!/^[a-z]{2}$/.test(code)) {
+      throw new Error(`${description} official language ${language} has no ISO 639-1 code`);
+    }
+    if (code !== "en") {
+      languages.add(code);
+    }
+  }
+  return languages;
+}
+
+function validateEntityLanguageNames(
+  record: unknown,
+  officialLanguages: Set<string>,
+  description: string,
+): void {
+  const names = isObjectRecord(record) && isObjectRecord(record.names)
+    ? record.names.languages
+    : undefined;
+  if (!isObjectRecord(names)) {
+    throw new Error(`${description} names.languages must be an object`);
+  }
+
+  const actualLanguages = new Set(Object.keys(names));
+  const missing = [...officialLanguages].filter((language) => !actualLanguages.has(language));
+  const unexpected = [...actualLanguages].filter((language) => !officialLanguages.has(language));
+  if (missing.length > 0 || unexpected.length > 0) {
+    const details = [
+      ...(missing.length > 0 ? [`missing ${missing.join(", ")}`] : []),
+      ...(unexpected.length > 0 ? [`not official ${unexpected.join(", ")}`] : []),
+    ].join("; ");
+    throw new Error(`${description} names.languages does not match country languages: ${details}`);
+  }
+}
+
 function addToIndex(index: Map<string, Set<string>>, key: string, value: string): void {
   const values = index.get(key) ?? new Set<string>();
   values.add(value);
@@ -246,6 +296,7 @@ function englishSortWarning(dataset: DatasetRecords): string | undefined {
 
 function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
   const countries = new Set<string>();
+  const countryLanguages = new Map<string, Set<string>>();
   const subdivisions = new Map<string, Set<string>>();
   const cities = new Map<string, Set<string>>();
   const recordIdentities = new Set<string>();
@@ -265,6 +316,7 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
 
       if (definition.domain === "country") {
         countries.add(identity);
+        countryLanguages.set(identity, officialNonEnglishLanguages(record, description));
       } else if (definition.domain === "subdivision") {
         addToIndex(subdivisions, countryCode, identity);
       } else if (definition.domain === "city") {
@@ -309,6 +361,11 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
         if (cityId !== undefined && !cities.get(countryCode)?.has(cityId)) {
           throw new Error(`${description} references unknown city ${cityId}`);
         }
+        validateEntityLanguageNames(
+          record,
+          countryLanguages.get(countryCode) ?? new Set<string>(),
+          description,
+        );
       }
     }
   }

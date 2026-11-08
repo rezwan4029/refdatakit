@@ -13,7 +13,10 @@ export interface Country {
   name: string;
   alpha3_code?: string;
   numeric_code?: string;
-  official_languages: Language[];
+  /**
+   * @minItems 1
+   */
+  official_languages: [Language, ...Language[]];
   centroid?: Coordinates;
   localized_names?: LocalizedName[];
   aliases?: string[];

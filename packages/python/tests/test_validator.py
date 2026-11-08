@@ -16,16 +16,18 @@ def create_fixture(
     root: Path,
     city_id: str,
     entities: list[dict[str, object]] | None = None,
+    official_languages: list[str] | None = None,
 ) -> None:
     shutil.copytree(REPOSITORY_ROOT / "schemas", root / "schemas")
     if entities is None:
         entities = [
             {
                 "id": "entity:1",
-                "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
+                "names": {"en": "Example School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": city_id,
+                "tags": ["k12_school"],
                 "external_ids": [{"system": "wikidata", "value": "Q42"}],
             }
         ]
@@ -35,7 +37,11 @@ def create_fixture(
             "path": "datasets/countries/data.json",
             "source_url": "https://example.test/countries",
             "records": [
-                {"code": "US", "name": "United States", "official_languages": ["en"]}
+                {
+                    "code": "US",
+                    "name": "United States",
+                    "official_languages": ["en"] if official_languages is None else official_languages,
+                }
             ],
         },
         {
@@ -96,6 +102,13 @@ def test_validates_cross_dataset_references_and_canonical_data(tmp_path: Path) -
     validate_repository(tmp_path)
 
 
+def test_requires_at_least_one_official_country_language(tmp_path: Path) -> None:
+    create_fixture(tmp_path, "city:1", official_languages=[])
+
+    with pytest.raises(DatasetValidationError):
+        validate_repository(tmp_path)
+
+
 def test_rejects_entity_with_unknown_city_reference(tmp_path: Path) -> None:
     create_fixture(tmp_path, "city:missing")
 
@@ -106,9 +119,90 @@ def test_rejects_entity_with_unknown_city_reference(tmp_path: Path) -> None:
 def test_requires_entity_city_link(tmp_path: Path) -> None:
     entity = {
         "id": "entity:1",
-        "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
+        "names": {"en": "Example School", "languages": {}},
         "entity_type": "school",
         "country_code": "US",
+        "tags": ["k12_school"],
+    }
+    create_fixture(tmp_path, "city:1", [entity])
+
+    with pytest.raises(DatasetValidationError):
+        validate_repository(tmp_path)
+
+
+@pytest.mark.parametrize(
+    "tags",
+    [[], ["unlisted_tag"], ["university", "university"]],
+)
+def test_rejects_empty_unknown_or_duplicate_tags(
+    tmp_path: Path,
+    tags: list[str],
+) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "languages": {}},
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": tags,
+    }
+    create_fixture(tmp_path, "city:1", [entity])
+
+    with pytest.raises(DatasetValidationError):
+        validate_repository(tmp_path)
+
+
+def test_accepts_multiple_controlled_tags(tmp_path: Path) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example University Hospital", "languages": {}},
+        "entity_type": "university",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["hospital", "university"],
+    }
+    create_fixture(tmp_path, "city:1", [entity])
+
+    validate_repository(tmp_path)
+
+
+def test_requires_names_for_each_non_english_official_language(tmp_path: Path) -> None:
+    official_languages = ["en", "bn", "fr"]
+    entity = {
+        "id": "entity:1",
+        "names": {
+            "en": "Example University",
+            "languages": {"bn": "উদাহরণ বিশ্ববিদ্যালয়", "fr": "Université Exemple"},
+        },
+        "entity_type": "university",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["university"],
+    }
+    valid_root = tmp_path / "valid"
+    create_fixture(valid_root, "city:1", [entity], official_languages)
+    validate_repository(valid_root)
+
+    invalid_language_maps = [
+        {"bn": "উদাহরণ বিশ্ববিদ্যালয়"},
+        {"bn": "উদাহরণ বিশ্ববিদ্যালয়", "es": "Universidad Ejemplo"},
+        {"bn": "উদাহরণ বিশ্ববিদ্যালয়", "fr": "Université Exemple", "eng": "Example"},
+    ]
+    for index, languages in enumerate(invalid_language_maps):
+        invalid_root = tmp_path / f"invalid-{index}"
+        invalid_entity = {**entity, "names": {**entity["names"], "languages": languages}}
+        create_fixture(invalid_root, "city:1", [invalid_entity], official_languages)
+        with pytest.raises(DatasetValidationError):
+            validate_repository(invalid_root)
+
+
+def test_requires_entity_tags(tmp_path: Path) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "languages": {}},
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
     }
     create_fixture(tmp_path, "city:1", [entity])
 
@@ -133,10 +227,11 @@ def test_rejects_institutional_coordinates_addresses_and_logos(
 ) -> None:
     entity = {
         "id": "entity:1",
-        "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
+        "names": {"en": "Example School", "languages": {}},
         "entity_type": "school",
         "country_code": "US",
         "city_id": "city:1",
+        "tags": ["k12_school"],
         property_name: value,
     }
     create_fixture(tmp_path, "city:1", [entity])
@@ -152,17 +247,19 @@ def test_warns_when_entity_records_are_not_sorted_by_english_name(tmp_path: Path
         [
             {
                 "id": "entity:z",
-                "names": {"en": "Zebra School", "local": "জেব্রা স্কুল"},
+                "names": {"en": "Zebra School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
+                "tags": ["k12_school"],
             },
             {
                 "id": "entity:a",
-                "names": {"en": "Alpha School", "local": "আলফা স্কুল"},
+                "names": {"en": "Alpha School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
+                "tags": ["k12_school"],
             },
         ],
     )
@@ -179,17 +276,19 @@ def test_sorts_records_and_refreshes_manifest_checksums(tmp_path: Path) -> None:
         [
             {
                 "id": "entity:z",
-                "names": {"en": "Zebra School", "local": "জেব্রা স্কুল"},
+                "names": {"en": "Zebra School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
+                "tags": ["k12_school"],
             },
             {
                 "id": "entity:a",
-                "names": {"en": "Alpha School", "local": "আলফা স্কুল"},
+                "names": {"en": "Alpha School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
+                "tags": ["k12_school"],
             },
         ],
     )

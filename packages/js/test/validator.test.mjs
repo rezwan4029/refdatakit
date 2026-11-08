@@ -12,12 +12,13 @@ const repositoryDirectory = fileURLToPath(new URL("../../..", import.meta.url));
 
 async function createFixture(cityId, entities = [{
   id: "entity:1",
-  names: { en: "Example School", local: "উদাহরণ স্কুল" },
+  names: { en: "Example School", languages: {} },
   entity_type: "school",
   country_code: "US",
   city_id: cityId,
+  tags: ["k12_school"],
   external_ids: [{ system: "wikidata", value: "Q42" }],
-}]) {
+}], officialLanguages = ["en"]) {
   const root = await mkdtemp(resolve(tmpdir(), "refdatakit-validation-"));
   await cp(resolve(repositoryDirectory, "schemas"), resolve(root, "schemas"), { recursive: true });
 
@@ -25,7 +26,7 @@ async function createFixture(cityId, entities = [{
     {
       path: "datasets/countries/data.json",
       source_url: "https://example.test/countries",
-      records: [{ code: "US", name: "United States", official_languages: ["en"] }],
+      records: [{ code: "US", name: "United States", official_languages: officialLanguages }],
     },
     {
       path: "datasets/subdivisions/by-country/US.json",
@@ -85,6 +86,15 @@ test("validates cross-dataset references and canonical manifest data", async () 
   }
 });
 
+test("requires at least one official country language", async () => {
+  const root = await createFixture("city:1", undefined, []);
+  try {
+    await assert.rejects(validateRepository(root));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("rejects an entity that references an unknown city", async () => {
   const root = await createFixture("city:missing");
   try {
@@ -100,9 +110,10 @@ test("rejects an entity that references an unknown city", async () => {
 test("requires an entity city link", async () => {
   const entity = {
     id: "entity:1",
-    names: { en: "Example School", local: "উদাহরণ স্কুল" },
+    names: { en: "Example School", languages: {} },
     entity_type: "school",
     country_code: "US",
+    tags: ["k12_school"],
   };
   const root = await createFixture("city:1", [entity]);
   try {
@@ -112,13 +123,95 @@ test("requires an entity city link", async () => {
   }
 });
 
-test("rejects institutional coordinates, addresses, logos, and standalone latitude or longitude", async () => {
+test("requires non-empty, unique tags from the controlled enum", async () => {
   const entity = {
     id: "entity:1",
-    names: { en: "Example School", local: "উদাহরণ স্কুল" },
+    names: { en: "Example School", languages: {} },
     entity_type: "school",
     country_code: "US",
     city_id: "city:1",
+    tags: ["k12_school"],
+  };
+  const invalidEntities = [
+    { ...entity, tags: [] },
+    { ...entity, tags: ["unlisted_tag"] },
+    { ...entity, tags: ["university", "university"] },
+    Object.fromEntries(Object.entries(entity).filter(([key]) => key !== "tags")),
+  ];
+
+  for (const invalidEntity of invalidEntities) {
+    const root = await createFixture("city:1", [invalidEntity]);
+    try {
+      await assert.rejects(validateRepository(root));
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("accepts multiple controlled tags", async () => {
+  const root = await createFixture("city:1", [{
+    id: "entity:1",
+    names: { en: "Example University Hospital", languages: {} },
+    entity_type: "university",
+    country_code: "US",
+    city_id: "city:1",
+    tags: ["hospital", "university"],
+  }]);
+  try {
+    assert.deepEqual(await validateRepository(root), []);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("requires names for each non-English official country language", async () => {
+  const entity = {
+    id: "entity:1",
+    names: {
+      en: "Example University",
+      languages: { bn: "উদাহরণ বিশ্ববিদ্যালয়", fr: "Université Exemple" },
+    },
+    entity_type: "university",
+    country_code: "US",
+    city_id: "city:1",
+    tags: ["university"],
+  };
+  const officialLanguages = ["en", "bn", "fr"];
+  const validRoot = await createFixture("city:1", [entity], officialLanguages);
+  try {
+    assert.deepEqual(await validateRepository(validRoot), []);
+  } finally {
+    await rm(validRoot, { recursive: true, force: true });
+  }
+
+  const invalidLanguageMaps = [
+    { bn: "উদাহরণ বিশ্ববিদ্যালয়" },
+    { bn: "উদাহরণ বিশ্ববিদ্যালয়", es: "Universidad Ejemplo" },
+    { bn: "উদাহরণ বিশ্ববিদ্যালয়", fr: "Université Exemple", eng: "Example" },
+  ];
+  for (const languages of invalidLanguageMaps) {
+    const root = await createFixture(
+      "city:1",
+      [{ ...entity, names: { ...entity.names, languages } }],
+      officialLanguages,
+    );
+    try {
+      await assert.rejects(validateRepository(root));
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("rejects institutional coordinates, addresses, logos, and standalone latitude or longitude", async () => {
+  const entity = {
+    id: "entity:1",
+    names: { en: "Example School", languages: {} },
+    entity_type: "school",
+    country_code: "US",
+    city_id: "city:1",
+    tags: ["k12_school"],
   };
   const prohibitedProperties = [
     ["coordinates", { latitude: 1, longitude: 1 }],
@@ -142,17 +235,19 @@ test("warns when entity records are not sorted by English name", async () => {
   const root = await createFixture("city:1", [
     {
       id: "entity:z",
-      names: { en: "Zebra School", local: "জেব্রা স্কুল" },
+      names: { en: "Zebra School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
+      tags: ["k12_school"],
     },
     {
       id: "entity:a",
-      names: { en: "Alpha School", local: "আলফা স্কুল" },
+      names: { en: "Alpha School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
+      tags: ["k12_school"],
     },
   ]);
   try {
@@ -169,17 +264,19 @@ test("sorts records and refreshes manifest checksums", async () => {
   const root = await createFixture("city:1", [
     {
       id: "entity:z",
-      names: { en: "Zebra School", local: "জেব্রা স্কুল" },
+      names: { en: "Zebra School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
+      tags: ["k12_school"],
     },
     {
       id: "entity:a",
-      names: { en: "Alpha School", local: "আলফা স্কুল" },
+      names: { en: "Alpha School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
+      tags: ["k12_school"],
     },
   ]);
   try {
