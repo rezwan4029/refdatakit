@@ -6,45 +6,71 @@ import {
 } from "ajv/dist/2020.js";
 import type { FormatsPlugin } from "ajv-formats";
 import { createHash } from "node:crypto";
-import { readFile, realpath } from "node:fs/promises";
+import { readdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { isAbsolute, relative, resolve, sep } from "node:path";
+import { canonicalJson } from "./canonical-json.js";
 
 type DatasetDomain = "country" | "subdivision" | "city" | "entity";
 
-interface DatasetSource {
-  id: string;
-}
-
 interface DatasetEntry {
-  id: string;
-  domain: DatasetDomain;
-  countryCode?: string;
   path: string;
-  schema: string;
-  status: "placeholder" | "ready";
-  recordCount: number;
+  source_url: string;
+  license: string;
+  attribution: string;
   sha256: string;
-  license: string | null;
-  sources: DatasetSource[];
 }
 
 interface DatasetManifest {
-  schemaVersion: string;
   datasets: DatasetEntry[];
 }
 
+interface DatasetDefinition {
+  domain: DatasetDomain;
+  schema: string;
+  countryCode?: string;
+}
+
 interface DatasetRecords {
+  definition: DatasetDefinition;
   entry: DatasetEntry;
   records: unknown[];
 }
 
-const expectedSchemaPaths: Record<DatasetDomain, string> = {
-  country: "schemas/country.schema.json",
-  subdivision: "schemas/subdivision.schema.json",
-  city: "schemas/city.schema.json",
-  entity: "schemas/entity.schema.json",
-};
+const datasetPathPatterns: Array<{
+  pattern: RegExp;
+  definition: (match: RegExpMatchArray) => DatasetDefinition;
+}> = [
+  {
+    pattern: /^datasets\/countries\/data\.json$/,
+    definition: () => ({ domain: "country", schema: "schemas/country.schema.json" }),
+  },
+  {
+    pattern: /^datasets\/subdivisions\/by-country\/([A-Z]{2})\.json$/,
+    definition: (match) => ({
+      domain: "subdivision",
+      schema: "schemas/subdivision.schema.json",
+      countryCode: match[1],
+    }),
+  },
+  {
+    pattern: /^datasets\/cities\/by-country\/([A-Z]{2})\.json$/,
+    definition: (match) => ({
+      domain: "city",
+      schema: "schemas/city.schema.json",
+      countryCode: match[1],
+    }),
+  },
+  {
+    pattern: /^datasets\/institutions\/by-country\/([A-Z]{2})\.json$/,
+    definition: (match) => ({
+      domain: "entity",
+      schema: "schemas/entity.schema.json",
+      countryCode: match[1],
+    }),
+  },
+];
+
 const identityFields: Record<DatasetDomain, string> = {
   country: "code",
   subdivision: "code",
@@ -142,32 +168,84 @@ function addToIndex(index: Map<string, Set<string>>, key: string, value: string)
   index.set(key, values);
 }
 
-function validateRecordReferences(
-  record: unknown,
-  entry: DatasetEntry,
-  availableSourceIds: Set<string>,
-  description: string,
-): void {
-  if (!isObjectRecord(record)) {
-    throw new Error(`${description} must be an object`);
-  }
-
-  if (entry.countryCode !== undefined && record.countryCode !== entry.countryCode) {
-    throw new Error(`${description} countryCode does not match ${entry.countryCode}`);
-  }
-
-  const sourceIds = record.sourceIds;
-  if (sourceIds === undefined) {
-    return;
-  }
-  if (!Array.isArray(sourceIds) || !sourceIds.every((sourceId) => typeof sourceId === "string")) {
-    throw new Error(`${description} sourceIds must be an array of strings`);
-  }
-  for (const sourceId of sourceIds) {
-    if (!availableSourceIds.has(sourceId)) {
-      throw new Error(`${description} references unknown source ${sourceId}`);
+function definitionForPath(path: string): DatasetDefinition {
+  for (const { pattern, definition } of datasetPathPatterns) {
+    const match = path.match(pattern);
+    if (match) {
+      return definition(match);
     }
   }
+  throw new Error(`Unsupported dataset path: ${path}`);
+}
+
+async function listDatasetFiles(rootDirectory: string): Promise<string[]> {
+  const datasetsDirectory = await resolveRepositoryFile(rootDirectory, "datasets");
+  const files: string[] = [];
+
+  async function visit(directory: string): Promise<void> {
+    const entries = await readdir(directory, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.name === "contributions") {
+        continue;
+      }
+
+      const absolutePath = resolve(directory, entry.name);
+      if (entry.isDirectory()) {
+        await visit(absolutePath);
+      } else if (entry.isFile() && entry.name.endsWith(".json")) {
+        const path = relative(rootDirectory, absolutePath).split(sep).join("/");
+        if (path !== "datasets/manifest.json") {
+          files.push(path);
+        }
+      } else if (entry.isSymbolicLink()) {
+        throw new Error(`Dataset directory contains a symbolic link: ${absolutePath}`);
+      }
+    }
+  }
+
+  await visit(datasetsDirectory);
+  return files.sort();
+}
+
+function validateRecordPartition(
+  record: unknown,
+  definition: DatasetDefinition,
+  description: string,
+): void {
+  if (
+    definition.countryCode !== undefined &&
+    requiredString(record, "country_code", description) !== definition.countryCode
+  ) {
+    throw new Error(`${description} country_code does not match ${definition.countryCode}`);
+  }
+}
+
+function englishSortKey(
+  record: unknown,
+  definition: DatasetDefinition,
+  description: string,
+): [string, string] {
+  const englishName = definition.domain === "entity"
+    ? requiredString(isObjectRecord(record) ? record.names : undefined, "en", `${description} names`)
+    : requiredString(record, "name", description);
+  const identity = requiredString(record, identityFields[definition.domain], description);
+  return [englishName.normalize("NFC").toLowerCase(), identity];
+}
+
+function englishSortWarning(dataset: DatasetRecords): string | undefined {
+  let previous: [string, string] | undefined;
+  for (const [index, record] of dataset.records.entries()) {
+    const description = `${dataset.entry.path}[${index}]`;
+    const current = englishSortKey(record, dataset.definition, description);
+    if (
+      previous !== undefined &&
+      (previous[0] > current[0] || (previous[0] === current[0] && previous[1] > current[1]))
+    ) {
+      return `${dataset.entry.path} is not sorted by English name at record ${index}`;
+    }
+    previous = current;
+  }
+  return undefined;
 }
 
 function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
@@ -176,42 +254,42 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
   const cities = new Map<string, Set<string>>();
   const recordIdentities = new Set<string>();
 
-  for (const { entry, records } of datasets) {
+  for (const { definition, entry, records } of datasets) {
     for (const [index, record] of records.entries()) {
       const description = `${entry.path}[${index}]`;
-      const identity = requiredString(record, identityFields[entry.domain], description);
-      const countryCode = entry.domain === "country"
+      const identity = requiredString(record, identityFields[definition.domain], description);
+      const countryCode = definition.domain === "country"
         ? ""
-        : requiredString(record, "countryCode", description);
-      const scopedIdentity = `${entry.domain}:${countryCode}:${identity}`;
+        : requiredString(record, "country_code", description);
+      const scopedIdentity = `${definition.domain}:${countryCode}:${identity}`;
       if (recordIdentities.has(scopedIdentity)) {
-        throw new Error(`${description} duplicates ${identityFields[entry.domain]} ${identity}`);
+        throw new Error(`${description} duplicates ${identityFields[definition.domain]} ${identity}`);
       }
       recordIdentities.add(scopedIdentity);
 
-      if (entry.domain === "country") {
+      if (definition.domain === "country") {
         countries.add(identity);
-      } else if (entry.domain === "subdivision") {
+      } else if (definition.domain === "subdivision") {
         addToIndex(subdivisions, countryCode, identity);
-      } else if (entry.domain === "city") {
+      } else if (definition.domain === "city") {
         addToIndex(cities, countryCode, identity);
       }
     }
   }
 
-  for (const { entry, records } of datasets) {
+  for (const { definition, entry, records } of datasets) {
     for (const [index, record] of records.entries()) {
       const description = `${entry.path}[${index}]`;
-      if (entry.domain === "country") {
+      if (definition.domain === "country") {
         continue;
       }
 
-      const countryCode = requiredString(record, "countryCode", description);
+      const countryCode = requiredString(record, "country_code", description);
       if (!countries.has(countryCode)) {
         throw new Error(`${description} references unknown country ${countryCode}`);
       }
 
-      const subdivisionCode = optionalString(record, "subdivisionCode", description);
+      const subdivisionCode = optionalString(record, "subdivision_code", description);
       if (
         subdivisionCode !== undefined &&
         !subdivisions.get(countryCode)?.has(subdivisionCode)
@@ -219,9 +297,9 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
         throw new Error(`${description} references unknown subdivision ${subdivisionCode}`);
       }
 
-      if (entry.domain === "subdivision") {
+      if (definition.domain === "subdivision") {
         const code = requiredString(record, "code", description);
-        const parentCode = optionalString(record, "parentCode", description);
+        const parentCode = optionalString(record, "parent_code", description);
         if (parentCode === code) {
           throw new Error(`${description} cannot be its own parent`);
         }
@@ -230,8 +308,8 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
         }
       }
 
-      if (entry.domain === "entity") {
-        const cityId = optionalString(record, "cityId", description);
+      if (definition.domain === "entity") {
+        const cityId = optionalString(record, "city_id", description);
         if (cityId !== undefined && !cities.get(countryCode)?.has(cityId)) {
           throw new Error(`${description} references unknown city ${cityId}`);
         }
@@ -240,12 +318,90 @@ function validateCrossDatasetReferences(datasets: DatasetRecords[]): void {
   }
 }
 
-export async function validateRepository(rootDirectory: string): Promise<void> {
+export async function sortRepository(rootDirectory: string): Promise<void> {
+  const canonicalRoot = await realpath(rootDirectory);
+  const manifestPath = await resolveRepositoryFile(canonicalRoot, "datasets/manifest.json");
+  const manifestSchemaPath = await resolveRepositoryFile(
+    canonicalRoot,
+    "schemas/manifest.schema.json",
+  );
+  const manifestValue: unknown = await readJson(manifestPath);
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  const formatsModule = require("ajv-formats") as { default: FormatsPlugin };
+  formatsModule.default(ajv);
+
+  const validateManifest = ajv.compile<DatasetManifest>(await readJson(manifestSchemaPath) as AnySchema);
+  assertValid(validateManifest, manifestValue, "datasets/manifest.json");
+
+  const datasetPaths = new Set<string>();
+  const datasets: DatasetRecords[] = [];
+  for (const entry of manifestValue.datasets) {
+    if (datasetPaths.has(entry.path)) {
+      throw new Error(`Duplicate dataset path: ${entry.path}`);
+    }
+    datasetPaths.add(entry.path);
+
+    const definition = definitionForPath(entry.path);
+    const dataPath = await resolveRepositoryFile(canonicalRoot, entry.path);
+    const schemaPath = await resolveRepositoryFile(canonicalRoot, definition.schema);
+    const recordsValue: unknown = await readJson(dataPath);
+    if (!Array.isArray(recordsValue)) {
+      throw new Error(`${entry.path} must contain a JSON array`);
+    }
+    const validateRecord = ajv.compile<unknown>(await readJson(schemaPath) as AnySchema);
+    for (const [index, record] of recordsValue.entries()) {
+      const description = `${entry.path}[${index}]`;
+      assertValid(validateRecord, record, description);
+      validateRecordPartition(record, definition, description);
+    }
+    datasets.push({ definition, entry, records: recordsValue });
+  }
+
+  const unregisteredFiles = await listDatasetFiles(canonicalRoot);
+  const missingFiles = unregisteredFiles.filter((path) => !datasetPaths.has(path));
+  const missingPaths = [...datasetPaths].filter((path) => !unregisteredFiles.includes(path));
+  if (missingFiles.length > 0) {
+    throw new Error(`Dataset files missing from manifest: ${missingFiles.join(", ")}`);
+  }
+  if (missingPaths.length > 0) {
+    throw new Error(`Manifest paths do not exist as dataset files: ${missingPaths.join(", ")}`);
+  }
+
+  validateCrossDatasetReferences(datasets);
+  for (const dataset of datasets) {
+    dataset.records.sort((left, right) => {
+      const leftKey = englishSortKey(left, dataset.definition, dataset.entry.path);
+      const rightKey = englishSortKey(right, dataset.definition, dataset.entry.path);
+      if (leftKey[0] !== rightKey[0]) {
+        return leftKey[0] < rightKey[0] ? -1 : 1;
+      }
+      if (leftKey[1] !== rightKey[1]) {
+        return leftKey[1] < rightKey[1] ? -1 : 1;
+      }
+      return 0;
+    });
+
+    const contents = canonicalJson(dataset.records);
+    const dataPath = await resolveRepositoryFile(canonicalRoot, dataset.entry.path);
+    await writeFile(dataPath, contents, "utf8");
+    dataset.entry.sha256 = createHash("sha256").update(contents, "utf8").digest("hex");
+  }
+
+  await writeFile(manifestPath, canonicalJson(manifestValue), "utf8");
+  await validateRepository(canonicalRoot);
+}
+
+export async function validateRepository(rootDirectory: string): Promise<string[]> {
   const canonicalRoot = await realpath(rootDirectory);
   const manifestPath = await resolveRepositoryFile(canonicalRoot, "datasets/manifest.json");
   const manifestSchemaPath = await resolveRepositoryFile(canonicalRoot, "schemas/manifest.schema.json");
+  const manifestContents = await readFile(manifestPath, "utf8");
+  const manifestValue: unknown = JSON.parse(manifestContents) as unknown;
+  if (canonicalJson(manifestValue) !== manifestContents) {
+    throw new Error("datasets/manifest.json is not canonically serialized");
+  }
+
   const manifestSchema = await readJson(manifestSchemaPath);
-  const manifestValue = await readJson(manifestPath);
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   const formatsModule = require("ajv-formats") as { default: FormatsPlugin };
   formatsModule.default(ajv);
@@ -253,50 +409,58 @@ export async function validateRepository(rootDirectory: string): Promise<void> {
   const validateManifest = ajv.compile<DatasetManifest>(manifestSchema as AnySchema);
   assertValid(validateManifest, manifestValue, "datasets/manifest.json");
 
-  const datasetIds = new Set<string>();
   const datasetPaths = new Set<string>();
   const validatedDatasets: DatasetRecords[] = [];
-
   for (const entry of manifestValue.datasets) {
-    if (datasetIds.has(entry.id)) {
-      throw new Error(`Duplicate dataset id: ${entry.id}`);
-    }
     if (datasetPaths.has(entry.path)) {
       throw new Error(`Duplicate dataset path: ${entry.path}`);
     }
-    datasetIds.add(entry.id);
     datasetPaths.add(entry.path);
 
-    if (entry.schema !== expectedSchemaPaths[entry.domain]) {
-      throw new Error(`Dataset ${entry.id} must use ${expectedSchemaPaths[entry.domain]}`);
+    const definition = definitionForPath(entry.path);
+    const dataPath = await resolveRepositoryFile(canonicalRoot, entry.path);
+    const schemaPath = await resolveRepositoryFile(canonicalRoot, definition.schema);
+    const dataBytes = await readFile(dataPath);
+    const recordsValue: unknown = JSON.parse(dataBytes.toString("utf8")) as unknown;
+    if (canonicalJson(recordsValue) !== dataBytes.toString("utf8")) {
+      throw new Error(`${entry.path} is not canonically serialized`);
     }
 
-    const dataPath = await resolveRepositoryFile(canonicalRoot, entry.path);
-    const schemaPath = await resolveRepositoryFile(canonicalRoot, entry.schema);
-    const dataBytes = await readFile(dataPath);
     const actualChecksum = createHash("sha256").update(dataBytes).digest("hex");
     if (actualChecksum !== entry.sha256) {
       throw new Error(`Checksum mismatch for ${entry.path}`);
     }
-
-    const recordsValue: unknown = JSON.parse(dataBytes.toString("utf8")) as unknown;
     if (!Array.isArray(recordsValue)) {
       throw new Error(`${entry.path} must contain a JSON array`);
-    }
-    if (recordsValue.length !== entry.recordCount) {
-      throw new Error(`${entry.path} recordCount does not match the manifest`);
     }
 
     const schema = await readJson(schemaPath);
     const validateRecord = ajv.compile<unknown>(schema as AnySchema);
-    const sourceIds = new Set(entry.sources.map((source) => source.id));
     for (const [index, record] of recordsValue.entries()) {
       const description = `${entry.path}[${index}]`;
       assertValid(validateRecord, record, description);
-      validateRecordReferences(record, entry, sourceIds, description);
+      validateRecordPartition(record, definition, description);
     }
-    validatedDatasets.push({ entry, records: recordsValue });
+    validatedDatasets.push({ definition, entry, records: recordsValue });
   }
 
+  const unregisteredFiles = await listDatasetFiles(canonicalRoot);
+  const missingFiles = unregisteredFiles.filter((path) => !datasetPaths.has(path));
+  const missingPaths = [...datasetPaths].filter((path) => !unregisteredFiles.includes(path));
+  if (missingFiles.length > 0) {
+    throw new Error(`Dataset files missing from manifest: ${missingFiles.join(", ")}`);
+  }
+  if (missingPaths.length > 0) {
+    throw new Error(`Manifest paths do not exist as dataset files: ${missingPaths.join(", ")}`);
+  }
+
+  const warnings: string[] = [];
+  for (const dataset of validatedDatasets) {
+    const warning = englishSortWarning(dataset);
+    if (warning !== undefined) {
+      warnings.push(warning);
+    }
+  }
   validateCrossDatasetReferences(validatedDatasets);
+  return warnings;
 }

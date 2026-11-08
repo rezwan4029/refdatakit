@@ -3,7 +3,7 @@
   "title": "City or Locality",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "name", "countryCode"],
+  "required": ["id", "name", "country_code"],
   "properties": {
     "id": {
       "type": "string",
@@ -14,11 +14,11 @@
       "type": "string",
       "minLength": 1
     },
-    "countryCode": {
+    "country_code": {
       "type": "string",
       "pattern": "^[A-Z]{2}$"
     },
-    "subdivisionCode": {
+    "subdivision_code": {
       "type": "string",
       "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"
     },
@@ -29,10 +29,10 @@
       "type": "integer",
       "minimum": 0
     },
-    "localizedNames": {
+    "localized_names": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/localizedName"
+        "$ref": "#/$defs/localized_name"
       }
     },
     "aliases": {
@@ -42,23 +42,20 @@
         "type": "string",
         "minLength": 1
       }
-    },
-    "sourceIds": {
-      "$ref": "#/$defs/sourceIds"
     }
   },
   "$defs": {
-    "languageTag": {
+    "language": {
       "type": "string",
       "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
     },
-    "localizedName": {
+    "localized_name": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["languageTag", "name"],
+      "required": ["language", "name"],
       "properties": {
-        "languageTag": {
-          "$ref": "#/$defs/languageTag"
+        "language": {
+          "$ref": "#/$defs/language"
         },
         "name": {
           "type": "string",
@@ -81,14 +78,6 @@
           "minimum": -180,
           "maximum": 180
         }
-      }
-    },
-    "sourceIds": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "pattern": "^[a-z0-9][a-z0-9._:-]*$"
       }
     }
   }

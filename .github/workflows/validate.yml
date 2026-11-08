@@ -39,3 +39,22 @@ jobs:
       - run: ruff check packages/python/src packages/python/tests
       - run: pytest packages/python/tests
       - run: refdatakit validate .
+
+  portal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: portal/package-lock.json
+      - run: npm ci
+        working-directory: portal
+      - run: npm run check
+        working-directory: portal
+      - run: npm run build
+        working-directory: portal
+        env:
+          PORTAL_BASE_PATH: /refdatakit/
+          VITE_AUTH_BROKER_URL: https://refdatakit-contributions.example.workers.dev

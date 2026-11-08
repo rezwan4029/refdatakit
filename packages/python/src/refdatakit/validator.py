@@ -2,45 +2,75 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import unicodedata
+from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
-from typing import Literal, NotRequired, TypedDict, cast
+from typing import Literal, TypedDict, cast
 
 from jsonschema import Draft202012Validator, FormatChecker
 from jsonschema.exceptions import SchemaError
+
+from .canonical_json import canonical_json
 
 
 class DatasetValidationError(ValueError):
     pass
 
 
-class DatasetSource(TypedDict):
-    id: str
-
-
 class DatasetEntry(TypedDict):
-    id: str
-    domain: Literal["country", "subdivision", "city", "entity"]
-    countryCode: NotRequired[str]
     path: str
-    schema: str
-    status: Literal["placeholder", "ready"]
-    recordCount: int
+    source_url: str
+    license: str
+    attribution: str
     sha256: str
-    license: str | None
-    sources: list[DatasetSource]
 
 
 class DatasetManifest(TypedDict):
-    schemaVersion: str
     datasets: list[DatasetEntry]
 
 
-EXPECTED_SCHEMA_PATHS: dict[str, str] = {
-    "country": "schemas/country.schema.json",
-    "subdivision": "schemas/subdivision.schema.json",
-    "city": "schemas/city.schema.json",
-    "entity": "schemas/entity.schema.json",
-}
+@dataclass(frozen=True)
+class DatasetDefinition:
+    domain: Literal["country", "subdivision", "city", "entity"]
+    schema: str
+    country_code: str | None = None
+
+
+@dataclass(frozen=True)
+class DatasetRecords:
+    definition: DatasetDefinition
+    entry: DatasetEntry
+    records: list[object]
+
+
+DATASET_PATH_PATTERNS: tuple[
+    tuple[re.Pattern[str], Literal["country", "subdivision", "city", "entity"], str],
+    ...,
+] = (
+    (
+        re.compile(r"datasets/countries/data\.json"),
+        "country",
+        "schemas/country.schema.json",
+    ),
+    (
+        re.compile(r"datasets/subdivisions/by-country/([A-Z]{2})\.json"),
+        "subdivision",
+        "schemas/subdivision.schema.json",
+    ),
+    (
+        re.compile(r"datasets/cities/by-country/([A-Z]{2})\.json"),
+        "city",
+        "schemas/city.schema.json",
+    ),
+    (
+        re.compile(r"datasets/institutions/by-country/([A-Z]{2})\.json"),
+        "entity",
+        "schemas/entity.schema.json",
+    ),
+)
+
+
 IDENTITY_FIELDS: dict[str, str] = {
     "country": "code",
     "subdivision": "code",
@@ -89,39 +119,16 @@ def _schema_validator(schema: object, description: str) -> Draft202012Validator:
     try:
         Draft202012Validator.check_schema(schema)
     except SchemaError as error:
-        raise DatasetValidationError(f"{description} is not a valid JSON Schema: {error.message}") from error
+        raise DatasetValidationError(
+            f"{description} is not a valid JSON Schema: {error.message}"
+        ) from error
     return Draft202012Validator(schema, format_checker=FormatChecker())
-
-
-def _validate_record_references(
-    record: object,
-    entry: DatasetEntry,
-    source_ids: set[str],
-    description: str,
-) -> None:
-    if not isinstance(record, dict):
-        raise DatasetValidationError(f"{description} must be an object")
-
-    country_code = entry.get("countryCode")
-    if country_code is not None and record.get("countryCode") != country_code:
-        raise DatasetValidationError(f"{description} countryCode does not match {country_code}")
-
-    record_source_ids = record.get("sourceIds")
-    if record_source_ids is None:
-        return
-    if not isinstance(record_source_ids, list) or not all(
-        isinstance(source_id, str) for source_id in record_source_ids
-    ):
-        raise DatasetValidationError(f"{description} sourceIds must be an array of strings")
-    for source_id in record_source_ids:
-        if source_id not in source_ids:
-            raise DatasetValidationError(f"{description} references unknown source {source_id}")
 
 
 def _required_string(record: object, field: str, description: str) -> str:
     if not isinstance(record, dict) or not isinstance(record.get(field), str):
         raise DatasetValidationError(f"{description} must have a string {field}")
-    return record[field]
+    return cast(str, record[field])
 
 
 def _optional_string(record: object, field: str, description: str) -> str | None:
@@ -136,51 +143,112 @@ def _optional_string(record: object, field: str, description: str) -> str | None
     return value
 
 
-def _validate_cross_dataset_references(
-    datasets: list[tuple[DatasetEntry, list[object]]],
+def _definition_for_path(path: str) -> DatasetDefinition:
+    for pattern, domain, schema in DATASET_PATH_PATTERNS:
+        match = pattern.fullmatch(path)
+        if match:
+            country_code = match.group(1) if domain != "country" else None
+            return DatasetDefinition(domain=domain, schema=schema, country_code=country_code)
+    raise DatasetValidationError(f"Unsupported dataset path: {path}")
+
+
+def _list_dataset_files(root: Path) -> list[str]:
+    datasets_directory = _repository_file(root, "datasets")
+    files = []
+    for path in datasets_directory.rglob("*.json"):
+        relative_path = path.relative_to(root).as_posix()
+        if "contributions" in path.relative_to(datasets_directory).parts:
+            continue
+        if relative_path != "datasets/manifest.json":
+            files.append(relative_path)
+    return sorted(files)
+
+
+def _validate_record_partition(
+    record: object,
+    definition: DatasetDefinition,
+    description: str,
 ) -> None:
+    if definition.country_code is None:
+        return
+    if _required_string(record, "country_code", description) != definition.country_code:
+        raise DatasetValidationError(
+            f"{description} country_code does not match {definition.country_code}"
+        )
+
+
+def _english_sort_key(
+    record: object,
+    definition: DatasetDefinition,
+    description: str,
+) -> tuple[str, str]:
+    if definition.domain == "entity":
+        if not isinstance(record, dict) or not isinstance(record.get("names"), dict):
+            raise DatasetValidationError(f"{description} must have an object names")
+        english_name = _required_string(record["names"], "en", f"{description} names")
+    else:
+        english_name = _required_string(record, "name", description)
+    identity = _required_string(record, IDENTITY_FIELDS[definition.domain], description)
+    return (english_name, identity)
+
+
+def _english_sort_warning(dataset: DatasetRecords) -> str | None:
+    previous: tuple[str, str] | None = None
+    for index, record in enumerate(dataset.records):
+        description = f"{dataset.entry['path']}[{index}]"
+        english_name, identity = _english_sort_key(record, dataset.definition, description)
+        current = (unicodedata.normalize("NFC", english_name).lower(), identity)
+        if previous is not None and previous > current:
+            return f"{dataset.entry['path']} is not sorted by English name at record {index}"
+        previous = current
+    return None
+
+
+def _validate_cross_dataset_references(datasets: list[DatasetRecords]) -> None:
     countries: set[str] = set()
     subdivisions: dict[str, set[str]] = {}
     cities: dict[str, set[str]] = {}
     record_identities: set[tuple[str, str, str]] = set()
 
-    for entry, records in datasets:
-        for index, record in enumerate(records):
-            description = f"{entry['path']}[{index}]"
-            identity_field = IDENTITY_FIELDS[entry["domain"]]
+    for dataset in datasets:
+        for index, record in enumerate(dataset.records):
+            description = f"{dataset.entry['path']}[{index}]"
+            domain = dataset.definition.domain
+            identity_field = IDENTITY_FIELDS[domain]
             identity = _required_string(record, identity_field, description)
             country_code = (
                 ""
-                if entry["domain"] == "country"
-                else _required_string(record, "countryCode", description)
+                if domain == "country"
+                else _required_string(record, "country_code", description)
             )
-            scoped_identity = (entry["domain"], country_code, identity)
+            scoped_identity = (domain, country_code, identity)
             if scoped_identity in record_identities:
                 raise DatasetValidationError(
                     f"{description} duplicates {identity_field} {identity}"
                 )
             record_identities.add(scoped_identity)
 
-            if entry["domain"] == "country":
+            if domain == "country":
                 countries.add(identity)
-            elif entry["domain"] == "subdivision":
+            elif domain == "subdivision":
                 subdivisions.setdefault(country_code, set()).add(identity)
-            elif entry["domain"] == "city":
+            elif domain == "city":
                 cities.setdefault(country_code, set()).add(identity)
 
-    for entry, records in datasets:
-        for index, record in enumerate(records):
-            description = f"{entry['path']}[{index}]"
-            if entry["domain"] == "country":
+    for dataset in datasets:
+        for index, record in enumerate(dataset.records):
+            description = f"{dataset.entry['path']}[{index}]"
+            domain = dataset.definition.domain
+            if domain == "country":
                 continue
 
-            country_code = _required_string(record, "countryCode", description)
+            country_code = _required_string(record, "country_code", description)
             if country_code not in countries:
                 raise DatasetValidationError(
                     f"{description} references unknown country {country_code}"
                 )
 
-            subdivision_code = _optional_string(record, "subdivisionCode", description)
+            subdivision_code = _optional_string(record, "subdivision_code", description)
             if (
                 subdivision_code is not None
                 and subdivision_code not in subdivisions.get(country_code, set())
@@ -189,9 +257,9 @@ def _validate_cross_dataset_references(
                     f"{description} references unknown subdivision {subdivision_code}"
                 )
 
-            if entry["domain"] == "subdivision":
+            if domain == "subdivision":
                 code = _required_string(record, "code", description)
-                parent_code = _optional_string(record, "parentCode", description)
+                parent_code = _optional_string(record, "parent_code", description)
                 if parent_code == code:
                     raise DatasetValidationError(f"{description} cannot be its own parent")
                 if (
@@ -202,60 +270,145 @@ def _validate_cross_dataset_references(
                         f"{description} references unknown parent subdivision {parent_code}"
                     )
 
-            if entry["domain"] == "entity":
-                city_id = _optional_string(record, "cityId", description)
+            if domain == "entity":
+                city_id = _optional_string(record, "city_id", description)
                 if city_id is not None and city_id not in cities.get(country_code, set()):
                     raise DatasetValidationError(f"{description} references unknown city {city_id}")
 
 
-def validate_repository(root_directory: Path) -> None:
+def sort_repository(root_directory: Path) -> None:
     root = root_directory.resolve(strict=True)
     manifest_path = _repository_file(root, "datasets/manifest.json")
     manifest_schema_path = _repository_file(root, "schemas/manifest.schema.json")
-    manifest_schema = _read_json(manifest_schema_path)
     manifest_value = _read_json(manifest_path)
+    manifest_validator = _schema_validator(
+        _read_json(manifest_schema_path),
+        "schemas/manifest.schema.json",
+    )
+    _validate_instance(manifest_validator, manifest_value, "datasets/manifest.json")
+    manifest = cast(DatasetManifest, manifest_value)
 
+    dataset_paths: set[str] = set()
+    datasets: list[DatasetRecords] = []
+    for entry in manifest["datasets"]:
+        if entry["path"] in dataset_paths:
+            raise DatasetValidationError(f"Duplicate dataset path: {entry['path']}")
+        dataset_paths.add(entry["path"])
+
+        definition = _definition_for_path(entry["path"])
+        data_path = _repository_file(root, entry["path"])
+        schema_path = _repository_file(root, definition.schema)
+        records_value = _read_json(data_path)
+        if not isinstance(records_value, list):
+            raise DatasetValidationError(f"{entry['path']} must contain a JSON array")
+
+        record_validator = _schema_validator(_read_json(schema_path), definition.schema)
+        for index, record in enumerate(records_value):
+            description = f"{entry['path']}[{index}]"
+            _validate_instance(record_validator, record, description)
+            _validate_record_partition(record, definition, description)
+        datasets.append(DatasetRecords(definition, entry, records_value))
+
+    existing_files = _list_dataset_files(root)
+    missing_manifest_entries = sorted(set(existing_files) - dataset_paths)
+    missing_dataset_files = sorted(dataset_paths - set(existing_files))
+    if missing_manifest_entries:
+        raise DatasetValidationError(
+            f"Dataset files missing from manifest: {', '.join(missing_manifest_entries)}"
+        )
+    if missing_dataset_files:
+        raise DatasetValidationError(
+            f"Manifest paths do not exist as dataset files: {', '.join(missing_dataset_files)}"
+        )
+
+    _validate_cross_dataset_references(datasets)
+    for dataset in datasets:
+        dataset.records.sort(key=lambda record: _english_sort_key(
+            record,
+            dataset.definition,
+            dataset.entry["path"],
+        ))
+        contents = canonical_json(dataset.records)
+        data_path = _repository_file(root, dataset.entry["path"])
+        data_path.write_bytes(contents)
+        dataset.entry["sha256"] = hashlib.sha256(contents).hexdigest()
+
+    manifest_path.write_bytes(canonical_json(manifest))
+    validate_repository(root)
+
+
+def validate_repository(root_directory: Path) -> list[str]:
+    root = root_directory.resolve(strict=True)
+    manifest_path = _repository_file(root, "datasets/manifest.json")
+    manifest_schema_path = _repository_file(root, "schemas/manifest.schema.json")
+    manifest_contents = manifest_path.read_bytes()
+    manifest_value = _read_json(manifest_path)
+    try:
+        is_canonical_manifest = canonical_json(manifest_value) == manifest_contents
+    except (TypeError, ValueError) as error:
+        raise DatasetValidationError(f"Manifest cannot be serialized canonically: {error}") from error
+    if not is_canonical_manifest:
+        raise DatasetValidationError("datasets/manifest.json is not canonically serialized")
+
+    manifest_schema = _read_json(manifest_schema_path)
     manifest_validator = _schema_validator(manifest_schema, "schemas/manifest.schema.json")
     _validate_instance(manifest_validator, manifest_value, "datasets/manifest.json")
     manifest = cast(DatasetManifest, manifest_value)
 
-    dataset_ids: set[str] = set()
     dataset_paths: set[str] = set()
-    validated_datasets: list[tuple[DatasetEntry, list[object]]] = []
+    validated_datasets: list[DatasetRecords] = []
     for entry in manifest["datasets"]:
-        if entry["id"] in dataset_ids:
-            raise DatasetValidationError(f"Duplicate dataset id: {entry['id']}")
         if entry["path"] in dataset_paths:
             raise DatasetValidationError(f"Duplicate dataset path: {entry['path']}")
-        dataset_ids.add(entry["id"])
         dataset_paths.add(entry["path"])
 
-        expected_schema_path = EXPECTED_SCHEMA_PATHS[entry["domain"]]
-        if entry["schema"] != expected_schema_path:
-            raise DatasetValidationError(
-                f"Dataset {entry['id']} must use {expected_schema_path}"
-            )
-
+        definition = _definition_for_path(entry["path"])
         data_path = _repository_file(root, entry["path"])
-        schema_path = _repository_file(root, entry["schema"])
+        schema_path = _repository_file(root, definition.schema)
         data_bytes = data_path.read_bytes()
+        records_value = _read_json(data_path)
+        try:
+            is_canonical_dataset = canonical_json(records_value) == data_bytes
+        except (TypeError, ValueError) as error:
+            raise DatasetValidationError(
+                f"{entry['path']} cannot be serialized canonically: {error}"
+            ) from error
+        if not is_canonical_dataset:
+            raise DatasetValidationError(f"{entry['path']} is not canonically serialized")
+
         checksum = hashlib.sha256(data_bytes).hexdigest()
         if checksum != entry["sha256"]:
             raise DatasetValidationError(f"Checksum mismatch for {entry['path']}")
 
-        records_value = _read_json(data_path)
         if not isinstance(records_value, list):
             raise DatasetValidationError(f"{entry['path']} must contain a JSON array")
-        if len(records_value) != entry["recordCount"]:
-            raise DatasetValidationError(f"{entry['path']} recordCount does not match the manifest")
 
         schema = _read_json(schema_path)
-        record_validator = _schema_validator(schema, entry["schema"])
-        available_source_ids = {source["id"] for source in entry["sources"]}
+        record_validator = _schema_validator(schema, definition.schema)
         for index, record in enumerate(records_value):
             description = f"{entry['path']}[{index}]"
             _validate_instance(record_validator, record, description)
-            _validate_record_references(record, entry, available_source_ids, description)
-        validated_datasets.append((entry, records_value))
+            _validate_record_partition(record, definition, description)
+        validated_datasets.append(
+            DatasetRecords(definition=definition, entry=entry, records=records_value)
+        )
 
+    existing_files = _list_dataset_files(root)
+    missing_manifest_entries = sorted(set(existing_files) - dataset_paths)
+    missing_dataset_files = sorted(dataset_paths - set(existing_files))
+    if missing_manifest_entries:
+        raise DatasetValidationError(
+            f"Dataset files missing from manifest: {', '.join(missing_manifest_entries)}"
+        )
+    if missing_dataset_files:
+        raise DatasetValidationError(
+            f"Manifest paths do not exist as dataset files: {', '.join(missing_dataset_files)}"
+        )
+
+    warnings = [
+        warning
+        for dataset in validated_datasets
+        if (warning := _english_sort_warning(dataset)) is not None
+    ]
     _validate_cross_dataset_references(validated_datasets)
+    return warnings

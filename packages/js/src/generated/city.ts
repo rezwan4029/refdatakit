@@ -1,7 +1,6 @@
 /* Generated from schemas/city.schema.json. Do not edit. */
 
-export type LanguageTag = string;
-export type SourceIds = string[];
+export type Language = string;
 
 export interface CityOrLocality {
   /**
@@ -9,19 +8,18 @@ export interface CityOrLocality {
    */
   id: string;
   name: string;
-  countryCode: string;
-  subdivisionCode?: string;
+  country_code: string;
+  subdivision_code?: string;
   coordinates?: Coordinates;
   population?: number;
-  localizedNames?: LocalizedName[];
+  localized_names?: LocalizedName[];
   aliases?: string[];
-  sourceIds?: SourceIds;
 }
 export interface Coordinates {
   latitude: number;
   longitude: number;
 }
 export interface LocalizedName {
-  languageTag: LanguageTag;
+  language: Language;
   name: string;
 }

@@ -3,35 +3,38 @@
 /**
  * BCP 47 language tag.
  */
-export type LanguageTag = string;
-export type SourceIds = string[];
+export type Language = string;
 
 export interface UniversalDirectoryEntity {
   /**
    * Stable identifier that must not be derived from a mutable display name.
    */
   id: string;
-  name: string;
-  entityType:
+  names: {
+    en: string;
+    /**
+     * Name in the primary local language for the entity's country.
+     */
+    local: string;
+  };
+  entity_type:
     "school" | "college" | "university" | "corporation" | "civic_organization" | "religious_building" | "other";
-  countryCode: string;
-  subdivisionCode?: string;
-  cityId?: string;
-  localizedNames?: LocalizedName[];
-  aliases?: string[];
+  country_code: string;
+  subdivision_code?: string;
+  city_id?: string;
+  localized_aliases?: LocalizedAlias[];
   /**
    * Languages used for instruction, services, or public-facing operations.
    */
-  languages?: LanguageTag[];
+  languages?: Language[];
   website?: string;
   domains?: string[];
   coordinates?: Coordinates;
-  externalIds?: ExternalId[];
-  sourceIds?: SourceIds;
+  external_ids?: ExternalId[];
 }
-export interface LocalizedName {
-  languageTag: LanguageTag;
-  name: string;
+export interface LocalizedAlias {
+  language: Language;
+  value: string;
 }
 export interface Coordinates {
   latitude: number;

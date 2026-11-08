@@ -3,8 +3,7 @@
 /**
  * BCP 47 language tag.
  */
-export type LanguageTag = string;
-export type SourceIds = string[];
+export type Language = string;
 
 export interface Country {
   /**
@@ -12,20 +11,13 @@ export interface Country {
    */
   code: string;
   name: string;
-  /**
-   * ISO 3166-1 alpha-3 code, when available.
-   */
-  alpha3Code?: string;
-  /**
-   * ISO 3166-1 numeric code, when available.
-   */
-  numericCode?: string;
-  official_languages: LanguageTag[];
-  localizedNames?: LocalizedName[];
+  alpha3_code?: string;
+  numeric_code?: string;
+  official_languages: Language[];
+  localized_names?: LocalizedName[];
   aliases?: string[];
-  sourceIds?: SourceIds;
 }
 export interface LocalizedName {
-  languageTag: LanguageTag;
+  language: Language;
   name: string;
 }
