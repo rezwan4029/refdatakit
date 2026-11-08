@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasets": [
+    {
+      "id": "countries",
+      "domain": "country",
+      "path": "datasets/countries/data.json",
+      "schema": "schemas/country.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "subdivisions-us",
+      "domain": "subdivision",
+      "countryCode": "US",
+      "path": "datasets/subdivisions/by-country/US.json",
+      "schema": "schemas/subdivision.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "subdivisions-de",
+      "domain": "subdivision",
+      "countryCode": "DE",
+      "path": "datasets/subdivisions/by-country/DE.json",
+      "schema": "schemas/subdivision.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "subdivisions-jp",
+      "domain": "subdivision",
+      "countryCode": "JP",
+      "path": "datasets/subdivisions/by-country/JP.json",
+      "schema": "schemas/subdivision.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "subdivisions-bd",
+      "domain": "subdivision",
+      "countryCode": "BD",
+      "path": "datasets/subdivisions/by-country/BD.json",
+      "schema": "schemas/subdivision.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "cities-us",
+      "domain": "city",
+      "countryCode": "US",
+      "path": "datasets/cities/by-country/US.json",
+      "schema": "schemas/city.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "cities-de",
+      "domain": "city",
+      "countryCode": "DE",
+      "path": "datasets/cities/by-country/DE.json",
+      "schema": "schemas/city.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "cities-jp",
+      "domain": "city",
+      "countryCode": "JP",
+      "path": "datasets/cities/by-country/JP.json",
+      "schema": "schemas/city.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "cities-bd",
+      "domain": "city",
+      "countryCode": "BD",
+      "path": "datasets/cities/by-country/BD.json",
+      "schema": "schemas/city.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "institutions-us",
+      "domain": "entity",
+      "countryCode": "US",
+      "path": "datasets/institutions/by-country/US.json",
+      "schema": "schemas/entity.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "institutions-de",
+      "domain": "entity",
+      "countryCode": "DE",
+      "path": "datasets/institutions/by-country/DE.json",
+      "schema": "schemas/entity.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "institutions-jp",
+      "domain": "entity",
+      "countryCode": "JP",
+      "path": "datasets/institutions/by-country/JP.json",
+      "schema": "schemas/entity.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    },
+    {
+      "id": "institutions-bd",
+      "domain": "entity",
+      "countryCode": "BD",
+      "path": "datasets/institutions/by-country/BD.json",
+      "schema": "schemas/entity.schema.json",
+      "status": "placeholder",
+      "recordCount": 0,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "license": null,
+      "sources": []
+    }
+  ]
+}
