@@ -143,6 +143,50 @@ def _optional_string(record: object, field: str, description: str) -> str | None
     return value
 
 
+def _official_non_english_languages(record: object, description: str) -> set[str]:
+    if not isinstance(record, dict) or not isinstance(record.get("official_languages"), list):
+        raise DatasetValidationError(f"{description} must have an official_languages array")
+
+    languages: set[str] = set()
+    for language in record["official_languages"]:
+        if not isinstance(language, str):
+            raise DatasetValidationError(f"{description} official_languages must contain strings")
+        code = language.split("-", maxsplit=1)[0].lower()
+        if not re.fullmatch(r"[a-z]{2}", code):
+            raise DatasetValidationError(
+                f"{description} official language {language} has no ISO 639-1 code"
+            )
+        if code != "en":
+            languages.add(code)
+    return languages
+
+
+def _validate_entity_language_names(
+    record: object,
+    official_languages: set[str],
+    description: str,
+) -> None:
+    if (
+        not isinstance(record, dict)
+        or not isinstance(record.get("names"), dict)
+        or not isinstance(record["names"].get("languages"), dict)
+    ):
+        raise DatasetValidationError(f"{description} names.languages must be an object")
+
+    actual_languages = set(record["names"]["languages"])
+    missing = sorted(official_languages - actual_languages)
+    unexpected = sorted(actual_languages - official_languages)
+    if missing or unexpected:
+        details = []
+        if missing:
+            details.append(f"missing {', '.join(missing)}")
+        if unexpected:
+            details.append(f"not official {', '.join(unexpected)}")
+        raise DatasetValidationError(
+            f"{description} names.languages does not match country languages: {'; '.join(details)}"
+        )
+
+
 def _definition_for_path(path: str) -> DatasetDefinition:
     for pattern, domain, schema in DATASET_PATH_PATTERNS:
         match = pattern.fullmatch(path)
@@ -204,6 +248,7 @@ def _english_sort_warning(dataset: DatasetRecords) -> str | None:
 
 def _validate_cross_dataset_references(datasets: list[DatasetRecords]) -> None:
     countries: set[str] = set()
+    country_languages: dict[str, set[str]] = {}
     subdivisions: dict[str, set[str]] = {}
     cities: dict[str, set[str]] = {}
     record_identities: set[tuple[str, str, str]] = set()
@@ -228,6 +273,7 @@ def _validate_cross_dataset_references(datasets: list[DatasetRecords]) -> None:
 
             if domain == "country":
                 countries.add(identity)
+                country_languages[identity] = _official_non_english_languages(record, description)
             elif domain == "subdivision":
                 subdivisions.setdefault(country_code, set()).add(identity)
             elif domain == "city":
@@ -272,6 +318,11 @@ def _validate_cross_dataset_references(datasets: list[DatasetRecords]) -> None:
                 city_id = _optional_string(record, "city_id", description)
                 if city_id is not None and city_id not in cities.get(country_code, set()):
                     raise DatasetValidationError(f"{description} references unknown city {city_id}")
+                _validate_entity_language_names(
+                    record,
+                    country_languages.get(country_code, set()),
+                    description,
+                )
 
 
 def sort_repository(root_directory: Path) -> None:

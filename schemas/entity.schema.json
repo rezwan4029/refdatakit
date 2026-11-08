@@ -3,7 +3,7 @@
   "title": "Universal Directory Entity",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "names", "entity_type", "country_code", "city_id"],
+  "required": ["id", "names", "entity_type", "country_code", "city_id", "tags"],
   "properties": {
     "id": {
       "type": "string",
@@ -13,16 +13,22 @@
     "names": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["en", "local"],
+      "required": ["en", "languages"],
       "properties": {
         "en": {
           "type": "string",
           "minLength": 1
         },
-        "local": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Name in the primary local language for the entity's country."
+        "languages": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z]{2}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Names keyed by ISO 639-1 code for the entity's official non-English languages."
         }
       }
     },
@@ -44,6 +50,15 @@
     "city_id": {
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/tag"
+      },
+      "description": "Controlled classifications for an institution; multiple tags may apply."
     },
     "localized_aliases": {
       "type": "array",
@@ -80,6 +95,10 @@
     }
   },
   "$defs": {
+    "tag": {
+      "type": "string",
+      "enum": ["hospital", "medical_college", "university", "nursing_home", "k12_school"]
+    },
     "language": {
       "type": "string",
       "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$",

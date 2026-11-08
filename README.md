@@ -4,7 +4,7 @@ RefDataKit standardizes public inputs into validated, versioned reference datase
 
 ## Bangladesh Pilot
 
-The initial data release is limited to Bangladesh (`BD`): country metadata, its eight divisions, eight major city markers, and two universities. Country and city records may carry macro-level coordinates. Institution records use English and local-language names, stable city links, and external identifiers; coordinates, addresses, and logos are prohibited.
+The initial data release is limited to Bangladesh (`BD`): country metadata, its eight divisions, eight major city markers, and three universities, including Bangladesh Medical University (formerly BSMMU). Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for each official non-English language, stable city links, external identifiers, and controlled classification tags; coordinates, addresses, and logos are prohibited.
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
@@ -23,11 +23,13 @@ packages/python/                 Python SDK and CLI
 .github/workflows/               Automated checks
 ```
 
-`institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Every canonical dataset file is registered in the manifest and validated before it enters the repository.
+`institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Institution tags are selected from a closed schema enum and may be combined. Every canonical dataset file is registered in the manifest and validated before it enters the repository.
 
 ## Provenance and Canonical Data
 
 Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. The Bangladesh seed uses Wikidata structured data, distributed under CC0-1.0; each manifest entry identifies the source item or items.
+
+The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
 
 Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
 
@@ -50,5 +52,3 @@ refdatakit sort .
 ```
 
 Both CLIs provide `validate` and `sort` commands. Validation errors fail the command; English-name ordering differences are reported as warnings so contributors can run `sort` to normalize records and checksums.
-
-No repository-wide open-source license has been selected for the software.

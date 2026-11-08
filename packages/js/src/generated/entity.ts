@@ -1,5 +1,6 @@
 /* Generated from schemas/entity.schema.json. Do not edit. */
 
+export type Tag = "hospital" | "medical_college" | "university" | "nursing_home" | "k12_school";
 /**
  * BCP 47 language tag.
  */
@@ -13,14 +14,22 @@ export interface UniversalDirectoryEntity {
   names: {
     en: string;
     /**
-     * Name in the primary local language for the entity's country.
+     * Names keyed by ISO 639-1 code for the entity's official non-English languages.
      */
-    local: string;
+    languages: {
+      [k: string]: string;
+    };
   };
   entity_type:
     "school" | "college" | "university" | "corporation" | "civic_organization" | "religious_building" | "other";
   country_code: string;
   city_id: string;
+  /**
+   * Controlled classifications for an institution; multiple tags may apply.
+   *
+   * @minItems 1
+   */
+  tags: [Tag, ...Tag[]];
   localized_aliases?: LocalizedAlias[];
   /**
    * Languages used for instruction, services, or public-facing operations.
