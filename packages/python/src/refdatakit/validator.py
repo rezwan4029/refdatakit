@@ -6,7 +6,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
-from typing import Literal, TypedDict, cast
+from typing import Literal, NotRequired, TypedDict, cast
 
 from jsonschema import Draft202012Validator, FormatChecker
 from jsonschema.exceptions import SchemaError
@@ -18,12 +18,22 @@ class DatasetValidationError(ValueError):
     pass
 
 
+class DatasetSource(TypedDict):
+    source_url: str
+    license: str
+    attribution: str
+    fields: list[str]
+    data_as_of: NotRequired[str]
+
+
 class DatasetEntry(TypedDict):
     path: str
     source_url: str
     license: str
     attribution: str
     sha256: str
+    data_as_of: NotRequired[str]
+    additional_sources: NotRequired[list[DatasetSource]]
 
 
 class DatasetVocabularies(TypedDict):
@@ -177,11 +187,11 @@ def _official_non_english_languages(record: object, description: str) -> set[str
         if not isinstance(language, str):
             raise DatasetValidationError(f"{description} official_languages must contain strings")
         code = language.split("-", maxsplit=1)[0].lower()
-        if not re.fullmatch(r"[a-z]{2}", code):
+        if not re.fullmatch(r"[a-z]{2,3}", code):
             raise DatasetValidationError(
-                f"{description} official language {language} has no ISO 639-1 code"
+                f"{description} official language {language} has an invalid code"
             )
-        if code != "en":
+        if len(code) == 2 and code != "en":
             languages.add(code)
     return languages
 
@@ -191,6 +201,9 @@ def _validate_entity_language_names(
     official_languages: set[str],
     description: str,
 ) -> None:
+    if not official_languages:
+        return
+
     if (
         not isinstance(record, dict)
         or not isinstance(record.get("names"), dict)

@@ -2,9 +2,11 @@
 
 RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
 
-## Bangladesh Pilot
+## Global Country Data and Bangladesh Pilot
 
-The initial data release is limited to Bangladesh (`BD`): country metadata, its eight divisions, eight major city markers, and three universities, including Bangladesh Medical University (formerly BSMMU). Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for each official non-English language, stable city links, external identifiers, and controlled classification tags; coordinates, addresses, and logos are prohibited.
+The country dataset covers all 249 assigned ISO 3166-1 alpha-2 entries, including dependent territories. Country names and identifiers are populated globally; official and commonly spoken language arrays contain only source-verified contributions and may be empty when data has not yet been contributed. An empty array does not assert that a country has no such languages. Global city and locality data is deferred; the current subdivisions, city markers, and institutions cover Bangladesh (`BD`) only.
+
+Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for each official non-English language with an ISO 639-1 code, stable city links, external identifiers, and controlled classification tags; coordinates, addresses, and logos are prohibited.
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
@@ -13,8 +15,8 @@ All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and v
 ```text
 schemas/                         Shared JSON Schema contracts
 datasets/                        Canonical JSON records and source manifest
-  manifest.json                  Per-file source, license, attribution, and checksum
-  countries/data.json            Country records and official_languages
+  manifest.json                  Per-file sources, licenses, attribution, and checksum
+  countries/data.json            Country identifiers and contributed language data
   subdivisions/by-country/       Country-partitioned administrative divisions
   cities/by-country/             Country-partitioned cities and localities
   institutions/by-country/       Universal entities, partitioned by country
@@ -27,9 +29,9 @@ packages/python/                 Python SDK and CLI
 
 ## Provenance and Canonical Data
 
-Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. The Bangladesh seed uses Wikidata structured data, distributed under CC0-1.0; each manifest entry identifies the source item or items.
+Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. A dataset can list additional sources when its fields come from different sources. The global country file combines GeoNames country identifiers and spoken-language lists (CC BY 4.0) with official-language values from Unicode CLDR (Unicode-3.0); the full Unicode license notice is in [`licenses/UNICODE-3.0.txt`](licenses/UNICODE-3.0.txt). Bangladesh subdivisions, cities, and institutions use Wikidata structured data under CC0-1.0.
 
-The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
+The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. Empty country language arrays mean no value has been contributed or verified yet, not that the country has no such languages. Contributors can add values with source evidence. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
 
 Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
 
