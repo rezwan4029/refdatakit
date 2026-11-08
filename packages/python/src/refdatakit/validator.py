@@ -26,8 +26,13 @@ class DatasetEntry(TypedDict):
     sha256: str
 
 
+class DatasetVocabularies(TypedDict):
+    entity_tags: list[str]
+
+
 class DatasetManifest(TypedDict):
     datasets: list[DatasetEntry]
+    vocabularies: DatasetVocabularies
 
 
 @dataclass(frozen=True)
@@ -123,6 +128,26 @@ def _schema_validator(schema: object, description: str) -> Draft202012Validator:
             f"{description} is not a valid JSON Schema: {error.message}"
         ) from error
     return Draft202012Validator(schema, format_checker=FormatChecker())
+
+
+def _schema_with_entity_tags(schema: object, entity_tags: list[str]) -> object:
+    if (
+        not isinstance(schema, dict)
+        or not isinstance(schema.get("$defs"), dict)
+        or not isinstance(schema["$defs"].get("tag"), dict)
+    ):
+        raise DatasetValidationError("schemas/entity.schema.json must define $defs.tag")
+
+    return {
+        **schema,
+        "$defs": {
+            **schema["$defs"],
+            "tag": {
+                **schema["$defs"]["tag"],
+                "enum": entity_tags,
+            },
+        },
+    }
 
 
 def _required_string(record: object, field: str, description: str) -> str:
@@ -351,7 +376,10 @@ def sort_repository(root_directory: Path) -> None:
         if not isinstance(records_value, list):
             raise DatasetValidationError(f"{entry['path']} must contain a JSON array")
 
-        record_validator = _schema_validator(_read_json(schema_path), definition.schema)
+        schema = _read_json(schema_path)
+        if definition.domain == "entity":
+            schema = _schema_with_entity_tags(schema, manifest["vocabularies"]["entity_tags"])
+        record_validator = _schema_validator(schema, definition.schema)
         for index, record in enumerate(records_value):
             description = f"{entry['path']}[{index}]"
             _validate_instance(record_validator, record, description)
@@ -433,6 +461,8 @@ def validate_repository(root_directory: Path) -> list[str]:
             raise DatasetValidationError(f"{entry['path']} must contain a JSON array")
 
         schema = _read_json(schema_path)
+        if definition.domain == "entity":
+            schema = _schema_with_entity_tags(schema, manifest["vocabularies"]["entity_tags"])
         record_validator = _schema_validator(schema, definition.schema)
         for index, record in enumerate(records_value):
             description = f"{entry['path']}[{index}]"

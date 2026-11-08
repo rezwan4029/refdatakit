@@ -1,6 +1,9 @@
 /* Generated from schemas/entity.schema.json. Do not edit. */
 
-export type Tag = "hospital" | "medical_college" | "university" | "nursing_home" | "k12_school";
+/**
+ * Generated from datasets/manifest.json vocabularies.entity_tags.
+ */
+export type Tag = "hospital" | "k12_school" | "medical_college" | "nursing_home" | "university";
 /**
  * BCP 47 language tag.
  */

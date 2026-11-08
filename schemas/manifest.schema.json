@@ -3,8 +3,24 @@
   "title": "RefDataKit Dataset Manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": ["datasets"],
+  "required": ["datasets", "vocabularies"],
   "properties": {
+    "vocabularies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_tags"],
+      "properties": {
+        "entity_tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        }
+      }
+    },
     "datasets": {
       "type": "array",
       "items": {
