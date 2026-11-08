@@ -14,9 +14,13 @@ export interface Country {
   alpha3_code?: string;
   numeric_code?: string;
   /**
-   * @minItems 1
+   * Known nationally official languages. An empty array means no value has been contributed or verified; it does not assert that the country has no official language.
    */
-  official_languages: [Language, ...Language[]];
+  official_languages: Language[];
+  /**
+   * Known commonly spoken languages from the sources listed in the manifest. An empty array means no value has been contributed or verified.
+   */
+  commonly_spoken_languages?: Language[];
   centroid?: Coordinates;
   localized_names?: LocalizedName[];
   aliases?: string[];

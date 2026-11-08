@@ -18,6 +18,7 @@ def create_fixture(
     entities: list[dict[str, object]] | None = None,
     official_languages: list[str] | None = None,
     entity_tags: list[str] | None = None,
+    common_languages: list[str] | None = None,
 ) -> None:
     shutil.copytree(REPOSITORY_ROOT / "schemas", root / "schemas")
     if entities is None:
@@ -42,6 +43,7 @@ def create_fixture(
                     "code": "US",
                     "name": "United States",
                     "official_languages": ["en"] if official_languages is None else official_languages,
+                    "commonly_spoken_languages": common_languages or [],
                 }
             ],
         },
@@ -118,11 +120,26 @@ def test_validates_cross_dataset_references_and_canonical_data(tmp_path: Path) -
     validate_repository(tmp_path)
 
 
-def test_requires_at_least_one_official_country_language(tmp_path: Path) -> None:
-    create_fixture(tmp_path, "city:1", official_languages=[])
+def test_allows_missing_language_contributions_without_treating_them_as_none(
+    tmp_path: Path,
+) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "languages": {"bn": "উদাহরণ স্কুল"}},
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["k12_school"],
+    }
+    create_fixture(
+        tmp_path,
+        "city:1",
+        [entity],
+        official_languages=[],
+        common_languages=[],
+    )
 
-    with pytest.raises(DatasetValidationError):
-        validate_repository(tmp_path)
+    validate_repository(tmp_path)
 
 
 def test_rejects_entity_with_unknown_city_reference(tmp_path: Path) -> None:
@@ -209,7 +226,7 @@ def test_accepts_and_sorts_tags_added_to_manifest_vocabulary(tmp_path: Path) -> 
 
 
 def test_requires_names_for_each_non_english_official_language(tmp_path: Path) -> None:
-    official_languages = ["en", "bn", "fr"]
+    official_languages = ["en", "bn", "fr", "sco"]
     entity = {
         "id": "entity:1",
         "names": {

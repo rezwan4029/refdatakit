@@ -24,11 +24,19 @@
     },
     "official_languages": {
       "type": "array",
-      "minItems": 1,
       "uniqueItems": true,
       "items": {
         "$ref": "#/$defs/language"
-      }
+      },
+      "description": "Known nationally official languages. An empty array means no value has been contributed or verified; it does not assert that the country has no official language."
+    },
+    "commonly_spoken_languages": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/language"
+      },
+      "description": "Known commonly spoken languages from the sources listed in the manifest. An empty array means no value has been contributed or verified."
     },
     "centroid": {
       "$ref": "#/$defs/coordinates",

@@ -25,7 +25,7 @@ async function createFixture(cityId, entities = [{
   city_id: cityId,
   tags: ["k12_school"],
   external_ids: [{ system: "wikidata", value: "Q42" }],
-}], officialLanguages = ["en"], entityTags = defaultEntityTags) {
+}], officialLanguages = ["en"], entityTags = defaultEntityTags, commonLanguages = []) {
   const root = await mkdtemp(resolve(tmpdir(), "refdatakit-validation-"));
   await cp(resolve(repositoryDirectory, "schemas"), resolve(root, "schemas"), { recursive: true });
 
@@ -33,7 +33,12 @@ async function createFixture(cityId, entities = [{
     {
       path: "datasets/countries/data.json",
       source_url: "https://example.test/countries",
-      records: [{ code: "US", name: "United States", official_languages: officialLanguages }],
+      records: [{
+        code: "US",
+        name: "United States",
+        official_languages: officialLanguages,
+        commonly_spoken_languages: commonLanguages,
+      }],
     },
     {
       path: "datasets/subdivisions/by-country/US.json",
@@ -93,10 +98,23 @@ test("validates cross-dataset references and canonical manifest data", async () 
   }
 });
 
-test("requires at least one official country language", async () => {
-  const root = await createFixture("city:1", undefined, []);
+test("allows missing language contributions without treating them as no languages", async () => {
+  const root = await createFixture(
+    "city:1",
+    [{
+      id: "entity:1",
+      names: { en: "Example School", languages: { bn: "উদাহরণ স্কুল" } },
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+      tags: ["k12_school"],
+    }],
+    [],
+    defaultEntityTags,
+    [],
+  );
   try {
-    await assert.rejects(validateRepository(root));
+    assert.deepEqual(await validateRepository(root), []);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -206,7 +224,7 @@ test("requires names for each non-English official country language", async () =
     city_id: "city:1",
     tags: ["university"],
   };
-  const officialLanguages = ["en", "bn", "fr"];
+  const officialLanguages = ["en", "bn", "fr", "sco"];
   const validRoot = await createFixture("city:1", [entity], officialLanguages);
   try {
     assert.deepEqual(await validateRepository(validRoot), []);

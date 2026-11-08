@@ -18,6 +18,14 @@ interface DatasetEntry {
   source_url: string;
   license: string;
   attribution: string;
+  data_as_of?: string;
+  additional_sources?: Array<{
+    source_url: string;
+    license: string;
+    attribution: string;
+    data_as_of?: string;
+    fields: string[];
+  }>;
   sha256: string;
 }
 
@@ -181,10 +189,10 @@ function officialNonEnglishLanguages(record: unknown, description: string): Set<
   const languages = new Set<string>();
   for (const language of requiredStringArray(record, "official_languages", description)) {
     const code = language.split("-")[0].toLowerCase();
-    if (!/^[a-z]{2}$/.test(code)) {
-      throw new Error(`${description} official language ${language} has no ISO 639-1 code`);
+    if (!/^[a-z]{2,3}$/.test(code)) {
+      throw new Error(`${description} official language ${language} has an invalid code`);
     }
-    if (code !== "en") {
+    if (code.length === 2 && code !== "en") {
       languages.add(code);
     }
   }
@@ -196,6 +204,10 @@ function validateEntityLanguageNames(
   officialLanguages: Set<string>,
   description: string,
 ): void {
+  if (officialLanguages.size === 0) {
+    return;
+  }
+
   const names = isObjectRecord(record) && isObjectRecord(record.names)
     ? record.names.languages
     : undefined;
