@@ -17,7 +17,8 @@
     "build": "npm run generate:types && tsc -p tsconfig.json",
     "lint": "eslint src scripts test --max-warnings=0",
     "test": "npm run build && node --test test/*.test.mjs",
-    "validate": "npm run build && node dist/cli.js validate ../.."
+    "validate": "npm run build && node dist/cli.js validate ../..",
+    "sort": "npm run build && node dist/cli.js sort ../.."
   },
   "dependencies": {
     "ajv": "^8.17.1",

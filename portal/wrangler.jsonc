@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "refdatakit-contributions",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2026-11-08",
+  "workers_dev": true,
+  "vars": {
+    "GITHUB_BASE_BRANCH": "main",
+    "GITHUB_CLIENT_ID": "SET_GITHUB_APP_CLIENT_ID",
+    "GITHUB_OWNER": "rezwan4029",
+    "GITHUB_REPOSITORY": "refdatakit",
+    "GITHUB_REPOSITORY_ID": "SET_REPOSITORY_ID",
+    "PORTAL_URL": "https://rezwan4029.github.io/refdatakit/"
+  },
+  "secrets": {
+    "required": ["GITHUB_CLIENT_SECRET", "SESSION_ENCRYPTION_KEY"]
+  }
+}

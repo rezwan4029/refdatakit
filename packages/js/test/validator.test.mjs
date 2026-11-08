@@ -5,99 +5,80 @@ import { dirname, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
-import { validateRepository } from "../dist/validator.js";
+import { canonicalJson } from "../dist/canonical-json.js";
+import { sortRepository, validateRepository } from "../dist/validator.js";
 
 const repositoryDirectory = fileURLToPath(new URL("../../..", import.meta.url));
-const source = {
-  id: "fixture-source",
-  name: "Fixture Source",
-  url: "https://example.test/data",
-  license: "CC0-1.0",
-  retrievedAt: "2025-01-01T00:00:00Z",
-  sha256: "a".repeat(64),
-};
 
-async function createFixture(cityId) {
+async function createFixture(cityId, entities = [{
+  id: "entity:1",
+  names: { en: "Example School", local: "উদাহরণ স্কুল" },
+  entity_type: "school",
+  country_code: "US",
+  subdivision_code: "US-CA",
+  city_id: cityId,
+  coordinates: { latitude: 37.7749, longitude: -122.4194 },
+  external_ids: [{ system: "wikidata", value: "Q42" }],
+}]) {
   const root = await mkdtemp(resolve(tmpdir(), "refdatakit-validation-"));
   await cp(resolve(repositoryDirectory, "schemas"), resolve(root, "schemas"), { recursive: true });
 
   const definitions = [
     {
-      id: "countries",
-      domain: "country",
       path: "datasets/countries/data.json",
-      schema: "schemas/country.schema.json",
+      source_url: "https://example.test/countries",
       records: [{ code: "US", name: "United States", official_languages: ["en"] }],
     },
     {
-      id: "subdivisions-us",
-      domain: "subdivision",
-      countryCode: "US",
       path: "datasets/subdivisions/by-country/US.json",
-      schema: "schemas/subdivision.schema.json",
-      records: [{ code: "US-CA", countryCode: "US", name: "California", level: "state" }],
+      source_url: "https://example.test/subdivisions/US",
+      records: [{
+        code: "US-CA",
+        country_code: "US",
+        name: "California",
+        level: "state",
+      }],
     },
     {
-      id: "cities-us",
-      domain: "city",
-      countryCode: "US",
       path: "datasets/cities/by-country/US.json",
-      schema: "schemas/city.schema.json",
+      source_url: "https://example.test/cities/US",
       records: [{
         id: "city:1",
         name: "San Francisco",
-        countryCode: "US",
-        subdivisionCode: "US-CA",
+        country_code: "US",
+        subdivision_code: "US-CA",
         coordinates: { latitude: 37.7749, longitude: -122.4194 },
       }],
     },
     {
-      id: "institutions-us",
-      domain: "entity",
-      countryCode: "US",
       path: "datasets/institutions/by-country/US.json",
-      schema: "schemas/entity.schema.json",
-      records: [{
-        id: "entity:1",
-        name: "Example School",
-        entityType: "school",
-        countryCode: "US",
-        subdivisionCode: "US-CA",
-        cityId,
-        coordinates: { latitude: 37.7749, longitude: -122.4194 },
-        externalIds: [{ system: "wikidata", value: "Q42" }],
-      }],
+      source_url: "https://example.test/institutions/US",
+      records: entities,
     },
   ];
 
   const datasets = [];
   for (const definition of definitions) {
     const dataPath = resolve(root, definition.path);
-    const contents = `${JSON.stringify(definition.records, null, 2)}\n`;
+    const contents = canonicalJson(definition.records);
     await mkdir(dirname(dataPath), { recursive: true });
     await writeFile(dataPath, contents);
     datasets.push({
-      id: definition.id,
-      domain: definition.domain,
-      ...(definition.countryCode ? { countryCode: definition.countryCode } : {}),
       path: definition.path,
-      schema: definition.schema,
-      status: "ready",
-      recordCount: definition.records.length,
-      sha256: createHash("sha256").update(contents).digest("hex"),
+      source_url: definition.source_url,
       license: "CC0-1.0",
-      sources: [source],
+      attribution: "Fixture source",
+      sha256: createHash("sha256").update(contents).digest("hex"),
     });
   }
-
   await writeFile(
     resolve(root, "datasets/manifest.json"),
-    `${JSON.stringify({ schemaVersion: "1.0.0", datasets }, null, 2)}\n`,
+    canonicalJson({ datasets }),
   );
   return root;
 }
 
-test("validates country, subdivision, city, and entity references", async () => {
+test("validates cross-dataset references and canonical manifest data", async () => {
   const root = await createFixture("city:1");
   try {
     await validateRepository(root);
@@ -113,6 +94,70 @@ test("rejects an entity that references an unknown city", async () => {
       validateRepository(root),
       /references unknown city city:missing/,
     );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("warns when entity records are not sorted by English name", async () => {
+  const root = await createFixture("city:1", [
+    {
+      id: "entity:z",
+      names: { en: "Zebra School", local: "জেব্রা স্কুল" },
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+    },
+    {
+      id: "entity:a",
+      names: { en: "Alpha School", local: "আলফা স্কুল" },
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+    },
+  ]);
+  try {
+    const warnings = await validateRepository(root);
+    assert.deepEqual(warnings, [
+      "datasets/institutions/by-country/US.json is not sorted by English name at record 1",
+    ]);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("sorts records and refreshes manifest checksums", async () => {
+  const root = await createFixture("city:1", [
+    {
+      id: "entity:z",
+      names: { en: "Zebra School", local: "জেব্রা স্কুল" },
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+    },
+    {
+      id: "entity:a",
+      names: { en: "Alpha School", local: "আলফা স্কুল" },
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+    },
+  ]);
+  try {
+    await sortRepository(root);
+    assert.deepEqual(await validateRepository(root), []);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("rejects canonical dataset files omitted from the manifest", async () => {
+  const root = await createFixture("city:1");
+  try {
+    const extraPath = resolve(root, "datasets/cities/by-country/CA.json");
+    await mkdir(dirname(extraPath), { recursive: true });
+    await writeFile(extraPath, canonicalJson([]));
+    await assert.rejects(validateRepository(root), /Dataset files missing from manifest/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
