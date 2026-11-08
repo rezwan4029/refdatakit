@@ -15,9 +15,7 @@ async function createFixture(cityId, entities = [{
   names: { en: "Example School", local: "উদাহরণ স্কুল" },
   entity_type: "school",
   country_code: "US",
-  subdivision_code: "US-CA",
   city_id: cityId,
-  coordinates: { latitude: 37.7749, longitude: -122.4194 },
   external_ids: [{ system: "wikidata", value: "Q42" }],
 }]) {
   const root = await mkdtemp(resolve(tmpdir(), "refdatakit-validation-"));
@@ -96,6 +94,47 @@ test("rejects an entity that references an unknown city", async () => {
     );
   } finally {
     await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("requires an entity city link", async () => {
+  const entity = {
+    id: "entity:1",
+    names: { en: "Example School", local: "উদাহরণ স্কুল" },
+    entity_type: "school",
+    country_code: "US",
+  };
+  const root = await createFixture("city:1", [entity]);
+  try {
+    await assert.rejects(validateRepository(root));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("rejects institutional coordinates, addresses, logos, and standalone latitude or longitude", async () => {
+  const entity = {
+    id: "entity:1",
+    names: { en: "Example School", local: "উদাহরণ স্কুল" },
+    entity_type: "school",
+    country_code: "US",
+    city_id: "city:1",
+  };
+  const prohibitedProperties = [
+    ["coordinates", { latitude: 1, longitude: 1 }],
+    ["latitude", 1],
+    ["longitude", 1],
+    ["address", "1 Example Street"],
+    ["logo", "https://example.test/logo.svg"],
+  ];
+
+  for (const [property, value] of prohibitedProperties) {
+    const root = await createFixture("city:1", [{ ...entity, [property]: value }]);
+    try {
+      await assert.rejects(validateRepository(root));
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
   }
 });
 

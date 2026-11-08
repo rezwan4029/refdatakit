@@ -20,8 +20,7 @@ export interface UniversalDirectoryEntity {
   entity_type:
     "school" | "college" | "university" | "corporation" | "civic_organization" | "religious_building" | "other";
   country_code: string;
-  subdivision_code?: string;
-  city_id?: string;
+  city_id: string;
   localized_aliases?: LocalizedAlias[];
   /**
    * Languages used for instruction, services, or public-facing operations.
@@ -29,16 +28,11 @@ export interface UniversalDirectoryEntity {
   languages?: Language[];
   website?: string;
   domains?: string[];
-  coordinates?: Coordinates;
   external_ids?: ExternalId[];
 }
 export interface LocalizedAlias {
   language: Language;
   value: string;
-}
-export interface Coordinates {
-  latitude: number;
-  longitude: number;
 }
 export interface ExternalId {
   system: string;

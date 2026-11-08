@@ -25,9 +25,7 @@ def create_fixture(
                 "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
                 "entity_type": "school",
                 "country_code": "US",
-                "subdivision_code": "US-CA",
                 "city_id": city_id,
-                "coordinates": {"latitude": 37.7749, "longitude": -122.4194},
                 "external_ids": [{"system": "wikidata", "value": "Q42"}],
             }
         ]
@@ -102,6 +100,48 @@ def test_rejects_entity_with_unknown_city_reference(tmp_path: Path) -> None:
     create_fixture(tmp_path, "city:missing")
 
     with pytest.raises(DatasetValidationError, match="references unknown city city:missing"):
+        validate_repository(tmp_path)
+
+
+def test_requires_entity_city_link(tmp_path: Path) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
+        "entity_type": "school",
+        "country_code": "US",
+    }
+    create_fixture(tmp_path, "city:1", [entity])
+
+    with pytest.raises(DatasetValidationError):
+        validate_repository(tmp_path)
+
+
+@pytest.mark.parametrize(
+    ("property_name", "value"),
+    [
+        ("coordinates", {"latitude": 1, "longitude": 1}),
+        ("latitude", 1),
+        ("longitude", 1),
+        ("address", "1 Example Street"),
+        ("logo", "https://example.test/logo.svg"),
+    ],
+)
+def test_rejects_institutional_coordinates_addresses_and_logos(
+    tmp_path: Path,
+    property_name: str,
+    value: object,
+) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "local": "উদাহরণ স্কুল"},
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
+        property_name: value,
+    }
+    create_fixture(tmp_path, "city:1", [entity])
+
+    with pytest.raises(DatasetValidationError):
         validate_repository(tmp_path)
 
 
