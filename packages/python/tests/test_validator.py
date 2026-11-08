@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import shutil
 from pathlib import Path
 
@@ -125,7 +126,7 @@ def test_allows_missing_language_contributions_without_treating_them_as_none(
 ) -> None:
     entity = {
         "id": "entity:1",
-        "names": {"en": "Example School", "languages": {"bn": "উদাহরণ স্কুল"}},
+        "names": {"en": "Example School", "languages": {}},
         "entity_type": "school",
         "country_code": "US",
         "city_id": "city:1",
@@ -140,6 +141,44 @@ def test_allows_missing_language_contributions_without_treating_them_as_none(
     )
 
     validate_repository(tmp_path)
+
+
+@pytest.mark.parametrize("official_languages", [[], ["en"]])
+def test_rejects_entity_names_not_in_verified_official_languages(
+    tmp_path: Path,
+    official_languages: list[str],
+) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {"en": "Example School", "languages": {"bn": "উদাহরণ স্কুল"}},
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["k12_school"],
+    }
+    create_fixture(tmp_path, "city:1", [entity], official_languages)
+
+    with pytest.raises(DatasetValidationError, match="names.languages does not match"):
+        validate_repository(tmp_path)
+
+
+def test_rejects_entity_aliases_in_non_official_languages(tmp_path: Path) -> None:
+    entity = {
+        "id": "entity:1",
+        "names": {
+            "en": "Example School",
+            "languages": {"bn": "উদাহরণ স্কুল"},
+        },
+        "localized_aliases": [{"language": "fr", "value": "École Exemple"}],
+        "entity_type": "school",
+        "country_code": "US",
+        "city_id": "city:1",
+        "tags": ["k12_school"],
+    }
+    create_fixture(tmp_path, "city:1", [entity], ["en", "bn"])
+
+    with pytest.raises(DatasetValidationError, match=r"localized_aliases\[0\].*is not official"):
+        validate_repository(tmp_path)
 
 
 def test_rejects_entity_with_unknown_city_reference(tmp_path: Path) -> None:
@@ -306,7 +345,7 @@ def test_warns_when_entity_records_are_not_sorted_by_english_name(tmp_path: Path
         [
             {
                 "id": "entity:z",
-                "names": {"en": "Zebra School", "languages": {}},
+                "names": {"en": "Beta School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
@@ -314,7 +353,7 @@ def test_warns_when_entity_records_are_not_sorted_by_english_name(tmp_path: Path
             },
             {
                 "id": "entity:a",
-                "names": {"en": "Alpha School", "languages": {}},
+                "names": {"en": "alpha School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
@@ -335,7 +374,7 @@ def test_sorts_records_and_refreshes_manifest_checksums(tmp_path: Path) -> None:
         [
             {
                 "id": "entity:z",
-                "names": {"en": "Zebra School", "languages": {}},
+                "names": {"en": "Beta School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
@@ -343,7 +382,7 @@ def test_sorts_records_and_refreshes_manifest_checksums(tmp_path: Path) -> None:
             },
             {
                 "id": "entity:a",
-                "names": {"en": "Alpha School", "languages": {}},
+                "names": {"en": "alpha School", "languages": {}},
                 "entity_type": "school",
                 "country_code": "US",
                 "city_id": "city:1",
@@ -355,6 +394,12 @@ def test_sorts_records_and_refreshes_manifest_checksums(tmp_path: Path) -> None:
     sort_repository(tmp_path)
 
     assert validate_repository(tmp_path) == []
+    records = json.loads(
+        (tmp_path / "datasets" / "institutions" / "by-country" / "US.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert [record["id"] for record in records] == ["entity:a", "entity:z"]
 
 
 def test_rejects_canonical_dataset_file_omitted_from_manifest(tmp_path: Path) -> None:

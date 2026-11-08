@@ -6,7 +6,7 @@ RefDataKit standardizes public inputs into validated, versioned reference datase
 
 The country dataset covers all 249 assigned ISO 3166-1 alpha-2 entries, including dependent territories. Country names and identifiers are populated globally; official and commonly spoken language arrays contain only source-verified contributions and may be empty when data has not yet been contributed. An empty array does not assert that a country has no such languages. Global city and locality data is deferred; the current subdivisions, city markers, and institutions cover Bangladesh (`BD`) only.
 
-Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for each official non-English language with an ISO 639-1 code, stable city links, external identifiers, and controlled classification tags; coordinates, addresses, and logos are prohibited.
+Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for verified official non-English languages; localized aliases are limited to English and verified official local languages. When a country's official-language list is empty, only English names and aliases are accepted until language data is contributed. Institution coordinates, addresses, and logos are prohibited.
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 

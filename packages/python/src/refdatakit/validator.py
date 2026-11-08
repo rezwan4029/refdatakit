@@ -191,7 +191,7 @@ def _official_non_english_languages(record: object, description: str) -> set[str
             raise DatasetValidationError(
                 f"{description} official language {language} has an invalid code"
             )
-        if len(code) == 2 and code != "en":
+        if code != "en":
             languages.add(code)
     return languages
 
@@ -201,9 +201,6 @@ def _validate_entity_language_names(
     official_languages: set[str],
     description: str,
 ) -> None:
-    if not official_languages:
-        return
-
     if (
         not isinstance(record, dict)
         or not isinstance(record.get("names"), dict)
@@ -211,9 +208,10 @@ def _validate_entity_language_names(
     ):
         raise DatasetValidationError(f"{description} names.languages must be an object")
 
+    name_languages = {language for language in official_languages if len(language) == 2}
     actual_languages = set(record["names"]["languages"])
-    missing = sorted(official_languages - actual_languages)
-    unexpected = sorted(actual_languages - official_languages)
+    missing = sorted(name_languages - actual_languages)
+    unexpected = sorted(actual_languages - name_languages)
     if missing or unexpected:
         details = []
         if missing:
@@ -223,6 +221,20 @@ def _validate_entity_language_names(
         raise DatasetValidationError(
             f"{description} names.languages does not match country languages: {'; '.join(details)}"
         )
+
+    aliases = record.get("localized_aliases", [])
+    if not isinstance(aliases, list):
+        raise DatasetValidationError(f"{description} localized_aliases must be an array")
+    for index, alias in enumerate(aliases):
+        language = _required_string(
+            alias,
+            "language",
+            f"{description} localized_aliases[{index}]",
+        ).split("-", maxsplit=1)[0].lower()
+        if language != "en" and language not in official_languages:
+            raise DatasetValidationError(
+                f"{description} localized_aliases[{index}] language {language} is not official"
+            )
 
 
 def _definition_for_path(path: str) -> DatasetDefinition:
@@ -269,7 +281,7 @@ def _english_sort_key(
     else:
         english_name = _required_string(record, "name", description)
     identity = _required_string(record, IDENTITY_FIELDS[definition.domain], description)
-    return (english_name, identity)
+    return (unicodedata.normalize("NFC", english_name).lower(), identity)
 
 
 def _english_sort_warning(dataset: DatasetRecords) -> str | None:
@@ -277,7 +289,7 @@ def _english_sort_warning(dataset: DatasetRecords) -> str | None:
     for index, record in enumerate(dataset.records):
         description = f"{dataset.entry['path']}[{index}]"
         english_name, identity = _english_sort_key(record, dataset.definition, description)
-        current = (unicodedata.normalize("NFC", english_name).lower(), identity)
+        current = (english_name, identity)
         if previous is not None and previous > current:
             return f"{dataset.entry['path']} is not sorted by English name at record {index}"
         previous = current

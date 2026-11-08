@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { cp, mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { test } from "node:test";
@@ -103,7 +103,7 @@ test("allows missing language contributions without treating them as no language
     "city:1",
     [{
       id: "entity:1",
-      names: { en: "Example School", languages: { bn: "উদাহরণ স্কুল" } },
+      names: { en: "Example School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
@@ -115,6 +115,49 @@ test("allows missing language contributions without treating them as no language
   );
   try {
     assert.deepEqual(await validateRepository(root), []);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("rejects entity language names without verified official country languages", async () => {
+  const entity = {
+    id: "entity:1",
+    names: { en: "Example School", languages: { bn: "উদাহরণ স্কুল" } },
+    entity_type: "school",
+    country_code: "US",
+    city_id: "city:1",
+    tags: ["k12_school"],
+  };
+  for (const officialLanguages of [[], ["en"]]) {
+    const root = await createFixture("city:1", [entity], officialLanguages);
+    try {
+      await assert.rejects(
+        validateRepository(root),
+        /names\.languages does not match country languages/,
+      );
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("rejects entity aliases in non-official languages", async () => {
+  const root = await createFixture(
+    "city:1",
+    [{
+      id: "entity:1",
+      names: { en: "Example School", languages: { bn: "উদাহরণ স্কুল" } },
+      localized_aliases: [{ language: "fr", value: "École Exemple" }],
+      entity_type: "school",
+      country_code: "US",
+      city_id: "city:1",
+      tags: ["k12_school"],
+    }],
+    ["en", "bn"],
+  );
+  try {
+    await assert.rejects(validateRepository(root), /localized_aliases\[0\].*is not official/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -282,7 +325,7 @@ test("warns when entity records are not sorted by English name", async () => {
   const root = await createFixture("city:1", [
     {
       id: "entity:z",
-      names: { en: "Zebra School", languages: {} },
+      names: { en: "Beta School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
@@ -290,7 +333,7 @@ test("warns when entity records are not sorted by English name", async () => {
     },
     {
       id: "entity:a",
-      names: { en: "Alpha School", languages: {} },
+      names: { en: "alpha School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
@@ -311,7 +354,7 @@ test("sorts records and refreshes manifest checksums", async () => {
   const root = await createFixture("city:1", [
     {
       id: "entity:z",
-      names: { en: "Zebra School", languages: {} },
+      names: { en: "Beta School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
@@ -319,7 +362,7 @@ test("sorts records and refreshes manifest checksums", async () => {
     },
     {
       id: "entity:a",
-      names: { en: "Alpha School", languages: {} },
+      names: { en: "alpha School", languages: {} },
       entity_type: "school",
       country_code: "US",
       city_id: "city:1",
@@ -329,6 +372,10 @@ test("sorts records and refreshes manifest checksums", async () => {
   try {
     await sortRepository(root);
     assert.deepEqual(await validateRepository(root), []);
+    const records = JSON.parse(
+      await readFile(resolve(root, "datasets/institutions/by-country/US.json"), "utf8"),
+    );
+    assert.deepEqual(records.map((record) => record.id), ["entity:a", "entity:z"]);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
