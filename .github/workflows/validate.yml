@@ -25,6 +25,7 @@ jobs:
         working-directory: packages/js
       - run: npm run validate
         working-directory: packages/js
+      - run: git diff --exit-code -- schemas/entity.schema.json packages/js/src/generated
 
   python:
     runs-on: ubuntu-latest
