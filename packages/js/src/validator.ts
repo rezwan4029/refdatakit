@@ -185,10 +185,6 @@ async function listDatasetFiles(rootDirectory: string): Promise<string[]> {
   async function visit(directory: string): Promise<void> {
     const entries = await readdir(directory, { withFileTypes: true });
     for (const entry of entries) {
-      if (entry.name === "contributions") {
-        continue;
-      }
-
       const absolutePath = resolve(directory, entry.name);
       if (entry.isDirectory()) {
         await visit(absolutePath);

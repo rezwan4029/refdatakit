@@ -157,8 +157,6 @@ def _list_dataset_files(root: Path) -> list[str]:
     files = []
     for path in datasets_directory.rglob("*.json"):
         relative_path = path.relative_to(root).as_posix()
-        if "contributions" in path.relative_to(datasets_directory).parts:
-            continue
         if relative_path != "datasets/manifest.json":
             files.append(relative_path)
     return sorted(files)
