@@ -3,7 +3,14 @@
 /**
  * Generated from datasets/manifest.json vocabularies.entity_tags.
  */
-export type Tag = "hospital" | "k12_school" | "medical_college" | "nursing_home" | "university";
+export type Tag =
+  | "hospital"
+  | "k12_school"
+  | "medical_college"
+  | "nursing_home"
+  | "polytechnic"
+  | "technical_training_institute"
+  | "university";
 /**
  * BCP 47 language tag.
  */
@@ -17,7 +24,7 @@ export interface UniversalDirectoryEntity {
   names: {
     en: string;
     /**
-     * Names keyed by ISO 639-1 code for the entity's verified official non-English languages.
+     * Partial names keyed by ISO 639-1 code for verified official non-English languages; unavailable translations may be omitted.
      */
     languages: {
       [k: string]: string;
@@ -26,6 +33,10 @@ export interface UniversalDirectoryEntity {
   entity_type:
     "school" | "college" | "university" | "corporation" | "civic_organization" | "religious_building" | "other";
   country_code: string;
+  /**
+   * Optional public or private ownership classification when supported by the source.
+   */
+  ownership?: "public" | "private";
   city_id: string;
   /**
    * Controlled classifications for an institution; multiple tags may apply.

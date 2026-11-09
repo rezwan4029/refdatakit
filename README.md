@@ -58,7 +58,7 @@ packages/python/                 Python SDK and CLI
 .github/workflows/               Automated checks
 ```
 
-`institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Add controlled classifications to `vocabularies.entity_tags` in `datasets/manifest.json`; the build generates the entity schema enum and TypeScript tag union from that list. Both runtime validators also apply the manifest vocabulary directly, so adding a tag requires no hand-edited SDK code.
+`institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Localized names may be contributed incrementally. Records may also include `ownership: "public"` or `ownership: "private"` when the source states it. Country-relevant classifications such as `polytechnic` are controlled through `vocabularies.entity_tags` in `datasets/manifest.json`; the build generates the entity schema enum and TypeScript tag union from that list. Both runtime validators also apply the manifest vocabulary directly, so adding a tag requires no hand-edited SDK code.
 
 ## Provenance and Canonical Data
 

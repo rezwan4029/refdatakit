@@ -38,7 +38,7 @@
             "type": "string",
             "minLength": 1
           },
-          "description": "Names keyed by ISO 639-1 code for the entity's verified official non-English languages."
+          "description": "Partial names keyed by ISO 639-1 code for verified official non-English languages; unavailable translations may be omitted."
         }
       }
     },
@@ -56,6 +56,14 @@
     "country_code": {
       "type": "string",
       "pattern": "^[A-Z]{2}$"
+    },
+    "ownership": {
+      "type": "string",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "description": "Optional public or private ownership classification when supported by the source."
     },
     "city_id": {
       "type": "string",
@@ -112,6 +120,8 @@
         "k12_school",
         "medical_college",
         "nursing_home",
+        "polytechnic",
+        "technical_training_institute",
         "university"
       ],
       "description": "Generated from datasets/manifest.json vocabularies.entity_tags."
