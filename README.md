@@ -21,27 +21,59 @@ Country and city records may carry macro-level coordinates. Institution records 
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
-## Using as a Library
+## Use the Library
 
-The JavaScript and Python packages expose typed/local accessors and include the static dataset snapshot in release artifacts. After publication, install with `npm install refdatakit` or `python -m pip install refdatakit`. No network calls are made to retrieve data.
+The JavaScript and Python packages include the static JSON data. Accessors read local package files and make no network requests. Install from npm or PyPI after the packages are published.
+
+### JavaScript and TypeScript
+
+```sh
+npm install refdatakit
+```
 
 ```ts
-import { getCities, getCountry, getInstitutions } from "refdatakit";
+import {
+  getCities,
+  getCountries,
+  getCountry,
+  getInstitutions,
+  getSubdivisions,
+} from "refdatakit";
 
-const bangladesh = await getCountry("BD");
+const country = await getCountry("BD");
 const cities = await getCities("BD");
+const subdivisions = await getSubdivisions("BD");
 const institutions = await getInstitutions("BD");
+const countries = await getCountries();
+```
+
+`getCountry(code)` returns `undefined` when the country is outside the regional core. A country with no file for a dataset returns an empty array for that accessor.
+
+### Python
+
+```sh
+python -m pip install refdatakit
 ```
 
 ```python
-from refdatakit import get_cities, get_country, get_institutions
+from refdatakit import (
+    get_cities,
+    get_countries,
+    get_country,
+    get_institutions,
+    get_subdivisions,
+)
 
-bangladesh = get_country("BD")
+country = get_country("BD")
 cities = get_cities("BD")
+subdivisions = get_subdivisions("BD")
 institutions = get_institutions("BD")
+countries = get_countries()
 ```
 
-Both SDKs also expose `get_countries`, `get_subdivisions(country_code)`, and `get_institutions(country_code)`; JavaScript uses camelCase names. `get_country(code)` returns `undefined`/`None` when the country is not in the regional core. Dataset licensing and attribution remain as listed per file in the bundled `datasets/manifest.json`; the MIT license applies to project code.
+`get_country(code)` returns `None` when the country is outside the regional core. A country with no file for a dataset returns an empty list.
+
+Dataset licensing and attribution are recorded per file in `datasets/manifest.json`. The MIT license applies to project code; data may have different terms.
 
 ## Repository Layout
 
@@ -68,7 +100,32 @@ The project source code is licensed under MIT; dataset records retain the source
 
 Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
 
-## Validation and Sorting
+## Contributing Data
+
+Contributions are welcome through pull requests. For routine updates, edit the existing country JSON file for the data type you are changing:
+
+- Countries: `datasets/countries/data.json`
+- Subdivisions: `datasets/subdivisions/by-country/{CC}.json`
+- Cities and localities: `datasets/cities/by-country/{CC}.json`
+- Institutions: `datasets/institutions/by-country/{CC}.json`
+
+Follow the matching schema in `schemas/`. If an institution is in an existing city, its institution record can be added in one file. If the city is new, add its city record too and link the institution with that `city_id`. Institution records must not include coordinates, street addresses, or logos. `names.languages` may be empty or contain only the verified official-language names available; absent translations can be contributed later.
+
+Each file's manifest entry records its source and license. When adding data from a different source, add an `additional_sources` entry with the source URL, license, attribution, and fields it supports. The sorter refreshes checksums, so contributors do not calculate them by hand. New dataset files also need a manifest entry.
+
+From the repository root, normalize and validate the JSON with:
+
+```sh
+npm ci --prefix packages/js
+npm --prefix packages/js run sort
+
+python -m pip install -e "packages/python[dev]"
+refdatakit validate .
+```
+
+The sort command canonicalizes the records and updates manifest checksums. CI checks both runtime validators, linters, and test suites on the pull request. In the PR description, summarize the records added or changed and identify their data source.
+
+## Repository Checks
 
 From the repository root:
 
