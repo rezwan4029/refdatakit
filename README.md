@@ -2,7 +2,7 @@
 
 RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
 
-## Global Country Data and Bangladesh Pilot
+## Global Country Data and City Seed
 
 The country dataset covers all 249 assigned ISO 3166-1 alpha-2 entries, including dependent territories. Country names and identifiers are populated globally; official and commonly spoken language arrays contain only source-verified contributions and may be empty when data has not yet been contributed. An empty array does not assert that a country has no such languages. City data is a non-exhaustive seed across 20 countries; subdivisions and institutions remain Bangladesh-only.
 
@@ -26,6 +26,32 @@ packages/python/                 Python SDK and CLI
 ```
 
 `institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Add controlled classifications to `vocabularies.entity_tags` in `datasets/manifest.json`; the build generates the entity schema enum and TypeScript tag union from that list. Both runtime validators also apply the manifest vocabulary directly, so adding a tag requires no hand-edited SDK code.
+
+## City Dataset Format
+
+City records are arrays in `datasets/cities/by-country/<CC>.json`. Use a stable public source ID, keep the English name in `name`, and put non-English names in `localized_names`; do not duplicate the English name there. `coordinates` may contain only city-level representative points. Add `subdivision_code` only when that subdivision exists in a registered dataset.
+
+```json
+[
+  {
+    "id": "wikidata:Q...",
+    "name": "Example City",
+    "country_code": "AE",
+    "coordinates": {
+      "latitude": 25.0,
+      "longitude": 55.0
+    },
+    "localized_names": [
+      {
+        "language": "ar",
+        "name": "مدينة المثال"
+      }
+    ]
+  }
+]
+```
+
+Register every city file in `datasets/manifest.json` with its source URL, license, attribution, and SHA-256 checksum. `sort` canonicalizes the records and refreshes checksums; source URLs are provenance only and are never fetched by the toolkit.
 
 ## Provenance and Canonical Data
 
