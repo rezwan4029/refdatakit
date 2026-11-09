@@ -2,11 +2,22 @@
 
 RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
 
-## Global Country Data and Bangladesh Pilot
+## Regional Core
 
-The country dataset covers all 249 assigned ISO 3166-1 alpha-2 entries, including dependent territories. Country names and identifiers are populated globally; official and commonly spoken language arrays contain only source-verified contributions and may be empty when data has not yet been contributed. An empty array does not assert that a country has no such languages. City data is a non-exhaustive seed across 20 countries; subdivisions and institutions remain Bangladesh-only.
+RefDataKit ships with an optimized regional core containing exactly these six countries:
 
-Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for verified official non-English languages; localized aliases are limited to English and verified official local languages. When a country's official-language list is empty, only English names and aliases are accepted until language data is contributed. Institution coordinates, addresses, and logos are prohibited.
+- Bangladesh (`BD`)
+- Bhutan (`BT`)
+- Nepal (`NP`)
+- Sri Lanka (`LK`)
+- Singapore (`SG`)
+- Maldives (`MV`)
+
+The country file contains only these six records. Current city records cover Bangladesh and Singapore; subdivision and institution records cover Bangladesh. Contributions for the other countries can be added through community pull requests when source-backed data is ready.
+
+Global expansion happens through community pull requests that contribute bounded, useful records using the established schemas and manifest provenance requirements. The project does not aim to pre-populate millions of global records. This keeps the repository manageable and makes source review, maintenance, and licensing practical.
+
+Country and city records may carry macro-level coordinates. Institution records use `names.en` plus `names.languages` keyed by ISO 639-1 code for verified official non-English languages; localized aliases are limited to English and verified official local languages. When a country's official-language list is empty, only English names and aliases are accepted until language data is contributed. Institution coordinates, precise locations, addresses, and logos are prohibited; institutions link hierarchically through `country_code` and `city_id` and may carry stable public external IDs such as Wikidata identifiers.
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
@@ -29,7 +40,7 @@ packages/python/                 Python SDK and CLI
 
 ## Provenance and Canonical Data
 
-Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. A dataset can list additional sources when its fields come from different sources. The global country file combines GeoNames country identifiers and spoken-language lists (CC BY 4.0) with official-language values from Unicode CLDR (Unicode-3.0); the full Unicode license notice is in [`licenses/UNICODE-3.0.txt`](licenses/UNICODE-3.0.txt). City seeds across 20 countries, Bangladesh subdivisions, and institutions use Wikidata structured data under CC0-1.0.
+Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. A dataset can list additional sources when its fields come from different sources. The six-country dataset combines GeoNames country identifiers and spoken-language lists (CC BY 4.0) with official-language values from Unicode CLDR (Unicode-3.0); the full Unicode license notice is in [`licenses/UNICODE-3.0.txt`](licenses/UNICODE-3.0.txt). Current city seeds, Bangladesh subdivisions, and institutions use Wikidata structured data under CC0-1.0. The manifest is the source of truth for active files and provenance.
 
 The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. Empty country language arrays mean no value has been contributed or verified yet, not that the country has no such languages. Contributors can add values with source evidence. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
 
