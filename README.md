@@ -4,7 +4,16 @@ RefDataKit standardizes public inputs into validated, versioned reference datase
 
 ## Regional Core
 
-RefDataKit ships with an optimized regional core for Bangladesh (`BD`), Bhutan (`BT`), Nepal (`NP`), Sri Lanka (`LK`), Singapore (`SG`), and Maldives (`MV`). The country file contains only these six records. The current curated locality, subdivision, and institution contributions are intentionally compact and source-backed; a country may have no record in a particular domain yet.
+RefDataKit ships with an optimized regional core containing exactly these six countries:
+
+- Bangladesh (`BD`)
+- Bhutan (`BT`)
+- Nepal (`NP`)
+- Sri Lanka (`LK`)
+- Singapore (`SG`)
+- Maldives (`MV`)
+
+The country file contains only these six records. Current city records cover Bangladesh and Singapore; subdivision and institution records cover Bangladesh. Contributions for the other countries can be added through community pull requests when source-backed data is ready.
 
 Global expansion happens through community pull requests that contribute bounded, useful records using the established schemas and manifest provenance requirements. The project does not aim to pre-populate millions of global records. This keeps the repository manageable and makes source review, maintenance, and licensing practical.
 
