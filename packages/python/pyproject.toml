@@ -31,6 +31,7 @@ refdatakit = "refdatakit.cli:main"
 [project.urls]
 Homepage = "https://github.com/rezwan4029/refdatakit#readme"
 Documentation = "https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md"
+JavaScript = "https://www.npmjs.com/package/@rezwan4029/refdatakit"
 
 [tool.setuptools.packages.find]
 where = ["src"]

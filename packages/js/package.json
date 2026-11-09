@@ -1,5 +1,5 @@
 {
-  "name": "refdatakit",
+  "name": "@rezwan4029/refdatakit",
   "version": "0.1.0",
   "license": "MIT",
   "publishConfig": {
@@ -15,7 +15,7 @@
   "files": ["dist"],
   "type": "module",
   "bin": {
-    "refdatakit": "./dist/cli.js"
+    "refdatakit": "dist/cli.js"
   },
   "exports": {
     ".": {

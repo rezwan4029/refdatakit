@@ -1,5 +1,7 @@
 # RefDataKit
 
+Published packages: [JavaScript/TypeScript on npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [Python on PyPI](https://pypi.org/project/refdatakit/).
+
 Public documentation: [JavaScript/TypeScript package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/js/README.md) · [Python package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md).
 
 RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
@@ -32,7 +34,7 @@ Country arguments use the generated `CountryCode` enum in both SDKs. Its members
 ### JavaScript and TypeScript
 
 ```sh
-npm install refdatakit
+npm install @rezwan4029/refdatakit
 ```
 
 ```ts
@@ -43,7 +45,7 @@ import {
   getInstitutions,
   getSubdivisions,
   CountryCode,
-} from "refdatakit";
+} from "@rezwan4029/refdatakit";
 
 const country = await getCountry(CountryCode.BD);
 const cities = await getCities(CountryCode.BD);
