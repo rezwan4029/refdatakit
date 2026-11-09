@@ -213,14 +213,11 @@ function validateEntityLanguageNames(
 
   const nameLanguages = new Set([...officialLanguages].filter((language) => language.length === 2));
   const actualLanguages = new Set(Object.keys(names));
-  const missing = [...nameLanguages].filter((language) => !actualLanguages.has(language));
   const unexpected = [...actualLanguages].filter((language) => !nameLanguages.has(language));
-  if (missing.length > 0 || unexpected.length > 0) {
-    const details = [
-      ...(missing.length > 0 ? [`missing ${missing.join(", ")}`] : []),
-      ...(unexpected.length > 0 ? [`not official ${unexpected.join(", ")}`] : []),
-    ].join("; ");
-    throw new Error(`${description} names.languages does not match country languages: ${details}`);
+  if (unexpected.length > 0) {
+    throw new Error(
+      `${description} names.languages contains non-official languages: ${unexpected.join(", ")}`,
+    );
   }
 
   const aliases = isObjectRecord(record) ? record.localized_aliases ?? [] : [];

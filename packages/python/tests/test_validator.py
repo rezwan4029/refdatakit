@@ -158,7 +158,10 @@ def test_rejects_entity_names_not_in_verified_official_languages(
     }
     create_fixture(tmp_path, "city:1", [entity], official_languages)
 
-    with pytest.raises(DatasetValidationError, match="names.languages does not match"):
+    with pytest.raises(
+        DatasetValidationError,
+        match="names.languages contains non-official languages",
+    ):
         validate_repository(tmp_path)
 
 
@@ -264,7 +267,9 @@ def test_accepts_and_sorts_tags_added_to_manifest_vocabulary(tmp_path: Path) -> 
     validate_repository(tmp_path)
 
 
-def test_requires_names_for_each_non_english_official_language(tmp_path: Path) -> None:
+def test_allows_partial_official_language_names_and_rejects_unverified_languages(
+    tmp_path: Path,
+) -> None:
     official_languages = ["en", "bn", "fr", "sco"]
     entity = {
         "id": "entity:1",
@@ -281,8 +286,13 @@ def test_requires_names_for_each_non_english_official_language(tmp_path: Path) -
     create_fixture(valid_root, "city:1", [entity], official_languages)
     validate_repository(valid_root)
 
+    for index, languages in enumerate([{"bn": "উদাহরণ বিশ্ববিদ্যালয়"}, {}]):
+        partial_root = tmp_path / f"partial-{index}"
+        partial_entity = {**entity, "names": {**entity["names"], "languages": languages}}
+        create_fixture(partial_root, "city:1", [partial_entity], official_languages)
+        validate_repository(partial_root)
+
     invalid_language_maps = [
-        {"bn": "উদাহরণ বিশ্ববিদ্যালয়"},
         {"bn": "উদাহরণ বিশ্ববিদ্যালয়", "es": "Universidad Ejemplo"},
         {"bn": "উদাহরণ বিশ্ববিদ্যালয়", "fr": "Université Exemple", "eng": "Example"},
     ]

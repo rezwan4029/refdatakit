@@ -210,16 +210,10 @@ def _validate_entity_language_names(
 
     name_languages = {language for language in official_languages if len(language) == 2}
     actual_languages = set(record["names"]["languages"])
-    missing = sorted(name_languages - actual_languages)
     unexpected = sorted(actual_languages - name_languages)
-    if missing or unexpected:
-        details = []
-        if missing:
-            details.append(f"missing {', '.join(missing)}")
-        if unexpected:
-            details.append(f"not official {', '.join(unexpected)}")
+    if unexpected:
         raise DatasetValidationError(
-            f"{description} names.languages does not match country languages: {'; '.join(details)}"
+            f"{description} names.languages contains non-official languages: {', '.join(unexpected)}"
         )
 
     aliases = record.get("localized_aliases", [])

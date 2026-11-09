@@ -134,7 +134,7 @@ test("rejects entity language names without verified official country languages"
     try {
       await assert.rejects(
         validateRepository(root),
-        /names\.languages does not match country languages/,
+        /names\.languages contains non-official languages/,
       );
     } finally {
       await rm(root, { recursive: true, force: true });
@@ -255,7 +255,7 @@ test("accepts and sorts tags added to the manifest vocabulary", async () => {
   }
 });
 
-test("requires names for each non-English official country language", async () => {
+test("allows partial official language names and rejects unverified languages", async () => {
   const entity = {
     id: "entity:1",
     names: {
@@ -275,8 +275,20 @@ test("requires names for each non-English official country language", async () =
     await rm(validRoot, { recursive: true, force: true });
   }
 
+  for (const languages of [{ bn: "উদাহরণ বিশ্ববিদ্যালয়" }, {}]) {
+    const root = await createFixture(
+      "city:1",
+      [{ ...entity, names: { ...entity.names, languages } }],
+      officialLanguages,
+    );
+    try {
+      assert.deepEqual(await validateRepository(root), []);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }
+
   const invalidLanguageMaps = [
-    { bn: "উদাহরণ বিশ্ববিদ্যালয়" },
     { bn: "উদাহরণ বিশ্ববিদ্যালয়", es: "Universidad Ejemplo" },
     { bn: "উদাহরণ বিশ্ববিদ্যালয়", fr: "Université Exemple", eng: "Example" },
   ];
