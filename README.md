@@ -21,6 +21,28 @@ Country and city records may carry macro-level coordinates. Institution records 
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
 
+## Using as a Library
+
+The JavaScript and Python packages expose typed/local accessors and include the static dataset snapshot in release artifacts. After publication, install with `npm install refdatakit` or `python -m pip install refdatakit`. No network calls are made to retrieve data.
+
+```ts
+import { getCities, getCountry, getInstitutions } from "refdatakit";
+
+const bangladesh = await getCountry("BD");
+const cities = await getCities("BD");
+const institutions = await getInstitutions("BD");
+```
+
+```python
+from refdatakit import get_cities, get_country, get_institutions
+
+bangladesh = get_country("BD")
+cities = get_cities("BD")
+institutions = get_institutions("BD")
+```
+
+Both SDKs also expose `get_countries`, `get_subdivisions(country_code)`, and `get_institutions(country_code)`; JavaScript uses camelCase names. `get_country(code)` returns `undefined`/`None` when the country is not in the regional core. Dataset licensing and attribution remain as listed per file in the bundled `datasets/manifest.json`; the MIT license applies to project code.
+
 ## Repository Layout
 
 ```text

@@ -1,7 +1,14 @@
 {
   "name": "refdatakit",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "description": "Source-aware reference data and validation tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rezwan4029/refdatakit.git",
+    "directory": "packages/js"
+  },
+  "files": ["dist"],
   "type": "module",
   "bin": {
     "refdatakit": "./dist/cli.js"
@@ -14,7 +21,8 @@
   },
   "scripts": {
     "generate:types": "node scripts/generate-types.mjs",
-    "build": "npm run generate:types && tsc -p tsconfig.json",
+    "build": "npm run generate:types && tsc -p tsconfig.json && node scripts/copy-package-assets.mjs",
+    "prepack": "npm run build",
     "lint": "eslint src scripts test --max-warnings=0",
     "test": "npm run build && node --test test/*.test.mjs",
     "validate": "npm run build && node dist/cli.js validate ../..",
