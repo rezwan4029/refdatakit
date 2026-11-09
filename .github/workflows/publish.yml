@@ -3,10 +3,10 @@ name: Publish packages
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: Git tag to publish (for example, v0.1.0)
+      confirm:
+        description: Confirm publishing both packages from the selected branch
         required: true
-        type: string
+        type: boolean
 
 permissions:
   contents: read
@@ -15,11 +15,13 @@ jobs:
   verify-release:
     name: Verify release tag and package versions
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.create-tag.outputs.tag }}
     steps:
-      - name: Check out selected release tag
+      - name: Check out selected branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.tag }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -31,23 +33,54 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check tag matches both package versions
+      - name: Require publishing confirmation
         env:
-          RELEASE_TAG: ${{ inputs.tag }}
+          CONFIRM_PUBLISH: ${{ inputs.confirm }}
+        run: |
+          if [ "${CONFIRM_PUBLISH}" != "true" ]; then
+            echo "Confirm publishing both packages before running this workflow." >&2
+            exit 1
+          fi
+
+      - name: Require the default branch
+        env:
+          WORKFLOW_REF: ${{ github.ref }}
+        run: |
+          if [ "${WORKFLOW_REF}" != "refs/heads/main" ]; then
+            echo "Run this publishing workflow from the main branch." >&2
+            exit 1
+          fi
+
+      - name: Check package versions match
+        id: check-versions
         run: |
           JS_VERSION="$(node -p "require('./packages/js/package.json').version")"
           PYTHON_VERSION="$(python -c "import tomllib; print(tomllib.load(open('packages/python/pyproject.toml', 'rb'))['project']['version'])")"
-          EXPECTED_TAG="v${JS_VERSION}"
 
           if [ "${PYTHON_VERSION}" != "${JS_VERSION}" ]; then
             echo "JavaScript version ${JS_VERSION} does not match Python version ${PYTHON_VERSION}." >&2
             exit 1
           fi
 
-          if [ "${RELEASE_TAG}" != "${EXPECTED_TAG}" ]; then
-            echo "Tag ${RELEASE_TAG} does not match package version ${EXPECTED_TAG}." >&2
+          echo "version=${JS_VERSION}" >> "${GITHUB_OUTPUT}"
+
+      - name: Create and push release tag
+        id: create-tag
+        env:
+          RELEASE_VERSION: ${{ steps.check-versions.outputs.version }}
+        run: |
+          TAG="v${RELEASE_VERSION}"
+
+          if git ls-remote --exit-code --tags origin "refs/tags/${TAG}" >/dev/null 2>&1; then
+            echo "Tag ${TAG} already exists; refusing to publish this version again." >&2
             exit 1
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "${TAG}" -m "Release ${TAG}"
+          git push origin "${TAG}"
+          echo "tag=${TAG}" >> "${GITHUB_OUTPUT}"
 
   publish-npm:
     name: Publish JavaScript package to npm
@@ -60,7 +93,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag }}
+          ref: ${{ needs.verify-release.outputs.tag }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -88,7 +121,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag }}
+          ref: ${{ needs.verify-release.outputs.tag }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
