@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "refdatakit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Source-aware reference data and validation tools"
 readme = "README.md"
 license = { text = "MIT" }
