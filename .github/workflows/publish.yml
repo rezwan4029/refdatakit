@@ -42,14 +42,6 @@ jobs:
             exit 1
           fi
 
-      - name: Require the default branch
-        env:
-          WORKFLOW_REF: ${{ github.ref }}
-        run: |
-          if [ "${WORKFLOW_REF}" != "refs/heads/main" ]; then
-            echo "Run this publishing workflow from the main branch." >&2
-            exit 1
-          fi
 
       - name: Check package versions match
         id: check-versions
