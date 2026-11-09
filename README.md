@@ -27,7 +27,6 @@ All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and v
 schemas/                         Shared JSON Schema contracts
 datasets/                        Canonical JSON records and source manifest
   manifest.json                  Per-file sources, licenses, attribution, and checksum
-  sources/                       Per-record evidence and translation notes
   countries/data.json            Country identifiers and contributed language data
   subdivisions/by-country/       Country-partitioned administrative divisions
   cities/by-country/             Country-partitioned cities and localities
@@ -41,7 +40,7 @@ packages/python/                 Python SDK and CLI
 
 ## Provenance and Canonical Data
 
-Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. A dataset can list additional sources when its fields come from different sources. The six-country dataset combines GeoNames country identifiers and spoken-language lists (CC BY 4.0) with official-language values from Unicode CLDR (Unicode-3.0); the full Unicode license notice is in [`licenses/UNICODE-3.0.txt`](licenses/UNICODE-3.0.txt). Wikidata structured data is CC0-1.0; localized names sourced from Wikipedia retain CC BY-SA 4.0 attribution, and contributor translations are identified separately in the manifest. Per-record evidence is in [`datasets/sources/institutional-directory-seed-evidence.md`](datasets/sources/institutional-directory-seed-evidence.md). The manifest is the source of truth for active files and provenance.
+Every canonical dataset file is registered in `datasets/manifest.json` with its upstream source URL, license, attribution, and SHA-256 checksum. A dataset can list additional sources when its fields come from different sources. The six-country dataset combines GeoNames country identifiers and spoken-language lists (CC BY 4.0) with official-language values from Unicode CLDR (Unicode-3.0); the full Unicode license notice is in [`licenses/UNICODE-3.0.txt`](licenses/UNICODE-3.0.txt). Wikidata structured data is CC0-1.0; localized names sourced from Wikipedia retain CC BY-SA 4.0 attribution, and contributor translations are identified separately in the manifest. The manifest is the source of truth for active files and provenance.
 
 The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. Empty country language arrays mean no value has been contributed or verified yet, not that the country has no such languages. Contributors can add values with source evidence. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
 
