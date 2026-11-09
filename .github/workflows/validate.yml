@@ -25,7 +25,7 @@ jobs:
         working-directory: packages/js
       - run: npm run validate
         working-directory: packages/js
-      - run: git diff --exit-code -- schemas/entity.schema.json packages/js/src/generated
+      - run: git diff --exit-code -- schemas/entity.schema.json packages/js/src/generated packages/python/src/refdatakit/country_codes.py
 
   python:
     runs-on: ubuntu-latest

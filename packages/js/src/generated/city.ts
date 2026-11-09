@@ -1,5 +1,7 @@
 /* Generated from schemas/city.schema.json. Do not edit. */
 
+import type { CountryCode } from "./country-code.js";
+
 export type Language = string;
 
 export interface CityOrLocality {
@@ -8,7 +10,7 @@ export interface CityOrLocality {
    */
   id: string;
   name: string;
-  country_code: string;
+  country_code: CountryCode;
   subdivision_code?: string;
   coordinates?: Coordinates;
   population?: number;

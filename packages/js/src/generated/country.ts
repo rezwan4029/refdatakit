@@ -1,5 +1,7 @@
 /* Generated from schemas/country.schema.json. Do not edit. */
 
+import type { CountryCode } from "./country-code.js";
+
 /**
  * BCP 47 language tag.
  */
@@ -9,7 +11,7 @@ export interface Country {
   /**
    * ISO 3166-1 alpha-2 code.
    */
-  code: string;
+  code: CountryCode;
   name: string;
   alpha3_code?: string;
   numeric_code?: string;

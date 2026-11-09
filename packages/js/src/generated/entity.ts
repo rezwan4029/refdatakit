@@ -1,5 +1,7 @@
 /* Generated from schemas/entity.schema.json. Do not edit. */
 
+import type { CountryCode } from "./country-code.js";
+
 /**
  * Generated from datasets/manifest.json vocabularies.entity_tags.
  */
@@ -32,7 +34,7 @@ export interface UniversalDirectoryEntity {
   };
   entity_type:
     "school" | "college" | "university" | "corporation" | "civic_organization" | "religious_building" | "other";
-  country_code: string;
+  country_code: CountryCode;
   /**
    * Optional public or private ownership classification when supported by the source.
    */
