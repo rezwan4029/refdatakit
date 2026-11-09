@@ -2,7 +2,11 @@
   "name": "refdatakit",
   "version": "0.1.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Source-aware reference data and validation tools",
+  "homepage": "https://github.com/rezwan4029/refdatakit#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/rezwan4029/refdatakit.git",

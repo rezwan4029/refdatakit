@@ -2,6 +2,8 @@
 
 Source-aware regional reference data and validation tools for Python.
 
+Documentation: [Python package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md) · [Project overview](https://github.com/rezwan4029/refdatakit#readme) · [JavaScript/TypeScript package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/js/README.md).
+
 Install from PyPI with `pip install refdatakit`. The package includes the versioned JSON datasets. Data access is local and makes no network requests.
 
 ```python

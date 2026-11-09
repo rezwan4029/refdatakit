@@ -2,6 +2,8 @@
 
 Source-aware regional reference data and validation tools for JavaScript and TypeScript.
 
+Documentation: [JavaScript/TypeScript package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/js/README.md) · [Project overview](https://github.com/rezwan4029/refdatakit#readme) · [Python package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md).
+
 Install from npm with `npm install refdatakit`. The package includes its versioned JSON datasets and makes no network requests to retrieve them.
 
 ```ts
