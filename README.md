@@ -25,6 +25,8 @@ All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and v
 
 The JavaScript and Python packages include the static JSON data. Accessors read local package files and make no network requests. Install from npm or PyPI after the packages are published.
 
+Country arguments use the generated `CountryCode` enum in both SDKs. Its members are generated from the supported country records in `datasets/countries/data.json`.
+
 ### JavaScript and TypeScript
 
 ```sh
@@ -38,16 +40,17 @@ import {
   getCountry,
   getInstitutions,
   getSubdivisions,
+  CountryCode,
 } from "refdatakit";
 
-const country = await getCountry("BD");
-const cities = await getCities("BD");
-const subdivisions = await getSubdivisions("BD");
-const institutions = await getInstitutions("BD");
+const country = await getCountry(CountryCode.BD);
+const cities = await getCities(CountryCode.BD);
+const subdivisions = await getSubdivisions(CountryCode.BD);
+const institutions = await getInstitutions(CountryCode.BD);
 const countries = await getCountries();
 ```
 
-`getCountry(code)` returns `undefined` when the country is outside the regional core. A country with no file for a dataset returns an empty array for that accessor.
+Country-specific accessors accept a `CountryCode` enum member. A country with no file for a dataset returns an empty array for that accessor.
 
 ### Python
 
@@ -57,6 +60,7 @@ python -m pip install refdatakit
 
 ```python
 from refdatakit import (
+    CountryCode,
     get_cities,
     get_countries,
     get_country,
@@ -64,14 +68,14 @@ from refdatakit import (
     get_subdivisions,
 )
 
-country = get_country("BD")
-cities = get_cities("BD")
-subdivisions = get_subdivisions("BD")
-institutions = get_institutions("BD")
+country = get_country(CountryCode.BD)
+cities = get_cities(CountryCode.BD)
+subdivisions = get_subdivisions(CountryCode.BD)
+institutions = get_institutions(CountryCode.BD)
 countries = get_countries()
 ```
 
-`get_country(code)` returns `None` when the country is outside the regional core. A country with no file for a dataset returns an empty list.
+Country-specific accessors accept a `CountryCode` enum member. Passing a raw string raises `TypeError`. A country with no file for a dataset returns an empty list for that accessor.
 
 Dataset licensing and attribution are recorded per file in `datasets/manifest.json`. The MIT license applies to project code; data may have different terms.
 
