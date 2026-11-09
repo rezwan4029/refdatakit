@@ -134,7 +134,7 @@ test("rejects entity language names without verified official country languages"
     try {
       await assert.rejects(
         validateRepository(root),
-        /names\.languages does not match country languages/,
+        /names\.languages contains non-official languages/,
       );
     } finally {
       await rm(root, { recursive: true, force: true });
