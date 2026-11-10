@@ -34,68 +34,49 @@ export const TAG_BG: Record<string, string> = {
   _default:                     'rgba(148,163,184,0.1)',
 }
 
-/** Per-country accent pair [primary, secondary] */
+/** Per-country accent pair [primary, secondary] — derived from each national flag.
+ *  g1/g2 drive the gradient; mapAccent is the country polygon + pin accent. */
 export const COUNTRY_THEME: Record<string, {
   g1: string; g2: string;
   mapAccent: string;
-  tileStyle: 'dark' | 'topo' | 'ocean' | 'warm';
   description: string;
 }> = {
+  // Bangladesh — bottle green field (#006A4E) with red disc (#F42A41)
   BD: {
-    g1: '#f43f5e', g2: '#f59e0b',
-    mapAccent: '#f43f5e',
-    tileStyle: 'dark',
-    description: 'People\'s Republic of Bangladesh',
+    g1: '#006A4E', g2: '#F42A41',
+    mapAccent: '#F42A41',
+    description: "People's Republic of Bangladesh",
   },
+  // Bhutan — yellow (#FFD520) & orange (#FF4E12) halves, white dragon
   BT: {
-    g1: '#f59e0b', g2: '#10b981',
-    mapAccent: '#f59e0b',
-    tileStyle: 'topo',
+    g1: '#FFD520', g2: '#FF4E12',
+    mapAccent: '#FF4E12',
     description: 'Kingdom of Bhutan',
   },
+  // Sri Lanka — maroon field (#8D153A), gold lion (#D4A017),
+  //              orange (#EB7400) & green (#00534E) stripes
   LK: {
-    g1: '#f97316', g2: '#eab308',
-    mapAccent: '#f97316',
-    tileStyle: 'warm',
+    g1: '#8D153A', g2: '#EB7400',
+    mapAccent: '#D4A017',
     description: 'Democratic Socialist Republic of Sri Lanka',
   },
+  // Maldives — red border (#D21034), green field (#007E3A), white crescent
   MV: {
-    g1: '#06b6d4', g2: '#3b82f6',
-    mapAccent: '#06b6d4',
-    tileStyle: 'ocean',
+    g1: '#D21034', g2: '#007E3A',
+    mapAccent: '#007E3A',
     description: 'Republic of Maldives',
   },
+  // Nepal — crimson field (#DC143C) with blue border (#003893)
   NP: {
-    g1: '#8b5cf6', g2: '#3b82f6',
-    mapAccent: '#8b5cf6',
-    tileStyle: 'topo',
+    g1: '#DC143C', g2: '#003893',
+    mapAccent: '#DC143C',
     description: 'Federal Democratic Republic of Nepal',
   },
+  // Singapore — red (#EF3340) over white, crescent & five stars
   SG: {
-    g1: '#ef4444', g2: '#f43f5e',
-    mapAccent: '#ef4444',
-    tileStyle: 'dark',
+    g1: '#EF3340', g2: '#FFFFFF',
+    mapAccent: '#EF3340',
     description: 'Republic of Singapore',
-  },
-}
-
-/** Tile URL per style */
-export const TILE_URLS: Record<string, { url: string; attribution: string }> = {
-  dark: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-  },
-  topo: {
-    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://opentopomap.org">OpenTopoMap</a>',
-  },
-  ocean: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-  },
-  warm: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
   },
 }
 
@@ -104,7 +85,7 @@ export const COUNTRY_GRADIENTS: Record<string, [string, string]> = Object.fromEn
 ) as Record<string, [string, string]>
 
 export function getTheme(cc: string) {
-  return COUNTRY_THEME[cc] ?? { g1: '#4f8ef7', g2: '#7c3aed', mapAccent: '#4f8ef7', tileStyle: 'dark', description: '' }
+  return COUNTRY_THEME[cc] ?? { g1: '#4f8ef7', g2: '#7c3aed', mapAccent: '#4f8ef7', description: '' }
 }
 
 export function tagColor(tag: string) {
@@ -113,4 +94,96 @@ export function tagColor(tag: string) {
 
 export function tagBg(tag: string) {
   return TAG_BG[tag] ?? TAG_BG._default
+}
+
+// ---------------------------------------------------------------------------
+// Flag-derived tag palette
+//
+// On a country page the pins should belong to that country, so instead of the
+// global rainbow we tint each tag along the country's own flag gradient.
+// Tags keep a stable, readable order via TAG_ORDER.
+// ---------------------------------------------------------------------------
+
+const TAG_ORDER = [
+  'university',
+  'hospital',
+  'medical_college',
+  'polytechnic',
+  'technical_training_institute',
+  'k12_school',
+  'nursing_home',
+]
+
+/** Linear interpolation between two hex colours, t in [0,1]. */
+function mixHex(a: string, b: string, t: number) {
+  const pa = parseHex(a)
+  const pb = parseHex(b)
+  const c = pa.map((v, i) => Math.round(v + (pb[i] - v) * t))
+  return `#${c.map(v => v.toString(16).padStart(2, '0')).join('')}`
+}
+
+function parseHex(h: string): [number, number, number] {
+  const s = h.replace('#', '')
+  const full = s.length === 3 ? s.split('').map(ch => ch + ch).join('') : s
+  return [
+    parseInt(full.slice(0, 2), 16),
+    parseInt(full.slice(2, 4), 16),
+    parseInt(full.slice(4, 6), 16),
+  ]
+}
+
+const countryTagCache = new Map<string, Map<string, string>>()
+
+/**
+ * Returns a tag -> colour map derived from the country's flag gradient.
+ * Falls back to the global TAG_COLORS for tags not in TAG_ORDER.
+ */
+export function countryTagColors(cc: string, tags: string[]): Map<string, string> {
+  const key = `${cc}|${tags.join(',')}`
+  const cached = countryTagCache.get(key)
+  if (cached) return cached
+
+  const theme = getTheme(cc)
+  const ordered = TAG_ORDER.filter(t => tags.includes(t))
+  const extras = tags.filter(t => !TAG_ORDER.includes(t)).sort()
+  const list = [...ordered, ...extras]
+
+  const map = new Map<string, string>()
+  const n = list.length
+  list.forEach((tag, i) => {
+    if (n === 1) {
+      map.set(tag, theme.mapAccent)
+      return
+    }
+    // spread evenly across the flag gradient
+    map.set(tag, mixHex(theme.g1, theme.g2, i / (n - 1)))
+  })
+
+  countryTagCache.set(key, map)
+  return map
+}
+
+/** Translucent version of a tag colour for chip backgrounds. */
+export function tagBgFrom(hex: string, alpha = 0.16) {
+  const [r, g, b] = parseHex(hex)
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
+/** Darken a colour toward black — used for text on light chip backgrounds. */
+export function shade(hex: string, amount = 0.35) {
+  const [r, g, b] = parseHex(hex)
+  const f = (v: number) => Math.round(v * (1 - amount))
+  return `#${[f(r), f(g), f(b)].map(v => v.toString(16).padStart(2, '0')).join('')}`
+}
+
+/** Human-readable language names for the local-language name labels. */
+export const LANG_NAMES: Record<string, string> = {
+  bn: 'Bengali',
+  si: 'Sinhala',
+  ta: 'Tamil',
+  dv: 'Dhivehi',
+  ne: 'Nepali',
+  dz: 'Dzongkha',
+  ms: 'Malay',
+  zh: 'Chinese',
 }

@@ -5,6 +5,8 @@ export interface Pin {
   lng: number
   tag: string
   city: string
+  cityName?: string
+  localNames?: { lang: string; name: string }[]
   type: string
 }
 
@@ -23,7 +25,13 @@ export interface CountryDetail {
   name: string
   bounds: [[number, number], [number, number]]
   cities: { total: number; withCoords: number }
-  institutions: { total: number; byTag: Record<string, number> }
+  institutions: {
+    total: number
+    byTag: Record<string, number>        // entity counted once per tag it has
+    byPrimaryTag?: Record<string, number> // entity counted exactly once
+    mapped?: number
+    unmapped?: number
+  }
   subdivisions: { total: number; byLevel: Record<string, number> }
   pins: Pin[]
 }
