@@ -60,6 +60,21 @@ breaks validation.
 In the PR description, summarize the records added or changed and identify their data
 source. One focused change per pull request keeps review practical.
 
+## Recommended: install the git hooks
+
+The repository ships a [`pre-commit`](https://pre-commit.com) config that sorts and
+validates the datasets for you, so unsorted or invalid data cannot be committed by
+accident:
+
+```sh
+python -m pip install pre-commit
+pre-commit install
+```
+
+After that, `git commit` runs the same checks as CI: it reformats/sorts changed dataset
+files, refreshes manifest checksums, and fails the commit if anything does not validate.
+Run it against the whole repo any time with `pre-commit run --all-files`.
+
 ## Local checks
 
 ```sh
