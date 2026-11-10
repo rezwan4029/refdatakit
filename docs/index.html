@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>refdatakit — Coverage Explorer</title>
+  <script src="data/index.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --card: #22263a;
+      --border: #2e3350;
+      --accent: #4f8ef7;
+      --accent2: #7c3aed;
+      --text: #e8eaf6;
+      --muted: #8892b0;
+      --hospital: #ef4444;
+      --university: #3b82f6;
+      --medical_college: #f59e0b;
+      --polytechnic: #10b981;
+      --hospital-light: #fca5a5;
+      --university-light: #93c5fd;
+      --medical_college-light: #fcd34d;
+      --polytechnic-light: #6ee7b7;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 2rem 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ---- Total stats bar ---- */
+    .totals-bar {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .total-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 2rem;
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .total-stat .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .total-stat .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ---- Country grid ---- */
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .country-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .country-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(79, 142, 247, 0.12);
+    }
+
+    .card-header {
+      padding: 1.5rem 1.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .flag {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .card-title { font-size: 1.25rem; font-weight: 700; }
+    .card-code  { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+    .card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-cell {
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-cell + .stat-cell {
+      border-left: 1px solid var(--border);
+    }
+
+    .stat-cell .n {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-cell .l {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .card-tags {
+      padding: 0.75rem 1.5rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tag-hospital        { background: rgba(239,68,68,0.15);  color: var(--hospital-light);        border: 1px solid rgba(239,68,68,0.3); }
+    .tag-university      { background: rgba(59,130,246,0.15); color: var(--university-light);      border: 1px solid rgba(59,130,246,0.3); }
+    .tag-medical_college { background: rgba(245,158,11,0.15); color: var(--medical_college-light); border: 1px solid rgba(245,158,11,0.3); }
+    .tag-polytechnic     { background: rgba(16,185,129,0.15); color: var(--polytechnic-light);     border: 1px solid rgba(16,185,129,0.3); }
+    .tag-other           { background: rgba(136,146,176,0.1); color: var(--muted);                 border: 1px solid var(--border); }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="logo">refdatakit</div>
+      <div class="subtitle">Reference data coverage explorer</div>
+    </div>
+  </header>
+
+  <main>
+    <div id="totals-bar" class="totals-bar"></div>
+    <div class="section-title">Countries</div>
+    <div id="grid" class="countries-grid"></div>
+  </main>
+
+  <footer>
+    Data sourced from Wikidata (CC0), GeoNames (CC BY 4.0), and government public records. &nbsp;|&nbsp;
+    <a href="https://github.com/rezwan4029/refdatakit" target="_blank">GitHub</a>
+  </footer>
+
+  <script>
+    const FLAGS = { BD:"🇧🇩", BT:"🇧🇹", LK:"🇱🇰", MV:"🇲🇻", NP:"🇳🇵", SG:"🇸🇬" };
+    const TAG_LABELS = {
+      hospital: "Hospitals",
+      university: "Universities",
+      medical_college: "Medical Colleges",
+      polytechnic: "Polytechnics",
+      technical_training_institute: "Training Institutes",
+      k12_school: "Schools",
+      nursing_home: "Nursing Homes",
+    };
+
+    const data = window.__RDK_INDEX;
+    if (!data) {
+      document.getElementById("grid").innerHTML = "<p style='color:var(--muted)'>Data not found. Run <code>node docs/build.mjs</code> first.</p>";
+    } else {
+      // Totals bar
+      const totalCities = data.reduce((s, d) => s + d.cities, 0);
+      const totalInst   = data.reduce((s, d) => s + d.institutions, 0);
+      const totalSub    = data.reduce((s, d) => s + d.subdivisions, 0);
+      const totalCountries = data.length;
+
+      const totalsEl = document.getElementById("totals-bar");
+      [
+        [totalCountries, "Countries"],
+        [totalCities, "Cities & Towns"],
+        [totalInst, "Institutions"],
+        [totalSub, "Subdivisions"],
+      ].forEach(([n, l]) => {
+        totalsEl.innerHTML += `<div class="total-stat"><div class="number">${n.toLocaleString()}</div><div class="label">${l}</div></div>`;
+      });
+
+      // Country cards
+      const grid = document.getElementById("grid");
+      for (const c of data) {
+        const tags = Object.entries(c.byTag || {})
+          .sort((a,b) => b[1]-a[1])
+          .map(([tag, n]) => `<span class="tag-pill tag-${tag}">${TAG_LABELS[tag] || tag} <strong>${n}</strong></span>`)
+          .join("");
+
+        grid.innerHTML += `
+          <a class="country-card" href="country.html?cc=${c.code}">
+            <div class="card-header">
+              <span class="flag">${FLAGS[c.code] || "🌐"}</span>
+              <div>
+                <div class="card-title">${c.name}</div>
+                <div class="card-code">${c.code}</div>
+              </div>
+            </div>
+            <div class="card-stats">
+              <div class="stat-cell"><div class="n">${c.cities.toLocaleString()}</div><div class="l">Cities</div></div>
+              <div class="stat-cell"><div class="n">${c.institutions.toLocaleString()}</div><div class="l">Institutions</div></div>
+              <div class="stat-cell"><div class="n">${c.subdivisions.toLocaleString()}</div><div class="l">Subdivisions</div></div>
+            </div>
+            <div class="card-tags">${tags}</div>
+          </a>`;
+      }
+    }
+  </script>
+</body>
+</html>
