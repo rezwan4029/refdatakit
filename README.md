@@ -1,10 +1,14 @@
 # RefDataKit
 
-**Coverage explorer:** [rezwan4029.github.io/refdatakit](https://rezwan4029.github.io/refdatakit/) — interactive maps showing cities, institutions, and subdivisions for each country.
+[![Validate](https://github.com/rezwan4029/refdatakit/actions/workflows/validate.yml/badge.svg)](https://github.com/rezwan4029/refdatakit/actions/workflows/validate.yml)
+[![npm](https://img.shields.io/npm/v/@rezwan4029/refdatakit.svg)](https://www.npmjs.com/package/@rezwan4029/refdatakit)
+[![PyPI](https://img.shields.io/pypi/v/refdatakit.svg)](https://pypi.org/project/refdatakit/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-coverage%20explorer-2ea44f)](https://rezwan4029.github.io/refdatakit/)
 
-Published packages: [JavaScript/TypeScript on npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [Python on PyPI](https://pypi.org/project/refdatakit/).
+Validated, versioned reference datasets for countries, administrative divisions, cities, and institutions — with clean JSON Schema contracts, explicit provenance, and zero network calls at runtime.
 
-Public documentation: [JavaScript/TypeScript package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/js/README.md) · [Python package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md).
+**[Browse the coverage explorer →](https://rezwan4029.github.io/refdatakit/)** · [npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [PyPI](https://pypi.org/project/refdatakit/)
 
 RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
 
@@ -12,12 +16,14 @@ RefDataKit standardizes public inputs into validated, versioned reference datase
 
 RefDataKit ships with an optimized regional core containing exactly these six countries:
 
-- Bangladesh (`BD`)
-- Bhutan (`BT`)
-- Nepal (`NP`)
-- Sri Lanka (`LK`)
-- Singapore (`SG`)
-- Maldives (`MV`)
+| | Country | Code | Cities | Institutions | Subdivisions |
+|---|---------|------|-------:|-------------:|-------------:|
+| 🇧🇩 | Bangladesh | `BD` | 340 | 1,031 | 572 |
+| 🇧🇹 | Bhutan | `BT` | 1 | 4 | — |
+| 🇱🇰 | Sri Lanka | `LK` | 8 | 13 | — |
+| 🇲🇻 | Maldives | `MV` | 2 | 5 | — |
+| 🇳🇵 | Nepal | `NP` | 6 | 10 | — |
+| 🇸🇬 | Singapore | `SG` | 1 | 12 | — |
 
 The country file contains only these six records. Current city records cover Bangladesh and Singapore; subdivision and institution records cover Bangladesh. Contributions for the other countries can be added through community pull requests when source-backed data is ready.
 
@@ -26,6 +32,18 @@ Global expansion happens through community pull requests that contribute bounded
 Country and city records may carry macro-level coordinates. Institution records require `names.en` and a `names.languages` object keyed by ISO 639-1 codes. That object may be empty or contain any subset of verified official non-English names; missing translations can be added later. Localized aliases are limited to English and verified official local languages. Institution coordinates, precise locations, addresses, and logos are prohibited; institutions link hierarchically through `country_code` and `city_id` and may carry stable public external IDs such as Wikidata identifiers.
 
 All runtime data is stored as version-controlled JSON in `datasets/`. SDKs and validators read only these local files; manifest source URLs document provenance and are never fetched during builds or runtime.
+
+## Coverage Explorer
+
+The website in [`docs/`](docs/) is a Vite + React browser over the published package — it always reflects the data that actually ships, falling back to the repo datasets during development. Country pages present totals that reconcile (institutions, how many are mapped, and city counts), group institutions by city, show native-language names alongside English, and link each record to its location on Google Maps.
+
+```sh
+cd docs
+npm install
+npm run dev      # http://localhost:5173/refdatakit/
+```
+
+The site is rebuilt and deployed to GitHub Pages on every push to `main` that touches `datasets/` or `docs/` (see [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
 ## Use the Library
 
@@ -88,7 +106,6 @@ Dataset licensing and attribution are recorded per file in `datasets/manifest.js
 ## Repository Layout
 
 ```text
-schemas/                         Shared JSON Schema contracts
 datasets/                        Canonical JSON records and source manifest
   manifest.json                  Per-file sources, licenses, attribution, and checksum
   countries/data.json            Country identifiers and contributed language data
@@ -97,7 +114,12 @@ datasets/                        Canonical JSON records and source manifest
   institutions/by-country/       Universal entities, partitioned by country
 packages/js/                     TypeScript SDK and CLI
 packages/python/                 Python SDK and CLI
-.github/workflows/               Automated checks
+docs/                            Coverage explorer (Vite + React, GitHub Pages)
+  scripts/build-data.mjs         Pre-builds per-country summary JSON
+  public/data/                   Generated summaries and pins (committed)
+schemas/                         Shared JSON Schema contracts
+licenses/                        Third-party license texts
+.github/workflows/               CI: validate, publish, and Pages deploy
 ```
 
 `institutions` uses the universal entity schema for schools, colleges, universities, corporations, civic organizations, religious buildings, and other directory entries. Localized names may be contributed incrementally. Records may also include `ownership: "public"` or `ownership: "private"` when the source states it. Country-relevant classifications such as `polytechnic` are controlled through `vocabularies.entity_tags` in `datasets/manifest.json`; the build generates the entity schema enum and TypeScript tag union from that list. Both runtime validators also apply the manifest vocabulary directly, so adding a tag requires no hand-edited SDK code.

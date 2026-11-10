@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useIndex } from '../hooks/useCountryData'
-import { FLAGS, TAG_LABELS, getTheme, tagColor, tagBg } from '../constants'
+import Flag from '../components/Flag'
+import { TAG_LABELS, getTheme, tagColor, tagBg } from '../constants'
 import type { CountrySummary } from '../types'
 
 function AnimatedNumber({ value }: { value: number }) {
@@ -49,7 +50,7 @@ function CountryCard({ c, index }: { c: CountrySummary; index: number }) {
       <div style={{ padding: '1.5rem' }}>
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1.25rem' }}>
-          <span style={{ fontSize: '2.8rem', lineHeight: 1 }}>{FLAGS[c.code] || '🌐'}</span>
+          <Flag code={c.code} size={38} />
           <div>
             <div style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '-0.02em' }}>{c.name}</div>
             <div style={{

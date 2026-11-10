@@ -1,32 +1,57 @@
-# React + TypeScript + Vite
+# Coverage Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Browser front-end for RefDataKit, deployed to GitHub Pages at
+**[rezwan4029.github.io/refdatakit](https://rezwan4029.github.io/refdatakit/)**.
 
-Currently, two official plugins are available:
+Vite + React + TypeScript. It loads data through
+[`@rezwan4029/refdatakit`](https://www.npmjs.com/package/@rezwan4029/refdatakit),
+so the site always shows what the published package actually contains. If the
+package is not installed, it falls back to reading `../datasets/` directly so
+local dataset edits can be previewed before a release.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Development
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev      # http://localhost:5173/refdatakit/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The dev server runs `build-data` first. Note the `/refdatakit/` base path — the
+site is built for a project GitHub Pages URL, so `http://localhost:5173/` will
+not serve it.
+
+## Scripts
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Regenerate data, then start Vite with HMR |
+| `npm run build` | Regenerate data, type-check, and build to `dist/` |
+| `npm run build-data` | Only regenerate `public/data/` from the package or repo |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Lint with oxlint |
+
+## Data pipeline
+
+`scripts/build-data.mjs` pre-builds small static JSON files into
+`public/data/` — one per country plus an `index.json` summary — so the browser
+never parses the full datasets. Each country file carries reconciled totals:
+`institutions.total`, `byTag` (an institution appears once per tag it has),
+`byPrimaryTag` (every institution counted exactly once), `mapped`/`unmapped`
+counts, and pins carrying `cityName` and `localNames` with language tags.
+
+Because `public/data/` is generated, it is committed but must be regenerated
+whenever `datasets/` changes. The Pages workflow does this automatically.
+
+## Structure
+
+```text
+scripts/build-data.mjs   Pre-builds public/data/*.json from the package
+src/pages/IndexPage.tsx  Country index with per-country totals
+src/pages/CountryPage.tsx Institution browser: city groups + details panel
+src/constants.ts         Per-country themes (flag-derived), tag palettes, labels
+src/hooks/useCountryData.ts  Fetches the pre-built JSON
+public/data/             Generated country summaries and pins (committed)
+```
+
+`docs/` is served from `/refdatakit/` on GitHub Pages; `vite.config.ts` sets the
+matching `base`.

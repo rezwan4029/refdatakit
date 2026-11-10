@@ -2,9 +2,10 @@ import { useState, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import Flag from '../components/Flag'
 import { useCountry } from '../hooks/useCountryData'
 import {
-  FLAGS, TAG_LABELS, LANG_NAMES, getTheme, tagBgFrom, countryTagColors,
+  TAG_LABELS, LANG_NAMES, getTheme, tagBgFrom, countryTagColors,
 } from '../constants'
 
 // ---------------------------------------------------------------------------
@@ -222,7 +223,7 @@ export default function CountryPage() {
           }}
         >← All</button>
 
-        <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{FLAGS[cc.toUpperCase()] || '🌐'}</span>
+        <Flag code={cc.toUpperCase()} size={26} />
 
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
