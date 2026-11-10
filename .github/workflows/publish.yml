@@ -114,11 +114,15 @@ jobs:
         run: npm run build
         working-directory: packages/js
 
+      # Trusted publishing (OIDC). No NODE_AUTH_TOKEN: npm mints a short-lived
+      # credential from the GitHub id-token, so no OTP/2FA prompt is triggered.
+      # Requires a trusted publisher configured on npmjs.com for this package:
+      #   repository: rezwan4029/refdatakit
+      #   workflow:   publish.yml
+      #   environment: (none)
       - name: Publish to npm
         run: npm publish --access public
         working-directory: packages/js
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
   build-python:
     name: Build Python distributions
