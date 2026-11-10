@@ -1,1 +1,79 @@
-[{"coordinates":{"latitude":7.7167,"longitude":81.7},"country_code":"LK","id":"wikidata:Q810963","name":"Batticaloa","population":95489},{"coordinates":{"latitude":6.9267,"longitude":79.8606},"country_code":"LK","id":"wikidata:Q35381","name":"Colombo","population":752993},{"coordinates":{"latitude":6.0328,"longitude":80.2156},"country_code":"LK","id":"wikidata:Q319366","name":"Galle","population":93118},{"coordinates":{"latitude":9.6647,"longitude":80.0167},"country_code":"LK","id":"wikidata:Q215277","name":"Jaffna","population":88138},{"coordinates":{"latitude":6.9567,"longitude":79.9206},"country_code":"LK","id":"wikidata:Q3522428","name":"Kelaniya"},{"coordinates":{"latitude":5.95,"longitude":80.5333},"country_code":"LK","id":"wikidata:Q13360574","name":"Matara","population":68244},{"coordinates":{"latitude":6.7991,"longitude":79.8767},"country_code":"LK","id":"wikidata:Q867213","name":"Moratuwa"},{"coordinates":{"latitude":7.2681,"longitude":80.5967},"country_code":"LK","id":"wikidata:Q489744","name":"Peradeniya"}]
+[
+  {
+    "coordinates": {
+      "latitude": 7.7167,
+      "longitude": 81.7
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q810963",
+    "name": "Batticaloa",
+    "population": 95489
+  },
+  {
+    "coordinates": {
+      "latitude": 6.9267,
+      "longitude": 79.8606
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q35381",
+    "name": "Colombo",
+    "population": 752993
+  },
+  {
+    "coordinates": {
+      "latitude": 6.0328,
+      "longitude": 80.2156
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q319366",
+    "name": "Galle",
+    "population": 93118
+  },
+  {
+    "coordinates": {
+      "latitude": 9.6647,
+      "longitude": 80.0167
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q215277",
+    "name": "Jaffna",
+    "population": 88138
+  },
+  {
+    "coordinates": {
+      "latitude": 6.9567,
+      "longitude": 79.9206
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q3522428",
+    "name": "Kelaniya"
+  },
+  {
+    "coordinates": {
+      "latitude": 5.95,
+      "longitude": 80.5333
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q13360574",
+    "name": "Matara",
+    "population": 68244
+  },
+  {
+    "coordinates": {
+      "latitude": 6.7991,
+      "longitude": 79.8767
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q867213",
+    "name": "Moratuwa"
+  },
+  {
+    "coordinates": {
+      "latitude": 7.2681,
+      "longitude": 80.5967
+    },
+    "country_code": "LK",
+    "id": "wikidata:Q489744",
+    "name": "Peradeniya"
+  }
+]

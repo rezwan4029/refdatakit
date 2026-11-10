@@ -62,3 +62,21 @@ function normalizeNfc(value: unknown): JsonValue {
 export function canonicalJson(value: unknown): string {
   return `${serialize(normalizeNfc(value))}\n`;
 }
+
+export function prettyJson(value: unknown): string {
+  return `${JSON.stringify(sortKeysDeep(normalizeNfc(value)), null, 2)}\n`;
+}
+
+function sortKeysDeep(value: JsonValue): JsonValue {
+  if (value === null || typeof value !== "object") {
+    return value;
+  }
+  if (Array.isArray(value)) {
+    return value.map(sortKeysDeep);
+  }
+  const sorted: Record<string, JsonValue> = {};
+  for (const key of Object.keys(value).sort()) {
+    sorted[key] = sortKeysDeep(value[key]);
+  }
+  return sorted;
+}

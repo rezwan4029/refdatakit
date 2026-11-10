@@ -130,11 +130,11 @@ Every canonical dataset file is registered in `datasets/manifest.json` with its 
 
 The project source code is licensed under MIT; dataset records retain the source-specific licenses listed in the manifest. Empty country language arrays mean no value has been contributed or verified yet, not that the country has no such languages. Contributors can add values with source evidence. These licensing and provenance records do not guarantee zero legal risk or replace review of applicable source terms.
 
-Dataset files and the manifest use RFC 8785 canonical JSON, UTF-8, NFC-normalized strings, and one trailing newline. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, canonicalizes their files, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
+Dataset files are stored as indented, UTF-8, NFC-normalized JSON with sorted keys and one trailing newline, so they read and diff cleanly on GitHub and can be edited by hand. Integrity is independent of layout: each manifest SHA-256 is computed over the RFC 8785 canonical form of the parsed value, so reformatting whitespace never changes a checksum while any change to the data does. The manifest itself stays RFC 8785 canonical JSON. Records in each dataset array are ordered by English name (case-insensitive), with stable IDs as tie-breakers. The validator warns about unsorted records but does not block otherwise valid data. `sort` reorders dataset records, writes them in the readable indented layout, and refreshes the manifest checksums; it does not reorder language lists or manifest entries.
 
 ## Contributing Data
 
-Contributions are welcome through pull requests. For routine updates, edit the existing country JSON file for the data type you are changing:
+Contributions are welcome through pull requests. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full workflow. For routine updates, edit the existing country JSON file for the data type you are changing:
 
 - Countries: `datasets/countries/data.json`
 - Subdivisions: `datasets/subdivisions/by-country/{CC}.json`
@@ -155,7 +155,7 @@ python -m pip install -e "packages/python[dev]"
 refdatakit validate .
 ```
 
-The sort command canonicalizes the records and updates manifest checksums. CI checks both runtime validators, linters, and test suites on the pull request. In the PR description, summarize the records added or changed and identify their data source.
+The sort command sorts and rewrites the data files in the readable indented layout and updates manifest checksums; you can also edit the JSON by hand, then run `sort` and `validate`. CI checks both runtime validators, linters, and test suites on the pull request. In the PR description, summarize the records added or changed and identify their data source.
 
 ## Repository Checks
 

@@ -404,3 +404,16 @@ test("rejects canonical dataset files omitted from the manifest", async () => {
     await rm(root, { recursive: true, force: true });
   }
 });
+
+test("validates pretty-printed datasets and tolerates whitespace changes", async () => {
+  const root = await createFixture("city:1");
+  try {
+    const dataPath = resolve(root, "datasets/cities/by-country/US.json");
+    const records = JSON.parse(await readFile(dataPath, "utf8"));
+    // Reflow only whitespace; the canonical checksum must remain valid.
+    await writeFile(dataPath, `${JSON.stringify(records, null, 4)}\n`);
+    await validateRepository(root);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

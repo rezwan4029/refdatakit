@@ -1,1 +1,25 @@
-[{"coordinates":{"latitude":1.3,"longitude":103.8},"country_code":"SG","id":"wikidata:Q334","localized_names":[{"language":"ms","name":"Singapura"},{"language":"ta","name":"சிங்கப்பூர்"},{"language":"zh","name":"新加坡"}],"name":"Singapore"}]
+[
+  {
+    "coordinates": {
+      "latitude": 1.3,
+      "longitude": 103.8
+    },
+    "country_code": "SG",
+    "id": "wikidata:Q334",
+    "localized_names": [
+      {
+        "language": "ms",
+        "name": "Singapura"
+      },
+      {
+        "language": "ta",
+        "name": "சிங்கப்பூர்"
+      },
+      {
+        "language": "zh",
+        "name": "新加坡"
+      }
+    ],
+    "name": "Singapore"
+  }
+]

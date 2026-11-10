@@ -11,7 +11,7 @@ from typing import Literal, NotRequired, TypedDict, cast
 from jsonschema import Draft202012Validator, FormatChecker
 from jsonschema.exceptions import SchemaError
 
-from .canonical_json import canonical_json
+from .canonical_json import canonical_json, pretty_json
 
 
 class DatasetValidationError(ValueError):
@@ -424,10 +424,10 @@ def sort_repository(root_directory: Path) -> None:
             dataset.definition,
             dataset.entry["path"],
         ))
-        contents = canonical_json(dataset.records)
+        contents = pretty_json(dataset.records)
         data_path = _repository_file(root, dataset.entry["path"])
         data_path.write_bytes(contents)
-        dataset.entry["sha256"] = hashlib.sha256(contents).hexdigest()
+        dataset.entry["sha256"] = hashlib.sha256(canonical_json(dataset.records)).hexdigest()
 
     manifest_path.write_bytes(canonical_json(manifest))
     validate_repository(root)
@@ -461,18 +461,15 @@ def validate_repository(root_directory: Path) -> list[str]:
         definition = _definition_for_path(entry["path"])
         data_path = _repository_file(root, entry["path"])
         schema_path = _repository_file(root, definition.schema)
-        data_bytes = data_path.read_bytes()
         records_value = _read_json(data_path)
         try:
-            is_canonical_dataset = canonical_json(records_value) == data_bytes
+            canonical_records = canonical_json(records_value)
         except (TypeError, ValueError) as error:
             raise DatasetValidationError(
                 f"{entry['path']} cannot be serialized canonically: {error}"
             ) from error
-        if not is_canonical_dataset:
-            raise DatasetValidationError(f"{entry['path']} is not canonically serialized")
 
-        checksum = hashlib.sha256(data_bytes).hexdigest()
+        checksum = hashlib.sha256(canonical_records).hexdigest()
         if checksum != entry["sha256"]:
             raise DatasetValidationError(f"Checksum mismatch for {entry['path']}")
 
