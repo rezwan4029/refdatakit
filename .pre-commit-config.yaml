@@ -1,0 +1,37 @@
+# Run `pre-commit install` to enable these hooks locally.
+# CI runs the same checks, so this only shortens the feedback loop.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+        files: ^(datasets|schemas)/.*\.json$
+      - id: trailing-whitespace
+        files: ^(datasets|schemas)/.*\.json$
+      - id: check-json
+        files: ^(datasets|schemas)/.*\.json$
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.13
+    hooks:
+      - id: ruff
+        files: ^packages/python/
+
+  - repo: local
+    hooks:
+      # Sort dataset records and refresh manifest checksums when data changes.
+      # Writes back sorted/indented JSON so the commit is self-consistent.
+      - id: refdatakit-sort
+        name: refdatakit sort
+        entry: bash -c 'cd "$(git rev-parse --show-toplevel)" && refdatakit sort .'
+        language: system
+        files: ^datasets/.*\.json$
+        pass_filenames: false
+
+      # Fail the commit if the data does not validate.
+      - id: refdatakit-validate
+        name: refdatakit validate
+        entry: bash -c 'cd "$(git rev-parse --show-toplevel)" && refdatakit validate .'
+        language: system
+        files: ^(datasets|schemas)/.*\.json$
+        pass_filenames: false
