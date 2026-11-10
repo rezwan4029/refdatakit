@@ -420,3 +420,41 @@ def test_rejects_canonical_dataset_file_omitted_from_manifest(tmp_path: Path) ->
 
     with pytest.raises(DatasetValidationError, match="Dataset files missing from manifest"):
         validate_repository(tmp_path)
+
+
+def _rewrite_dataset_as_pretty(root: Path, relative_path: str) -> None:
+    """Write a dataset file pretty-printed and refresh its manifest checksum.
+
+    The checksum is computed over the canonical form of the parsed value, so any
+    whitespace layout validates as long as the data is unchanged.
+    """
+    data_path = root / relative_path
+    records = json.loads(data_path.read_text(encoding="utf-8"))
+    data_path.write_text(
+        json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    manifest_path = root / "datasets" / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    checksum = hashlib.sha256(canonical_json(records)).hexdigest()
+    for entry in manifest["datasets"]:
+        if entry["path"] == relative_path:
+            entry["sha256"] = checksum
+    manifest_path.write_bytes(canonical_json(manifest))
+
+
+def test_validates_pretty_printed_dataset_files(tmp_path: Path) -> None:
+    create_fixture(tmp_path, "city:1")
+    _rewrite_dataset_as_pretty(tmp_path, "datasets/cities/by-country/US.json")
+
+    assert validate_repository(tmp_path) == []
+
+
+def test_tolerates_whitespace_changes_without_checksum_update(tmp_path: Path) -> None:
+    create_fixture(tmp_path, "city:1")
+    data_path = tmp_path / "datasets" / "cities" / "by-country" / "US.json"
+    records = json.loads(data_path.read_text(encoding="utf-8"))
+    # Reflow only whitespace; the canonical checksum must remain valid.
+    data_path.write_text(json.dumps(records, indent=4) + "\n", encoding="utf-8")
+
+    assert validate_repository(tmp_path) == []

@@ -9,7 +9,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { isAbsolute, relative, resolve, sep } from "node:path";
-import { canonicalJson } from "./canonical-json.js";
+import { canonicalJson, prettyJson } from "./canonical-json.js";
 
 type DatasetDomain = "country" | "subdivision" | "city" | "entity";
 
@@ -483,10 +483,10 @@ export async function sortRepository(rootDirectory: string): Promise<void> {
       return 0;
     });
 
-    const contents = canonicalJson(dataset.records);
+    const contents = prettyJson(dataset.records);
     const dataPath = await resolveRepositoryFile(canonicalRoot, dataset.entry.path);
     await writeFile(dataPath, contents, "utf8");
-    dataset.entry.sha256 = createHash("sha256").update(contents, "utf8").digest("hex");
+    dataset.entry.sha256 = createHash("sha256").update(canonicalJson(dataset.records), "utf8").digest("hex");
   }
 
   await writeFile(manifestPath, canonicalJson(manifestValue), "utf8");
@@ -524,11 +524,9 @@ export async function validateRepository(rootDirectory: string): Promise<string[
     const schemaPath = await resolveRepositoryFile(canonicalRoot, definition.schema);
     const dataBytes = await readFile(dataPath);
     const recordsValue: unknown = JSON.parse(dataBytes.toString("utf8")) as unknown;
-    if (canonicalJson(recordsValue) !== dataBytes.toString("utf8")) {
-      throw new Error(`${entry.path} is not canonically serialized`);
-    }
+    const canonicalRecords = canonicalJson(recordsValue);
 
-    const actualChecksum = createHash("sha256").update(dataBytes).digest("hex");
+    const actualChecksum = createHash("sha256").update(canonicalRecords, "utf8").digest("hex");
     if (actualChecksum !== entry.sha256) {
       throw new Error(`Checksum mismatch for ${entry.path}`);
     }
