@@ -117,6 +117,8 @@ jobs:
       - name: Publish to npm
         run: npm publish --access public
         working-directory: packages/js
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
   build-python:
     name: Build Python distributions
