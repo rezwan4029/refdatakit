@@ -1,52 +1,11 @@
 import { useState, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  MapContainer, TileLayer, CircleMarker, Popup, useMap,
-} from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
 
 import { useCountry } from '../hooks/useCountryData'
 import {
-  FLAGS, TAG_LABELS, TAG_COLORS, getTheme, TILE_URLS, tagColor, tagBg,
+  FLAGS, TAG_LABELS, LANG_NAMES, getTheme, tagBgFrom, countryTagColors,
 } from '../constants'
-
-// ---------------------------------------------------------------------------
-// Map bounds fitter — runs once when bounds are ready
-// ---------------------------------------------------------------------------
-function BoundsFitter({ bounds }: { bounds: [[number,number],[number,number]] | null }) {
-  const map = useMap()
-  const fitted = useRef(false)
-  if (bounds && !fitted.current) {
-    fitted.current = true
-    map.fitBounds(bounds, { padding: [40, 40] })
-  }
-  return null
-}
-
-// ---------------------------------------------------------------------------
-// Fly-to helper — triggered when user clicks a list item
-// ---------------------------------------------------------------------------
-function FlyTo({ target }: { target: { lat: number; lng: number } | null }) {
-  const map = useMap()
-  if (target) map.flyTo([target.lat, target.lng], 13, { duration: 1.2 })
-  return null
-}
-
-// ---------------------------------------------------------------------------
-// Custom circle marker icon color
-// ---------------------------------------------------------------------------
-function pinOptions(tag: string, accent: string, active: boolean) {
-  const c = TAG_COLORS[tag] ?? accent
-  return {
-    radius: active ? 9 : 7,
-    fillColor: c,
-    color: active ? '#fff' : c,
-    weight: active ? 2 : 1,
-    opacity: 0.9,
-    fillOpacity: active ? 1 : 0.75,
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Stat card
@@ -65,6 +24,67 @@ function StatCard({ value, label, color }: { value: number; label: string; color
       <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 4, fontWeight: 500 }}>{label}</div>
     </div>
   )
+}
+
+function DetailRow({ label, value, mono, dot, href }: {
+  label: string; value: string; mono?: boolean; dot?: string; href?: string
+}) {
+  const inner = (
+    <>
+      {dot && <span style={{ width: 6, height: 6, borderRadius: '50%', background: dot, flexShrink: 0 }} />}
+      {value}
+      {href && (
+        <span aria-hidden style={{ fontSize: '0.6rem', opacity: 0.7, flexShrink: 0 }}>↗</span>
+      )}
+    </>
+  )
+  const style: React.CSSProperties = {
+    fontSize: mono ? '0.68rem' : '0.76rem',
+    color: href ? 'var(--accent)' : 'var(--text)',
+    fontFamily: mono ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : 'inherit',
+    textAlign: 'right', minWidth: 0,
+    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+    display: 'inline-flex', alignItems: 'center', gap: 5,
+    textDecoration: 'none',
+  }
+  return (
+    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
+      <span style={{ fontSize: '0.68rem', color: 'var(--muted)', flexShrink: 0 }}>{label}</span>
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={style}
+          onClick={e => e.stopPropagation()}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.textDecoration = 'underline' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.textDecoration = 'none' }}
+        >{inner}</a>
+      ) : (
+        <span style={style}>{inner}</span>
+      )}
+    </div>
+  )
+}
+
+/**
+ * Google Maps link for a city, qualified by country so ambiguous names
+ * (e.g. "Victoria") resolve to the right place.
+ */
+function cityMapsUrl(city: string, country: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${city}, ${country}`)}`
+}
+
+/**
+ * Google Maps link for a coordinate pair.
+ * Uses the plain search URL so it needs no API key and works everywhere;
+ * the place name is included so Maps resolves to the actual institution
+ * rather than a bare pin when it knows the place.
+ */
+function gmapsUrl(lat: number, lng: number, name?: string) {
+  const coords = `${lat.toFixed(6)},${lng.toFixed(6)}`
+  const q = name ? encodeURIComponent(`${name} ${coords}`) : encodeURIComponent(coords)
+  return `https://www.google.com/maps/search/?api=1&query=${q}`
 }
 
 // ---------------------------------------------------------------------------
@@ -92,20 +112,30 @@ export default function CountryPage() {
   const navigate = useNavigate()
   const { data, loading } = useCountry(cc.toUpperCase())
   const theme = getTheme(cc.toUpperCase())
-  const tile  = TILE_URLS[theme.tileStyle]
 
   const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set())
   const [search, setSearch] = useState('')
-  const [flyTarget, setFlyTarget] = useState<{ lat: number; lng: number } | null>(null)
   const [activePin, setActivePin] = useState<string | null>(null)
+  const listRef = useRef<HTMLDivElement>(null)
 
   // All tags present in this country's data
   const allTags = useMemo(() => {
     if (!data) return []
     return Object.keys(data.institutions.byTag).sort((a, b) =>
-      (data.institutions.byTag[b] ?? 0) - (data.institutions.byTag[a] ?? 0)
+      ((data.institutions.byPrimaryTag ?? data.institutions.byTag)[b] ?? 0) -
+      ((data.institutions.byPrimaryTag ?? data.institutions.byTag)[a] ?? 0)
     )
   }, [data])
+
+  // Flag-derived palette for this country's tags
+  const palette = useMemo(
+    () => countryTagColors(cc.toUpperCase(), allTags),
+    [cc, allTags],
+  )
+  const tColor = useCallback(
+    (tag: string) => palette.get(tag) ?? theme.mapAccent,
+    [palette, theme.mapAccent],
+  )
 
   // Active filters default to all tags
   const effectiveFilters = activeFilters.size > 0 ? activeFilters : new Set(allTags)
@@ -127,6 +157,26 @@ export default function CountryPage() {
                    p.city.toLowerCase().includes(search.toLowerCase()))
     )
   }, [data, effectiveFilters, search])
+
+  // Group the visible institutions by city — a per-country view reads far
+  // better as "places and what's in them" than one flat alphabetical list.
+  const cityGroups = useMemo(() => {
+    const m = new Map<string, { name: string; pins: typeof visiblePins }>()
+    for (const p of visiblePins) {
+      const key = p.city || 'unknown'
+      const g = m.get(key)
+      if (g) g.pins.push(p)
+      else m.set(key, { name: p.cityName || p.city, pins: [p] })
+    }
+    return [...m.entries()]
+      .map(([id, g]) => ({ id, ...g }))
+      .sort((a, b) => b.pins.length - a.pins.length)
+  }, [visiblePins])
+
+  const activePinObj = useMemo(
+    () => visiblePins.find(p => p.id === activePin) ?? null,
+    [visiblePins, activePin],
+  )
 
   if (loading) return <Skeleton />
   if (!data) return (
@@ -188,8 +238,8 @@ export default function CountryPage() {
         <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'nowrap', overflowX: 'auto', flexShrink: 0 }}>
           {allTags.map(tag => {
             const on = effectiveFilters.has(tag)
-            const c  = tagColor(tag)
-            const count = data.institutions.byTag[tag] ?? 0
+            const c  = tColor(tag)
+            const count = (data.institutions.byPrimaryTag ?? data.institutions.byTag)[tag] ?? 0
             return (
               <motion.button
                 key={tag}
@@ -198,7 +248,7 @@ export default function CountryPage() {
                 whileTap={{ scale: 0.95 }}
                 style={{
                   cursor: 'pointer',
-                  background: on ? tagBg(tag) : 'rgba(255,255,255,0.03)',
+                  background: on ? tagBgFrom(c) : 'rgba(255,255,255,0.03)',
                   border: `1px solid ${on ? c + '66' : 'var(--border)'}`,
                   borderRadius: 100, padding: '0.25rem 0.65rem',
                   color: on ? c : 'var(--muted)',
@@ -227,20 +277,35 @@ export default function CountryPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           style={{
-            width: 280, flexShrink: 0,
+            flex: 1,
+            width: '100%',
             background: 'var(--surface)',
-            borderRight: '1px solid var(--border)',
             display: 'flex', flexDirection: 'column',
             overflow: 'hidden',
           }}
         >
           {/* stats */}
           <div style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <StatCard value={data.cities.total} label="Cities" color={g1} />
             <StatCard value={data.institutions.total} label="Institutions" color={g2} />
+            <StatCard value={data.institutions.mapped ?? data.pins?.length ?? 0} label="Mapped" color={g1} />
+            <StatCard value={data.cities.total} label="Cities" color={g1} />
             {data.subdivisions.total > 0 &&
               <StatCard value={data.subdivisions.total} label="Subdivisions" color="#8b5cf6" />}
           </div>
+
+          {/* coverage note — explains why mapped < total */}
+          {(data.institutions.unmapped ?? 0) > 0 && (
+            <div style={{
+              padding: '0.5rem 1rem', borderBottom: '1px solid var(--border)',
+              fontSize: '0.68rem', color: 'var(--muted)', lineHeight: 1.5,
+            }}>
+              <strong style={{ color: 'var(--text)' }}>
+                {(data.institutions.mapped ?? 0).toLocaleString()}
+              </strong>{' of '}
+              {data.institutions.total.toLocaleString()} have coordinates.{' '}
+              {(data.institutions.unmapped ?? 0).toLocaleString()} are listed but not on the map.
+            </div>
+          )}
 
           {/* search */}
           <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--border)' }}>
@@ -264,146 +329,210 @@ export default function CountryPage() {
             )}
           </div>
 
-          {/* list */}
-          <div style={{ flex: 1, overflowY: 'auto' }}>
-            <AnimatePresence>
-              {visiblePins.length === 0 ? (
-                <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.82rem' }}>
-                  No results
-                </div>
-              ) : (
-                visiblePins.slice(0, 400).map((pin, i) => (
-                  <motion.div
-                    key={pin.id}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: Math.min(i * 0.012, 0.3) }}
-                    onClick={() => { setFlyTarget(pin); setActivePin(pin.id); setTimeout(() => setFlyTarget(null), 50) }}
-                    style={{
-                      display: 'flex', alignItems: 'flex-start', gap: '0.6rem',
-                      padding: '0.6rem 1rem', cursor: 'pointer',
-                      background: activePin === pin.id ? `${tagBg(pin.tag)}` : 'transparent',
-                      borderLeft: activePin === pin.id ? `3px solid ${tagColor(pin.tag)}` : '3px solid transparent',
-                      transition: 'background 0.15s, border-color 0.15s',
-                    }}
-                    onMouseEnter={e => { if (activePin !== pin.id) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)' }}
-                    onMouseLeave={e => { if (activePin !== pin.id) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
-                  >
-                    <div style={{
-                      width: 9, height: 9, borderRadius: '50%', flexShrink: 0, marginTop: 4,
-                      background: tagColor(pin.tag),
-                      boxShadow: `0 0 6px ${tagColor(pin.tag)}88`,
-                    }} />
-                    <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: '0.78rem', lineHeight: 1.4, wordBreak: 'break-word', color: 'var(--text)' }}>
-                        {pin.name}
-                      </div>
-                      <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 2 }}>
-                        {TAG_LABELS[pin.tag] || pin.tag} · {pin.city}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))
-              )}
-            </AnimatePresence>
-            {visiblePins.length > 400 && (
-              <div style={{ padding: '1rem', textAlign: 'center', fontSize: '0.72rem', color: 'var(--muted)' }}>
-                Showing 400 of {visiblePins.length.toLocaleString()} — refine search to narrow results
+          {/* list — grouped by city */}
+          <div ref={listRef} style={{ flex: 1, overflowY: 'auto', padding: '0.25rem 0' }}>
+            {cityGroups.length === 0 ? (
+              <div style={{ padding: '2.5rem 1rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.82rem' }}>
+                No institutions match that search.
               </div>
+            ) : (
+              cityGroups.map(city => (
+                <div key={city.id} style={{ marginBottom: 6 }}>
+                  {/* city header */}
+                  <div style={{
+                    display: 'flex', alignItems: 'baseline', gap: 8,
+                    padding: '0.55rem 1rem 0.35rem',
+                    position: 'sticky', top: 0, zIndex: 2,
+                    background: 'var(--surface)',
+                  }}>
+                    <span style={{
+                      fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.06em',
+                      textTransform: 'uppercase', color: 'var(--text)',
+                    }}>{city.name}</span>
+                    <span style={{
+                      fontSize: '0.62rem', color: 'var(--muted)',
+                      background: 'rgba(255,255,255,0.06)',
+                      borderRadius: 100, padding: '1px 7px',
+                    }}>{city.pins.length}</span>
+                    <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+                  </div>
+
+                  {city.pins.map(pin => {
+                    const isSel = activePin === pin.id
+                    return (
+                      <div
+                        key={pin.id}
+                        data-pin-id={pin.id}
+                        onClick={() => setActivePin(isSel ? null : pin.id)}
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: 9,
+                          padding: '0.5rem 1rem 0.5rem 1.35rem',
+                          cursor: 'pointer',
+                          background: isSel ? tagBgFrom(tColor(pin.tag), 0.22) : 'transparent',
+                          borderLeft: isSel
+                            ? `2px solid ${tColor(pin.tag)}` : '2px solid transparent',
+                          transition: 'background 0.12s',
+                        }}
+                        onMouseEnter={e => {
+                          if (!isSel) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.035)'
+                        }}
+                        onMouseLeave={e => {
+                          if (!isSel) (e.currentTarget as HTMLElement).style.background = 'transparent'
+                        }}
+                      >
+                        <span style={{
+                          width: 6, height: 6, borderRadius: '50%', flexShrink: 0,
+                          background: tColor(pin.tag),
+                        }} />
+                        <span style={{
+                          flex: 1, minWidth: 0,
+                          fontSize: '0.8rem', lineHeight: 1.35, color: 'var(--text)',
+                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                        }}>
+                          {pin.name}
+                        </span>
+                        <span style={{
+                          fontSize: '0.62rem', color: 'var(--muted)', flexShrink: 0,
+                          whiteSpace: 'nowrap',
+                        }}>
+                          {TAG_LABELS[pin.tag] || pin.tag}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+              ))
             )}
           </div>
         </motion.div>
 
-        {/* ── Map ── */}
-        <div style={{ flex: 1, position: 'relative' }}>
-          <MapContainer
-            style={{ width: '100%', height: '100%' }}
-            center={[20, 90]}
-            zoom={5}
-            scrollWheelZoom
-            preferCanvas
-          >
-            <TileLayer url={tile.url} attribution={tile.attribution} subdomains="abcd" maxZoom={19} />
-            <BoundsFitter bounds={data.bounds} />
-            <FlyTo target={flyTarget} />
-
-            {visiblePins.map(pin => (
-              <CircleMarker
-                key={pin.id}
-                center={[pin.lat, pin.lng]}
-                {...pinOptions(pin.tag, theme.mapAccent, activePin === pin.id)}
-                eventHandlers={{
-                  click: () => setActivePin(pin.id),
-                  popupclose: () => setActivePin(null),
-                }}
-              >
-                <Popup>
-                  <div style={{ minWidth: 180 }}>
+        {/* ── Detail panel ── */}
+        <AnimatePresence>
+          {activePinObj && (
+            <motion.aside
+              key="detail"
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: 340, opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              style={{
+                flexShrink: 0, overflow: 'hidden',
+                background: 'var(--surface)',
+                borderLeft: '1px solid var(--border)',
+              }}
+            >
+              <div style={{ width: 340, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                {/* header */}
+                <div style={{
+                  padding: '1rem 1.1rem', borderBottom: '1px solid var(--border)',
+                  display: 'flex', alignItems: 'flex-start', gap: 10,
+                }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{
-                      fontWeight: 700, fontSize: '0.88rem', marginBottom: 4,
-                      color: '#e2e8f8', lineHeight: 1.4,
-                    }}>{pin.name}</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{
-                        display: 'inline-block', width: 8, height: 8, borderRadius: '50%',
-                        background: tagColor(pin.tag), flexShrink: 0,
-                      }} />
-                      <span style={{ fontSize: '0.75rem', color: '#8892b0' }}>
-                        {TAG_LABELS[pin.tag] || pin.tag}
-                      </span>
+                      fontSize: '0.98rem', fontWeight: 700, color: 'var(--text)',
+                      lineHeight: 1.35, wordBreak: 'break-word',
+                    }}>
+                      {activePinObj.name}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#6b7fa3', marginTop: 4 }}>
-                      City: {pin.city}
-                    </div>
+                    {activePinObj.localNames?.map(({ lang, name }) => (
+                      <div key={lang} style={{ marginTop: 6 }}>
+                        <div style={{
+                          fontSize: '0.58rem', textTransform: 'uppercase',
+                          letterSpacing: '0.09em', color: 'var(--muted)',
+                          fontWeight: 700, marginBottom: 1,
+                        }}>
+                          {LANG_NAMES[lang] ?? lang}
+                        </div>
+                        <div style={{
+                          fontSize: '0.85rem', color: 'var(--text)',
+                          lineHeight: 1.45, wordBreak: 'break-word',
+                        }}>
+                          {name}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </Popup>
-              </CircleMarker>
-            ))}
-          </MapContainer>
-
-          {/* Map legend overlay */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            style={{
-              position: 'absolute', bottom: 28, right: 12, zIndex: 1000,
-              background: 'rgba(14,18,34,0.9)', backdropFilter: 'blur(8px)',
-              border: '1px solid var(--border)', borderRadius: 12,
-              padding: '0.75rem 1rem', fontSize: '0.72rem',
-              pointerEvents: 'none',
-            }}
-          >
-            <div style={{ color: 'var(--muted)', fontWeight: 600, marginBottom: 6, fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              {visiblePins.length.toLocaleString()} pins visible
-            </div>
-            {allTags.map(tag => (
-              effectiveFilters.has(tag) && (
-                <div key={tag} style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
-                  <div style={{
-                    width: 9, height: 9, borderRadius: '50%', background: tagColor(tag),
-                    boxShadow: `0 0 5px ${tagColor(tag)}99`, flexShrink: 0,
-                  }} />
-                  <span style={{ color: 'var(--text)' }}>{TAG_LABELS[tag] || tag}</span>
-                  <span style={{ color: 'var(--muted)', marginLeft: 'auto', paddingLeft: 12 }}>
-                    {data.institutions.byTag[tag] ?? 0}
-                  </span>
+                  <button
+                    onClick={() => setActivePin(null)}
+                    aria-label="Close details"
+                    style={{
+                      cursor: 'pointer', flexShrink: 0,
+                      background: 'rgba(255,255,255,0.06)', border: 'none',
+                      color: 'var(--muted)', borderRadius: 8,
+                      width: 26, height: 26, fontSize: '0.9rem', lineHeight: 1,
+                    }}
+                  >×</button>
                 </div>
-              )
-            ))}
-          </motion.div>
 
-          {/* Country name watermark */}
-          <div style={{
-            position: 'absolute', top: 12, right: 12, zIndex: 1000,
-            pointerEvents: 'none', userSelect: 'none',
-          }}>
-            <span style={{
-              fontSize: '1.8rem',
-              filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))',
-            }}>{FLAGS[cc.toUpperCase()] || ''}</span>
-          </div>
-        </div>
+                {/* facts */}
+                <div style={{ padding: '0.9rem 1.1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <DetailRow label="Type" value={TAG_LABELS[activePinObj.tag] || activePinObj.tag} dot={tColor(activePinObj.tag)} />
+                  <DetailRow
+                    label="City"
+                    value={activePinObj.cityName || activePinObj.city}
+                    href={cityMapsUrl(activePinObj.cityName || activePinObj.city, data.name)}
+                  />
+                  <DetailRow
+                    label="Location"
+                    value={`${activePinObj.lat.toFixed(4)}, ${activePinObj.lng.toFixed(4)}`}
+                    mono
+                    href={gmapsUrl(activePinObj.lat, activePinObj.lng, activePinObj.name)}
+                  />
+                  <DetailRow label="Entity" value={activePinObj.type} />
+                  <DetailRow label="Source ID" value={activePinObj.id} mono />
+                </div>
+
+                {/* other institutions in the same city */}
+                {(() => {
+                  const others = visiblePins.filter(
+                    p => p.city === activePinObj.city && p.id !== activePinObj.id,
+                  )
+                  if (!others.length) return null
+                  return (
+                    <div style={{
+                      flex: 1, overflowY: 'auto',
+                      borderTop: '1px solid var(--border)',
+                      padding: '0.8rem 1.1rem 1rem',
+                    }}>
+                      <div style={{
+                        fontSize: '0.62rem', textTransform: 'uppercase',
+                        letterSpacing: '0.08em', color: 'var(--muted)',
+                        fontWeight: 700, marginBottom: 8,
+                      }}>
+                        Also in {activePinObj.cityName || activePinObj.city} · {others.length}
+                      </div>
+                      {others.slice(0, 20).map(o => (
+                        <div
+                          key={o.id}
+                          onClick={() => setActivePin(o.id)}
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: 7,
+                            padding: '0.35rem 0', cursor: 'pointer',
+                            fontSize: '0.76rem', color: 'var(--text)', lineHeight: 1.35,
+                          }}
+                        >
+                          <span style={{
+                            width: 5, height: 5, borderRadius: '50%',
+                            background: tColor(o.tag), flexShrink: 0,
+                          }} />
+                          <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {o.name}
+                          </span>
+                        </div>
+                      ))}
+                      {others.length > 20 && (
+                        <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 6 }}>
+                          +{others.length - 20} more
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
+              </div>
+            </motion.aside>
+          )}
+        </AnimatePresence>
+
       </div>
     </div>
   )
