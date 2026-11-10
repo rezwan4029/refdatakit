@@ -1,5 +1,7 @@
 # RefDataKit
 
+**Coverage explorer:** [rezwan4029.github.io/refdatakit](https://rezwan4029.github.io/refdatakit/) — interactive maps showing cities, institutions, and subdivisions for each country.
+
 Published packages: [JavaScript/TypeScript on npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [Python on PyPI](https://pypi.org/project/refdatakit/).
 
 Public documentation: [JavaScript/TypeScript package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/js/README.md) · [Python package guide](https://github.com/rezwan4029/refdatakit/blob/main/packages/python/README.md).

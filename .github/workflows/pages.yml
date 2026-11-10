@@ -6,6 +6,7 @@ on:
     paths:
       - "datasets/**"
       - "docs/**"
+      - "packages/js/**"
   workflow_dispatch:
 
 permissions:
@@ -27,13 +28,18 @@ jobs:
         with:
           node-version: 22
 
-      - name: Build data files
-        run: node docs/build.mjs
+      - name: Install docs dependencies
+        run: npm ci
+        working-directory: docs
+
+      - name: Build site (data + React)
+        run: npm run build
+        working-directory: docs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/
+          path: docs/dist
 
   deploy:
     needs: build
