@@ -26,17 +26,15 @@ mkdirSync(outDir, { recursive: true })
 // ---------------------------------------------------------------------------
 let getCities, getCountries, getInstitutions, getSubdivisions, CountryCode
 
-try {
-  const pkg = await import('@rezwan4029/refdatakit')
-  getCities       = pkg.getCities
-  getCountries    = pkg.getCountries
-  getInstitutions = pkg.getInstitutions
-  getSubdivisions = pkg.getSubdivisions
-  CountryCode     = pkg.CountryCode
-  console.log('Using @rezwan4029/refdatakit (published package)')
-} catch {
-  // Package not installed — build data directly from local repo JSON files
-  console.log('Package not found — reading datasets directly from repo')
+// The repository's datasets/ directory is the source of truth: contributors
+// edit it and CI validates it. The published npm package can lag behind it
+// (at one point it held 293 BD institutions against 1031 in the repo), so
+// prefer the local datasets and only fall back to the package if they are
+// missing — e.g. when this script runs outside a full checkout.
+const localCountryFile = join(repoRoot, 'datasets', 'countries', 'data.json')
+
+if (existsSync(localCountryFile)) {
+  console.log('Reading datasets directly from the repository')
   const readJSON = (rel) => {
     const p = join(repoRoot, rel)
     if (!existsSync(p)) return []
@@ -48,6 +46,14 @@ try {
   getCountries    = async ()   => readJSON('datasets/countries/data.json')
   getInstitutions = async (cc) => readJSON(`datasets/institutions/by-country/${cc}.json`)
   getSubdivisions = async (cc) => readJSON(`datasets/subdivisions/by-country/${cc}.json`)
+} else {
+  const pkg = await import('@rezwan4029/refdatakit')
+  getCities       = pkg.getCities
+  getCountries    = pkg.getCountries
+  getInstitutions = pkg.getInstitutions
+  getSubdivisions = pkg.getSubdivisions
+  CountryCode     = pkg.CountryCode
+  console.log('Repository datasets not found — using @rezwan4029/refdatakit')
 }
 
 // ---------------------------------------------------------------------------
