@@ -1,1 +1,100 @@
-[{"city_id":"wikidata:Q9270","country_code":"BT","entity_type":"other","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q4201619","value":"Q4201619"}],"id":"wikidata:Q4201619","names":{"en":"Institute of Traditional Medicine Services","languages":{"dz":"སྔོན་འགྲོ་སྨན་རིག་ཞབས་ཏོག་ལས་ཁུངས་"}},"tags":["hospital"],"website":"http://www.health.gov.bt/ITMS/01index/01htm/01index.htm"},{"city_id":"wikidata:Q9270","country_code":"BT","entity_type":"other","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q4314988","value":"Q4314988"}],"id":"wikidata:Q4314988","localized_aliases":[{"language":"en","value":"National Referral Hospital"}],"names":{"en":"Jigme Dorji Wangchuck National Referral Hospital","languages":{"dz":"འཇིགས་མེད་རྡོ་རྗེ་དབང་ཕྱུག་རྒྱལ་ཡོངས་སྨན་ཁང་"}},"tags":["hospital"],"website":"https://www.jdwnrh.gov.bt"},{"city_id":"wikidata:Q9270","country_code":"BT","entity_type":"university","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q86663201","value":"Q86663201"}],"id":"wikidata:Q86663201","names":{"en":"Khesar Gyalpo University of Medical Sciences of Bhutan","languages":{"dz":"གེ་སར་རྒྱལ་པོ་གསོ་རིག་གཙུག་ལག་སློབ་སྡེ།"}},"tags":["university"],"website":"https://www.kgumsb.edu.bt/"},{"city_id":"wikidata:Q9270","country_code":"BT","entity_type":"university","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q2640138","value":"Q2640138"}],"id":"wikidata:Q2640138","names":{"en":"Royal University of Bhutan","languages":{"dz":"འབྲུག་རྒྱལ་འཛིན་གཙུག་ལག་སློབ་སྡེ།"}},"tags":["university"],"website":"http://www.rub.edu.bt/"}]
+[
+  {
+    "city_id": "wikidata:Q9270",
+    "country_code": "BT",
+    "entity_type": "other",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q4201619",
+        "value": "Q4201619"
+      }
+    ],
+    "id": "wikidata:Q4201619",
+    "names": {
+      "en": "Institute of Traditional Medicine Services",
+      "languages": {
+        "dz": "སྔོན་འགྲོ་སྨན་རིག་ཞབས་ཏོག་ལས་ཁུངས་"
+      }
+    },
+    "tags": [
+      "hospital"
+    ],
+    "website": "http://www.health.gov.bt/ITMS/01index/01htm/01index.htm"
+  },
+  {
+    "city_id": "wikidata:Q9270",
+    "country_code": "BT",
+    "entity_type": "other",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q4314988",
+        "value": "Q4314988"
+      }
+    ],
+    "id": "wikidata:Q4314988",
+    "localized_aliases": [
+      {
+        "language": "en",
+        "value": "National Referral Hospital"
+      }
+    ],
+    "names": {
+      "en": "Jigme Dorji Wangchuck National Referral Hospital",
+      "languages": {
+        "dz": "འཇིགས་མེད་རྡོ་རྗེ་དབང་ཕྱུག་རྒྱལ་ཡོངས་སྨན་ཁང་"
+      }
+    },
+    "tags": [
+      "hospital"
+    ],
+    "website": "https://www.jdwnrh.gov.bt"
+  },
+  {
+    "city_id": "wikidata:Q9270",
+    "country_code": "BT",
+    "entity_type": "university",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q86663201",
+        "value": "Q86663201"
+      }
+    ],
+    "id": "wikidata:Q86663201",
+    "names": {
+      "en": "Khesar Gyalpo University of Medical Sciences of Bhutan",
+      "languages": {
+        "dz": "གེ་སར་རྒྱལ་པོ་གསོ་རིག་གཙུག་ལག་སློབ་སྡེ།"
+      }
+    },
+    "tags": [
+      "university"
+    ],
+    "website": "https://www.kgumsb.edu.bt/"
+  },
+  {
+    "city_id": "wikidata:Q9270",
+    "country_code": "BT",
+    "entity_type": "university",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q2640138",
+        "value": "Q2640138"
+      }
+    ],
+    "id": "wikidata:Q2640138",
+    "names": {
+      "en": "Royal University of Bhutan",
+      "languages": {
+        "dz": "འབྲུག་རྒྱལ་འཛིན་གཙུག་ལག་སློབ་སྡེ།"
+      }
+    },
+    "tags": [
+      "university"
+    ],
+    "website": "http://www.rub.edu.bt/"
+  }
+]

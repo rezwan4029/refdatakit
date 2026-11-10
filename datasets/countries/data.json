@@ -1,1 +1,87 @@
-[{"alpha3_code":"BGD","code":"BD","commonly_spoken_languages":["bn-BD","en"],"name":"Bangladesh","numeric_code":"050","official_languages":["bn"]},{"alpha3_code":"BTN","code":"BT","commonly_spoken_languages":["dz"],"name":"Bhutan","numeric_code":"064","official_languages":["dz"]},{"alpha3_code":"MDV","code":"MV","commonly_spoken_languages":["dv","en"],"name":"Maldives","numeric_code":"462","official_languages":["dv"]},{"alpha3_code":"NPL","code":"NP","commonly_spoken_languages":["ne","en"],"name":"Nepal","numeric_code":"524","official_languages":["ne"]},{"alpha3_code":"SGP","code":"SG","commonly_spoken_languages":["cmn","en-SG","ms-SG","ta-SG","zh-SG"],"name":"Singapore","numeric_code":"702","official_languages":["en","ms","ta","zh"]},{"alpha3_code":"LKA","code":"LK","commonly_spoken_languages":["si","ta","en"],"name":"Sri Lanka","numeric_code":"144","official_languages":["si","ta"]}]
+[
+  {
+    "alpha3_code": "BGD",
+    "code": "BD",
+    "commonly_spoken_languages": [
+      "bn-BD",
+      "en"
+    ],
+    "name": "Bangladesh",
+    "numeric_code": "050",
+    "official_languages": [
+      "bn"
+    ]
+  },
+  {
+    "alpha3_code": "BTN",
+    "code": "BT",
+    "commonly_spoken_languages": [
+      "dz"
+    ],
+    "name": "Bhutan",
+    "numeric_code": "064",
+    "official_languages": [
+      "dz"
+    ]
+  },
+  {
+    "alpha3_code": "MDV",
+    "code": "MV",
+    "commonly_spoken_languages": [
+      "dv",
+      "en"
+    ],
+    "name": "Maldives",
+    "numeric_code": "462",
+    "official_languages": [
+      "dv"
+    ]
+  },
+  {
+    "alpha3_code": "NPL",
+    "code": "NP",
+    "commonly_spoken_languages": [
+      "ne",
+      "en"
+    ],
+    "name": "Nepal",
+    "numeric_code": "524",
+    "official_languages": [
+      "ne"
+    ]
+  },
+  {
+    "alpha3_code": "SGP",
+    "code": "SG",
+    "commonly_spoken_languages": [
+      "cmn",
+      "en-SG",
+      "ms-SG",
+      "ta-SG",
+      "zh-SG"
+    ],
+    "name": "Singapore",
+    "numeric_code": "702",
+    "official_languages": [
+      "en",
+      "ms",
+      "ta",
+      "zh"
+    ]
+  },
+  {
+    "alpha3_code": "LKA",
+    "code": "LK",
+    "commonly_spoken_languages": [
+      "si",
+      "ta",
+      "en"
+    ],
+    "name": "Sri Lanka",
+    "numeric_code": "144",
+    "official_languages": [
+      "si",
+      "ta"
+    ]
+  }
+]

@@ -1,1 +1,4126 @@
-[{"country_code":"BD","id":"ajmiriganj","localized_names":[{"language":"bn","name":"আজমিরীগঞ্জ"}],"name":"Ajmiriganj","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"akhaura","localized_names":[{"language":"bn","name":"আখাউড়া"}],"name":"Akhaura","subdivision_code":"BD-BRA"},{"country_code":"BD","id":"akkelpur","localized_names":[{"language":"bn","name":"আক্কেলপুর"}],"name":"Akkelpur","subdivision_code":"BD-JOY"},{"country_code":"BD","id":"alamdanga","localized_names":[{"language":"bn","name":"আলমডাঙ্গা"}],"name":"Alamdanga","subdivision_code":"BD-CHU"},{"country_code":"BD","id":"alfadanga","localized_names":[{"language":"bn","name":"আলফাডাঙ্গা"}],"name":"Alfadanga","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"amtali","localized_names":[{"language":"bn","name":"আমতলী"}],"name":"Amtali","subdivision_code":"BD-BAR"},{"country_code":"BD","id":"araihazar","localized_names":[{"language":"bn","name":"আড়াইহাজার"}],"name":"Araihazar","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"arani","localized_names":[{"language":"bn","name":"আড়ানী"}],"name":"Arani","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"atgharia","localized_names":[{"language":"bn","name":"আটঘরিয়া"}],"name":"Atgharia","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"badarganj","localized_names":[{"language":"bn","name":"বদরগঞ্জ"}],"name":"Badarganj","subdivision_code":"BD-RAG"},{"country_code":"BD","id":"bagatipara","localized_names":[{"language":"bn","name":"বাগাতিপাড়া"}],"name":"Bagatipara","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"bagerhat","localized_names":[{"language":"bn","name":"বাগেরহাট"}],"name":"Bagerhat","subdivision_code":"BD-BAG"},{"country_code":"BD","id":"bagha","localized_names":[{"language":"bn","name":"বাঘা"}],"name":"Bagha","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"baghaichhari","localized_names":[{"language":"bn","name":"বাঘাইছড়ি"}],"name":"Baghaichhari","subdivision_code":"BD-RAN"},{"country_code":"BD","id":"bagher-para","localized_names":[{"language":"bn","name":"বাঘারপাড়া"}],"name":"Bagher Para","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"bajitpur","localized_names":[{"language":"bn","name":"বাজিতপুর"}],"name":"Bajitpur","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"bakerganj","localized_names":[{"language":"bn","name":"বাকেরগঞ্জ"}],"name":"Bakerganj","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"bakshiganj","localized_names":[{"language":"bn","name":"বকশীগঞ্জ"}],"name":"Bakshiganj","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"banari-para","localized_names":[{"language":"bn","name":"বানারীপাড়া"}],"name":"Banari Para","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"bancharampur","localized_names":[{"language":"bn","name":"বাঞ্ছারামপুর"}],"name":"Bancharampur","subdivision_code":"BD-BRA"},{"country_code":"BD","id":"bandarban","localized_names":[{"language":"bn","name":"বান্দরবান"}],"name":"Bandarban","subdivision_code":"BD-BAN"},{"country_code":"BD","id":"banpara","localized_names":[{"language":"bn","name":"বনপাড়া"}],"name":"Banpara","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"banshkhali","localized_names":[{"language":"bn","name":"বাঁশখালী"}],"name":"Banshkhali","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"baraigram","localized_names":[{"language":"bn","name":"বড়াইগ্রাম"}],"name":"Baraigram","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"barguna","localized_names":[{"language":"bn","name":"বরগুনা"}],"name":"Barguna","subdivision_code":"BD-BAR"},{"aliases":["Barisal"],"coordinates":{"latitude":22.7,"longitude":90.367},"country_code":"BD","id":"barishal","localized_names":[{"language":"bn","name":"বরিশাল"}],"name":"Barishal","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"barlekha","localized_names":[{"language":"bn","name":"বড়লেখা"}],"name":"Barlekha","subdivision_code":"BD-MAU"},{"country_code":"BD","id":"baroiar-hat","localized_names":[{"language":"bn","name":"বারইয়ারহাট"}],"name":"Baroiar Hat","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"barura","localized_names":[{"language":"bn","name":"বরুড়া"}],"name":"Barura","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"basail","localized_names":[{"language":"bn","name":"বাসাইল"}],"name":"Basail","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"basurhat","localized_names":[{"language":"bn","name":"বসুরহাট"}],"name":"Basurhat","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"bauphal","localized_names":[{"language":"bn","name":"বাউফল"}],"name":"Bauphal","subdivision_code":"BD-PAT"},{"country_code":"BD","id":"beani-bazar","localized_names":[{"language":"bn","name":"বিয়ানীবাজার"}],"name":"Beani Bazar","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"belkuchi","localized_names":[{"language":"bn","name":"বেলকুচি"}],"name":"Belkuchi","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"benapole","localized_names":[{"language":"bn","name":"বেনাপোল"}],"name":"Benapole","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"bera","localized_names":[{"language":"bn","name":"বেড়া"}],"name":"Bera","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"betagi","localized_names":[{"language":"bn","name":"বেতাগী"}],"name":"Betagi","subdivision_code":"BD-BAR"},{"country_code":"BD","id":"bhabanigonj","localized_names":[{"language":"bn","name":"ভবানীগঞ্জ"}],"name":"Bhabanigonj","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"bhairab","localized_names":[{"language":"bn","name":"ভৈরব"}],"name":"Bhairab","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"bhaluka","localized_names":[{"language":"bn","name":"ভালুকা"}],"name":"Bhaluka","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"bhandaria","localized_names":[{"language":"bn","name":"ভান্ডারিয়া"}],"name":"Bhandaria","subdivision_code":"BD-PIR"},{"country_code":"BD","id":"bhanga","localized_names":[{"language":"bn","name":"ভাঙ্গা"}],"name":"Bhanga","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"bhangura","localized_names":[{"language":"bn","name":"ভাঙ্গুরা"}],"name":"Bhangura","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"bhedarganj","localized_names":[{"language":"bn","name":"ভেদরগঞ্জ"}],"name":"Bhedarganj","subdivision_code":"BD-SHA"},{"country_code":"BD","id":"bheramara","localized_names":[{"language":"bn","name":"ভেড়ামারা"}],"name":"Bheramara","subdivision_code":"BD-KUS"},{"country_code":"BD","id":"bhola","localized_names":[{"language":"bn","name":"ভোলা"}],"name":"Bhola","subdivision_code":"BD-BHO"},{"country_code":"BD","id":"bhuapur","localized_names":[{"language":"bn","name":"ভুয়াপুর"}],"name":"Bhuapur","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"biral","localized_names":[{"language":"bn","name":"বিরল"}],"name":"Biral","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"birampur","localized_names":[{"language":"bn","name":"বিরামপুর"}],"name":"Birampur","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"birganj","localized_names":[{"language":"bn","name":"বীরগঞ্জ"}],"name":"Birganj","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"biswanath","localized_names":[{"language":"bn","name":"বিশ্বনাথ"}],"name":"Biswanath","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"boalkhali","localized_names":[{"language":"bn","name":"বোয়ালখালী"}],"name":"Boalkhali","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"boalmari","localized_names":[{"language":"bn","name":"বোয়ালমারী"}],"name":"Boalmari","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"boda","localized_names":[{"language":"bn","name":"বোদা"}],"name":"Boda","subdivision_code":"BD-PAN"},{"country_code":"BD","id":"bogra","localized_names":[{"language":"bn","name":"বগুড়া"}],"name":"Bogra","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"brahmanbaria","localized_names":[{"language":"bn","name":"ব্রাহ্মণবাড়ীয়া"}],"name":"Brahmanbaria","subdivision_code":"BD-BRA"},{"country_code":"BD","id":"burhanuddin","localized_names":[{"language":"bn","name":"বোরহানউদ্দিন"}],"name":"Burhanuddin","subdivision_code":"BD-BHO"},{"country_code":"BD","id":"chakaria","localized_names":[{"language":"bn","name":"চকরিয়া"}],"name":"Chakaria","subdivision_code":"BD-COX"},{"country_code":"BD","id":"chalna","localized_names":[{"language":"bn","name":"চালনা"}],"name":"Chalna","subdivision_code":"BD-KHU"},{"country_code":"BD","id":"chandanaish","localized_names":[{"language":"bn","name":"চন্দনাইশ"}],"name":"Chandanaish","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"chandina","localized_names":[{"language":"bn","name":"চান্দিনা"}],"name":"Chandina","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"chandpur","localized_names":[{"language":"bn","name":"চাঁদপুর"}],"name":"Chandpur","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"chapai-nababganj","localized_names":[{"language":"bn","name":"চাঁপাইনবাবগঞ্জ"}],"name":"Chapai Nababganj","subdivision_code":"BD-CHP"},{"country_code":"BD","id":"char-fasson","localized_names":[{"language":"bn","name":"চরফ্যাশন"}],"name":"Char Fasson","subdivision_code":"BD-BHO"},{"country_code":"BD","id":"charghat","localized_names":[{"language":"bn","name":"চারঘাট"}],"name":"Charghat","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"chatkhil","localized_names":[{"language":"bn","name":"চাটখিল"}],"name":"Chatkhil","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"chatmohar","localized_names":[{"language":"bn","name":"চাটমোহর"}],"name":"Chatmohar","subdivision_code":"BD-PAB"},{"aliases":["Chittagong"],"coordinates":{"latitude":22.335,"longitude":91.833},"country_code":"BD","id":"chattogram","localized_names":[{"language":"bn","name":"চট্টগ্রাম"}],"name":"Chattogram","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"chauddagram","localized_names":[{"language":"bn","name":"চৌদ্দগ্রাম"}],"name":"Chauddagram","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"chaugachha","localized_names":[{"language":"bn","name":"চৌগাছা"}],"name":"Chaugachha","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"chaumohani","localized_names":[{"language":"bn","name":"চৌমুহনী"}],"name":"Chaumohani","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"chhagalnaiya","localized_names":[{"language":"bn","name":"ছাগলনাইয়া"}],"name":"Chhagalnaiya","subdivision_code":"BD-FEN"},{"country_code":"BD","id":"chhatak","localized_names":[{"language":"bn","name":"ছাতক"}],"name":"Chhatak","subdivision_code":"BD-SUN"},{"country_code":"BD","id":"chuadanga","localized_names":[{"language":"bn","name":"চুয়াডাঙ্গা"}],"name":"Chuadanga","subdivision_code":"BD-CHU"},{"country_code":"BD","id":"chunarughat","localized_names":[{"language":"bn","name":"চুনারুঘাট"}],"name":"Chunarughat","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"cox-s-bazar","localized_names":[{"language":"bn","name":"কক্সবাজার"}],"name":"COX'S BAZAR","subdivision_code":"BD-COX"},{"aliases":["Comilla"],"country_code":"BD","id":"cumilla","localized_names":[{"language":"bn","name":"কুমিল্লা"}],"name":"Cumilla","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"daganbhuiyan","localized_names":[{"language":"bn","name":"দাগনভূঞাঁ"}],"name":"Daganbhuiyan","subdivision_code":"BD-FEN"},{"country_code":"BD","id":"damudya","localized_names":[{"language":"bn","name":"ডামুড্যা"}],"name":"Damudya","subdivision_code":"BD-SHA"},{"country_code":"BD","id":"darshana","localized_names":[{"language":"bn","name":"দর্শনা"}],"name":"Darshana","subdivision_code":"BD-CHU"},{"country_code":"BD","id":"daudkandi","localized_names":[{"language":"bn","name":"দাউদকান্দি"}],"name":"Daudkandi","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"daulatkhan","localized_names":[{"language":"bn","name":"দৌলতখান"}],"name":"Daulatkhan","subdivision_code":"BD-BHO"},{"country_code":"BD","id":"debidwar","localized_names":[{"language":"bn","name":"দেবিদ্বার"}],"name":"Debidwar","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"debiganj","localized_names":[{"language":"bn","name":"দেবীগঞ্জ"}],"name":"Debiganj","subdivision_code":"BD-PAN"},{"country_code":"BD","id":"derai","localized_names":[{"language":"bn","name":"দিরাই"}],"name":"Derai","subdivision_code":"BD-SUN"},{"country_code":"BD","id":"dewanganj","localized_names":[{"language":"bn","name":"দেওয়ানগঞ্জ"}],"name":"Dewanganj","subdivision_code":"BD-JAM"},{"coordinates":{"latitude":23.729,"longitude":90.394},"country_code":"BD","id":"dhaka","localized_names":[{"language":"bn","name":"ঢাকা"}],"name":"Dhaka","subdivision_code":"BD-DHA"},{"country_code":"BD","id":"dhamoirhat","localized_names":[{"language":"bn","name":"ধামইরহাট"}],"name":"Dhamoirhat","subdivision_code":"BD-NAO"},{"country_code":"BD","id":"dhamrai","localized_names":[{"language":"bn","name":"ধামরাই"}],"name":"Dhamrai","subdivision_code":"BD-DHA"},{"country_code":"BD","id":"dhanbari","localized_names":[{"language":"bn","name":"ধনবাড়ী"}],"name":"Dhanbari","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"dhunat","localized_names":[{"language":"bn","name":"ধুনট"}],"name":"Dhunat","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"dhupchanchia","localized_names":[{"language":"bn","name":"দুপচাঁচিয়া"}],"name":"Dhupchanchia","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"dinajpur","localized_names":[{"language":"bn","name":"দিনাজপুর"}],"name":"Dinajpur","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"dohar","localized_names":[{"language":"bn","name":"দোহার"}],"name":"Dohar","subdivision_code":"BD-DHA"},{"country_code":"BD","id":"dohazari","localized_names":[{"language":"bn","name":"দোহাজারী"}],"name":"Dohazari","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"domar","localized_names":[{"language":"bn","name":"ডোমার"}],"name":"Domar","subdivision_code":"BD-NIL"},{"country_code":"BD","id":"durgapur-netrakona","localized_names":[{"language":"bn","name":"দুর্গাপুর"}],"name":"Durgapur","subdivision_code":"BD-NET"},{"country_code":"BD","id":"durgapur-rajshahi","localized_names":[{"language":"bn","name":"দুর্গাপুর"}],"name":"Durgapur","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"elenga","localized_names":[{"language":"bn","name":"এলেঙ্গা"}],"name":"Elenga","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"faridganj","localized_names":[{"language":"bn","name":"ফরিদগঞ্জ"}],"name":"Faridganj","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"faridpur-faridpur","localized_names":[{"language":"bn","name":"ফরিদপুর"}],"name":"Faridpur","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"faridpur-pabna","localized_names":[{"language":"bn","name":"ফরিদপুর"}],"name":"Faridpur","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"fatikchhari","localized_names":[{"language":"bn","name":"ফটিকছড়ি"}],"name":"Fatikchhari","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"feni","localized_names":[{"language":"bn","name":"ফেনী"}],"name":"Feni","subdivision_code":"BD-FEN"},{"country_code":"BD","id":"fulbari","localized_names":[{"language":"bn","name":"ফুলবাড়ী"}],"name":"Fulbari","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"fulbaria","localized_names":[{"language":"bn","name":"ফুলবাড়ীয়া"}],"name":"Fulbaria","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"gabtali","localized_names":[{"language":"bn","name":"গাবতলী"}],"name":"Gabtali","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"gaffargaon","localized_names":[{"language":"bn","name":"গফরগাঁও"}],"name":"Gaffargaon","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"gaibandha","localized_names":[{"language":"bn","name":"গাইবান্ধা"}],"name":"Gaibandha","subdivision_code":"BD-GAI"},{"country_code":"BD","id":"galachipa","localized_names":[{"language":"bn","name":"গলাচিপা"}],"name":"Galachipa","subdivision_code":"BD-PAT"},{"country_code":"BD","id":"gangni","localized_names":[{"language":"bn","name":"গাংনী"}],"name":"Gangni","subdivision_code":"BD-MEH"},{"country_code":"BD","id":"gauripur","localized_names":[{"language":"bn","name":"গৌরীপুর"}],"name":"Gauripur","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"gaurnadi","localized_names":[{"language":"bn","name":"গৌরনদী"}],"name":"Gaurnadi","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"gazipur","localized_names":[{"language":"bn","name":"গাজীপুর"}],"name":"Gazipur","subdivision_code":"BD-GAZ"},{"country_code":"BD","id":"ghatail","localized_names":[{"language":"bn","name":"ঘাটাইল"}],"name":"Ghatail","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"ghoraghat","localized_names":[{"language":"bn","name":"ঘোড়াঘাট"}],"name":"Ghoraghat","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"ghorashal","localized_names":[{"language":"bn","name":"ঘোড়াশাল"}],"name":"Ghorashal","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"goalandaghat","localized_names":[{"language":"bn","name":"গোয়ালন্দ"}],"name":"Goalandaghat","subdivision_code":"BD-RAJ"},{"country_code":"BD","id":"gobindaganj","localized_names":[{"language":"bn","name":"গোবিন্দগঞ্জ"}],"name":"Gobindaganj","subdivision_code":"BD-GAI"},{"country_code":"BD","id":"godagari","localized_names":[{"language":"bn","name":"গোদাগাড়ী"}],"name":"Godagari","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"golapganj","localized_names":[{"language":"bn","name":"গোলাপগঞ্জ"}],"name":"Golapganj","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"gopaldi","localized_names":[{"language":"bn","name":"গোপালদী"}],"name":"Gopaldi","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"gopalganj","localized_names":[{"language":"bn","name":"গোপালগঞ্জ"}],"name":"Gopalganj","subdivision_code":"BD-GOP"},{"country_code":"BD","id":"gopalpur-natore","localized_names":[{"language":"bn","name":"গোপালপুর"}],"name":"Gopalpur","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"gopalpur-tangail","localized_names":[{"language":"bn","name":"গোপালপুর"}],"name":"Gopalpur","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"gosairhat","localized_names":[{"language":"bn","name":"গোসাইরহাট"}],"name":"Gosairhat","subdivision_code":"BD-SHA"},{"country_code":"BD","id":"gurudaspur","localized_names":[{"language":"bn","name":"গুরুদাসপুর"}],"name":"Gurudaspur","subdivision_code":"BD-NAT"},{"aliases":["Hobiganj"],"country_code":"BD","id":"habiganj","localized_names":[{"language":"bn","name":"হবিগঞ্জ"}],"name":"Habiganj","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"hajiganj","localized_names":[{"language":"bn","name":"হাজীগঞ্জ"}],"name":"Hajiganj","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"hakimpur","localized_names":[{"language":"bn","name":"হাকিমপুর"}],"name":"Hakimpur","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"haluaghat","localized_names":[{"language":"bn","name":"হালুয়াঘাট"}],"name":"Haluaghat","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"haragachh","localized_names":[{"language":"bn","name":"হারাগাছ"}],"name":"Haragachh","subdivision_code":"BD-RAG"},{"country_code":"BD","id":"harinakunda","localized_names":[{"language":"bn","name":"হরিণাকুন্ড"}],"name":"Harinakunda","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"hathazari","localized_names":[{"language":"bn","name":"হাটহাজারী"}],"name":"Hathazari","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"hatiya","localized_names":[{"language":"bn","name":"হাতিয়া"}],"name":"Hatiya","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"hazaribari","localized_names":[{"language":"bn","name":"হাজরাবাড়ী"}],"name":"Hazaribari","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"homna","localized_names":[{"language":"bn","name":"হোমনা"}],"name":"Homna","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"hossainpur","localized_names":[{"language":"bn","name":"হোসেনপুর"}],"name":"Hossainpur","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"ishwardi","localized_names":[{"language":"bn","name":"ঈশ্বরদী"}],"name":"Ishwardi","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"ishwarganj","localized_names":[{"language":"bn","name":"ঈশ্বরগঞ্জ"}],"name":"Ishwarganj","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"islampur","localized_names":[{"language":"bn","name":"ইসলামপুর"}],"name":"Islampur","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"jagannathpur","localized_names":[{"language":"bn","name":"জগন্নাথপুর"}],"name":"Jagannathpur","subdivision_code":"BD-SUN"},{"country_code":"BD","id":"jaldhaka","localized_names":[{"language":"bn","name":"জলঢাকা"}],"name":"Jaldhaka","subdivision_code":"BD-NIL"},{"country_code":"BD","id":"jamalpur","localized_names":[{"language":"bn","name":"জামালপুর"}],"name":"Jamalpur","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"jessore","localized_names":[{"language":"bn","name":"যশোর"}],"name":"Jessore","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"jhalokati","localized_names":[{"language":"bn","name":"ঝালকাঠী"}],"name":"Jhalokati","subdivision_code":"BD-JHA"},{"country_code":"BD","id":"jhenaidah","localized_names":[{"language":"bn","name":"ঝিনাইদহ"}],"name":"Jhenaidah","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"jhikargachha","localized_names":[{"language":"bn","name":"ঝিকরগাছা"}],"name":"Jhikargachha","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"jiban-nagar","localized_names":[{"language":"bn","name":"জীবননগর"}],"name":"Jiban Nagar","subdivision_code":"BD-CHU"},{"country_code":"BD","id":"joypurhat","localized_names":[{"language":"bn","name":"জয়পুরহাট"}],"name":"Joypurhat","subdivision_code":"BD-JOY"},{"country_code":"BD","id":"kabirhat","localized_names":[{"language":"bn","name":"কবিরহাট"}],"name":"Kabirhat","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"kachua","localized_names":[{"language":"bn","name":"কচুয়া"}],"name":"Kachua","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"kahaloo","localized_names":[{"language":"bn","name":"কাহালু"}],"name":"Kahaloo","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"kakanhat","localized_names":[{"language":"bn","name":"কাঁকনহাট"}],"name":"Kakanhat","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"kalai","localized_names":[{"language":"bn","name":"কালাই"}],"name":"Kalai","subdivision_code":"BD-JOY"},{"country_code":"BD","id":"kalapara","localized_names":[{"language":"bn","name":"কলাপাড়া"}],"name":"Kalapara","subdivision_code":"BD-PAT"},{"country_code":"BD","id":"kalaroa","localized_names":[{"language":"bn","name":"কলারোয়া"}],"name":"Kalaroa","subdivision_code":"BD-SAT"},{"country_code":"BD","id":"kalia","localized_names":[{"language":"bn","name":"কালিয়া"}],"name":"Kalia","subdivision_code":"BD-NAA"},{"country_code":"BD","id":"kaliakair","localized_names":[{"language":"bn","name":"কালিয়াকৈর"}],"name":"Kaliakair","subdivision_code":"BD-GAZ"},{"country_code":"BD","id":"kaliganj-gazipur","localized_names":[{"language":"bn","name":"কালীগঞ্জ"}],"name":"Kaliganj","subdivision_code":"BD-GAZ"},{"country_code":"BD","id":"kaliganj-jhenaidah","localized_names":[{"language":"bn","name":"কালিগঞ্জ"}],"name":"Kaliganj","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"kalihati","localized_names":[{"language":"bn","name":"কালিহাতী"}],"name":"Kalihati","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"kalkini","localized_names":[{"language":"bn","name":"কালকিনি"}],"name":"Kalkini","subdivision_code":"BD-MAD"},{"country_code":"BD","id":"kamalganj","localized_names":[{"language":"bn","name":"কমলগঞ্জ"}],"name":"Kamalganj","subdivision_code":"BD-MAU"},{"country_code":"BD","id":"kanaighat","localized_names":[{"language":"bn","name":"কানাইঘাট"}],"name":"Kanaighat","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"kanchan","localized_names":[{"language":"bn","name":"কাঞ্চন"}],"name":"Kanchan","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"karimganj","localized_names":[{"language":"bn","name":"করিমগঞ্জ"}],"name":"Karimganj","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"kasba","localized_names":[{"language":"bn","name":"কসবা"}],"name":"Kasba","subdivision_code":"BD-BRA"},{"country_code":"BD","id":"katakhali","localized_names":[{"language":"bn","name":"কাটাখালী"}],"name":"Katakhali","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"katiadi","localized_names":[{"language":"bn","name":"কটিয়াদী"}],"name":"Katiadi","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"kazipur","localized_names":[{"language":"bn","name":"কাজীপুর"}],"name":"Kazipur","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"kendua","localized_names":[{"language":"bn","name":"কেন্দুয়া"}],"name":"Kendua","subdivision_code":"BD-NET"},{"country_code":"BD","id":"keshabpur","localized_names":[{"language":"bn","name":"কেশবপুর"}],"name":"Keshabpur","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"kesharhat","localized_names":[{"language":"bn","name":"কেশরহাট"}],"name":"Kesharhat","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"khagrachhari","localized_names":[{"language":"bn","name":"খাগড়াছড়ি"}],"name":"Khagrachhari","subdivision_code":"BD-KHA"},{"country_code":"BD","id":"khetlal","localized_names":[{"language":"bn","name":"ক্ষেতলাল"}],"name":"Khetlal","subdivision_code":"BD-JOY"},{"country_code":"BD","id":"khoksa","localized_names":[{"language":"bn","name":"খোকসা"}],"name":"Khoksa","subdivision_code":"BD-KUS"},{"coordinates":{"latitude":22.817,"longitude":89.55},"country_code":"BD","id":"khulna","localized_names":[{"language":"bn","name":"খুলনা"}],"name":"Khulna","subdivision_code":"BD-KHU"},{"country_code":"BD","id":"kishoreganj","localized_names":[{"language":"bn","name":"কিশোরগঞ্জ"}],"name":"Kishoreganj","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"kotalipara","localized_names":[{"language":"bn","name":"কোটালীপাড়া"}],"name":"Kotalipara","subdivision_code":"BD-GOP"},{"country_code":"BD","id":"kotchandpur","localized_names":[{"language":"bn","name":"কোটচাঁদপুর"}],"name":"Kotchandpur","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"kuakata","localized_names":[{"language":"bn","name":"কুয়াকাটা"}],"name":"Kuakata","subdivision_code":"BD-PAT"},{"country_code":"BD","id":"kulaura","localized_names":[{"language":"bn","name":"কুলাউড়া"}],"name":"Kulaura","subdivision_code":"BD-MAU"},{"country_code":"BD","id":"kuliar-char","localized_names":[{"language":"bn","name":"কুলিয়ারচর"}],"name":"Kuliar Char","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"kumarkhali","localized_names":[{"language":"bn","name":"কুমারখালী"}],"name":"Kumarkhali","subdivision_code":"BD-KUS"},{"country_code":"BD","id":"kurigram","localized_names":[{"language":"bn","name":"কুড়িগ্রাম"}],"name":"Kurigram","subdivision_code":"BD-KUR"},{"country_code":"BD","id":"kushtia","localized_names":[{"language":"bn","name":"কুষ্টিয়া"}],"name":"Kushtia","subdivision_code":"BD-KUS"},{"country_code":"BD","id":"laksam","localized_names":[{"language":"bn","name":"লাকসাম"}],"name":"Laksam","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"lakshmipur","localized_names":[{"language":"bn","name":"লক্ষ্মীপুর"}],"name":"Lakshmipur","subdivision_code":"BD-LAK"},{"country_code":"BD","id":"lalmohan","localized_names":[{"language":"bn","name":"লালমোহন"}],"name":"Lalmohan","subdivision_code":"BD-BHO"},{"country_code":"BD","id":"lalmonirhat","localized_names":[{"language":"bn","name":"লালমনিরহাট"}],"name":"Lalmonirhat","subdivision_code":"BD-LAL"},{"country_code":"BD","id":"lama","localized_names":[{"language":"bn","name":"লামা"}],"name":"Lama","subdivision_code":"BD-BAN"},{"country_code":"BD","id":"lohagara","localized_names":[{"language":"bn","name":"লোহাগড়া"}],"name":"Lohagara","subdivision_code":"BD-NAA"},{"country_code":"BD","id":"madan","localized_names":[{"language":"bn","name":"মদন"}],"name":"Madan","subdivision_code":"BD-NET"},{"country_code":"BD","id":"madarganj","localized_names":[{"language":"bn","name":"মাদারগঞ্জ"}],"name":"Madarganj","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"madaripur","localized_names":[{"language":"bn","name":"মাদারীপুর"}],"name":"Madaripur","subdivision_code":"BD-MAD"},{"country_code":"BD","id":"madhabdi","localized_names":[{"language":"bn","name":"মাধবদী"}],"name":"Madhabdi","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"madhabpur","localized_names":[{"language":"bn","name":"মাধবপুর"}],"name":"Madhabpur","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"madhukhali","localized_names":[{"language":"bn","name":"মধুখালী"}],"name":"Madhukhali","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"madhupur","localized_names":[{"language":"bn","name":"মধুপুর"}],"name":"Madhupur","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"magura","localized_names":[{"language":"bn","name":"মাগুরা"}],"name":"Magura","subdivision_code":"BD-MAG"},{"country_code":"BD","id":"maheshkhali","localized_names":[{"language":"bn","name":"মহেশখালী"}],"name":"Maheshkhali","subdivision_code":"BD-COX"},{"country_code":"BD","id":"maheshpur","localized_names":[{"language":"bn","name":"মহেশপুর"}],"name":"Maheshpur","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"manikganj","localized_names":[{"language":"bn","name":"মানিকগঞ্জ"}],"name":"Manikganj","subdivision_code":"BD-MAN"},{"country_code":"BD","id":"manirampur","localized_names":[{"language":"bn","name":"মনিরামপুর"}],"name":"Manirampur","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"manohardi","localized_names":[{"language":"bn","name":"মনোহরদী"}],"name":"Manohardi","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"mathbaria","localized_names":[{"language":"bn","name":"মঠবাড়ীয়া"}],"name":"Mathbaria","subdivision_code":"BD-PIR"},{"country_code":"BD","id":"matiranga","localized_names":[{"language":"bn","name":"মাটিরাঙ্গা"}],"name":"Matiranga","subdivision_code":"BD-KHA"},{"country_code":"BD","id":"matlab","localized_names":[{"language":"bn","name":"মতলব"}],"name":"Matlab","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"maulvibazar","localized_names":[{"language":"bn","name":"মৌলভীবাজার"}],"name":"Maulvibazar","subdivision_code":"BD-MAU"},{"country_code":"BD","id":"meherpur","localized_names":[{"language":"bn","name":"মেহেরপুর"}],"name":"Meherpur","subdivision_code":"BD-MEH"},{"country_code":"BD","id":"melandaha","localized_names":[{"language":"bn","name":"মেলান্দহ"}],"name":"Melandaha","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"mhendiganj","localized_names":[{"language":"bn","name":"মেহেন্দিগঞ্জ"}],"name":"Mhendiganj","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"mirkadim","localized_names":[{"language":"bn","name":"মিরকাদিম"}],"name":"Mirkadim","subdivision_code":"BD-MUN"},{"country_code":"BD","id":"mirpur","localized_names":[{"language":"bn","name":"মিরপুর"}],"name":"Mirpur","subdivision_code":"BD-KUS"},{"country_code":"BD","id":"mirsharai","localized_names":[{"language":"bn","name":"মীরসরাই"}],"name":"Mirsharai","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"mirzapur","localized_names":[{"language":"bn","name":"মির্জাপুর"}],"name":"Mirzapur","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"mohanganj","localized_names":[{"language":"bn","name":"মোহনগঞ্জ"}],"name":"Mohanganj","subdivision_code":"BD-NET"},{"country_code":"BD","id":"mongla-port","localized_names":[{"language":"bn","name":"মোংলাপোর্ট"}],"name":"Mongla Port","subdivision_code":"BD-BAG"},{"country_code":"BD","id":"morrelganj","localized_names":[{"language":"bn","name":"মোড়েলগঞ্জ"}],"name":"Morrelganj","subdivision_code":"BD-BAG"},{"country_code":"BD","id":"muksudpur","localized_names":[{"language":"bn","name":"মুকসুদপুর"}],"name":"Muksudpur","subdivision_code":"BD-GOP"},{"country_code":"BD","id":"muktagachha","localized_names":[{"language":"bn","name":"মুক্তাগাছা"}],"name":"Muktagachha","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"muladi","localized_names":[{"language":"bn","name":"মুলাদী"}],"name":"Muladi","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"mundumala","localized_names":[{"language":"bn","name":"মুন্ডুমালা"}],"name":"Mundumala","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"munshiganj","localized_names":[{"language":"bn","name":"মুন্সীগঞ্জ"}],"name":"Munshiganj","subdivision_code":"BD-MUN"},{"coordinates":{"latitude":24.75,"longitude":90.417},"country_code":"BD","id":"mymensingh","localized_names":[{"language":"bn","name":"ময়মনসিংহ"}],"name":"Mymensingh","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"nabiganj","localized_names":[{"language":"bn","name":"নবীগঞ্জ"}],"name":"Nabiganj","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"nabinagar","localized_names":[{"language":"bn","name":"নবীনগর"}],"name":"Nabinagar","subdivision_code":"BD-BRA"},{"country_code":"BD","id":"nachole","localized_names":[{"language":"bn","name":"নাচোল"}],"name":"Nachole","subdivision_code":"BD-CHP"},{"country_code":"BD","id":"nagarkanda","localized_names":[{"language":"bn","name":"নগরকান্দা"}],"name":"Nagarkanda","subdivision_code":"BD-FAR"},{"country_code":"BD","id":"nageshwari","localized_names":[{"language":"bn","name":"নাগেশ্বরী"}],"name":"Nageshwari","subdivision_code":"BD-KUR"},{"country_code":"BD","id":"nakla","localized_names":[{"language":"bn","name":"নকলা"}],"name":"Nakla","subdivision_code":"BD-SHE"},{"country_code":"BD","id":"nalchity","localized_names":[{"language":"bn","name":"নলছিটি"}],"name":"Nalchity","subdivision_code":"BD-JHA"},{"country_code":"BD","id":"naldanga","localized_names":[{"language":"bn","name":"নলডাঙ্গা"}],"name":"Naldanga","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"nalitabari","localized_names":[{"language":"bn","name":"নালিতাবাড়ী"}],"name":"Nalitabari","subdivision_code":"BD-SHE"},{"country_code":"BD","id":"nandail","localized_names":[{"language":"bn","name":"নান্দাইল"}],"name":"Nandail","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"nandigram","localized_names":[{"language":"bn","name":"নন্দীগ্রাম"}],"name":"Nandigram","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"nangalkot","localized_names":[{"language":"bn","name":"নাঙ্গলকোট"}],"name":"Nangalkot","subdivision_code":"BD-CUM"},{"country_code":"BD","id":"naogaon","localized_names":[{"language":"bn","name":"নওগাঁ"}],"name":"Naogaon","subdivision_code":"BD-NAO"},{"country_code":"BD","id":"narail","localized_names":[{"language":"bn","name":"নড়াইল"}],"name":"Narail","subdivision_code":"BD-NAA"},{"country_code":"BD","id":"narayanganj","localized_names":[{"language":"bn","name":"নারায়ণগঞ্জ"}],"name":"Narayanganj","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"naria","localized_names":[{"language":"bn","name":"নড়িয়া"}],"name":"Naria","subdivision_code":"BD-SHA"},{"country_code":"BD","id":"narsingdi","localized_names":[{"language":"bn","name":"নরসিংদী"}],"name":"Narsingdi","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"natore","localized_names":[{"language":"bn","name":"নাটোর"}],"name":"Natore","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"nazirhat","localized_names":[{"language":"bn","name":"নাজিরহাট"}],"name":"Nazirhat","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"netrokona","localized_names":[{"language":"bn","name":"নেত্রকোনা"}],"name":"Netrokona","subdivision_code":"BD-NET"},{"country_code":"BD","id":"nilphamari","localized_names":[{"language":"bn","name":"নীলফামারী"}],"name":"Nilphamari","subdivision_code":"BD-NIL"},{"country_code":"BD","id":"noahata","localized_names":[{"language":"bn","name":"নওহাটা"}],"name":"Noahata","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"noakhali","localized_names":[{"language":"bn","name":"নোয়াখালী"}],"name":"Noakhali","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"noapara","localized_names":[{"language":"bn","name":"নওয়াপাড়া"}],"name":"Noapara","subdivision_code":"BD-JAS"},{"country_code":"BD","id":"nozipur","localized_names":[{"language":"bn","name":"নজিপুর"}],"name":"Nozipur","subdivision_code":"BD-NAO"},{"country_code":"BD","id":"pabna","localized_names":[{"language":"bn","name":"পাবনা"}],"name":"Pabna","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"paikgachha","localized_names":[{"language":"bn","name":"পাইকগাছা"}],"name":"Paikgachha","subdivision_code":"BD-KHU"},{"country_code":"BD","id":"pakundia","localized_names":[{"language":"bn","name":"পাকুন্দিয়া"}],"name":"Pakundia","subdivision_code":"BD-KIS"},{"country_code":"BD","id":"palashbari","localized_names":[{"language":"bn","name":"পলাশবাড়ী"}],"name":"Palashbari","subdivision_code":"BD-GAI"},{"country_code":"BD","id":"panchagarh","localized_names":[{"language":"bn","name":"পঞ্চগড়"}],"name":"Panchagarh","subdivision_code":"BD-PAN"},{"country_code":"BD","id":"panchbibi","localized_names":[{"language":"bn","name":"পাঁচবিবি"}],"name":"Panchbibi","subdivision_code":"BD-JOY"},{"country_code":"BD","id":"pangsha","localized_names":[{"language":"bn","name":"পাংশা"}],"name":"Pangsha","subdivision_code":"BD-RAJ"},{"country_code":"BD","id":"parbatipur","localized_names":[{"language":"bn","name":"পার্বতীপুর"}],"name":"Parbatipur","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"parshuram","localized_names":[{"language":"bn","name":"পরশুরাম"}],"name":"Parshuram","subdivision_code":"BD-FEN"},{"country_code":"BD","id":"patgram","localized_names":[{"language":"bn","name":"পাটগ্রাম"}],"name":"Patgram","subdivision_code":"BD-LAL"},{"country_code":"BD","id":"patharghata","localized_names":[{"language":"bn","name":"পাথরঘাটা"}],"name":"Patharghata","subdivision_code":"BD-BAR"},{"country_code":"BD","id":"patiya","localized_names":[{"language":"bn","name":"পটিয়া"}],"name":"Patiya","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"patuakhali","localized_names":[{"language":"bn","name":"পটুয়াখালী"}],"name":"Patuakhali","subdivision_code":"BD-PAT"},{"country_code":"BD","id":"phulpur","localized_names":[{"language":"bn","name":"ফুলপুর"}],"name":"Phulpur","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"pirganj-rangpur","localized_names":[{"language":"bn","name":"পীরগঞ্জ"}],"name":"Pirganj","subdivision_code":"BD-RAG"},{"country_code":"BD","id":"pirganj-thakurgaon","localized_names":[{"language":"bn","name":"পীরগঞ্জ"}],"name":"Pirganj","subdivision_code":"BD-THA"},{"country_code":"BD","id":"pirojpur","localized_names":[{"language":"bn","name":"পিরোজপুর"}],"name":"Pirojpur","subdivision_code":"BD-PIR"},{"country_code":"BD","id":"puthia","localized_names":[{"language":"bn","name":"পুঠিয়া"}],"name":"Puthia","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"rahanpur","localized_names":[{"language":"bn","name":"রহনপুর"}],"name":"Rahanpur","subdivision_code":"BD-CHP"},{"country_code":"BD","id":"rajbari","localized_names":[{"language":"bn","name":"রাজবাড়ী"}],"name":"Rajbari","subdivision_code":"BD-RAJ"},{"country_code":"BD","id":"rajoir","localized_names":[{"language":"bn","name":"রাজৈর"}],"name":"Rajoir","subdivision_code":"BD-MAD"},{"coordinates":{"latitude":24.367,"longitude":88.6},"country_code":"BD","id":"rajshahi","localized_names":[{"language":"bn","name":"রাজশাহী"}],"name":"Rajshahi","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"ramganj","localized_names":[{"language":"bn","name":"রামগঞ্জ"}],"name":"Ramganj","subdivision_code":"BD-LAK"},{"country_code":"BD","id":"ramgarh","localized_names":[{"language":"bn","name":"রামগড়"}],"name":"Ramgarh","subdivision_code":"BD-KHA"},{"country_code":"BD","id":"ramgati","localized_names":[{"language":"bn","name":"রামগতি"}],"name":"Ramgati","subdivision_code":"BD-LAK"},{"country_code":"BD","id":"rangamati","localized_names":[{"language":"bn","name":"রাঙ্গামাটি"}],"name":"Rangamati","subdivision_code":"BD-RAN"},{"coordinates":{"latitude":25.749,"longitude":89.247},"country_code":"BD","id":"rangpur","localized_names":[{"language":"bn","name":"রংপুর"}],"name":"Rangpur","subdivision_code":"BD-RAG"},{"country_code":"BD","id":"rangunia","localized_names":[{"language":"bn","name":"রাঙ্গুনিয়া"}],"name":"Rangunia","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"ranisankail","localized_names":[{"language":"bn","name":"রাণীশংকৈল"}],"name":"Ranisankail","subdivision_code":"BD-THA"},{"country_code":"BD","id":"raozan","localized_names":[{"language":"bn","name":"রাউজান"}],"name":"Raozan","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"royganj","localized_names":[{"language":"bn","name":"রায়গঞ্জ"}],"name":"Royganj","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"roypur","localized_names":[{"language":"bn","name":"রায়পুর"}],"name":"Roypur","subdivision_code":"BD-LAK"},{"country_code":"BD","id":"roypura","localized_names":[{"language":"bn","name":"রায়পুরা"}],"name":"Roypura","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"saidpur","localized_names":[{"language":"bn","name":"সৈয়দপুর"}],"name":"Saidpur","subdivision_code":"BD-NIL"},{"country_code":"BD","id":"sakhipur","localized_names":[{"language":"bn","name":"সখিপুর"}],"name":"Sakhipur","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"sandwip","localized_names":[{"language":"bn","name":"সন্দ্বীপ"}],"name":"Sandwip","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"santahar","localized_names":[{"language":"bn","name":"সান্তাহার"}],"name":"Santahar","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"santhia","localized_names":[{"language":"bn","name":"সাঁথিয়া"}],"name":"Santhia","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"sariakandi","localized_names":[{"language":"bn","name":"সারিয়াকান্দি"}],"name":"Sariakandi","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"sarishabari","localized_names":[{"language":"bn","name":"সরিষাবাড়ী"}],"name":"Sarishabari","subdivision_code":"BD-JAM"},{"country_code":"BD","id":"satkania","localized_names":[{"language":"bn","name":"সাতকানিয়া"}],"name":"Satkania","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"satkhira","localized_names":[{"language":"bn","name":"সাতক্ষীরা"}],"name":"Satkhira","subdivision_code":"BD-SAT"},{"country_code":"BD","id":"savar","localized_names":[{"language":"bn","name":"সাভার"}],"name":"Savar","subdivision_code":"BD-DHA"},{"country_code":"BD","id":"senbagh","localized_names":[{"language":"bn","name":"সেনবাগ"}],"name":"Senbagh","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"sengarchar","localized_names":[{"language":"bn","name":"ছেংগারচর"}],"name":"Sengarchar","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"setabganj","localized_names":[{"language":"bn","name":"সেতাবগঞ্জ"}],"name":"Setabganj","subdivision_code":"BD-DIN"},{"country_code":"BD","id":"shahjadpur","localized_names":[{"language":"bn","name":"শাহজাদপুর"}],"name":"Shahjadpur","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"shahrasti","localized_names":[{"language":"bn","name":"শাহরাস্তি"}],"name":"Shahrasti","subdivision_code":"BD-CHA"},{"country_code":"BD","id":"shailkupa","localized_names":[{"language":"bn","name":"শৈলকুপা"}],"name":"Shailkupa","subdivision_code":"BD-JHE"},{"country_code":"BD","id":"shariatpur","localized_names":[{"language":"bn","name":"শরীয়তপুর"}],"name":"Shariatpur","subdivision_code":"BD-SHA"},{"country_code":"BD","id":"shayestagang","localized_names":[{"language":"bn","name":"শায়েস্তাগঞ্জ"}],"name":"Shayestagang","subdivision_code":"BD-HAB"},{"country_code":"BD","id":"sherpur-bogura","localized_names":[{"language":"bn","name":"শেরপুর"}],"name":"Sherpur","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"sherpur-sherpur","localized_names":[{"language":"bn","name":"শেরপুর"}],"name":"Sherpur","subdivision_code":"BD-SHE"},{"country_code":"BD","id":"shibchar","localized_names":[{"language":"bn","name":"শিবচর"}],"name":"Shibchar","subdivision_code":"BD-MAD"},{"country_code":"BD","id":"shibganj-bogura","localized_names":[{"language":"bn","name":"শিবগঞ্জ"}],"name":"Shibganj","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"shibganj-chapainawabganj","localized_names":[{"language":"bn","name":"শিবগঞ্জ"}],"name":"Shibganj","subdivision_code":"BD-CHP"},{"country_code":"BD","id":"shibpur","localized_names":[{"language":"bn","name":"শিবপুর"}],"name":"Shibpur","subdivision_code":"BD-NAS"},{"country_code":"BD","id":"shyamnagar","localized_names":[{"language":"bn","name":"শ্যামনগর"}],"name":"Shyamnagar","subdivision_code":"BD-SAT"},{"country_code":"BD","id":"singair","localized_names":[{"language":"bn","name":"সিংগাইর"}],"name":"Singair","subdivision_code":"BD-MAN"},{"country_code":"BD","id":"singra","localized_names":[{"language":"bn","name":"সিংড়া"}],"name":"Singra","subdivision_code":"BD-NAT"},{"country_code":"BD","id":"sirajganj","localized_names":[{"language":"bn","name":"সিরাজগঞ্জ"}],"name":"Sirajganj","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"sitakunda","localized_names":[{"language":"bn","name":"সীতাকুন্ড"}],"name":"Sitakunda","subdivision_code":"BD-CHT"},{"country_code":"BD","id":"sonagazi","localized_names":[{"language":"bn","name":"সোনাগাজী"}],"name":"Sonagazi","subdivision_code":"BD-FEN"},{"country_code":"BD","id":"sonaimuri","localized_names":[{"language":"bn","name":"সোনাইমুড়ী"}],"name":"Sonaimuri","subdivision_code":"BD-NOA"},{"country_code":"BD","id":"sonargaon","localized_names":[{"language":"bn","name":"সোনারগাঁও"}],"name":"Sonargaon","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"sonatola","localized_names":[{"language":"bn","name":"সোনাতলা"}],"name":"Sonatola","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"sreebardi","localized_names":[{"language":"bn","name":"শ্রীবরদী"}],"name":"Sreebardi","subdivision_code":"BD-SHE"},{"country_code":"BD","id":"sreemangal","localized_names":[{"language":"bn","name":"শ্রীমঙ্গল"}],"name":"Sreemangal","subdivision_code":"BD-MAU"},{"country_code":"BD","id":"sreepur","localized_names":[{"language":"bn","name":"শ্রীপুর"}],"name":"Sreepur","subdivision_code":"BD-GAZ"},{"country_code":"BD","id":"sujanagar","localized_names":[{"language":"bn","name":"সুজানগর"}],"name":"Sujanagar","subdivision_code":"BD-PAB"},{"country_code":"BD","id":"sunamganj","localized_names":[{"language":"bn","name":"সুনামগঞ্জ"}],"name":"Sunamganj","subdivision_code":"BD-SUN"},{"country_code":"BD","id":"sundarganj","localized_names":[{"language":"bn","name":"সুন্দরগঞ্জ"}],"name":"Sundarganj","subdivision_code":"BD-GAI"},{"country_code":"BD","id":"swarupkati","localized_names":[{"language":"bn","name":"স্বরূপকাঠী"}],"name":"Swarupkati","subdivision_code":"BD-PIR"},{"coordinates":{"latitude":24.9,"longitude":91.867},"country_code":"BD","id":"sylhet","localized_names":[{"language":"bn","name":"সিলেট"}],"name":"Sylhet","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"tahirpur","localized_names":[{"language":"bn","name":"তাহেরপুর"}],"name":"Tahirpur","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"talora","localized_names":[{"language":"bn","name":"তালোড়া"}],"name":"Talora","subdivision_code":"BD-BOG"},{"country_code":"BD","id":"tangail","localized_names":[{"language":"bn","name":"টাংগাইল"}],"name":"Tangail","subdivision_code":"BD-TAN"},{"country_code":"BD","id":"tanore","localized_names":[{"language":"bn","name":"তানোর"}],"name":"Tanore","subdivision_code":"BD-RAS"},{"country_code":"BD","id":"tarabo","localized_names":[{"language":"bn","name":"তারাব"}],"name":"Tarabo","subdivision_code":"BD-NAR"},{"country_code":"BD","id":"tarash","localized_names":[{"language":"bn","name":"তাড়াশ"}],"name":"Tarash","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"teknaf","localized_names":[{"language":"bn","name":"টেকনাফ"}],"name":"Teknaf","subdivision_code":"BD-COX"},{"country_code":"BD","id":"thakurgaon","localized_names":[{"language":"bn","name":"ঠাকুরগাঁও"}],"name":"Thakurgaon","subdivision_code":"BD-THA"},{"country_code":"BD","id":"trishal","localized_names":[{"language":"bn","name":"ত্রিশাল"}],"name":"Trishal","subdivision_code":"BD-MYM"},{"country_code":"BD","id":"tungipara","localized_names":[{"language":"bn","name":"টুঙ্গীপাড়া"}],"name":"Tungipara","subdivision_code":"BD-GOP"},{"country_code":"BD","id":"ulipur","localized_names":[{"language":"bn","name":"উলিপুর"}],"name":"Ulipur","subdivision_code":"BD-KUR"},{"country_code":"BD","id":"ullah-para","localized_names":[{"language":"bn","name":"উল্লাপাড়া"}],"name":"Ullah Para","subdivision_code":"BD-SIR"},{"country_code":"BD","id":"wazirpur","localized_names":[{"language":"bn","name":"উজিরপুর"}],"name":"Wazirpur","subdivision_code":"BD-BAI"},{"country_code":"BD","id":"zakiganj","localized_names":[{"language":"bn","name":"জকিগঞ্জ"}],"name":"Zakiganj","subdivision_code":"BD-SYL"},{"country_code":"BD","id":"zanjira","localized_names":[{"language":"bn","name":"জাজিরা"}],"name":"Zanjira","subdivision_code":"BD-SHA"}]
+[
+  {
+    "country_code": "BD",
+    "id": "ajmiriganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আজমিরীগঞ্জ"
+      }
+    ],
+    "name": "Ajmiriganj",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "akhaura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আখাউড়া"
+      }
+    ],
+    "name": "Akhaura",
+    "subdivision_code": "BD-BRA"
+  },
+  {
+    "country_code": "BD",
+    "id": "akkelpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আক্কেলপুর"
+      }
+    ],
+    "name": "Akkelpur",
+    "subdivision_code": "BD-JOY"
+  },
+  {
+    "country_code": "BD",
+    "id": "alamdanga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আলমডাঙ্গা"
+      }
+    ],
+    "name": "Alamdanga",
+    "subdivision_code": "BD-CHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "alfadanga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আলফাডাঙ্গা"
+      }
+    ],
+    "name": "Alfadanga",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "amtali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আমতলী"
+      }
+    ],
+    "name": "Amtali",
+    "subdivision_code": "BD-BAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "araihazar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আড়াইহাজার"
+      }
+    ],
+    "name": "Araihazar",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "arani",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আড়ানী"
+      }
+    ],
+    "name": "Arani",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "atgharia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "আটঘরিয়া"
+      }
+    ],
+    "name": "Atgharia",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "badarganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বদরগঞ্জ"
+      }
+    ],
+    "name": "Badarganj",
+    "subdivision_code": "BD-RAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "bagatipara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাগাতিপাড়া"
+      }
+    ],
+    "name": "Bagatipara",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "bagerhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাগেরহাট"
+      }
+    ],
+    "name": "Bagerhat",
+    "subdivision_code": "BD-BAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "bagha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাঘা"
+      }
+    ],
+    "name": "Bagha",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "baghaichhari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাঘাইছড়ি"
+      }
+    ],
+    "name": "Baghaichhari",
+    "subdivision_code": "BD-RAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "bagher-para",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাঘারপাড়া"
+      }
+    ],
+    "name": "Bagher Para",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bajitpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাজিতপুর"
+      }
+    ],
+    "name": "Bajitpur",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bakerganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাকেরগঞ্জ"
+      }
+    ],
+    "name": "Bakerganj",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "bakshiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বকশীগঞ্জ"
+      }
+    ],
+    "name": "Bakshiganj",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "banari-para",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বানারীপাড়া"
+      }
+    ],
+    "name": "Banari Para",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "bancharampur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাঞ্ছারামপুর"
+      }
+    ],
+    "name": "Bancharampur",
+    "subdivision_code": "BD-BRA"
+  },
+  {
+    "country_code": "BD",
+    "id": "bandarban",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বান্দরবান"
+      }
+    ],
+    "name": "Bandarban",
+    "subdivision_code": "BD-BAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "banpara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বনপাড়া"
+      }
+    ],
+    "name": "Banpara",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "banshkhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাঁশখালী"
+      }
+    ],
+    "name": "Banshkhali",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "baraigram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বড়াইগ্রাম"
+      }
+    ],
+    "name": "Baraigram",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "barguna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বরগুনা"
+      }
+    ],
+    "name": "Barguna",
+    "subdivision_code": "BD-BAR"
+  },
+  {
+    "aliases": [
+      "Barisal"
+    ],
+    "coordinates": {
+      "latitude": 22.7,
+      "longitude": 90.367
+    },
+    "country_code": "BD",
+    "id": "barishal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বরিশাল"
+      }
+    ],
+    "name": "Barishal",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "barlekha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বড়লেখা"
+      }
+    ],
+    "name": "Barlekha",
+    "subdivision_code": "BD-MAU"
+  },
+  {
+    "country_code": "BD",
+    "id": "baroiar-hat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বারইয়ারহাট"
+      }
+    ],
+    "name": "Baroiar Hat",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "barura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বরুড়া"
+      }
+    ],
+    "name": "Barura",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "basail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাসাইল"
+      }
+    ],
+    "name": "Basail",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "basurhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বসুরহাট"
+      }
+    ],
+    "name": "Basurhat",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "bauphal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বাউফল"
+      }
+    ],
+    "name": "Bauphal",
+    "subdivision_code": "BD-PAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "beani-bazar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বিয়ানীবাজার"
+      }
+    ],
+    "name": "Beani Bazar",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "belkuchi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বেলকুচি"
+      }
+    ],
+    "name": "Belkuchi",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "benapole",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বেনাপোল"
+      }
+    ],
+    "name": "Benapole",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bera",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বেড়া"
+      }
+    ],
+    "name": "Bera",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "betagi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বেতাগী"
+      }
+    ],
+    "name": "Betagi",
+    "subdivision_code": "BD-BAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhabanigonj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভবানীগঞ্জ"
+      }
+    ],
+    "name": "Bhabanigonj",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhairab",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভৈরব"
+      }
+    ],
+    "name": "Bhairab",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhaluka",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভালুকা"
+      }
+    ],
+    "name": "Bhaluka",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhandaria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভান্ডারিয়া"
+      }
+    ],
+    "name": "Bhandaria",
+    "subdivision_code": "BD-PIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhanga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভাঙ্গা"
+      }
+    ],
+    "name": "Bhanga",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhangura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভাঙ্গুরা"
+      }
+    ],
+    "name": "Bhangura",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhedarganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভেদরগঞ্জ"
+      }
+    ],
+    "name": "Bhedarganj",
+    "subdivision_code": "BD-SHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "bheramara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভেড়ামারা"
+      }
+    ],
+    "name": "Bheramara",
+    "subdivision_code": "BD-KUS"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhola",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভোলা"
+      }
+    ],
+    "name": "Bhola",
+    "subdivision_code": "BD-BHO"
+  },
+  {
+    "country_code": "BD",
+    "id": "bhuapur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ভুয়াপুর"
+      }
+    ],
+    "name": "Bhuapur",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "biral",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বিরল"
+      }
+    ],
+    "name": "Biral",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "birampur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বিরামপুর"
+      }
+    ],
+    "name": "Birampur",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "birganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বীরগঞ্জ"
+      }
+    ],
+    "name": "Birganj",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "biswanath",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বিশ্বনাথ"
+      }
+    ],
+    "name": "Biswanath",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "boalkhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বোয়ালখালী"
+      }
+    ],
+    "name": "Boalkhali",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "boalmari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বোয়ালমারী"
+      }
+    ],
+    "name": "Boalmari",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "boda",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বোদা"
+      }
+    ],
+    "name": "Boda",
+    "subdivision_code": "BD-PAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "bogra",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বগুড়া"
+      }
+    ],
+    "name": "Bogra",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "brahmanbaria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ব্রাহ্মণবাড়ীয়া"
+      }
+    ],
+    "name": "Brahmanbaria",
+    "subdivision_code": "BD-BRA"
+  },
+  {
+    "country_code": "BD",
+    "id": "burhanuddin",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "বোরহানউদ্দিন"
+      }
+    ],
+    "name": "Burhanuddin",
+    "subdivision_code": "BD-BHO"
+  },
+  {
+    "country_code": "BD",
+    "id": "chakaria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চকরিয়া"
+      }
+    ],
+    "name": "Chakaria",
+    "subdivision_code": "BD-COX"
+  },
+  {
+    "country_code": "BD",
+    "id": "chalna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চালনা"
+      }
+    ],
+    "name": "Chalna",
+    "subdivision_code": "BD-KHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "chandanaish",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চন্দনাইশ"
+      }
+    ],
+    "name": "Chandanaish",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "chandina",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চান্দিনা"
+      }
+    ],
+    "name": "Chandina",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "chandpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চাঁদপুর"
+      }
+    ],
+    "name": "Chandpur",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "chapai-nababganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চাঁপাইনবাবগঞ্জ"
+      }
+    ],
+    "name": "Chapai Nababganj",
+    "subdivision_code": "BD-CHP"
+  },
+  {
+    "country_code": "BD",
+    "id": "char-fasson",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চরফ্যাশন"
+      }
+    ],
+    "name": "Char Fasson",
+    "subdivision_code": "BD-BHO"
+  },
+  {
+    "country_code": "BD",
+    "id": "charghat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চারঘাট"
+      }
+    ],
+    "name": "Charghat",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "chatkhil",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চাটখিল"
+      }
+    ],
+    "name": "Chatkhil",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "chatmohar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চাটমোহর"
+      }
+    ],
+    "name": "Chatmohar",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "aliases": [
+      "Chittagong"
+    ],
+    "coordinates": {
+      "latitude": 22.335,
+      "longitude": 91.833
+    },
+    "country_code": "BD",
+    "id": "chattogram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চট্টগ্রাম"
+      }
+    ],
+    "name": "Chattogram",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "chauddagram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চৌদ্দগ্রাম"
+      }
+    ],
+    "name": "Chauddagram",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "chaugachha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চৌগাছা"
+      }
+    ],
+    "name": "Chaugachha",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "chaumohani",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চৌমুহনী"
+      }
+    ],
+    "name": "Chaumohani",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "chhagalnaiya",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ছাগলনাইয়া"
+      }
+    ],
+    "name": "Chhagalnaiya",
+    "subdivision_code": "BD-FEN"
+  },
+  {
+    "country_code": "BD",
+    "id": "chhatak",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ছাতক"
+      }
+    ],
+    "name": "Chhatak",
+    "subdivision_code": "BD-SUN"
+  },
+  {
+    "country_code": "BD",
+    "id": "chuadanga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চুয়াডাঙ্গা"
+      }
+    ],
+    "name": "Chuadanga",
+    "subdivision_code": "BD-CHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "chunarughat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "চুনারুঘাট"
+      }
+    ],
+    "name": "Chunarughat",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "cox-s-bazar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কক্সবাজার"
+      }
+    ],
+    "name": "COX'S BAZAR",
+    "subdivision_code": "BD-COX"
+  },
+  {
+    "aliases": [
+      "Comilla"
+    ],
+    "country_code": "BD",
+    "id": "cumilla",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুমিল্লা"
+      }
+    ],
+    "name": "Cumilla",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "daganbhuiyan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দাগনভূঞাঁ"
+      }
+    ],
+    "name": "Daganbhuiyan",
+    "subdivision_code": "BD-FEN"
+  },
+  {
+    "country_code": "BD",
+    "id": "damudya",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ডামুড্যা"
+      }
+    ],
+    "name": "Damudya",
+    "subdivision_code": "BD-SHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "darshana",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দর্শনা"
+      }
+    ],
+    "name": "Darshana",
+    "subdivision_code": "BD-CHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "daudkandi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দাউদকান্দি"
+      }
+    ],
+    "name": "Daudkandi",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "daulatkhan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দৌলতখান"
+      }
+    ],
+    "name": "Daulatkhan",
+    "subdivision_code": "BD-BHO"
+  },
+  {
+    "country_code": "BD",
+    "id": "debidwar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দেবিদ্বার"
+      }
+    ],
+    "name": "Debidwar",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "debiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দেবীগঞ্জ"
+      }
+    ],
+    "name": "Debiganj",
+    "subdivision_code": "BD-PAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "derai",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দিরাই"
+      }
+    ],
+    "name": "Derai",
+    "subdivision_code": "BD-SUN"
+  },
+  {
+    "country_code": "BD",
+    "id": "dewanganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দেওয়ানগঞ্জ"
+      }
+    ],
+    "name": "Dewanganj",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "coordinates": {
+      "latitude": 23.729,
+      "longitude": 90.394
+    },
+    "country_code": "BD",
+    "id": "dhaka",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঢাকা"
+      }
+    ],
+    "name": "Dhaka",
+    "subdivision_code": "BD-DHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "dhamoirhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ধামইরহাট"
+      }
+    ],
+    "name": "Dhamoirhat",
+    "subdivision_code": "BD-NAO"
+  },
+  {
+    "country_code": "BD",
+    "id": "dhamrai",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ধামরাই"
+      }
+    ],
+    "name": "Dhamrai",
+    "subdivision_code": "BD-DHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "dhanbari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ধনবাড়ী"
+      }
+    ],
+    "name": "Dhanbari",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "dhunat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ধুনট"
+      }
+    ],
+    "name": "Dhunat",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "dhupchanchia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দুপচাঁচিয়া"
+      }
+    ],
+    "name": "Dhupchanchia",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "dinajpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দিনাজপুর"
+      }
+    ],
+    "name": "Dinajpur",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "dohar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দোহার"
+      }
+    ],
+    "name": "Dohar",
+    "subdivision_code": "BD-DHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "dohazari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দোহাজারী"
+      }
+    ],
+    "name": "Dohazari",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "domar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ডোমার"
+      }
+    ],
+    "name": "Domar",
+    "subdivision_code": "BD-NIL"
+  },
+  {
+    "country_code": "BD",
+    "id": "durgapur-netrakona",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দুর্গাপুর"
+      }
+    ],
+    "name": "Durgapur",
+    "subdivision_code": "BD-NET"
+  },
+  {
+    "country_code": "BD",
+    "id": "durgapur-rajshahi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "দুর্গাপুর"
+      }
+    ],
+    "name": "Durgapur",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "elenga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "এলেঙ্গা"
+      }
+    ],
+    "name": "Elenga",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "faridganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফরিদগঞ্জ"
+      }
+    ],
+    "name": "Faridganj",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "faridpur-faridpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফরিদপুর"
+      }
+    ],
+    "name": "Faridpur",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "faridpur-pabna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফরিদপুর"
+      }
+    ],
+    "name": "Faridpur",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "fatikchhari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফটিকছড়ি"
+      }
+    ],
+    "name": "Fatikchhari",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "feni",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফেনী"
+      }
+    ],
+    "name": "Feni",
+    "subdivision_code": "BD-FEN"
+  },
+  {
+    "country_code": "BD",
+    "id": "fulbari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফুলবাড়ী"
+      }
+    ],
+    "name": "Fulbari",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "fulbaria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফুলবাড়ীয়া"
+      }
+    ],
+    "name": "Fulbaria",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "gabtali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গাবতলী"
+      }
+    ],
+    "name": "Gabtali",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "gaffargaon",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গফরগাঁও"
+      }
+    ],
+    "name": "Gaffargaon",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "gaibandha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গাইবান্ধা"
+      }
+    ],
+    "name": "Gaibandha",
+    "subdivision_code": "BD-GAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "galachipa",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গলাচিপা"
+      }
+    ],
+    "name": "Galachipa",
+    "subdivision_code": "BD-PAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "gangni",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গাংনী"
+      }
+    ],
+    "name": "Gangni",
+    "subdivision_code": "BD-MEH"
+  },
+  {
+    "country_code": "BD",
+    "id": "gauripur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গৌরীপুর"
+      }
+    ],
+    "name": "Gauripur",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "gaurnadi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গৌরনদী"
+      }
+    ],
+    "name": "Gaurnadi",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "gazipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গাজীপুর"
+      }
+    ],
+    "name": "Gazipur",
+    "subdivision_code": "BD-GAZ"
+  },
+  {
+    "country_code": "BD",
+    "id": "ghatail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঘাটাইল"
+      }
+    ],
+    "name": "Ghatail",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "ghoraghat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঘোড়াঘাট"
+      }
+    ],
+    "name": "Ghoraghat",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "ghorashal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঘোড়াশাল"
+      }
+    ],
+    "name": "Ghorashal",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "goalandaghat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোয়ালন্দ"
+      }
+    ],
+    "name": "Goalandaghat",
+    "subdivision_code": "BD-RAJ"
+  },
+  {
+    "country_code": "BD",
+    "id": "gobindaganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোবিন্দগঞ্জ"
+      }
+    ],
+    "name": "Gobindaganj",
+    "subdivision_code": "BD-GAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "godagari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোদাগাড়ী"
+      }
+    ],
+    "name": "Godagari",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "golapganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোলাপগঞ্জ"
+      }
+    ],
+    "name": "Golapganj",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "gopaldi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোপালদী"
+      }
+    ],
+    "name": "Gopaldi",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "gopalganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোপালগঞ্জ"
+      }
+    ],
+    "name": "Gopalganj",
+    "subdivision_code": "BD-GOP"
+  },
+  {
+    "country_code": "BD",
+    "id": "gopalpur-natore",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোপালপুর"
+      }
+    ],
+    "name": "Gopalpur",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "gopalpur-tangail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোপালপুর"
+      }
+    ],
+    "name": "Gopalpur",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "gosairhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গোসাইরহাট"
+      }
+    ],
+    "name": "Gosairhat",
+    "subdivision_code": "BD-SHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "gurudaspur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "গুরুদাসপুর"
+      }
+    ],
+    "name": "Gurudaspur",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "aliases": [
+      "Hobiganj"
+    ],
+    "country_code": "BD",
+    "id": "habiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হবিগঞ্জ"
+      }
+    ],
+    "name": "Habiganj",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "hajiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হাজীগঞ্জ"
+      }
+    ],
+    "name": "Hajiganj",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "hakimpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হাকিমপুর"
+      }
+    ],
+    "name": "Hakimpur",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "haluaghat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হালুয়াঘাট"
+      }
+    ],
+    "name": "Haluaghat",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "haragachh",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হারাগাছ"
+      }
+    ],
+    "name": "Haragachh",
+    "subdivision_code": "BD-RAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "harinakunda",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হরিণাকুন্ড"
+      }
+    ],
+    "name": "Harinakunda",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "hathazari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হাটহাজারী"
+      }
+    ],
+    "name": "Hathazari",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "hatiya",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হাতিয়া"
+      }
+    ],
+    "name": "Hatiya",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "hazaribari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হাজরাবাড়ী"
+      }
+    ],
+    "name": "Hazaribari",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "homna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হোমনা"
+      }
+    ],
+    "name": "Homna",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "hossainpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "হোসেনপুর"
+      }
+    ],
+    "name": "Hossainpur",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "ishwardi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঈশ্বরদী"
+      }
+    ],
+    "name": "Ishwardi",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "ishwarganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঈশ্বরগঞ্জ"
+      }
+    ],
+    "name": "Ishwarganj",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "islampur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ইসলামপুর"
+      }
+    ],
+    "name": "Islampur",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "jagannathpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জগন্নাথপুর"
+      }
+    ],
+    "name": "Jagannathpur",
+    "subdivision_code": "BD-SUN"
+  },
+  {
+    "country_code": "BD",
+    "id": "jaldhaka",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জলঢাকা"
+      }
+    ],
+    "name": "Jaldhaka",
+    "subdivision_code": "BD-NIL"
+  },
+  {
+    "country_code": "BD",
+    "id": "jamalpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জামালপুর"
+      }
+    ],
+    "name": "Jamalpur",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "jessore",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "যশোর"
+      }
+    ],
+    "name": "Jessore",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "jhalokati",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঝালকাঠী"
+      }
+    ],
+    "name": "Jhalokati",
+    "subdivision_code": "BD-JHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "jhenaidah",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঝিনাইদহ"
+      }
+    ],
+    "name": "Jhenaidah",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "jhikargachha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঝিকরগাছা"
+      }
+    ],
+    "name": "Jhikargachha",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "jiban-nagar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জীবননগর"
+      }
+    ],
+    "name": "Jiban Nagar",
+    "subdivision_code": "BD-CHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "joypurhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জয়পুরহাট"
+      }
+    ],
+    "name": "Joypurhat",
+    "subdivision_code": "BD-JOY"
+  },
+  {
+    "country_code": "BD",
+    "id": "kabirhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কবিরহাট"
+      }
+    ],
+    "name": "Kabirhat",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "kachua",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কচুয়া"
+      }
+    ],
+    "name": "Kachua",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "kahaloo",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কাহালু"
+      }
+    ],
+    "name": "Kahaloo",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "kakanhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কাঁকনহাট"
+      }
+    ],
+    "name": "Kakanhat",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalai",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালাই"
+      }
+    ],
+    "name": "Kalai",
+    "subdivision_code": "BD-JOY"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalapara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কলাপাড়া"
+      }
+    ],
+    "name": "Kalapara",
+    "subdivision_code": "BD-PAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalaroa",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কলারোয়া"
+      }
+    ],
+    "name": "Kalaroa",
+    "subdivision_code": "BD-SAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালিয়া"
+      }
+    ],
+    "name": "Kalia",
+    "subdivision_code": "BD-NAA"
+  },
+  {
+    "country_code": "BD",
+    "id": "kaliakair",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালিয়াকৈর"
+      }
+    ],
+    "name": "Kaliakair",
+    "subdivision_code": "BD-GAZ"
+  },
+  {
+    "country_code": "BD",
+    "id": "kaliganj-gazipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালীগঞ্জ"
+      }
+    ],
+    "name": "Kaliganj",
+    "subdivision_code": "BD-GAZ"
+  },
+  {
+    "country_code": "BD",
+    "id": "kaliganj-jhenaidah",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালিগঞ্জ"
+      }
+    ],
+    "name": "Kaliganj",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalihati",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালিহাতী"
+      }
+    ],
+    "name": "Kalihati",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "kalkini",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কালকিনি"
+      }
+    ],
+    "name": "Kalkini",
+    "subdivision_code": "BD-MAD"
+  },
+  {
+    "country_code": "BD",
+    "id": "kamalganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কমলগঞ্জ"
+      }
+    ],
+    "name": "Kamalganj",
+    "subdivision_code": "BD-MAU"
+  },
+  {
+    "country_code": "BD",
+    "id": "kanaighat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কানাইঘাট"
+      }
+    ],
+    "name": "Kanaighat",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "kanchan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কাঞ্চন"
+      }
+    ],
+    "name": "Kanchan",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "karimganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "করিমগঞ্জ"
+      }
+    ],
+    "name": "Karimganj",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kasba",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কসবা"
+      }
+    ],
+    "name": "Kasba",
+    "subdivision_code": "BD-BRA"
+  },
+  {
+    "country_code": "BD",
+    "id": "katakhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কাটাখালী"
+      }
+    ],
+    "name": "Katakhali",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "katiadi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কটিয়াদী"
+      }
+    ],
+    "name": "Katiadi",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kazipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কাজীপুর"
+      }
+    ],
+    "name": "Kazipur",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "kendua",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কেন্দুয়া"
+      }
+    ],
+    "name": "Kendua",
+    "subdivision_code": "BD-NET"
+  },
+  {
+    "country_code": "BD",
+    "id": "keshabpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কেশবপুর"
+      }
+    ],
+    "name": "Keshabpur",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kesharhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কেশরহাট"
+      }
+    ],
+    "name": "Kesharhat",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "khagrachhari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "খাগড়াছড়ি"
+      }
+    ],
+    "name": "Khagrachhari",
+    "subdivision_code": "BD-KHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "khetlal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ক্ষেতলাল"
+      }
+    ],
+    "name": "Khetlal",
+    "subdivision_code": "BD-JOY"
+  },
+  {
+    "country_code": "BD",
+    "id": "khoksa",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "খোকসা"
+      }
+    ],
+    "name": "Khoksa",
+    "subdivision_code": "BD-KUS"
+  },
+  {
+    "coordinates": {
+      "latitude": 22.817,
+      "longitude": 89.55
+    },
+    "country_code": "BD",
+    "id": "khulna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "খুলনা"
+      }
+    ],
+    "name": "Khulna",
+    "subdivision_code": "BD-KHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "kishoreganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কিশোরগঞ্জ"
+      }
+    ],
+    "name": "Kishoreganj",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kotalipara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কোটালীপাড়া"
+      }
+    ],
+    "name": "Kotalipara",
+    "subdivision_code": "BD-GOP"
+  },
+  {
+    "country_code": "BD",
+    "id": "kotchandpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কোটচাঁদপুর"
+      }
+    ],
+    "name": "Kotchandpur",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "kuakata",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুয়াকাটা"
+      }
+    ],
+    "name": "Kuakata",
+    "subdivision_code": "BD-PAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "kulaura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুলাউড়া"
+      }
+    ],
+    "name": "Kulaura",
+    "subdivision_code": "BD-MAU"
+  },
+  {
+    "country_code": "BD",
+    "id": "kuliar-char",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুলিয়ারচর"
+      }
+    ],
+    "name": "Kuliar Char",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kumarkhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুমারখালী"
+      }
+    ],
+    "name": "Kumarkhali",
+    "subdivision_code": "BD-KUS"
+  },
+  {
+    "country_code": "BD",
+    "id": "kurigram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুড়িগ্রাম"
+      }
+    ],
+    "name": "Kurigram",
+    "subdivision_code": "BD-KUR"
+  },
+  {
+    "country_code": "BD",
+    "id": "kushtia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "কুষ্টিয়া"
+      }
+    ],
+    "name": "Kushtia",
+    "subdivision_code": "BD-KUS"
+  },
+  {
+    "country_code": "BD",
+    "id": "laksam",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লাকসাম"
+      }
+    ],
+    "name": "Laksam",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "lakshmipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লক্ষ্মীপুর"
+      }
+    ],
+    "name": "Lakshmipur",
+    "subdivision_code": "BD-LAK"
+  },
+  {
+    "country_code": "BD",
+    "id": "lalmohan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লালমোহন"
+      }
+    ],
+    "name": "Lalmohan",
+    "subdivision_code": "BD-BHO"
+  },
+  {
+    "country_code": "BD",
+    "id": "lalmonirhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লালমনিরহাট"
+      }
+    ],
+    "name": "Lalmonirhat",
+    "subdivision_code": "BD-LAL"
+  },
+  {
+    "country_code": "BD",
+    "id": "lama",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লামা"
+      }
+    ],
+    "name": "Lama",
+    "subdivision_code": "BD-BAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "lohagara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "লোহাগড়া"
+      }
+    ],
+    "name": "Lohagara",
+    "subdivision_code": "BD-NAA"
+  },
+  {
+    "country_code": "BD",
+    "id": "madan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মদন"
+      }
+    ],
+    "name": "Madan",
+    "subdivision_code": "BD-NET"
+  },
+  {
+    "country_code": "BD",
+    "id": "madarganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাদারগঞ্জ"
+      }
+    ],
+    "name": "Madarganj",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "madaripur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাদারীপুর"
+      }
+    ],
+    "name": "Madaripur",
+    "subdivision_code": "BD-MAD"
+  },
+  {
+    "country_code": "BD",
+    "id": "madhabdi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাধবদী"
+      }
+    ],
+    "name": "Madhabdi",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "madhabpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাধবপুর"
+      }
+    ],
+    "name": "Madhabpur",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "madhukhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মধুখালী"
+      }
+    ],
+    "name": "Madhukhali",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "madhupur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মধুপুর"
+      }
+    ],
+    "name": "Madhupur",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "magura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাগুরা"
+      }
+    ],
+    "name": "Magura",
+    "subdivision_code": "BD-MAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "maheshkhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মহেশখালী"
+      }
+    ],
+    "name": "Maheshkhali",
+    "subdivision_code": "BD-COX"
+  },
+  {
+    "country_code": "BD",
+    "id": "maheshpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মহেশপুর"
+      }
+    ],
+    "name": "Maheshpur",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "manikganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মানিকগঞ্জ"
+      }
+    ],
+    "name": "Manikganj",
+    "subdivision_code": "BD-MAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "manirampur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মনিরামপুর"
+      }
+    ],
+    "name": "Manirampur",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "manohardi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মনোহরদী"
+      }
+    ],
+    "name": "Manohardi",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "mathbaria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মঠবাড়ীয়া"
+      }
+    ],
+    "name": "Mathbaria",
+    "subdivision_code": "BD-PIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "matiranga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মাটিরাঙ্গা"
+      }
+    ],
+    "name": "Matiranga",
+    "subdivision_code": "BD-KHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "matlab",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মতলব"
+      }
+    ],
+    "name": "Matlab",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "maulvibazar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মৌলভীবাজার"
+      }
+    ],
+    "name": "Maulvibazar",
+    "subdivision_code": "BD-MAU"
+  },
+  {
+    "country_code": "BD",
+    "id": "meherpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মেহেরপুর"
+      }
+    ],
+    "name": "Meherpur",
+    "subdivision_code": "BD-MEH"
+  },
+  {
+    "country_code": "BD",
+    "id": "melandaha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মেলান্দহ"
+      }
+    ],
+    "name": "Melandaha",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "mhendiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মেহেন্দিগঞ্জ"
+      }
+    ],
+    "name": "Mhendiganj",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "mirkadim",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মিরকাদিম"
+      }
+    ],
+    "name": "Mirkadim",
+    "subdivision_code": "BD-MUN"
+  },
+  {
+    "country_code": "BD",
+    "id": "mirpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মিরপুর"
+      }
+    ],
+    "name": "Mirpur",
+    "subdivision_code": "BD-KUS"
+  },
+  {
+    "country_code": "BD",
+    "id": "mirsharai",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মীরসরাই"
+      }
+    ],
+    "name": "Mirsharai",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "mirzapur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মির্জাপুর"
+      }
+    ],
+    "name": "Mirzapur",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "mohanganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মোহনগঞ্জ"
+      }
+    ],
+    "name": "Mohanganj",
+    "subdivision_code": "BD-NET"
+  },
+  {
+    "country_code": "BD",
+    "id": "mongla-port",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মোংলাপোর্ট"
+      }
+    ],
+    "name": "Mongla Port",
+    "subdivision_code": "BD-BAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "morrelganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মোড়েলগঞ্জ"
+      }
+    ],
+    "name": "Morrelganj",
+    "subdivision_code": "BD-BAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "muksudpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মুকসুদপুর"
+      }
+    ],
+    "name": "Muksudpur",
+    "subdivision_code": "BD-GOP"
+  },
+  {
+    "country_code": "BD",
+    "id": "muktagachha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মুক্তাগাছা"
+      }
+    ],
+    "name": "Muktagachha",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "muladi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মুলাদী"
+      }
+    ],
+    "name": "Muladi",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "mundumala",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মুন্ডুমালা"
+      }
+    ],
+    "name": "Mundumala",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "munshiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "মুন্সীগঞ্জ"
+      }
+    ],
+    "name": "Munshiganj",
+    "subdivision_code": "BD-MUN"
+  },
+  {
+    "coordinates": {
+      "latitude": 24.75,
+      "longitude": 90.417
+    },
+    "country_code": "BD",
+    "id": "mymensingh",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ময়মনসিংহ"
+      }
+    ],
+    "name": "Mymensingh",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "nabiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নবীগঞ্জ"
+      }
+    ],
+    "name": "Nabiganj",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "nabinagar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নবীনগর"
+      }
+    ],
+    "name": "Nabinagar",
+    "subdivision_code": "BD-BRA"
+  },
+  {
+    "country_code": "BD",
+    "id": "nachole",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নাচোল"
+      }
+    ],
+    "name": "Nachole",
+    "subdivision_code": "BD-CHP"
+  },
+  {
+    "country_code": "BD",
+    "id": "nagarkanda",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নগরকান্দা"
+      }
+    ],
+    "name": "Nagarkanda",
+    "subdivision_code": "BD-FAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "nageshwari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নাগেশ্বরী"
+      }
+    ],
+    "name": "Nageshwari",
+    "subdivision_code": "BD-KUR"
+  },
+  {
+    "country_code": "BD",
+    "id": "nakla",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নকলা"
+      }
+    ],
+    "name": "Nakla",
+    "subdivision_code": "BD-SHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "nalchity",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নলছিটি"
+      }
+    ],
+    "name": "Nalchity",
+    "subdivision_code": "BD-JHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "naldanga",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নলডাঙ্গা"
+      }
+    ],
+    "name": "Naldanga",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "nalitabari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নালিতাবাড়ী"
+      }
+    ],
+    "name": "Nalitabari",
+    "subdivision_code": "BD-SHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "nandail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নান্দাইল"
+      }
+    ],
+    "name": "Nandail",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "nandigram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নন্দীগ্রাম"
+      }
+    ],
+    "name": "Nandigram",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "nangalkot",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নাঙ্গলকোট"
+      }
+    ],
+    "name": "Nangalkot",
+    "subdivision_code": "BD-CUM"
+  },
+  {
+    "country_code": "BD",
+    "id": "naogaon",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নওগাঁ"
+      }
+    ],
+    "name": "Naogaon",
+    "subdivision_code": "BD-NAO"
+  },
+  {
+    "country_code": "BD",
+    "id": "narail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নড়াইল"
+      }
+    ],
+    "name": "Narail",
+    "subdivision_code": "BD-NAA"
+  },
+  {
+    "country_code": "BD",
+    "id": "narayanganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নারায়ণগঞ্জ"
+      }
+    ],
+    "name": "Narayanganj",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "naria",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নড়িয়া"
+      }
+    ],
+    "name": "Naria",
+    "subdivision_code": "BD-SHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "narsingdi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নরসিংদী"
+      }
+    ],
+    "name": "Narsingdi",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "natore",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নাটোর"
+      }
+    ],
+    "name": "Natore",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "nazirhat",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নাজিরহাট"
+      }
+    ],
+    "name": "Nazirhat",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "netrokona",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নেত্রকোনা"
+      }
+    ],
+    "name": "Netrokona",
+    "subdivision_code": "BD-NET"
+  },
+  {
+    "country_code": "BD",
+    "id": "nilphamari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নীলফামারী"
+      }
+    ],
+    "name": "Nilphamari",
+    "subdivision_code": "BD-NIL"
+  },
+  {
+    "country_code": "BD",
+    "id": "noahata",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নওহাটা"
+      }
+    ],
+    "name": "Noahata",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "noakhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নোয়াখালী"
+      }
+    ],
+    "name": "Noakhali",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "noapara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নওয়াপাড়া"
+      }
+    ],
+    "name": "Noapara",
+    "subdivision_code": "BD-JAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "nozipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "নজিপুর"
+      }
+    ],
+    "name": "Nozipur",
+    "subdivision_code": "BD-NAO"
+  },
+  {
+    "country_code": "BD",
+    "id": "pabna",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাবনা"
+      }
+    ],
+    "name": "Pabna",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "paikgachha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাইকগাছা"
+      }
+    ],
+    "name": "Paikgachha",
+    "subdivision_code": "BD-KHU"
+  },
+  {
+    "country_code": "BD",
+    "id": "pakundia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাকুন্দিয়া"
+      }
+    ],
+    "name": "Pakundia",
+    "subdivision_code": "BD-KIS"
+  },
+  {
+    "country_code": "BD",
+    "id": "palashbari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পলাশবাড়ী"
+      }
+    ],
+    "name": "Palashbari",
+    "subdivision_code": "BD-GAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "panchagarh",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পঞ্চগড়"
+      }
+    ],
+    "name": "Panchagarh",
+    "subdivision_code": "BD-PAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "panchbibi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাঁচবিবি"
+      }
+    ],
+    "name": "Panchbibi",
+    "subdivision_code": "BD-JOY"
+  },
+  {
+    "country_code": "BD",
+    "id": "pangsha",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাংশা"
+      }
+    ],
+    "name": "Pangsha",
+    "subdivision_code": "BD-RAJ"
+  },
+  {
+    "country_code": "BD",
+    "id": "parbatipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পার্বতীপুর"
+      }
+    ],
+    "name": "Parbatipur",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "parshuram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পরশুরাম"
+      }
+    ],
+    "name": "Parshuram",
+    "subdivision_code": "BD-FEN"
+  },
+  {
+    "country_code": "BD",
+    "id": "patgram",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাটগ্রাম"
+      }
+    ],
+    "name": "Patgram",
+    "subdivision_code": "BD-LAL"
+  },
+  {
+    "country_code": "BD",
+    "id": "patharghata",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পাথরঘাটা"
+      }
+    ],
+    "name": "Patharghata",
+    "subdivision_code": "BD-BAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "patiya",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পটিয়া"
+      }
+    ],
+    "name": "Patiya",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "patuakhali",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পটুয়াখালী"
+      }
+    ],
+    "name": "Patuakhali",
+    "subdivision_code": "BD-PAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "phulpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ফুলপুর"
+      }
+    ],
+    "name": "Phulpur",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "pirganj-rangpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পীরগঞ্জ"
+      }
+    ],
+    "name": "Pirganj",
+    "subdivision_code": "BD-RAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "pirganj-thakurgaon",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পীরগঞ্জ"
+      }
+    ],
+    "name": "Pirganj",
+    "subdivision_code": "BD-THA"
+  },
+  {
+    "country_code": "BD",
+    "id": "pirojpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পিরোজপুর"
+      }
+    ],
+    "name": "Pirojpur",
+    "subdivision_code": "BD-PIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "puthia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "পুঠিয়া"
+      }
+    ],
+    "name": "Puthia",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "rahanpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রহনপুর"
+      }
+    ],
+    "name": "Rahanpur",
+    "subdivision_code": "BD-CHP"
+  },
+  {
+    "country_code": "BD",
+    "id": "rajbari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাজবাড়ী"
+      }
+    ],
+    "name": "Rajbari",
+    "subdivision_code": "BD-RAJ"
+  },
+  {
+    "country_code": "BD",
+    "id": "rajoir",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাজৈর"
+      }
+    ],
+    "name": "Rajoir",
+    "subdivision_code": "BD-MAD"
+  },
+  {
+    "coordinates": {
+      "latitude": 24.367,
+      "longitude": 88.6
+    },
+    "country_code": "BD",
+    "id": "rajshahi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাজশাহী"
+      }
+    ],
+    "name": "Rajshahi",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "ramganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রামগঞ্জ"
+      }
+    ],
+    "name": "Ramganj",
+    "subdivision_code": "BD-LAK"
+  },
+  {
+    "country_code": "BD",
+    "id": "ramgarh",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রামগড়"
+      }
+    ],
+    "name": "Ramgarh",
+    "subdivision_code": "BD-KHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "ramgati",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রামগতি"
+      }
+    ],
+    "name": "Ramgati",
+    "subdivision_code": "BD-LAK"
+  },
+  {
+    "country_code": "BD",
+    "id": "rangamati",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাঙ্গামাটি"
+      }
+    ],
+    "name": "Rangamati",
+    "subdivision_code": "BD-RAN"
+  },
+  {
+    "coordinates": {
+      "latitude": 25.749,
+      "longitude": 89.247
+    },
+    "country_code": "BD",
+    "id": "rangpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রংপুর"
+      }
+    ],
+    "name": "Rangpur",
+    "subdivision_code": "BD-RAG"
+  },
+  {
+    "country_code": "BD",
+    "id": "rangunia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাঙ্গুনিয়া"
+      }
+    ],
+    "name": "Rangunia",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "ranisankail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাণীশংকৈল"
+      }
+    ],
+    "name": "Ranisankail",
+    "subdivision_code": "BD-THA"
+  },
+  {
+    "country_code": "BD",
+    "id": "raozan",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রাউজান"
+      }
+    ],
+    "name": "Raozan",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "royganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রায়গঞ্জ"
+      }
+    ],
+    "name": "Royganj",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "roypur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রায়পুর"
+      }
+    ],
+    "name": "Roypur",
+    "subdivision_code": "BD-LAK"
+  },
+  {
+    "country_code": "BD",
+    "id": "roypura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "রায়পুরা"
+      }
+    ],
+    "name": "Roypura",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "saidpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সৈয়দপুর"
+      }
+    ],
+    "name": "Saidpur",
+    "subdivision_code": "BD-NIL"
+  },
+  {
+    "country_code": "BD",
+    "id": "sakhipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সখিপুর"
+      }
+    ],
+    "name": "Sakhipur",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "sandwip",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সন্দ্বীপ"
+      }
+    ],
+    "name": "Sandwip",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "santahar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সান্তাহার"
+      }
+    ],
+    "name": "Santahar",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "santhia",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সাঁথিয়া"
+      }
+    ],
+    "name": "Santhia",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "sariakandi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সারিয়াকান্দি"
+      }
+    ],
+    "name": "Sariakandi",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "sarishabari",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সরিষাবাড়ী"
+      }
+    ],
+    "name": "Sarishabari",
+    "subdivision_code": "BD-JAM"
+  },
+  {
+    "country_code": "BD",
+    "id": "satkania",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সাতকানিয়া"
+      }
+    ],
+    "name": "Satkania",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "satkhira",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সাতক্ষীরা"
+      }
+    ],
+    "name": "Satkhira",
+    "subdivision_code": "BD-SAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "savar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সাভার"
+      }
+    ],
+    "name": "Savar",
+    "subdivision_code": "BD-DHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "senbagh",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সেনবাগ"
+      }
+    ],
+    "name": "Senbagh",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "sengarchar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ছেংগারচর"
+      }
+    ],
+    "name": "Sengarchar",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "setabganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সেতাবগঞ্জ"
+      }
+    ],
+    "name": "Setabganj",
+    "subdivision_code": "BD-DIN"
+  },
+  {
+    "country_code": "BD",
+    "id": "shahjadpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শাহজাদপুর"
+      }
+    ],
+    "name": "Shahjadpur",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "shahrasti",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শাহরাস্তি"
+      }
+    ],
+    "name": "Shahrasti",
+    "subdivision_code": "BD-CHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "shailkupa",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শৈলকুপা"
+      }
+    ],
+    "name": "Shailkupa",
+    "subdivision_code": "BD-JHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "shariatpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শরীয়তপুর"
+      }
+    ],
+    "name": "Shariatpur",
+    "subdivision_code": "BD-SHA"
+  },
+  {
+    "country_code": "BD",
+    "id": "shayestagang",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শায়েস্তাগঞ্জ"
+      }
+    ],
+    "name": "Shayestagang",
+    "subdivision_code": "BD-HAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "sherpur-bogura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শেরপুর"
+      }
+    ],
+    "name": "Sherpur",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "sherpur-sherpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শেরপুর"
+      }
+    ],
+    "name": "Sherpur",
+    "subdivision_code": "BD-SHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "shibchar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শিবচর"
+      }
+    ],
+    "name": "Shibchar",
+    "subdivision_code": "BD-MAD"
+  },
+  {
+    "country_code": "BD",
+    "id": "shibganj-bogura",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শিবগঞ্জ"
+      }
+    ],
+    "name": "Shibganj",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "shibganj-chapainawabganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শিবগঞ্জ"
+      }
+    ],
+    "name": "Shibganj",
+    "subdivision_code": "BD-CHP"
+  },
+  {
+    "country_code": "BD",
+    "id": "shibpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শিবপুর"
+      }
+    ],
+    "name": "Shibpur",
+    "subdivision_code": "BD-NAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "shyamnagar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শ্যামনগর"
+      }
+    ],
+    "name": "Shyamnagar",
+    "subdivision_code": "BD-SAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "singair",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সিংগাইর"
+      }
+    ],
+    "name": "Singair",
+    "subdivision_code": "BD-MAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "singra",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সিংড়া"
+      }
+    ],
+    "name": "Singra",
+    "subdivision_code": "BD-NAT"
+  },
+  {
+    "country_code": "BD",
+    "id": "sirajganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সিরাজগঞ্জ"
+      }
+    ],
+    "name": "Sirajganj",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "sitakunda",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সীতাকুন্ড"
+      }
+    ],
+    "name": "Sitakunda",
+    "subdivision_code": "BD-CHT"
+  },
+  {
+    "country_code": "BD",
+    "id": "sonagazi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সোনাগাজী"
+      }
+    ],
+    "name": "Sonagazi",
+    "subdivision_code": "BD-FEN"
+  },
+  {
+    "country_code": "BD",
+    "id": "sonaimuri",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সোনাইমুড়ী"
+      }
+    ],
+    "name": "Sonaimuri",
+    "subdivision_code": "BD-NOA"
+  },
+  {
+    "country_code": "BD",
+    "id": "sonargaon",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সোনারগাঁও"
+      }
+    ],
+    "name": "Sonargaon",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "sonatola",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সোনাতলা"
+      }
+    ],
+    "name": "Sonatola",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "sreebardi",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শ্রীবরদী"
+      }
+    ],
+    "name": "Sreebardi",
+    "subdivision_code": "BD-SHE"
+  },
+  {
+    "country_code": "BD",
+    "id": "sreemangal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শ্রীমঙ্গল"
+      }
+    ],
+    "name": "Sreemangal",
+    "subdivision_code": "BD-MAU"
+  },
+  {
+    "country_code": "BD",
+    "id": "sreepur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "শ্রীপুর"
+      }
+    ],
+    "name": "Sreepur",
+    "subdivision_code": "BD-GAZ"
+  },
+  {
+    "country_code": "BD",
+    "id": "sujanagar",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সুজানগর"
+      }
+    ],
+    "name": "Sujanagar",
+    "subdivision_code": "BD-PAB"
+  },
+  {
+    "country_code": "BD",
+    "id": "sunamganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সুনামগঞ্জ"
+      }
+    ],
+    "name": "Sunamganj",
+    "subdivision_code": "BD-SUN"
+  },
+  {
+    "country_code": "BD",
+    "id": "sundarganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সুন্দরগঞ্জ"
+      }
+    ],
+    "name": "Sundarganj",
+    "subdivision_code": "BD-GAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "swarupkati",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "স্বরূপকাঠী"
+      }
+    ],
+    "name": "Swarupkati",
+    "subdivision_code": "BD-PIR"
+  },
+  {
+    "coordinates": {
+      "latitude": 24.9,
+      "longitude": 91.867
+    },
+    "country_code": "BD",
+    "id": "sylhet",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "সিলেট"
+      }
+    ],
+    "name": "Sylhet",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "tahirpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "তাহেরপুর"
+      }
+    ],
+    "name": "Tahirpur",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "talora",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "তালোড়া"
+      }
+    ],
+    "name": "Talora",
+    "subdivision_code": "BD-BOG"
+  },
+  {
+    "country_code": "BD",
+    "id": "tangail",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "টাংগাইল"
+      }
+    ],
+    "name": "Tangail",
+    "subdivision_code": "BD-TAN"
+  },
+  {
+    "country_code": "BD",
+    "id": "tanore",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "তানোর"
+      }
+    ],
+    "name": "Tanore",
+    "subdivision_code": "BD-RAS"
+  },
+  {
+    "country_code": "BD",
+    "id": "tarabo",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "তারাব"
+      }
+    ],
+    "name": "Tarabo",
+    "subdivision_code": "BD-NAR"
+  },
+  {
+    "country_code": "BD",
+    "id": "tarash",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "তাড়াশ"
+      }
+    ],
+    "name": "Tarash",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "teknaf",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "টেকনাফ"
+      }
+    ],
+    "name": "Teknaf",
+    "subdivision_code": "BD-COX"
+  },
+  {
+    "country_code": "BD",
+    "id": "thakurgaon",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ঠাকুরগাঁও"
+      }
+    ],
+    "name": "Thakurgaon",
+    "subdivision_code": "BD-THA"
+  },
+  {
+    "country_code": "BD",
+    "id": "trishal",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "ত্রিশাল"
+      }
+    ],
+    "name": "Trishal",
+    "subdivision_code": "BD-MYM"
+  },
+  {
+    "country_code": "BD",
+    "id": "tungipara",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "টুঙ্গীপাড়া"
+      }
+    ],
+    "name": "Tungipara",
+    "subdivision_code": "BD-GOP"
+  },
+  {
+    "country_code": "BD",
+    "id": "ulipur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "উলিপুর"
+      }
+    ],
+    "name": "Ulipur",
+    "subdivision_code": "BD-KUR"
+  },
+  {
+    "country_code": "BD",
+    "id": "ullah-para",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "উল্লাপাড়া"
+      }
+    ],
+    "name": "Ullah Para",
+    "subdivision_code": "BD-SIR"
+  },
+  {
+    "country_code": "BD",
+    "id": "wazirpur",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "উজিরপুর"
+      }
+    ],
+    "name": "Wazirpur",
+    "subdivision_code": "BD-BAI"
+  },
+  {
+    "country_code": "BD",
+    "id": "zakiganj",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জকিগঞ্জ"
+      }
+    ],
+    "name": "Zakiganj",
+    "subdivision_code": "BD-SYL"
+  },
+  {
+    "country_code": "BD",
+    "id": "zanjira",
+    "localized_names": [
+      {
+        "language": "bn",
+        "name": "জাজিরা"
+      }
+    ],
+    "name": "Zanjira",
+    "subdivision_code": "BD-SHA"
+  }
+]

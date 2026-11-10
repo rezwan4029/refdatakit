@@ -1,1 +1,117 @@
-[{"city_id":"wikidata:Q9347","country_code":"MV","entity_type":"corporation","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q4651138","value":"Q4651138"}],"id":"wikidata:Q4651138","names":{"en":"ADK Hospital","languages":{"dv":"އޭޑީކޭ ހޮސްޕިޓަލް"}},"tags":["hospital"],"website":"http://www.adkhospital.mv/"},{"city_id":"wikidata:Q3038674","country_code":"MV","entity_type":"other","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q5520449","value":"Q5520449"}],"id":"wikidata:Q5520449","names":{"en":"Gan Regional Hospital","languages":{"dv":"ގަން ރީޖަނަލް ހޮސްޕިޓަލް"}},"tags":["hospital"],"website":"http://www.grh.gov.mv/"},{"city_id":"wikidata:Q9347","country_code":"MV","entity_type":"other","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q6024972","value":"Q6024972"}],"id":"wikidata:Q6024972","names":{"en":"Indira Gandhi Memorial Hospital","languages":{"dv":"އިންދިރާ ގާންދީ މެމޯރިއަލް ހޮސްޕިޓަލް"}},"tags":["hospital"],"website":"http://www.igmh.gov.mv"},{"city_id":"wikidata:Q9347","country_code":"MV","entity_type":"university","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q4120538","value":"Q4120538"}],"id":"wikidata:Q4120538","names":{"en":"Maldives National University","languages":{"dv":"ދިވެހިރާއްޖޭގެ ޤައުމީ ޔުނިވަރސިޓީ"}},"tags":["university"],"website":"https://mnu.edu.mv/"},{"city_id":"wikidata:Q9347","country_code":"MV","entity_type":"university","external_ids":[{"system":"wikidata","url":"https://www.wikidata.org/wiki/Q25110403","value":"Q25110403"}],"id":"wikidata:Q25110403","names":{"en":"Villa College","languages":{"dv":"ވިލާ ކޮލެޖް"}},"tags":["university"],"website":"https://villacollege.edu.mv"}]
+[
+  {
+    "city_id": "wikidata:Q9347",
+    "country_code": "MV",
+    "entity_type": "corporation",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q4651138",
+        "value": "Q4651138"
+      }
+    ],
+    "id": "wikidata:Q4651138",
+    "names": {
+      "en": "ADK Hospital",
+      "languages": {
+        "dv": "އޭޑީކޭ ހޮސްޕިޓަލް"
+      }
+    },
+    "tags": [
+      "hospital"
+    ],
+    "website": "http://www.adkhospital.mv/"
+  },
+  {
+    "city_id": "wikidata:Q3038674",
+    "country_code": "MV",
+    "entity_type": "other",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q5520449",
+        "value": "Q5520449"
+      }
+    ],
+    "id": "wikidata:Q5520449",
+    "names": {
+      "en": "Gan Regional Hospital",
+      "languages": {
+        "dv": "ގަން ރީޖަނަލް ހޮސްޕިޓަލް"
+      }
+    },
+    "tags": [
+      "hospital"
+    ],
+    "website": "http://www.grh.gov.mv/"
+  },
+  {
+    "city_id": "wikidata:Q9347",
+    "country_code": "MV",
+    "entity_type": "other",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q6024972",
+        "value": "Q6024972"
+      }
+    ],
+    "id": "wikidata:Q6024972",
+    "names": {
+      "en": "Indira Gandhi Memorial Hospital",
+      "languages": {
+        "dv": "އިންދިރާ ގާންދީ މެމޯރިއަލް ހޮސްޕިޓަލް"
+      }
+    },
+    "tags": [
+      "hospital"
+    ],
+    "website": "http://www.igmh.gov.mv"
+  },
+  {
+    "city_id": "wikidata:Q9347",
+    "country_code": "MV",
+    "entity_type": "university",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q4120538",
+        "value": "Q4120538"
+      }
+    ],
+    "id": "wikidata:Q4120538",
+    "names": {
+      "en": "Maldives National University",
+      "languages": {
+        "dv": "ދިވެހިރާއްޖޭގެ ޤައުމީ ޔުނިވަރސިޓީ"
+      }
+    },
+    "tags": [
+      "university"
+    ],
+    "website": "https://mnu.edu.mv/"
+  },
+  {
+    "city_id": "wikidata:Q9347",
+    "country_code": "MV",
+    "entity_type": "university",
+    "external_ids": [
+      {
+        "system": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q25110403",
+        "value": "Q25110403"
+      }
+    ],
+    "id": "wikidata:Q25110403",
+    "names": {
+      "en": "Villa College",
+      "languages": {
+        "dv": "ވިލާ ކޮލެޖް"
+      }
+    },
+    "tags": [
+      "university"
+    ],
+    "website": "https://villacollege.edu.mv"
+  }
+]
