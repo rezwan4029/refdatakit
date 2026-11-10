@@ -104,6 +104,12 @@ for (const country of countries) {
   const insts   = await getInstitutions(CountryCode[cc])
   const subdivs = await getSubdivisions(CountryCode[cc])
 
+  // City metadata: display name + coordinates, keyed by city id
+  const cityMeta = {}
+  for (const c of cities) {
+    cityMeta[c.id] = { name: c.name }
+  }
+
   // Build city coordinate index
   const cityCoords = {}
   for (const c of cities) {
@@ -125,18 +131,32 @@ for (const country of countries) {
     pins.push({
       id:   inst.id,
       name: inst.names.en,
+      // all non-English names, kept with their language tag so the UI can
+      // label them (bn, si, ta, dv, ne, dz, ms, zh …)
+      localNames: Object.entries(inst.names.languages ?? {}).map(([lang, name]) => ({ lang, name })),
       lat:  coords[0] + jit(),
       lng:  coords[1] + jit(),
       tag:  inst.tags[0],
       city: inst.city_id,
+      cityName: cityMeta[inst.city_id]?.name ?? inst.city_id,
       type: inst.entity_type,
     })
   }
 
-  // Tag counts
+  // Tag counts.
+  // An institution may carry several tags (e.g. Dhaka Medical College is both
+  // a hospital and a medical college), which is meaningful for filtering.
+  // For a total that reconciles we also record a primary-tag breakdown, where
+  // every institution is counted exactly once.
   const byTag = {}
   for (const inst of insts) {
     for (const t of inst.tags) byTag[t] = (byTag[t] ?? 0) + 1
+  }
+
+  const byPrimaryTag = {}
+  for (const inst of insts) {
+    const t = inst.tags[0] ?? 'unclassified'
+    byPrimaryTag[t] = (byPrimaryTag[t] ?? 0) + 1
   }
 
   // Subdivision breakdown
@@ -148,7 +168,13 @@ for (const country of countries) {
     name: country.name,
     bounds: COUNTRY_BOUNDS[cc] ?? null,
     cities:  { total: cities.length, withCoords: cities.filter(c => c.coordinates).length },
-    institutions: { total: insts.length, byTag },
+    institutions: {
+      total: insts.length,
+      byTag,          // an institution with N tags appears in N buckets
+      byPrimaryTag,   // every institution counted exactly once
+      mapped: pins.length,          // institutions that could be placed on the map
+      unmapped: insts.length - pins.length,
+    },
     subdivisions: { total: subdivs.length, byLevel },
     pins,
   })
@@ -157,9 +183,12 @@ for (const country of countries) {
     code: cc, name: country.name,
     cities: cities.length,
     institutions: insts.length,
+    mapped: pins.length,
+    unmapped: insts.length - pins.length,
     subdivisions: subdivs.length,
     pins: pins.length,
     byTag,
+    byPrimaryTag,
   })
 }
 
