@@ -172,9 +172,7 @@
     "id": "ahsania-mission-university-of-science-and-technology",
     "names": {
       "en": "Ahsania Mission University of Science and Technology",
-      "languages": {
-        "bn": "আহসানিয়া মিশন বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -187,9 +185,7 @@
     "id": "ahsanullah-university-of-science-and-technology",
     "names": {
       "en": "Ahsanullah University of Science and Technology",
-      "languages": {
-        "bn": "আহসানউল্লাহ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -308,9 +304,7 @@
     "id": "america-bangladesh-university",
     "names": {
       "en": "America Bangladesh University",
-      "languages": {
-        "bn": "আমেরিকা বাংলাদেশ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -323,9 +317,7 @@
     "id": "american-international-university-bangladesh",
     "names": {
       "en": "American International University-Bangladesh",
-      "languages": {
-        "bn": "আমেরিকান ইন্টারন্যাশনাল ইউনিভার্সিটি-বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -398,9 +390,7 @@
     "id": "anwer-khan-modern-university",
     "names": {
       "en": "Anwer  Khan  Modern  University",
-      "languages": {
-        "bn": "আনোয়ার খান মডার্ন বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -518,9 +508,7 @@
     "id": "asa-university-bangladesh",
     "names": {
       "en": "ASA University Bangladesh",
-      "languages": {
-        "bn": "এএসএ ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -548,9 +536,7 @@
     "id": "asian-university-of-bangladesh",
     "names": {
       "en": "Asian University of Bangladesh",
-      "languages": {
-        "bn": "এশিয়ান ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -578,9 +564,7 @@
     "id": "atish-dipankar-university-of-science-technology",
     "names": {
       "en": "Atish Dipankar University of Science & Technology",
-      "languages": {
-        "bn": "অতীশ দীপঙ্কর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -593,9 +577,7 @@
     "id": "aviation-and-aerospace-university-bangladesh",
     "names": {
       "en": "Aviation And Aerospace University, Bangladesh",
-      "languages": {
-        "bn": "এভিয়েশন অ্যান্ড অ্যারোস্পেস বিশ্ববিদ্যালয়, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -910,9 +892,7 @@
     "id": "bandarban-university",
     "names": {
       "en": "Bandarban University",
-      "languages": {
-        "bn": "বান্দরবান বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1037,9 +1017,7 @@
     "id": "bangladesh-agricultural-university",
     "names": {
       "en": "Bangladesh Agricultural University",
-      "languages": {
-        "bn": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1052,9 +1030,7 @@
     "id": "bangladesh-army-international-university-of-science-technology-baiust-comilla",
     "names": {
       "en": "Bangladesh Army International University of Science & Technology(BAIUST) ,Comilla",
-      "languages": {
-        "bn": "বাংলাদেশ আর্মি ইন্টারন্যাশনাল ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি (বিএআইইউএসটি), কুমিল্লা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1067,9 +1043,7 @@
     "id": "bangladesh-army-university-of-engineering-and-technology-bauet-qadirabad",
     "names": {
       "en": "Bangladesh Army University of Engineering and Technology (BAUET), Qadirabad",
-      "languages": {
-        "bn": "বাংলাদেশ আর্মি ইউনিভার্সিটি অব ইঞ্জিনিয়ারিং অ্যান্ড টেকনোলজি (বিএইউইটি), কাদিরাবাদ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1082,9 +1056,7 @@
     "id": "bangladesh-army-university-of-science-and-technology-baust-saidpur",
     "names": {
       "en": "Bangladesh Army University of Science and Technology (BAUST), Saidpur",
-      "languages": {
-        "bn": "বাংলাদেশ আর্মি ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি (বিএইউএসটি), সৈয়দপুর"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1097,9 +1069,7 @@
     "id": "bangladesh-army-university-of-science-and-technology-khulna",
     "names": {
       "en": "Bangladesh Army University of Science and Technology, Khulna",
-      "languages": {
-        "bn": "বাংলাদেশ আর্মি ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি, খুলনা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1181,9 +1151,7 @@
     "id": "bangladesh-islami-university",
     "names": {
       "en": "Bangladesh Islami University",
-      "languages": {
-        "bn": "বাংলাদেশ ইসলামী বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1211,9 +1179,7 @@
     "id": "bangladesh-maritime-university",
     "names": {
       "en": "Bangladesh Maritime University",
-      "languages": {
-        "bn": "বাংলাদেশ মেরিটাইম বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1241,9 +1207,7 @@
     "id": "bangladesh-medical-university",
     "names": {
       "en": "Bangladesh Medical University",
-      "languages": {
-        "bn": "বাংলাদেশ মেডিকেল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1256,9 +1220,7 @@
     "id": "bangladesh-open-university",
     "names": {
       "en": "Bangladesh Open University",
-      "languages": {
-        "bn": "বাংলাদেশ উন্মুক্ত বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1302,9 +1264,7 @@
     "id": "bangladesh-university",
     "names": {
       "en": "Bangladesh University",
-      "languages": {
-        "bn": "বাংলাদেশ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1317,9 +1277,7 @@
     "id": "bangladesh-university-of-business-technology-bubt",
     "names": {
       "en": "Bangladesh University of Business & Technology (BUBT)",
-      "languages": {
-        "bn": "বাংলাদেশ ইউনিভার্সিটি অব বিজনেস অ্যান্ড টেকনোলজি (বিইউবিটি)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1348,9 +1306,7 @@
     "id": "bangladesh-university-of-engineering-technology",
     "names": {
       "en": "Bangladesh University of Engineering & Technology",
-      "languages": {
-        "bn": "বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1393,9 +1349,7 @@
     "id": "bangladesh-university-of-health-sciences",
     "names": {
       "en": "Bangladesh University of Health Sciences",
-      "languages": {
-        "bn": "বাংলাদেশ ইউনিভার্সিটি অব হেলথ সায়েন্সেস"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1408,9 +1362,7 @@
     "id": "bangladesh-university-of-professionals",
     "names": {
       "en": "Bangladesh University of Professionals",
-      "languages": {
-        "bn": "বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1423,9 +1375,7 @@
     "id": "bangladesh-university-of-textiles",
     "names": {
       "en": "Bangladesh University of Textiles",
-      "languages": {
-        "bn": "বাংলাদেশ টেক্সটাইল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1741,9 +1691,7 @@
     "id": "begum-rokeya-university-rangpur",
     "names": {
       "en": "Begum Rokeya University, Rangpur",
-      "languages": {
-        "bn": "বেগম রোকেয়া বিশ্ববিদ্যালয়, রংপুর"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1846,9 +1794,7 @@
     "id": "bgc-trust-university-bangladesh",
     "names": {
       "en": "BGC Trust University Bangladesh",
-      "languages": {
-        "bn": "বিজিসি ট্রাস্ট ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -1877,9 +1823,7 @@
     "id": "bgmea-university-of-fashion-technology-buft",
     "names": {
       "en": "BGMEA University of Fashion & Technology(BUFT)",
-      "languages": {
-        "bn": "বিজিএমইএ ইউনিভার্সিটি অব ফ্যাশন অ্যান্ড টেকনোলজি (বিইউএফটি)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2374,9 +2318,7 @@
     "id": "bogra-science-and-technology-university",
     "names": {
       "en": "Bogra Science and Technology University",
-      "languages": {
-        "bn": "বগুড়া বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2451,9 +2393,7 @@
     "id": "brac-university",
     "names": {
       "en": "BRAC University",
-      "languages": {
-        "bn": "ব্র্যাক বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2527,9 +2467,7 @@
     "id": "brahmaputra-international-university",
     "names": {
       "en": "Brahmaputra International University",
-      "languages": {
-        "bn": "ব্রহ্মপুত্র ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2557,9 +2495,7 @@
     "id": "britannia-university",
     "names": {
       "en": "Britannia University",
-      "languages": {
-        "bn": "ব্রিটানিয়া বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2572,9 +2508,7 @@
     "id": "canadian-university-of-bangladesh",
     "names": {
       "en": "Canadian University of Bangladesh",
-      "languages": {
-        "bn": "কানাডিয়ান ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2603,9 +2537,7 @@
     "id": "ccn-university-of-science-technology",
     "names": {
       "en": "CCN University of Science & Technology",
-      "languages": {
-        "bn": "সিসিএন বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2618,9 +2550,7 @@
     "id": "central-university-of-science-and-technology",
     "names": {
       "en": "Central  University of Science and Technology",
-      "languages": {
-        "bn": "সেন্ট্রাল ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2693,9 +2623,7 @@
     "id": "central-women-s-university",
     "names": {
       "en": "Central Women's University",
-      "languages": {
-        "bn": "সেন্ট্রাল উইমেন্স ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -2829,9 +2757,7 @@
     "id": "chandpur-science-and-technology-university",
     "names": {
       "en": "Chandpur Science and Technology University",
-      "languages": {
-        "bn": "চাঁদপুর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3025,9 +2951,7 @@
     "id": "chattogram-bgmea-university-of-fashion-and-technology",
     "names": {
       "en": "Chattogram BGMEA University of Fashion and Technology",
-      "languages": {
-        "bn": "চট্টগ্রাম বিজিএমইএ ইউনিভার্সিটি অব ফ্যাশন অ্যান্ড টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3222,9 +3146,7 @@
     "id": "chittagong-independent-university",
     "names": {
       "en": "Chittagong Independent University",
-      "languages": {
-        "bn": "চিটাগাং ইনডিপেনডেন্ট ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3237,9 +3159,7 @@
     "id": "chittagong-medical-university",
     "names": {
       "en": "Chittagong Medical University",
-      "languages": {
-        "bn": "চট্টগ্রাম মেডিকেল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3268,9 +3188,7 @@
     "id": "chittagong-university-of-engineering-technology-cuet",
     "names": {
       "en": "Chittagong University of Engineering & Technology (CUET)",
-      "languages": {
-        "bn": "চট্টগ্রাম প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয় (চুয়েট)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3299,9 +3217,7 @@
     "id": "chittagong-veterinary-and-animal-sciences-university",
     "names": {
       "en": "Chittagong Veterinary and Animal Sciences University",
-      "languages": {
-        "bn": "চট্টগ্রাম ভেটেরিনারি ও অ্যানিমেল সায়েন্সেস বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3405,9 +3321,7 @@
     "id": "city-university",
     "names": {
       "en": "City University",
-      "languages": {
-        "bn": "সিটি ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3677,9 +3591,7 @@
     "id": "comilla-university",
     "names": {
       "en": "Comilla University",
-      "languages": {
-        "bn": "কুমিল্লা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3783,9 +3695,7 @@
     "id": "cox-s-bazar-international-university",
     "names": {
       "en": "Cox's Bazar International University",
-      "languages": {
-        "bn": "কক্সবাজার ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -3949,9 +3859,7 @@
     "id": "daffodil-international-university",
     "names": {
       "en": "Daffodil International University",
-      "languages": {
-        "bn": "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4130,9 +4038,7 @@
     "id": "dhaka-central-university",
     "names": {
       "en": "Dhaka Central University",
-      "languages": {
-        "bn": "ঢাকা সেন্ট্রাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4190,9 +4096,7 @@
     "id": "dhaka-international-university",
     "names": {
       "en": "Dhaka International University",
-      "languages": {
-        "bn": "ঢাকা ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4341,9 +4245,7 @@
     "id": "dhaka-university-of-engineering-technology-duet",
     "names": {
       "en": "Dhaka University of Engineering & Technology (DUET)",
-      "languages": {
-        "bn": "ঢাকা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয় (ডুয়েট)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4675,9 +4577,7 @@
     "id": "dr-momtaz-begum-university-of-science-and-technology-must",
     "names": {
       "en": "Dr. Momtaz Begum University of Science and Technology (MUST)",
-      "languages": {
-        "bn": "ডা. মমতাজ বেগম বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (মাস্ট)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4750,9 +4650,7 @@
     "id": "east-delta-university",
     "names": {
       "en": "East Delta University",
-      "languages": {
-        "bn": "ইস্ট ডেল্টা ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4780,9 +4678,7 @@
     "id": "east-west-university",
     "names": {
       "en": "East West University",
-      "languages": {
-        "bn": "ইস্ট ওয়েস্ট ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4810,9 +4706,7 @@
     "id": "eastern-university",
     "names": {
       "en": "Eastern University",
-      "languages": {
-        "bn": "ইস্টার্ন ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4856,9 +4750,7 @@
     "id": "european-university-of-bangladesh",
     "names": {
       "en": "European University of Bangladesh",
-      "languages": {
-        "bn": "ইউরোপিয়ান ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4894,9 +4786,7 @@
     "id": "exim-bank-agricultural-university-bangladesh",
     "names": {
       "en": "Exim Bank Agricultural University, Bangladesh",
-      "languages": {
-        "bn": "এক্সিম ব্যাংক কৃষি বিশ্ববিদ্যালয়, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -4924,9 +4814,7 @@
     "id": "fareast-international-university",
     "names": {
       "en": "Fareast International University",
-      "languages": {
-        "bn": "ফারইস্ট ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5241,9 +5129,7 @@
     "id": "feni-university",
     "names": {
       "en": "Feni University",
-      "languages": {
-        "bn": "ফেনী ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5256,9 +5142,7 @@
     "id": "first-capital-university-of-bangladesh",
     "names": {
       "en": "First Capital University of  Bangladesh",
-      "languages": {
-        "bn": "ফার্স্ট ক্যাপিটাল ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5438,9 +5322,7 @@
     "id": "gazipur-agricultural-university",
     "names": {
       "en": "Gazipur Agricultural University",
-      "languages": {
-        "bn": "গাজীপুর কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5468,9 +5350,7 @@
     "id": "german-university-bangladesh",
     "names": {
       "en": "German University Bangladesh",
-      "languages": {
-        "bn": "জার্মান ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5513,9 +5393,7 @@
     "id": "global-university-bangladesh",
     "names": {
       "en": "Global University Bangladesh",
-      "languages": {
-        "bn": "গ্লোবাল ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5618,9 +5496,7 @@
     "id": "gono-bishwabidyalay",
     "names": {
       "en": "Gono Bishwabidyalay",
-      "languages": {
-        "bn": "গণ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5769,9 +5645,7 @@
     "id": "gopalganj-science-technology-university",
     "names": {
       "en": "Gopalganj Science & Technology University",
-      "languages": {
-        "bn": "গোপালগঞ্জ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5919,9 +5793,7 @@
     "id": "grameen-university",
     "names": {
       "en": "Grameen University",
-      "languages": {
-        "bn": "গ্রামীণ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -5965,9 +5837,7 @@
     "id": "green-university-of-bangladesh",
     "names": {
       "en": "Green University of Bangladesh",
-      "languages": {
-        "bn": "গ্রিন ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6071,9 +5941,7 @@
     "id": "hajee-mohammad-danesh-science-technology-university",
     "names": {
       "en": "Hajee Mohammad Danesh Science & Technology University",
-      "languages": {
-        "bn": "হাজী মোহাম্মদ দানেশ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6132,9 +6000,7 @@
     "id": "hamdard-university-bangladesh",
     "names": {
       "en": "Hamdard University Bangladesh",
-      "languages": {
-        "bn": "হামদর্দ বিশ্ববিদ্যালয় বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6237,9 +6103,7 @@
     "id": "hobiganj-agricultural-university",
     "names": {
       "en": "Hobiganj Agricultural University",
-      "languages": {
-        "bn": "হবিগঞ্জ কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6327,9 +6191,7 @@
     "id": "ibais-university",
     "names": {
       "en": "IBAIS University",
-      "languages": {
-        "bn": "আইবিএআইএস ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6372,9 +6234,7 @@
     "id": "independent-university-bangladesh",
     "names": {
       "en": "Independent University, Bangladesh",
-      "languages": {
-        "bn": "ইন্ডিপেনডেন্ট ইউনিভার্সিটি, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6432,9 +6292,7 @@
     "id": "international-islami-university-of-science-and-technology-bangladesh-iiustb",
     "names": {
       "en": "International Islami University of Science and Technology Bangladesh (IIUSTB)",
-      "languages": {
-        "bn": "ইন্টারন্যাশনাল ইসলামী ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি বাংলাদেশ (আইআইইউএসটিবি)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6447,9 +6305,7 @@
     "id": "international-islamic-university-chittagong",
     "names": {
       "en": "International Islamic University Chittagong",
-      "languages": {
-        "bn": "ইন্টারন্যাশনাল ইসলামিক ইউনিভার্সিটি চট্টগ্রাম"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6477,9 +6333,7 @@
     "id": "international-standard-university",
     "names": {
       "en": "International Standard University",
-      "languages": {
-        "bn": "ইন্টারন্যাশনাল স্ট্যান্ডার্ড ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6492,9 +6346,7 @@
     "id": "international-university-of-business-agriculture-technology",
     "names": {
       "en": "International University of Business Agriculture & Technology",
-      "languages": {
-        "bn": "ইন্টারন্যাশনাল ইউনিভার্সিটি অব বিজনেস এগ্রিকালচার অ্যান্ড টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6523,9 +6375,7 @@
     "id": "ishakha-international-university-bangladesh",
     "names": {
       "en": "Ishakha International University, Bangladesh",
-      "languages": {
-        "bn": "ইশাখা ইন্টারন্যাশনাল ইউনিভার্সিটি, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6568,9 +6418,7 @@
     "id": "islamic-arabic-university",
     "names": {
       "en": "Islamic Arabic University",
-      "languages": {
-        "bn": "ইসলামি আরবি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6583,9 +6431,7 @@
     "id": "islamic-university-bangladesh",
     "names": {
       "en": "Islamic University, Bangladesh",
-      "languages": {
-        "bn": "ইসলামী বিশ্ববিদ্যালয়, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6703,9 +6549,7 @@
     "id": "jagannath-university",
     "names": {
       "en": "Jagannath University",
-      "languages": {
-        "bn": "জগন্নাথ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6733,9 +6577,7 @@
     "id": "jahangirnagar-university",
     "names": {
       "en": "Jahangirnagar University",
-      "languages": {
-        "bn": "জাহাঙ্গীরনগর বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6854,9 +6696,7 @@
     "id": "jamalpur-science-and-technology-university",
     "names": {
       "en": "Jamalpur Science and Technology University",
-      "languages": {
-        "bn": "জামালপুর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6960,9 +6800,7 @@
     "id": "jatiya-kabi-kazi-nazrul-islam-university",
     "names": {
       "en": "Jatiya Kabi Kazi Nazrul Islam University",
-      "languages": {
-        "bn": "জাতীয় কবি কাজী নজরুল ইসলাম বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -6991,9 +6829,7 @@
     "id": "jessore-university-of-science-technology",
     "names": {
       "en": "Jessore University of Science & Technology",
-      "languages": {
-        "bn": "যশোর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7157,9 +6993,7 @@
     "id": "justice-abu-zafar-siddiquie-science-and-technology-university-kustia",
     "names": {
       "en": "Justice Abu Zafar Siddiquie Science and Technology University, Kustia",
-      "languages": {
-        "bn": "জাস্টিস আবু জাফর সিদ্দিকী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়, কুষ্টিয়া"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7744,9 +7578,7 @@
     "id": "khulna-agricultural-university",
     "names": {
       "en": "Khulna Agricultural University",
-      "languages": {
-        "bn": "খুলনা কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7834,9 +7666,7 @@
     "id": "khulna-khan-bahadur-ahsanullah-university",
     "names": {
       "en": "Khulna Khan Bahadur Ahsanullah University",
-      "languages": {
-        "bn": "খুলনা খান বাহাদুর আহসানউল্লাহ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7879,9 +7709,7 @@
     "id": "khulna-medical-university-khulna",
     "names": {
       "en": "Khulna Medical University, Khulna",
-      "languages": {
-        "bn": "খুলনা মেডিকেল বিশ্ববিদ্যালয়, খুলনা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7940,9 +7768,7 @@
     "id": "khulna-university",
     "names": {
       "en": "Khulna University",
-      "languages": {
-        "bn": "খুলনা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -7955,9 +7781,7 @@
     "id": "khulna-university-of-engineering-technology-kuet",
     "names": {
       "en": "Khulna University of Engineering & Technology (KUET)",
-      "languages": {
-        "bn": "খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয় (কুয়েট)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8001,9 +7825,7 @@
     "id": "khwaja-yunus-ali-university",
     "names": {
       "en": "Khwaja Yunus Ali University",
-      "languages": {
-        "bn": "খাজা ইউনুস আলী বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8062,9 +7884,7 @@
     "id": "kishoreganj-university",
     "names": {
       "en": "Kishoreganj University",
-      "languages": {
-        "bn": "কিশোরগঞ্জ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8273,9 +8093,7 @@
     "id": "kurigram-agricultural-university",
     "names": {
       "en": "Kurigram Agricultural University",
-      "languages": {
-        "bn": "কুড়িগ্রাম কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8486,9 +8304,7 @@
     "id": "lakshmipur-science-technology-university",
     "names": {
       "en": "Lakshmipur Science & Technology University",
-      "languages": {
-        "bn": "লক্ষ্মীপুর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8579,9 +8395,7 @@
     "id": "lalon-university-of-science-and-arts",
     "names": {
       "en": "Lalon University of Science and Arts",
-      "languages": {
-        "bn": "লালন বিজ্ঞান ও কলা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8624,9 +8438,7 @@
     "id": "leading-university",
     "names": {
       "en": "Leading University",
-      "languages": {
-        "bn": "লিডিং ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8836,9 +8648,7 @@
     "id": "manarat-international-university",
     "names": {
       "en": "Manarat International University",
-      "languages": {
-        "bn": "মানারাত ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -8987,9 +8797,7 @@
     "id": "maternal-child-health-training-research-institute-lalkuthi-mirpur",
     "names": {
       "en": "Maternal & Child Health Training & Research Institute, Lalkuthi, Mirpur",
-      "languages": {
-        "bn": "মা ও শিশু স্বাস্থ্য প্রশিক্ষণ ও গবেষণা ইনস্টিটিউট, লালকুঠি, মিরপুর"
-      }
+      "languages": {}
     },
     "tags": [
       "hospital"
@@ -9077,9 +8885,7 @@
     "id": "mawlana-bhashani-science-technology-university",
     "names": {
       "en": "Mawlana Bhashani Science & Technology University",
-      "languages": {
-        "bn": "মাওলানা ভাসানী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -9335,9 +9141,7 @@
     "id": "meherpur-university",
     "names": {
       "en": "Meherpur University",
-      "languages": {
-        "bn": "মেহেরপুর বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -9365,9 +9169,7 @@
     "id": "metropolitan-university",
     "names": {
       "en": "Metropolitan University",
-      "languages": {
-        "bn": "মেট্রোপলিটন ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -9395,9 +9197,7 @@
     "id": "microland-university-of-science-and-technology",
     "names": {
       "en": "Microland University of Science and Technology",
-      "languages": {
-        "bn": "মাইক্রোল্যান্ড বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -9972,9 +9772,7 @@
     "id": "n-p-i-university-of-bangladesh",
     "names": {
       "en": "N.P.I University of Bangladesh",
-      "languages": {
-        "bn": "এন.পি.আই ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -10182,9 +9980,7 @@
     "id": "naogaon-university",
     "names": {
       "en": "Naogaon  University",
-      "languages": {
-        "bn": "নওগাঁ বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -10349,9 +10145,7 @@
     "id": "narayanganj-science-and-technology-university",
     "names": {
       "en": "Narayanganj Science and Technology University",
-      "languages": {
-        "bn": "নারায়ণগঞ্জ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -10666,9 +10460,7 @@
     "id": "national-university",
     "names": {
       "en": "National University",
-      "languages": {
-        "bn": "জাতীয় বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -10787,9 +10579,7 @@
     "id": "netrokona-university",
     "names": {
       "en": "Netrokona University",
-      "languages": {
-        "bn": "নেত্রকোনা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -10969,9 +10759,7 @@
     "id": "noakhali-science-technology-university",
     "names": {
       "en": "Noakhali Science & Technology University",
-      "languages": {
-        "bn": "নোয়াখালী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11000,9 +10788,7 @@
     "id": "north-bengal-international-university",
     "names": {
       "en": "North Bengal International University",
-      "languages": {
-        "bn": "নর্থ বেঙ্গল ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11045,9 +10831,7 @@
     "id": "north-east-university-bangladesh",
     "names": {
       "en": "North East University Bangladesh",
-      "languages": {
-        "bn": "নর্থ ইস্ট ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11060,9 +10844,7 @@
     "id": "north-south-university",
     "names": {
       "en": "North South University",
-      "languages": {
-        "bn": "নর্থ সাউথ ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11075,9 +10857,7 @@
     "id": "north-western-university",
     "names": {
       "en": "North Western University",
-      "languages": {
-        "bn": "নর্থ ওয়েস্টার্ন ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11106,9 +10886,7 @@
     "id": "northern-university-bangladesh",
     "names": {
       "en": "Northern University Bangladesh",
-      "languages": {
-        "bn": "নর্দার্ন ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11137,9 +10915,7 @@
     "id": "northern-university-of-business-technology-khulna",
     "names": {
       "en": "Northern University of Business & Technology, Khulna",
-      "languages": {
-        "bn": "নর্দার্ন ইউনিভার্সিটি অব বিজনেস অ্যান্ড টেকনোলজি, খুলনা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11152,9 +10928,7 @@
     "id": "notre-dame-university-bangladesh",
     "names": {
       "en": "Notre Dame University Bangladesh",
-      "languages": {
-        "bn": "নটর ডেম ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11288,9 +11062,7 @@
     "id": "pabna-university-of-science-and-technology",
     "names": {
       "en": "Pabna University of Science and Technology",
-      "languages": {
-        "bn": "পাবনা বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11605,9 +11377,7 @@
     "id": "patuakhali-science-and-technology-university",
     "names": {
       "en": "Patuakhali Science And Technology University",
-      "languages": {
-        "bn": "পটুয়াখালী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11695,9 +11465,7 @@
     "id": "pirojpur-science-technology-university",
     "names": {
       "en": "Pirojpur Science & Technology University",
-      "languages": {
-        "bn": "পিরোজপুর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11725,9 +11493,7 @@
     "id": "port-city-international-university",
     "names": {
       "en": "Port City International University",
-      "languages": {
-        "bn": "পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11740,9 +11506,7 @@
     "id": "premier-university",
     "names": {
       "en": "Premier University",
-      "languages": {
-        "bn": "প্রিমিয়ার ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11755,9 +11519,7 @@
     "id": "presidency-university",
     "names": {
       "en": "Presidency University",
-      "languages": {
-        "bn": "প্রেসিডেন্সি ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11801,9 +11563,7 @@
     "id": "prime-university",
     "names": {
       "en": "Prime University",
-      "languages": {
-        "bn": "প্রাইম ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11816,9 +11576,7 @@
     "id": "primeasia-university",
     "names": {
       "en": "Primeasia University",
-      "languages": {
-        "bn": "প্রাইমএশিয়া ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11846,9 +11604,7 @@
     "id": "pundra-university-of-science-technology",
     "names": {
       "en": "Pundra University of Science & Technology",
-      "languages": {
-        "bn": "পুণ্ড্র ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11876,9 +11632,7 @@
     "id": "queens-university",
     "names": {
       "en": "Queens University",
-      "languages": {
-        "bn": "কুইন্স ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11891,9 +11645,7 @@
     "id": "r-p-shaha-university",
     "names": {
       "en": "R. P. Shaha University",
-      "languages": {
-        "bn": "আর. পি. শাহা ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11906,9 +11658,7 @@
     "id": "r-t-m-al-kabir-technical-university",
     "names": {
       "en": "R.T.M Al-Kabir Technical University",
-      "languages": {
-        "bn": "আর.টি.এম আল-কবির টেকনিক্যাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11921,9 +11671,7 @@
     "id": "rabindra-maitree-university-kushtia",
     "names": {
       "en": "Rabindra Maitree University, Kushtia",
-      "languages": {
-        "bn": "রবীন্দ্র মৈত্রী বিশ্ববিদ্যালয়, কুষ্টিয়া"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -11936,9 +11684,7 @@
     "id": "rabindra-university-bangladesh",
     "names": {
       "en": "Rabindra University, Bangladesh",
-      "languages": {
-        "bn": "রবীন্দ্র বিশ্ববিদ্যালয়, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12207,9 +11953,7 @@
     "id": "rajshahi-medical-university",
     "names": {
       "en": "Rajshahi Medical University",
-      "languages": {
-        "bn": "রাজশাহী মেডিকেল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12269,9 +12013,7 @@
     "id": "rajshahi-science-technology-university-rstu-natore",
     "names": {
       "en": "Rajshahi Science & Technology University (RSTU), Natore",
-      "languages": {
-        "bn": "রাজশাহী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (আরএসটিইউ), নাটোর"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12299,9 +12041,7 @@
     "id": "rajshahi-university-of-engineering-technology-ruet",
     "names": {
       "en": "Rajshahi University of Engineering & Technology (RUET)",
-      "languages": {
-        "bn": "রাজশাহী প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয় (রুয়েট)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12482,9 +12222,7 @@
     "id": "rangamati-science-and-technology-university",
     "names": {
       "en": "Rangamati Science and Technology University",
-      "languages": {
-        "bn": "রাঙ্গামাটি বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12678,9 +12416,7 @@
     "id": "royal-university-of-dhaka",
     "names": {
       "en": "Royal University of Dhaka",
-      "languages": {
-        "bn": "রয়্যাল ইউনিভার্সিটি অব ঢাকা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -12693,9 +12429,7 @@
     "id": "rupayan-a-k-m-shamsuzzoha-university",
     "names": {
       "en": "Rupayan A.K.M Shamsuzzoha University",
-      "languages": {
-        "bn": "রূপায়ন এ.কে.এম শামসুজ্জোহা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13010,9 +12744,7 @@
     "id": "shah-makhdum-management-university-rajshahi",
     "names": {
       "en": "Shah Makhdum Management University, Rajshahi",
-      "languages": {
-        "bn": "শাহ মখদুম ম্যানেজমেন্ট ইউনিভার্সিটি, রাজশাহী"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13254,9 +12986,7 @@
     "id": "shahjalal-university-of-science-technology",
     "names": {
       "en": "Shahjalal University of Science & Technology",
-      "languages": {
-        "bn": "শাহজালাল বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13338,9 +13068,7 @@
     "id": "shanto-mariam-university-of-creative-technology",
     "names": {
       "en": "Shanto-Mariam University of Creative Technology",
-      "languages": {
-        "bn": "শান্ত-মারিয়াম ইউনিভার্সিটি অব ক্রিয়েটিভ টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13353,9 +13081,7 @@
     "id": "shariatpur-agricultural-university",
     "names": {
       "en": "Shariatpur Agricultural University",
-      "languages": {
-        "bn": "শরীয়তপুর কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13494,9 +13220,7 @@
     "id": "sher-e-bangla-agricultural-university",
     "names": {
       "en": "Sher-e-Bangla Agricultural University",
-      "languages": {
-        "bn": "শেরেবাংলা কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13916,9 +13640,7 @@
     "id": "sonargaon-university",
     "names": {
       "en": "Sonargaon University",
-      "languages": {
-        "bn": "সোনারগাঁও বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -13991,9 +13713,7 @@
     "id": "southeast-university",
     "names": {
       "en": "Southeast University",
-      "languages": {
-        "bn": "সাউথইস্ট ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14021,9 +13741,7 @@
     "id": "southern-university-bangladesh",
     "names": {
       "en": "Southern University Bangladesh",
-      "languages": {
-        "bn": "সাদার্ন ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14036,9 +13754,7 @@
     "id": "sreemangal-50-bed-hospital-building-was-handed-over-to-ministry-of-education-and-a-resd-gov-school",
     "names": {
       "en": "Sreemangal 50 Bed Hospital Building Was Handed Over to Ministry of Education and a Resd. Gov. School",
-      "languages": {
-        "bn": "শ্রীমঙ্গল ৫০ শয্যা হাসপাতাল ভবন শিক্ষা মন্ত্রণালয়কে হস্তান্তর ও একটি আবাসিক সরকারি বিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "hospital"
@@ -14111,9 +13827,7 @@
     "id": "stamford-university-bangladesh",
     "names": {
       "en": "Stamford University Bangladesh",
-      "languages": {
-        "bn": "স্ট্যামফোর্ড ইউনিভার্সিটি বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14142,9 +13856,7 @@
     "id": "state-university-of-bangladesh-sub",
     "names": {
       "en": "State University of Bangladesh (SUB)",
-      "languages": {
-        "bn": "স্টেট ইউনিভার্সিটি অব বাংলাদেশ (এসইউবি)"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14248,9 +13960,7 @@
     "id": "sunamganj-science-and-technology-university",
     "names": {
       "en": "Sunamganj Science and Technology University",
-      "languages": {
-        "bn": "সুনামগঞ্জ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14278,9 +13988,7 @@
     "id": "sylhet-agricultural-university",
     "names": {
       "en": "Sylhet Agricultural University",
-      "languages": {
-        "bn": "সিলেট কৃষি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14353,9 +14061,7 @@
     "id": "sylhet-international-university",
     "names": {
       "en": "Sylhet International University",
-      "languages": {
-        "bn": "সিলেট ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14429,9 +14135,7 @@
     "id": "sylhet-medical-university-sylhet",
     "names": {
       "en": "Sylhet Medical University, Sylhet",
-      "languages": {
-        "bn": "সিলেট মেডিকেল বিশ্ববিদ্যালয়, সিলেট"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14506,9 +14210,7 @@
     "id": "tagore-university-of-creative-arts-uttara-dhaka-bangladesh",
     "names": {
       "en": "Tagore University of Creative Arts, Uttara, Dhaka, Bangladesh",
-      "languages": {
-        "bn": "টাগোর ইউনিভার্সিটি অব ক্রিয়েটিভ আর্টস, উত্তরা, ঢাকা, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14763,9 +14465,7 @@
     "id": "teesta-university-rangpur",
     "names": {
       "en": "Teesta University, Rangpur",
-      "languages": {
-        "bn": "তিস্তা ইউনিভার্সিটি, রংপুর"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14854,9 +14554,7 @@
     "id": "thakurgaon-university",
     "names": {
       "en": "Thakurgaon University",
-      "languages": {
-        "bn": "ঠাকুরগাঁও বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14885,9 +14583,7 @@
     "id": "the-millennium-university",
     "names": {
       "en": "The Millennium University",
-      "languages": {
-        "bn": "দ্য মিলেনিয়াম ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14900,9 +14596,7 @@
     "id": "the-people-s-university-of-bangladesh",
     "names": {
       "en": "The People's University of Bangladesh",
-      "languages": {
-        "bn": "দ্য পিপলস ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14915,9 +14609,7 @@
     "id": "the-university-of-comilla",
     "names": {
       "en": "The University of Comilla",
-      "languages": {
-        "bn": "দ্য ইউনিভার্সিটি অব কুমিল্লা"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14945,9 +14637,7 @@
     "id": "times-university-bangladesh",
     "names": {
       "en": "Times University, Bangladesh",
-      "languages": {
-        "bn": "টাইমস ইউনিভার্সিটি, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -14990,9 +14680,7 @@
     "id": "trust-university-barishal",
     "names": {
       "en": "Trust University, Barishal",
-      "languages": {
-        "bn": "ট্রাস্ট ইউনিভার্সিটি, বরিশাল"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15065,9 +14753,7 @@
     "id": "united-international-university",
     "names": {
       "en": "United International University",
-      "languages": {
-        "bn": "ইউনাইটেড ইন্টারন্যাশনাল ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15110,9 +14796,7 @@
     "id": "university-of-asia-pacific",
     "names": {
       "en": "University of Asia Pacific",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব এশিয়া প্যাসিফিক"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15125,9 +14809,7 @@
     "id": "university-of-barishal",
     "names": {
       "en": "University of Barishal",
-      "languages": {
-        "bn": "বরিশাল বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15140,9 +14822,7 @@
     "id": "university-of-brahmanbaria",
     "names": {
       "en": "University of Brahmanbaria",
-      "languages": {
-        "bn": "ব্রাহ্মণবাড়িয়া বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15155,9 +14835,7 @@
     "id": "university-of-chittagong",
     "names": {
       "en": "University of Chittagong",
-      "languages": {
-        "bn": "চট্টগ্রাম বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15170,9 +14848,7 @@
     "id": "university-of-creative-technology-chittagong",
     "names": {
       "en": "University of Creative Technology, Chittagong",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব ক্রিয়েটিভ টেকনোলজি, চট্টগ্রাম"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15185,9 +14861,7 @@
     "id": "university-of-development-alternative",
     "names": {
       "en": "University of Development Alternative",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব ডেভেলপমেন্ট অল্টারনেটিভ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15200,9 +14874,7 @@
     "id": "university-of-dhaka",
     "names": {
       "en": "University of Dhaka",
-      "languages": {
-        "bn": "ঢাকা বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15215,9 +14887,7 @@
     "id": "university-of-frontier-technology-bangladesh",
     "names": {
       "en": "University of Frontier Technology, Bangladesh",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব ফ্রন্টিয়ার টেকনোলজি, বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15230,9 +14900,7 @@
     "id": "university-of-global-village",
     "names": {
       "en": "University of Global Village",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব গ্লোবাল ভিলেজ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15245,9 +14913,7 @@
     "id": "university-of-information-technology-sciences",
     "names": {
       "en": "University of Information Technology & Sciences",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব ইনফরমেশন টেকনোলজি অ্যান্ড সায়েন্সেস"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15260,9 +14926,7 @@
     "id": "university-of-liberal-arts-bangladesh",
     "names": {
       "en": "University of Liberal Arts Bangladesh",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব লিবারেল আর্টস বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15275,9 +14939,7 @@
     "id": "university-of-rajshahi",
     "names": {
       "en": "University of Rajshahi",
-      "languages": {
-        "bn": "রাজশাহী বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15290,9 +14952,7 @@
     "id": "university-of-scholars",
     "names": {
       "en": "University of Scholars",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব স্কলার্স"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15305,9 +14965,7 @@
     "id": "university-of-science-technology-chittagong",
     "names": {
       "en": "University of Science & Technology Chittagong",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি চট্টগ্রাম"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15320,9 +14978,7 @@
     "id": "university-of-skill-enrichment-and-technology",
     "names": {
       "en": "University of Skill Enrichment and Technology",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব স্কিল এনরিচমেন্ট অ্যান্ড টেকনোলজি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15335,9 +14991,7 @@
     "id": "university-of-south-asia",
     "names": {
       "en": "University of South Asia",
-      "languages": {
-        "bn": "ইউনিভার্সিটি অব সাউথ এশিয়া"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15381,9 +15035,7 @@
     "id": "uttara-university",
     "names": {
       "en": "Uttara University",
-      "languages": {
-        "bn": "উত্তরা ইউনিভার্সিটি"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15456,9 +15108,7 @@
     "id": "varendra-university",
     "names": {
       "en": "Varendra University",
-      "languages": {
-        "bn": "বরেন্দ্র বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15471,9 +15121,7 @@
     "id": "victoria-university-of-bangladesh",
     "names": {
       "en": "Victoria University of Bangladesh",
-      "languages": {
-        "bn": "ভিক্টোরিয়া ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15531,9 +15179,7 @@
     "id": "world-university-of-bangladesh",
     "names": {
       "en": "World University of Bangladesh",
-      "languages": {
-        "bn": "ওয়ার্ল্ড ইউনিভার্সিটি অব বাংলাদেশ"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15562,9 +15208,7 @@
     "id": "z-h-sikder-university-of-science-technology",
     "names": {
       "en": "Z.H Sikder University of Science & Technology",
-      "languages": {
-        "bn": "জেড. এইচ. সিকদার বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
@@ -15622,9 +15266,7 @@
     "id": "znrf-university-of-management-sciences",
     "names": {
       "en": "ZNRF University of Management Sciences",
-      "languages": {
-        "bn": "জেডএনআরএফ ইউনিভার্সিটি অব ম্যানেজমেন্ট সায়েন্সেস"
-      }
+      "languages": {}
     },
     "tags": [
       "university"
