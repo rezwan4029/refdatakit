@@ -6,6 +6,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q8254",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "धरान"
+      }
+    ],
     "name": "Dharan",
     "population": 116181
   },
@@ -16,6 +22,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q576437",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "धुलिखेल"
+      }
+    ],
     "name": "Dhulikhel",
     "population": 14283
   },
@@ -26,6 +38,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q3037",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "काठमाडौँ"
+      }
+    ],
     "name": "Kathmandu",
     "population": 845767
   },
@@ -36,6 +54,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q1517030",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "कीर्तिपुर"
+      }
+    ],
     "name": "Kirtipur",
     "population": 65602
   },
@@ -46,6 +70,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q6647",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "ललितपुर"
+      }
+    ],
     "name": "Lalitpur",
     "population": 220802
   },
@@ -56,6 +86,12 @@
     },
     "country_code": "NP",
     "id": "wikidata:Q6640",
+    "localized_names": [
+      {
+        "language": "ne",
+        "name": "पोखरा"
+      }
+    ],
     "name": "Pokhara",
     "population": 353841
   }

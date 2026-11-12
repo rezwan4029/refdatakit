@@ -6,6 +6,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q810963",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "මඩකලපුව"
+      },
+      {
+        "language": "ta",
+        "name": "மட்டக்களப்பு"
+      }
+    ],
     "name": "Batticaloa",
     "population": 95489
   },
@@ -16,6 +26,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q35381",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "කොළඹ"
+      },
+      {
+        "language": "ta",
+        "name": "கொழும்பு"
+      }
+    ],
     "name": "Colombo",
     "population": 752993
   },
@@ -26,6 +46,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q319366",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "ගාල්ල"
+      },
+      {
+        "language": "ta",
+        "name": "காலி"
+      }
+    ],
     "name": "Galle",
     "population": 93118
   },
@@ -36,6 +66,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q215277",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "යාපනය"
+      },
+      {
+        "language": "ta",
+        "name": "யாழ்ப்பாணம்"
+      }
+    ],
     "name": "Jaffna",
     "population": 88138
   },
@@ -46,6 +86,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q3522428",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "කැලණිය"
+      },
+      {
+        "language": "ta",
+        "name": "களனி"
+      }
+    ],
     "name": "Kelaniya"
   },
   {
@@ -55,6 +105,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q13360574",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "මාතර"
+      },
+      {
+        "language": "ta",
+        "name": "மாத்தறை"
+      }
+    ],
     "name": "Matara",
     "population": 68244
   },
@@ -65,6 +125,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q867213",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "මොරටුව"
+      },
+      {
+        "language": "ta",
+        "name": "மொறட்டுவை"
+      }
+    ],
     "name": "Moratuwa"
   },
   {
@@ -74,6 +144,16 @@
     },
     "country_code": "LK",
     "id": "wikidata:Q489744",
+    "localized_names": [
+      {
+        "language": "si",
+        "name": "පේරාදෙණිය"
+      },
+      {
+        "language": "ta",
+        "name": "பேராதனை"
+      }
+    ],
     "name": "Peradeniya"
   }
 ]

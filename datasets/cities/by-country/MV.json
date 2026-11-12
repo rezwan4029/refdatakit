@@ -9,6 +9,12 @@
     },
     "country_code": "MV",
     "id": "wikidata:Q3038674",
+    "localized_names": [
+      {
+        "language": "dv",
+        "name": "ގަން"
+      }
+    ],
     "name": "Gan",
     "population": 4815
   },
@@ -19,6 +25,12 @@
     },
     "country_code": "MV",
     "id": "wikidata:Q9347",
+    "localized_names": [
+      {
+        "language": "dv",
+        "name": "މާލެ"
+      }
+    ],
     "name": "Malé",
     "population": 103693
   }

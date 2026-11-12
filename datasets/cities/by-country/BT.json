@@ -6,6 +6,12 @@
     },
     "country_code": "BT",
     "id": "wikidata:Q9270",
+    "localized_names": [
+      {
+        "language": "dz",
+        "name": "ཐིམ་ཕུག"
+      }
+    ],
     "name": "Thimphu",
     "population": 79185
   }
