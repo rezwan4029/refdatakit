@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "refdatakit"
-version = "0.1.3"
-description = "Source-aware reference data and validation tools"
+version = "0.2.0"
+description = "Validated, source-backed reference data for Bangladesh (subdivisions, cities, institutions) with JSON Schema validation tools"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"

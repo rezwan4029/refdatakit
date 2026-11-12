@@ -1,31 +1,26 @@
-# RefDataKit
+# RefDataKit — Bangladesh Data
 
 [![Validate](https://github.com/rezwan4029/refdatakit/actions/workflows/validate.yml/badge.svg)](https://github.com/rezwan4029/refdatakit/actions/workflows/validate.yml)
 [![npm](https://img.shields.io/npm/v/@rezwan4029/refdatakit.svg)](https://www.npmjs.com/package/@rezwan4029/refdatakit)
 [![PyPI](https://img.shields.io/pypi/v/refdatakit.svg)](https://pypi.org/project/refdatakit/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Docs](https://img.shields.io/badge/docs-coverage%20explorer-2ea44f)](https://rezwan4029.github.io/refdatakit/)
+[![Docs](https://img.shields.io/badge/docs-bangladesh%20data-2ea44f)](https://rezwan4029.github.io/refdatakit/)
 
-Validated, versioned reference datasets for countries, administrative divisions, cities, and institutions — with clean JSON Schema contracts, explicit provenance, and zero network calls at runtime.
+Validated, versioned reference data for **Bangladesh** — subdivisions, cities, and institutions — with clean JSON Schema contracts, explicit provenance, and zero network calls at runtime.
 
-**[Browse the coverage explorer →](https://rezwan4029.github.io/refdatakit/)** · [npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [PyPI](https://pypi.org/project/refdatakit/)
+**[Browse the Bangladesh data explorer →](https://rezwan4029.github.io/refdatakit/)** · [npm](https://www.npmjs.com/package/@rezwan4029/refdatakit) · [PyPI](https://pypi.org/project/refdatakit/)
 
-RefDataKit standardizes public inputs into validated, versioned reference datasets. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
+RefDataKit standardizes public inputs into validated, versioned reference datasets. This build focuses on Bangladesh. Its value is clean schemas, clear provenance, predictable access, and developer velocity—not ownership of underlying public facts. JavaScript/TypeScript and Python are the first runtimes; later language adapters will consume the same JSON Schema contracts and datasets.
 
 ## Regional Core
 
-RefDataKit ships with an optimized regional core containing exactly these six countries:
+RefDataKit ships with a focused regional core covering Bangladesh:
 
 | | Country | Code | Cities | Institutions | Subdivisions |
 |---|---------|------|-------:|-------------:|-------------:|
 | 🇧🇩 | Bangladesh | `BD` | 340 | 1,031 | 572 |
-| 🇧🇹 | Bhutan | `BT` | 1 | 4 | — |
-| 🇱🇰 | Sri Lanka | `LK` | 8 | 13 | — |
-| 🇲🇻 | Maldives | `MV` | 2 | 5 | — |
-| 🇳🇵 | Nepal | `NP` | 6 | 10 | — |
-| 🇸🇬 | Singapore | `SG` | 1 | 12 | — |
 
-The country file contains only these six records. Current city records cover Bangladesh and Singapore; subdivision and institution records cover Bangladesh. Contributions for the other countries can be added through community pull requests when source-backed data is ready.
+The country file contains only this record. City, subdivision, and institution records cover Bangladesh. Coverage is deepened for Bangladesh through source-backed contributions; additional countries can be added through community pull requests when source-backed data is ready.
 
 Global expansion happens through community pull requests that contribute bounded, useful records using the established schemas and manifest provenance requirements. The project does not aim to pre-populate millions of global records. This keeps the repository manageable and makes source review, maintenance, and licensing practical.
 
