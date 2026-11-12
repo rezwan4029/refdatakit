@@ -1,20 +1,5 @@
 [
   {
-    "city_id": "cumilla",
-    "country_code": "BD",
-    "entity_type": "other",
-    "id": "bangladesh-jatiya-andha-kalyan-somiti-eye-hospital",
-    "names": {
-      "en": "\"bangladesh Jatiya Andha Kalyan Somiti Eye Hospital\"",
-      "languages": {
-        "bn": "বাংলাদেশ জাতীয় অন্ধ কল্যান  সমিতি আই হসপিটাল"
-      }
-    },
-    "tags": [
-      "hospital"
-    ]
-  },
-  {
     "city_id": "dhaka",
     "country_code": "BD",
     "entity_type": "other",
@@ -397,7 +382,7 @@
     "entity_type": "university",
     "id": "anwer-khan-modern-university",
     "names": {
-      "en": "Anwer  Khan  Modern  University",
+      "en": "Anwer Khan Modern University",
       "languages": {
         "bn": "আনোয়ার খান মডার্ন বিশ্ববিদ্যালয়"
       }
@@ -865,7 +850,7 @@
     "names": {
       "en": "Bandar Upazila Health Complex",
       "languages": {
-        "bn": "বন্দর  উপজেলা   স্বাস্থ্য     কমপ্লেক্স"
+        "bn": "বন্দর উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -1187,6 +1172,21 @@
     },
     "tags": [
       "university"
+    ]
+  },
+  {
+    "city_id": "cumilla",
+    "country_code": "BD",
+    "entity_type": "other",
+    "id": "bangladesh-jatiya-andha-kalyan-somiti-eye-hospital",
+    "names": {
+      "en": "Bangladesh Jatiya Andha Kalyan Somiti Eye Hospital",
+      "languages": {
+        "bn": "বাংলাদেশ জাতীয় অন্ধ কল্যান সমিতি আই হসপিটাল"
+      }
+    },
+    "tags": [
+      "hospital"
     ]
   },
   {
@@ -2330,7 +2330,7 @@
     "names": {
       "en": "Bogra 250 Bed Mohammad Ali District Hospital",
       "languages": {
-        "bn": "বগুড়া ২৫০ শয্যা বিশিষ্ট মোহাম্মদ আলী  হাসপাতাল"
+        "bn": "বগুড়া ২৫০ শয্যা বিশিষ্ট মোহাম্মদ আলী হাসপাতাল"
       }
     },
     "tags": [
@@ -2612,21 +2612,6 @@
     ]
   },
   {
-    "city_id": "mirpur",
-    "country_code": "BD",
-    "entity_type": "university",
-    "id": "central-university-of-science-and-technology",
-    "names": {
-      "en": "Central  University of Science and Technology",
-      "languages": {
-        "bn": "সেন্ট্রাল ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি"
-      }
-    },
-    "tags": [
-      "university"
-    ]
-  },
-  {
     "city_id": "dhaka",
     "country_code": "BD",
     "entity_type": "other",
@@ -2684,6 +2669,21 @@
     },
     "tags": [
       "hospital"
+    ]
+  },
+  {
+    "city_id": "mirpur",
+    "country_code": "BD",
+    "entity_type": "university",
+    "id": "central-university-of-science-and-technology",
+    "names": {
+      "en": "Central University of Science and Technology",
+      "languages": {
+        "bn": "সেন্ট্রাল ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি"
+      }
+    },
+    "tags": [
+      "university"
     ]
   },
   {
@@ -2845,7 +2845,7 @@
     "names": {
       "en": "Chapai Nawabganj 250 Bed Adhunik Sadar Hospital",
       "languages": {
-        "bn": "২৫০ শয্যা বিশিষ্ট জেলা  হাসপাতাল,  চাঁপাইনবাবগঞ্জ"
+        "bn": "২৫০ শয্যা বিশিষ্ট জেলা হাসপাতাল, চাঁপাইনবাবগঞ্জ"
       }
     },
     "tags": [
@@ -3481,7 +3481,7 @@
     "names": {
       "en": "Combined Military Hospital, Jalalabad Cantt, ‍sylhet",
       "languages": {
-        "bn": "সম্মিলিত সামরিক হাসপাতাল, জালালাবাদ ক্যান্ট,  সিলেট"
+        "bn": "সম্মিলিত সামরিক হাসপাতাল, জালালাবাদ ক্যান্ট, সিলেট"
       }
     },
     "tags": [
@@ -3905,7 +3905,7 @@
     "names": {
       "en": "Cumilla Sadar Daxin Upazila Health Complex",
       "languages": {
-        "bn": "কুমিল্লা সদর দক্ষিণ উপজেলা  স্বাস্থ্য কমপ্লেক্স, কুমিল্লা"
+        "bn": "কুমিল্লা সদর দক্ষিণ উপজেলা স্বাস্থ্য কমপ্লেক্স, কুমিল্লা"
       }
     },
     "tags": [
@@ -5253,21 +5253,6 @@
     "city_id": "chuadanga",
     "country_code": "BD",
     "entity_type": "university",
-    "id": "first-capital-university-of-bangladesh",
-    "names": {
-      "en": "First Capital University of  Bangladesh",
-      "languages": {
-        "bn": "ফার্স্ট ক্যাপিটাল ইউনিভার্সিটি অব বাংলাদেশ"
-      }
-    },
-    "tags": [
-      "university"
-    ]
-  },
-  {
-    "city_id": "chuadanga",
-    "country_code": "BD",
-    "entity_type": "university",
     "id": "bd:institution:0088",
     "names": {
       "en": "First Capital University of Bangladesh",
@@ -5276,6 +5261,21 @@
       }
     },
     "ownership": "private",
+    "tags": [
+      "university"
+    ]
+  },
+  {
+    "city_id": "chuadanga",
+    "country_code": "BD",
+    "entity_type": "university",
+    "id": "first-capital-university-of-bangladesh",
+    "names": {
+      "en": "First Capital University of Bangladesh",
+      "languages": {
+        "bn": "ফার্স্ট ক্যাপিটাল ইউনিভার্সিটি অব বাংলাদেশ"
+      }
+    },
     "tags": [
       "university"
     ]
@@ -5333,7 +5333,7 @@
     "names": {
       "en": "Gaibandha 250 Bed District Hospital",
       "languages": {
-        "bn": "২৫০ শয্যা বিশিষ্ট গাইবান্ধা জেনারেল  হাসপাতাল"
+        "bn": "২৫০ শয্যা বিশিষ্ট গাইবান্ধা জেনারেল হাসপাতাল"
       }
     },
     "tags": [
@@ -5559,7 +5559,7 @@
     "names": {
       "en": "Godagari 31 Bed Hospital",
       "languages": {
-        "bn": "গোদাগাড়ী ৩১ শয্যা বিশিষ্ট  হাসপাতাল"
+        "bn": "গোদাগাড়ী ৩১ শয্যা বিশিষ্ট হাসপাতাল"
       }
     },
     "tags": [
@@ -6163,7 +6163,7 @@
     "names": {
       "en": "Harinakunda Upazila Health Complex",
       "languages": {
-        "bn": "হরিণাকুণ্ডু  উপজেলা স্বাস্থ্য কমপ্লেক্স"
+        "bn": "হরিণাকুণ্ডু উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -6689,7 +6689,7 @@
     "names": {
       "en": "Jagadal 20 Bed Hospital",
       "languages": {
-        "bn": "জগদল ২০ শয্যা বিশিষ্ট  হাসপাতাল"
+        "bn": "জগদল ২০ শয্যা বিশিষ্ট হাসপাতাল"
       }
     },
     "tags": [
@@ -6885,7 +6885,7 @@
     "names": {
       "en": "Jashore Central Jail Hospital",
       "languages": {
-        "bn": "যশোর  কেন্দ্রীয় কারা  হাসপাতাল"
+        "bn": "যশোর কেন্দ্রীয় কারা হাসপাতাল"
       }
     },
     "tags": [
@@ -7083,7 +7083,7 @@
     "names": {
       "en": "Jhikargacha Upazila Health Complex",
       "languages": {
-        "bn": "উপজেলা স্বাস্থ্য কমপ্লেক্স,  ঝিকরগাছা, যশোর"
+        "bn": "উপজেলা স্বাস্থ্য কমপ্লেক্স, ঝিকরগাছা, যশোর"
       }
     },
     "tags": [
@@ -7578,7 +7578,7 @@
     "names": {
       "en": "Kendua Upazila Health Complex",
       "languages": {
-        "bn": "কেন্দুয়া  উপজেলা স্বাস্থ্য কমপ্লেক্স"
+        "bn": "কেন্দুয়া উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -7593,7 +7593,7 @@
     "names": {
       "en": "Keshabpur Upazila Health Complex",
       "languages": {
-        "bn": "কেশবপুর উপজেলা স্বাস্থ্য  কমপ্লেক্স"
+        "bn": "কেশবপুর উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -7790,7 +7790,7 @@
     "names": {
       "en": "Khulna Diabetic Hospital",
       "languages": {
-        "bn": "খুলনা  ডায়াবেটিক হাসপাতাল, নুর নগর,বয়রা,খুলনা"
+        "bn": "খুলনা ডায়াবেটিক হাসপাতাল, নুর নগর,বয়রা,খুলনা"
       }
     },
     "tags": [
@@ -8655,7 +8655,7 @@
     "names": {
       "en": "Madan Upazila Health Complex",
       "languages": {
-        "bn": "মদন  উপজেলা  স্বাস্থ্য  কমপ্লেক্স"
+        "bn": "মদন উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -8761,7 +8761,7 @@
     "names": {
       "en": "Magura 250 Bed District Hospital",
       "languages": {
-        "bn": "মাগুরা  ২৫০ শয্যা  বিশিষ্ট জেলা হাসপাতাল"
+        "bn": "মাগুরা ২৫০ শয্যা বিশিষ্ট জেলা হাসপাতাল"
       }
     },
     "tags": [
@@ -8822,7 +8822,7 @@
     "names": {
       "en": "Maligaon 50 Bed Hospital",
       "languages": {
-        "bn": "মালিগাও  ৫০ শয্যা হাসপাতাল , দাউদকান্দি , কুমিল্লা"
+        "bn": "মালিগাও ৫০ শয্যা হাসপাতাল , দাউদকান্দি , কুমিল্লা"
       }
     },
     "tags": [
@@ -9577,7 +9577,7 @@
     "names": {
       "en": "Mongla Upazila Health Complex",
       "languages": {
-        "bn": "উপজেলা স্বাস্থ্য কমপ্লেক্স ,মোংলা,  বাগেরহাট"
+        "bn": "উপজেলা স্বাস্থ্য কমপ্লেক্স ,মোংলা, বাগেরহাট"
       }
     },
     "tags": [
@@ -9988,7 +9988,7 @@
     "names": {
       "en": "Nabiganj Upazila Health Complex",
       "languages": {
-        "bn": "৫০ শয্যা বিশিষ্ট  নবীগঞ্জ  উপজেলা স্বাস্থ্য কমপ্লেক্স"
+        "bn": "৫০ শয্যা বিশিষ্ট নবীগঞ্জ উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -10078,7 +10078,7 @@
     "names": {
       "en": "Nalchity Upazila Health Complex",
       "languages": {
-        "bn": "৫০ শয্যা   বিশিষ্ট    উপজেলা    স্বাস্থ্য    কমপ্লেক্স   , নলছিটি, ঝালকাঠী"
+        "bn": "৫০ শয্যা বিশিষ্ট উপজেলা স্বাস্থ্য কমপ্লেক্স , নলছিটি, ঝালকাঠী"
       }
     },
     "tags": [
@@ -10123,7 +10123,7 @@
     "names": {
       "en": "Nandail Upazila Health Complex",
       "languages": {
-        "bn": "নান্দাইল উপজেলা স্বাস্থ্য কমপ্লেক্স  নান্দাইল,ময়মনসিংহ্"
+        "bn": "নান্দাইল উপজেলা স্বাস্থ্য কমপ্লেক্স নান্দাইল,ময়মনসিংহ্"
       }
     },
     "tags": [
@@ -10178,27 +10178,12 @@
   {
     "city_id": "naogaon",
     "country_code": "BD",
-    "entity_type": "university",
-    "id": "naogaon-university",
-    "names": {
-      "en": "Naogaon  University",
-      "languages": {
-        "bn": "নওগাঁ বিশ্ববিদ্যালয়"
-      }
-    },
-    "tags": [
-      "university"
-    ]
-  },
-  {
-    "city_id": "naogaon",
-    "country_code": "BD",
     "entity_type": "other",
     "id": "naogaon-250-bed-district-hospital",
     "names": {
       "en": "Naogaon 250 Bed District Hospital",
       "languages": {
-        "bn": "২৫০ শয্যা  জেনারেল হাসপাতাল, নওগাঁ"
+        "bn": "২৫০ শয্যা জেনারেল হাসপাতাল, নওগাঁ"
       }
     },
     "tags": [
@@ -10267,6 +10252,21 @@
     ]
   },
   {
+    "city_id": "naogaon",
+    "country_code": "BD",
+    "entity_type": "university",
+    "id": "naogaon-university",
+    "names": {
+      "en": "Naogaon University",
+      "languages": {
+        "bn": "নওগাঁ বিশ্ববিদ্যালয়"
+      }
+    },
+    "tags": [
+      "university"
+    ]
+  },
+  {
     "city_id": "narail",
     "country_code": "BD",
     "entity_type": "other",
@@ -10305,7 +10305,7 @@
     "names": {
       "en": "Narayanganj 300 Bed Hospital",
       "languages": {
-        "bn": "নারায়ণগঞ্জ ৩০০ শয্যা  হাসপাতাল"
+        "bn": "নারায়ণগঞ্জ ৩০০ শয্যা হাসপাতাল"
       }
     },
     "tags": [
@@ -10517,7 +10517,7 @@
     "names": {
       "en": "National Institute of Cancer Research and Hospital (nicr&h)",
       "languages": {
-        "bn": "জাতীয় ক্যান্সার গবেষণা  ইনস্টিটিউট ও হাসপাতাল, মহাখালী, ঢাকা- ১২১২"
+        "bn": "জাতীয় ক্যান্সার গবেষণা ইনস্টিটিউট ও হাসপাতাল, মহাখালী, ঢাকা- ১২১২"
       }
     },
     "tags": [
@@ -10532,7 +10532,7 @@
     "names": {
       "en": "National Institute of Cardiovascular Disease (nicvd)",
       "languages": {
-        "bn": "জাতীয় হৃদরোগ  ইনস্টিটিউট"
+        "bn": "জাতীয় হৃদরোগ ইনস্টিটিউট"
       }
     },
     "tags": [
@@ -11832,7 +11832,7 @@
     "names": {
       "en": "Prof .m. A. Matin Memorial BNSB Base Eye Hospital",
       "languages": {
-        "bn": "প্রফেসর এম এ মতিন  মেমোরিয়াল বিএনএসবি আই হসপিটাল"
+        "bn": "প্রফেসর এম এ মতিন মেমোরিয়াল বিএনএসবি আই হসপিটাল"
       }
     },
     "tags": [
@@ -12042,7 +12042,7 @@
     "names": {
       "en": "Rajbari District Hospital",
       "languages": {
-        "bn": "জেলা সদর হাসপাতাল,  রাজবাড়ী"
+        "bn": "জেলা সদর হাসপাতাল, রাজবাড়ী"
       }
     },
     "tags": [
@@ -12739,7 +12739,7 @@
     "names": {
       "en": "Saharasthi Upazila Health Complex",
       "languages": {
-        "bn": "শাহ্‌রাস্তি  উপজেলা স্বাস্থ্য কমপ্লেক্স"
+        "bn": "শাহ্‌রাস্তি উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [
@@ -13751,7 +13751,7 @@
     "names": {
       "en": "Sir Salimullah Medical College Mitford Hospital",
       "languages": {
-        "bn": "স্যার সলিমুল্লাহ মেডিকেল কলেজ  মিটফোর্ড হাসপাতাল"
+        "bn": "স্যার সলিমুল্লাহ মেডিকেল কলেজ মিটফোর্ড হাসপাতাল"
       }
     },
     "tags": [
@@ -15593,7 +15593,7 @@
     "names": {
       "en": "Zakiganj Upazila Health Complex",
       "languages": {
-        "bn": "জকিগঞ্জ  উপজেলা  স্বাস্থ্য  কমপ্লেক্স"
+        "bn": "জকিগঞ্জ উপজেলা স্বাস্থ্য কমপ্লেক্স"
       }
     },
     "tags": [

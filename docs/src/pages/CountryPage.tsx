@@ -1,540 +1,427 @@
-import { useState, useMemo, useCallback, useRef } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import Flag from '../components/Flag'
 import { useCountry } from '../hooks/useCountryData'
 import {
   TAG_LABELS, LANG_NAMES, getTheme, tagBgFrom, countryTagColors,
 } from '../constants'
+import type { Pin } from '../types'
 
 // ---------------------------------------------------------------------------
-// Stat card
+// Helpers
 // ---------------------------------------------------------------------------
-function StatCard({ value, label, color }: { value: number; label: string; color: string }) {
-  return (
-    <div style={{
-      flex: 1, minWidth: 80,
-      background: 'rgba(255,255,255,0.04)',
-      border: '1px solid rgba(255,255,255,0.08)',
-      borderRadius: 14, padding: '0.9rem 1rem', textAlign: 'center',
-    }}>
-      <div style={{ fontSize: '1.6rem', fontWeight: 800, color, lineHeight: 1 }}>
-        {value.toLocaleString()}
-      </div>
-      <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 4, fontWeight: 500 }}>{label}</div>
-    </div>
-  )
-}
-
-function DetailRow({ label, value, mono, dot, href }: {
-  label: string; value: string; mono?: boolean; dot?: string; href?: string
-}) {
-  const inner = (
-    <>
-      {dot && <span style={{ width: 6, height: 6, borderRadius: '50%', background: dot, flexShrink: 0 }} />}
-      {value}
-      {href && (
-        <span aria-hidden style={{ fontSize: '0.6rem', opacity: 0.7, flexShrink: 0 }}>↗</span>
-      )}
-    </>
-  )
-  const style: React.CSSProperties = {
-    fontSize: mono ? '0.68rem' : '0.76rem',
-    color: href ? 'var(--accent)' : 'var(--text)',
-    fontFamily: mono ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : 'inherit',
-    textAlign: 'right', minWidth: 0,
-    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-    display: 'inline-flex', alignItems: 'center', gap: 5,
-    textDecoration: 'none',
-  }
-  return (
-    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
-      <span style={{ fontSize: '0.68rem', color: 'var(--muted)', flexShrink: 0 }}>{label}</span>
-      {href ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={style}
-          onClick={e => e.stopPropagation()}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.textDecoration = 'underline' }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.textDecoration = 'none' }}
-        >{inner}</a>
-      ) : (
-        <span style={style}>{inner}</span>
-      )}
-    </div>
-  )
-}
-
-/**
- * Google Maps link for a city, qualified by country so ambiguous names
- * (e.g. "Victoria") resolve to the right place.
- */
 function cityMapsUrl(city: string, country: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${city}, ${country}`)}`
 }
 
-/**
- * Google Maps link for a coordinate pair.
- * Uses the plain search URL so it needs no API key and works everywhere;
- * the place name is included so Maps resolves to the actual institution
- * rather than a bare pin when it knows the place.
- */
 function gmapsUrl(lat: number, lng: number, name?: string) {
   const coords = `${lat.toFixed(6)},${lng.toFixed(6)}`
   const q = name ? encodeURIComponent(`${name} ${coords}`) : encodeURIComponent(coords)
   return `https://www.google.com/maps/search/?api=1&query=${q}`
 }
 
-// ---------------------------------------------------------------------------
-// Skeleton loader
-// ---------------------------------------------------------------------------
-function Skeleton() {
+function StatCard({ value, label, color }: { value: number; label: string; color: string }) {
   return (
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <motion.div
-        animate={{ opacity: [0.3, 0.7, 0.3] }}
-        transition={{ repeat: Infinity, duration: 1.4 }}
-        style={{ fontSize: '2rem', color: 'var(--muted)' }}
-      >
-        Loading map…
-      </motion.div>
+    <div style={{
+      flex: '1 1 90px', minWidth: 90,
+      background: 'rgba(255,255,255,0.04)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 12, padding: '0.7rem 0.9rem', textAlign: 'center',
+    }}>
+      <div style={{ fontSize: '1.35rem', fontWeight: 800, color, lineHeight: 1 }}>
+        {value.toLocaleString()}
+      </div>
+      <div style={{ fontSize: '0.64rem', color: 'var(--muted)', marginTop: 4, fontWeight: 500 }}>{label}</div>
     </div>
   )
 }
 
+type SortKey = 'name' | 'city' | 'tag' | 'lang'
+type SortDir = 'asc' | 'desc'
+
 // ---------------------------------------------------------------------------
-// Main page
+// Main page — tabular, filter-driven, no drawer
 // ---------------------------------------------------------------------------
 export default function CountryPage() {
   const { cc = 'BD' } = useParams<{ cc: string }>()
   const navigate = useNavigate()
-  const { data, loading } = useCountry(cc.toUpperCase())
-  const theme = getTheme(cc.toUpperCase())
+  const code = cc.toUpperCase()
+  const { data, loading } = useCountry(code)
+  const theme = getTheme(code)
 
-  const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set())
+  const [activeTypes, setActiveTypes] = useState<Set<string>>(new Set())
   const [search, setSearch] = useState('')
-  const [activePin, setActivePin] = useState<string | null>(null)
-  const listRef = useRef<HTMLDivElement>(null)
+  const [cityFilter, setCityFilter] = useState('')
+  const [sortKey, setSortKey] = useState<SortKey>('name')
+  const [sortDir, setSortDir] = useState<SortDir>('asc')
 
-  // All tags present in this country's data
-  const allTags = useMemo(() => {
-    if (!data) return []
-    return Object.keys(data.institutions.byTag).sort((a, b) =>
-      ((data.institutions.byPrimaryTag ?? data.institutions.byTag)[b] ?? 0) -
-      ((data.institutions.byPrimaryTag ?? data.institutions.byTag)[a] ?? 0)
-    )
+  // Counts of institutions actually shown in the table (mapped pins only), so
+  // chip numbers reconcile with the visible row total instead of including
+  // unmapped institutions the table cannot display.
+  const pinTagCounts = useMemo(() => {
+    const m: Record<string, number> = {}
+    if (data) for (const p of data.pins) m[p.tag] = (m[p.tag] ?? 0) + 1
+    return m
   }, [data])
 
-  // Flag-derived palette for this country's tags
-  const palette = useMemo(
-    () => countryTagColors(cc.toUpperCase(), allTags),
-    [cc, allTags],
-  )
+  const allTags = useMemo(() => {
+    if (!data) return []
+    return Object.keys(data.institutions.byPrimaryTag ?? data.institutions.byTag)
+      .sort((a, b) => (pinTagCounts[b] ?? 0) - (pinTagCounts[a] ?? 0))
+  }, [data, pinTagCounts])
+
+  const palette = useMemo(() => countryTagColors(code, allTags), [code, allTags])
   const tColor = useCallback(
     (tag: string) => palette.get(tag) ?? theme.mapAccent,
     [palette, theme.mapAccent],
   )
 
-  // Active filters default to all tags
-  const effectiveFilters = activeFilters.size > 0 ? activeFilters : new Set(allTags)
+  // Selected types start as "all". An empty set means "all types selected"
+  // (the default view); a toggle-off of every type is prevented.
+  const effectiveTypes = useMemo(
+    () => (activeTypes.size > 0 ? activeTypes : new Set(allTags)),
+    [activeTypes, allTags],
+  )
 
-  const toggleFilter = useCallback((tag: string) => {
-    setActiveFilters(prev => {
-      const next = new Set(prev.size === 0 ? allTags : prev)
-      if (next.has(tag)) { next.delete(tag); if (next.size === allTags.length) next.clear() }
-      else { next.add(tag); if (next.size === allTags.length) next.clear() }
+  const toggleType = useCallback((tag: string) => {
+    setActiveTypes(prev => {
+      // From the default "all" state, the first click narrows to just that tag.
+      if (prev.size === 0) return new Set([tag])
+
+      const next = new Set(prev)
+      if (next.has(tag)) {
+        next.delete(tag)
+        // Empty selection falls back to showing everything.
+        if (next.size === 0) return new Set()
+      } else {
+        next.add(tag)
+      }
+      // If everything ends up selected, collapse to the default "all" state.
+      if (next.size === allTags.length) return new Set()
       return next
     })
   }, [allTags])
 
-  const visiblePins = useMemo(() => {
+  // Distinct cities for the city dropdown
+  const cities = useMemo(() => {
     if (!data) return []
-    return data.pins.filter(p =>
-      effectiveFilters.has(p.tag) &&
-      (!search || p.name.toLowerCase().includes(search.toLowerCase()) ||
-                   p.city.toLowerCase().includes(search.toLowerCase()))
-    )
-  }, [data, effectiveFilters, search])
-
-  // Group the visible institutions by city — a per-country view reads far
-  // better as "places and what's in them" than one flat alphabetical list.
-  const cityGroups = useMemo(() => {
-    const m = new Map<string, { name: string; pins: typeof visiblePins }>()
-    for (const p of visiblePins) {
-      const key = p.city || 'unknown'
-      const g = m.get(key)
-      if (g) g.pins.push(p)
-      else m.set(key, { name: p.cityName || p.city, pins: [p] })
+    const seen = new Map<string, string>()
+    for (const p of data.pins) {
+      if (p.city && !seen.has(p.city)) seen.set(p.city, p.cityName || p.city)
     }
-    return [...m.entries()]
-      .map(([id, g]) => ({ id, ...g }))
-      .sort((a, b) => b.pins.length - a.pins.length)
-  }, [visiblePins])
+    return [...seen.entries()].sort((a, b) => a[1].localeCompare(b[1]))
+  }, [data])
 
-  const activePinObj = useMemo(
-    () => visiblePins.find(p => p.id === activePin) ?? null,
-    [visiblePins, activePin],
-  )
+  const rows = useMemo<Pin[]>(() => {
+    if (!data) return []
+    const q = search.trim().toLowerCase()
+    const list = data.pins.filter(p =>
+      effectiveTypes.has(p.tag) &&
+      (!cityFilter || p.city === cityFilter) &&
+      (!q ||
+        p.name.toLowerCase().includes(q) ||
+        (p.cityName || p.city).toLowerCase().includes(q) ||
+        (p.localNames ?? []).some(l => l.name.toLowerCase().includes(q))),
+    )
+    const lang = (p: Pin) => p.localNames?.map(l => l.name).join(' ') ?? ''
+    const dir = sortDir === 'asc' ? 1 : -1
+    list.sort((a, b) => {
+      let av = '', bv = ''
+      if (sortKey === 'name') { av = a.name; bv = b.name }
+      else if (sortKey === 'city') { av = a.cityName || a.city; bv = b.cityName || b.city }
+      else if (sortKey === 'tag') { av = a.tag; bv = b.tag }
+      else { av = lang(a); bv = lang(b) }
+      return av.localeCompare(bv) * dir
+    })
+    return list
+  }, [data, effectiveTypes, cityFilter, search, sortKey, sortDir])
 
-  if (loading) return <Skeleton />
-  if (!data) return (
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 16 }}>
-      <div style={{ fontSize: '1.2rem', color: 'var(--muted)' }}>No data for {cc}</div>
-      <button onClick={() => navigate('/')} style={{ cursor: 'pointer', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 8, padding: '0.5rem 1.25rem', fontSize: '0.9rem' }}>← Back</button>
-    </div>
-  )
+  const clearFilters = () => {
+    setActiveTypes(new Set())
+    setSearch('')
+    setCityFilter('')
+  }
+
+  const hasFilter = activeTypes.size > 0 || search.trim() !== '' || cityFilter !== ''
+
+  if (loading) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <motion.div
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.4 }}
+          style={{ fontSize: '1.4rem', color: 'var(--muted)' }}
+        >
+          Loading…
+        </motion.div>
+      </div>
+    )
+  }
+  if (!data) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 16 }}>
+        <div style={{ fontSize: '1.2rem', color: 'var(--muted)' }}>No data for {cc}</div>
+        <button onClick={() => navigate('/')} style={btn(theme.mapAccent)}>← Back</button>
+      </div>
+    )
+  }
 
   const { g1, g2 } = theme
 
+  const headerCols: { key: SortKey | null; label: string; align?: 'right'; width?: number }[] = [
+    { key: 'name', label: 'Institution' },
+    { key: 'tag', label: 'Type', width: 140 },
+    { key: 'city', label: 'City', width: 150 },
+    { key: 'lang', label: 'Native name', width: 220 },
+    { key: null, label: 'Location', width: 90, align: 'right' },
+  ]
+
   return (
-    <div style={{ height: '100dvh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
 
       {/* ── Top bar ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
-        style={{
-          flexShrink: 0,
-          background: 'var(--surface)',
-          borderBottom: '1px solid var(--border)',
-          padding: '0 1.25rem',
-          display: 'flex', alignItems: 'center', gap: '1rem',
-          height: 56, minHeight: 56,
-          position: 'relative', overflow: 'hidden',
-        }}
-      >
-        {/* gradient shimmer */}
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: `linear-gradient(90deg, ${g1}18 0%, ${g2}10 50%, transparent 100%)`,
-        }} />
-
-        <button
-          onClick={() => navigate('/')}
-          style={{
-            background: 'rgba(255,255,255,0.06)', border: '1px solid var(--border)',
-            borderRadius: 8, color: 'var(--muted)', cursor: 'pointer',
-            padding: '0.3rem 0.75rem', fontSize: '0.8rem', whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >← All</button>
-
-        <Flag code={cc.toUpperCase()} size={26} />
-
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{
-            fontSize: '1rem', fontWeight: 700, letterSpacing: '-0.01em',
+      <div style={{
+        position: 'sticky', top: 0, zIndex: 10,
+        background: 'var(--surface)', borderBottom: '1px solid var(--border)',
+        padding: '0.6rem 1.25rem', display: 'flex', alignItems: 'center', gap: '1rem',
+        flexWrap: 'wrap',
+      }}>
+        <button onClick={() => navigate('/')} style={btn('transparent', true)}>← All</button>
+        <Flag code={code} size={24} />
+        <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <span style={{
+            fontSize: '0.98rem', fontWeight: 700,
             background: `linear-gradient(90deg, ${g1}, ${g2})`,
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-          }}>{data.name}</div>
-          <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 1 }}>{theme.description}</div>
+          }}>{data.name}</span>
+          <span style={{ fontSize: '0.64rem', color: 'var(--muted)' }}>{theme.description}</span>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, width: '100%', margin: '0 auto', padding: '1.25rem', flex: 1 }}>
+
+        {/* ── Stats ── */}
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+          <StatCard value={data.institutions.total} label="Institutions" color={g2} />
+          <StatCard value={data.institutions.mapped ?? data.pins.length} label="Mapped" color={g1} />
+          <StatCard value={data.cities.total} label="Cities" color={g1} />
+          {data.subdivisions.total > 0 &&
+            <StatCard value={data.subdivisions.total} label="Subdivisions" color="#8b5cf6" />}
         </div>
 
-        {/* tag filter pills */}
-        <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'nowrap', overflowX: 'auto', flexShrink: 0 }}>
-          {allTags.map(tag => {
-            const on = effectiveFilters.has(tag)
-            const c  = tColor(tag)
-            const count = (data.institutions.byPrimaryTag ?? data.institutions.byTag)[tag] ?? 0
-            return (
-              <motion.button
-                key={tag}
-                onClick={() => toggleFilter(tag)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  cursor: 'pointer',
-                  background: on ? tagBgFrom(c) : 'rgba(255,255,255,0.03)',
-                  border: `1px solid ${on ? c + '66' : 'var(--border)'}`,
-                  borderRadius: 100, padding: '0.25rem 0.65rem',
-                  color: on ? c : 'var(--muted)',
-                  fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                  opacity: on ? 1 : 0.5,
-                  transition: 'all 0.15s',
-                }}
-              >
-                <span style={{
-                  display: 'inline-block', width: 7, height: 7, borderRadius: '50%',
-                  background: c, marginRight: 5, verticalAlign: 'middle',
-                }} />
-                {TAG_LABELS[tag] || tag} {count}
-              </motion.button>
-            )
-          })}
-        </div>
-      </motion.div>
-
-      {/* ── Body: sidebar + map ── */}
-      <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-
-        {/* ── Sidebar ── */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          style={{
-            flex: 1,
-            width: '100%',
-            background: 'var(--surface)',
-            display: 'flex', flexDirection: 'column',
-            overflow: 'hidden',
-          }}
-        >
-          {/* stats */}
-          <div style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <StatCard value={data.institutions.total} label="Institutions" color={g2} />
-            <StatCard value={data.institutions.mapped ?? data.pins?.length ?? 0} label="Mapped" color={g1} />
-            <StatCard value={data.cities.total} label="Cities" color={g1} />
-            {data.subdivisions.total > 0 &&
-              <StatCard value={data.subdivisions.total} label="Subdivisions" color="#8b5cf6" />}
-          </div>
-
-          {/* coverage note — explains why mapped < total */}
-          {(data.institutions.unmapped ?? 0) > 0 && (
-            <div style={{
-              padding: '0.5rem 1rem', borderBottom: '1px solid var(--border)',
-              fontSize: '0.68rem', color: 'var(--muted)', lineHeight: 1.5,
-            }}>
-              <strong style={{ color: 'var(--text)' }}>
-                {(data.institutions.mapped ?? 0).toLocaleString()}
-              </strong>{' of '}
-              {data.institutions.total.toLocaleString()} have coordinates.{' '}
-              {(data.institutions.unmapped ?? 0).toLocaleString()} are listed but not on the map.
-            </div>
-          )}
-
-          {/* search */}
-          <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--border)' }}>
+        {/* ── Filter bar (replaces the drawer) ── */}
+        <div style={{
+          background: 'var(--card)', border: '1px solid var(--border)',
+          borderRadius: 14, padding: '0.85rem 1rem', marginBottom: '1rem',
+          display: 'flex', flexDirection: 'column', gap: '0.75rem',
+        }}>
+          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search institutions…"
+              placeholder="Search name, city, or native name…"
               style={{
-                width: '100%', background: 'var(--card)',
-                border: '1px solid var(--border)', borderRadius: 10,
-                padding: '0.5rem 0.75rem', color: 'var(--text)',
+                flex: '1 1 260px', minWidth: 180,
+                background: 'var(--surface)', border: '1px solid var(--border)',
+                borderRadius: 10, padding: '0.5rem 0.75rem', color: 'var(--text)',
                 fontSize: '0.82rem', outline: 'none',
               }}
               onFocus={e => (e.currentTarget.style.borderColor = g1)}
               onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')}
             />
-            {visiblePins.length > 0 && (
-              <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 6, paddingLeft: 2 }}>
-                {visiblePins.length.toLocaleString()} result{visiblePins.length !== 1 ? 's' : ''}
-              </div>
-            )}
-          </div>
-
-          {/* list — grouped by city */}
-          <div ref={listRef} style={{ flex: 1, overflowY: 'auto', padding: '0.25rem 0' }}>
-            {cityGroups.length === 0 ? (
-              <div style={{ padding: '2.5rem 1rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.82rem' }}>
-                No institutions match that search.
-              </div>
-            ) : (
-              cityGroups.map(city => (
-                <div key={city.id} style={{ marginBottom: 6 }}>
-                  {/* city header */}
-                  <div style={{
-                    display: 'flex', alignItems: 'baseline', gap: 8,
-                    padding: '0.55rem 1rem 0.35rem',
-                    position: 'sticky', top: 0, zIndex: 2,
-                    background: 'var(--surface)',
-                  }}>
-                    <span style={{
-                      fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.06em',
-                      textTransform: 'uppercase', color: 'var(--text)',
-                    }}>{city.name}</span>
-                    <span style={{
-                      fontSize: '0.62rem', color: 'var(--muted)',
-                      background: 'rgba(255,255,255,0.06)',
-                      borderRadius: 100, padding: '1px 7px',
-                    }}>{city.pins.length}</span>
-                    <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
-                  </div>
-
-                  {city.pins.map(pin => {
-                    const isSel = activePin === pin.id
-                    return (
-                      <div
-                        key={pin.id}
-                        data-pin-id={pin.id}
-                        onClick={() => setActivePin(isSel ? null : pin.id)}
-                        style={{
-                          display: 'flex', alignItems: 'center', gap: 9,
-                          padding: '0.5rem 1rem 0.5rem 1.35rem',
-                          cursor: 'pointer',
-                          background: isSel ? tagBgFrom(tColor(pin.tag), 0.22) : 'transparent',
-                          borderLeft: isSel
-                            ? `2px solid ${tColor(pin.tag)}` : '2px solid transparent',
-                          transition: 'background 0.12s',
-                        }}
-                        onMouseEnter={e => {
-                          if (!isSel) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.035)'
-                        }}
-                        onMouseLeave={e => {
-                          if (!isSel) (e.currentTarget as HTMLElement).style.background = 'transparent'
-                        }}
-                      >
-                        <span style={{
-                          width: 6, height: 6, borderRadius: '50%', flexShrink: 0,
-                          background: tColor(pin.tag),
-                        }} />
-                        <span style={{
-                          flex: 1, minWidth: 0,
-                          fontSize: '0.8rem', lineHeight: 1.35, color: 'var(--text)',
-                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                        }}>
-                          {pin.name}
-                        </span>
-                        <span style={{
-                          fontSize: '0.62rem', color: 'var(--muted)', flexShrink: 0,
-                          whiteSpace: 'nowrap',
-                        }}>
-                          {TAG_LABELS[pin.tag] || pin.tag}
-                        </span>
-                      </div>
-                    )
-                  })}
-                </div>
-              ))
-            )}
-          </div>
-        </motion.div>
-
-        {/* ── Detail panel ── */}
-        <AnimatePresence>
-          {activePinObj && (
-            <motion.aside
-              key="detail"
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: 340, opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
+            <select
+              value={cityFilter}
+              onChange={e => setCityFilter(e.target.value)}
               style={{
-                flexShrink: 0, overflow: 'hidden',
-                background: 'var(--surface)',
-                borderLeft: '1px solid var(--border)',
+                flex: '0 1 200px', minWidth: 140,
+                background: 'var(--surface)', border: '1px solid var(--border)',
+                borderRadius: 10, padding: '0.5rem 0.6rem', color: 'var(--text)',
+                fontSize: '0.82rem', outline: 'none', cursor: 'pointer',
               }}
             >
-              <div style={{ width: 340, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                {/* header */}
-                <div style={{
-                  padding: '1rem 1.1rem', borderBottom: '1px solid var(--border)',
-                  display: 'flex', alignItems: 'flex-start', gap: 10,
-                }}>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{
-                      fontSize: '0.98rem', fontWeight: 700, color: 'var(--text)',
-                      lineHeight: 1.35, wordBreak: 'break-word',
-                    }}>
-                      {activePinObj.name}
-                    </div>
-                    {activePinObj.localNames?.map(({ lang, name }) => (
-                      <div key={lang} style={{ marginTop: 6 }}>
-                        <div style={{
-                          fontSize: '0.58rem', textTransform: 'uppercase',
-                          letterSpacing: '0.09em', color: 'var(--muted)',
-                          fontWeight: 700, marginBottom: 1,
-                        }}>
-                          {LANG_NAMES[lang] ?? lang}
-                        </div>
-                        <div style={{
-                          fontSize: '0.85rem', color: 'var(--text)',
-                          lineHeight: 1.45, wordBreak: 'break-word',
-                        }}>
-                          {name}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => setActivePin(null)}
-                    aria-label="Close details"
-                    style={{
-                      cursor: 'pointer', flexShrink: 0,
-                      background: 'rgba(255,255,255,0.06)', border: 'none',
-                      color: 'var(--muted)', borderRadius: 8,
-                      width: 26, height: 26, fontSize: '0.9rem', lineHeight: 1,
-                    }}
-                  >×</button>
-                </div>
+              <option value="">All cities ({cities.length})</option>
+              {cities.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+            </select>
+            {hasFilter && (
+              <button onClick={clearFilters} style={btn('transparent', true)}>Clear</button>
+            )}
+          </div>
 
-                {/* facts */}
-                <div style={{ padding: '0.9rem 1.1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <DetailRow label="Type" value={TAG_LABELS[activePinObj.tag] || activePinObj.tag} dot={tColor(activePinObj.tag)} />
-                  <DetailRow
-                    label="City"
-                    value={activePinObj.cityName || activePinObj.city}
-                    href={cityMapsUrl(activePinObj.cityName || activePinObj.city, data.name)}
-                  />
-                  <DetailRow
-                    label="Location"
-                    value={`${activePinObj.lat.toFixed(4)}, ${activePinObj.lng.toFixed(4)}`}
-                    mono
-                    href={gmapsUrl(activePinObj.lat, activePinObj.lng, activePinObj.name)}
-                  />
-                  <DetailRow label="Entity" value={activePinObj.type} />
-                  <DetailRow label="Source ID" value={activePinObj.id} mono />
-                </div>
+          {/* type chips */}
+          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+            {allTags.map(tag => {
+              const on = effectiveTypes.has(tag)
+              const c = tColor(tag)
+              const count = pinTagCounts[tag] ?? 0
+              return (
+                <button
+                  key={tag}
+                  onClick={() => toggleType(tag)}
+                  style={{
+                    cursor: 'pointer',
+                    background: on ? tagBgFrom(c) : 'rgba(255,255,255,0.03)',
+                    border: `1px solid ${on ? c + '66' : 'var(--border)'}`,
+                    borderRadius: 100, padding: '0.25rem 0.65rem',
+                    color: on ? c : 'var(--muted)',
+                    fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                    opacity: on ? 1 : 0.55, transition: 'all 0.15s',
+                  }}
+                >
+                  <span style={{
+                    display: 'inline-block', width: 7, height: 7, borderRadius: '50%',
+                    background: c, marginRight: 5, verticalAlign: 'middle',
+                  }} />
+                  {TAG_LABELS[tag] || tag} {count}
+                </button>
+              )
+            })}
+          </div>
+        </div>
 
-                {/* other institutions in the same city */}
-                {(() => {
-                  const others = visiblePins.filter(
-                    p => p.city === activePinObj.city && p.id !== activePinObj.id,
-                  )
-                  if (!others.length) return null
-                  return (
-                    <div style={{
-                      flex: 1, overflowY: 'auto',
-                      borderTop: '1px solid var(--border)',
-                      padding: '0.8rem 1.1rem 1rem',
-                    }}>
-                      <div style={{
-                        fontSize: '0.62rem', textTransform: 'uppercase',
-                        letterSpacing: '0.08em', color: 'var(--muted)',
-                        fontWeight: 700, marginBottom: 8,
-                      }}>
-                        Also in {activePinObj.cityName || activePinObj.city} · {others.length}
-                      </div>
-                      {others.slice(0, 20).map(o => (
-                        <div
-                          key={o.id}
-                          onClick={() => setActivePin(o.id)}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 7,
-                            padding: '0.35rem 0', cursor: 'pointer',
-                            fontSize: '0.76rem', color: 'var(--text)', lineHeight: 1.35,
-                          }}
-                        >
-                          <span style={{
-                            width: 5, height: 5, borderRadius: '50%',
-                            background: tColor(o.tag), flexShrink: 0,
-                          }} />
-                          <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {o.name}
-                          </span>
-                        </div>
-                      ))}
-                      {others.length > 20 && (
-                        <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: 6 }}>
-                          +{others.length - 20} more
-                        </div>
-                      )}
-                    </div>
-                  )
-                })()}
+        {/* ── Result count ── */}
+        <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: '0.5rem', paddingLeft: 2 }}>
+          {rows.length.toLocaleString()} of {data.pins.length.toLocaleString()} institutions
+        </div>
+
+        {/* ── Table ── */}
+        <div style={{
+          border: '1px solid var(--border)', borderRadius: 14, overflow: 'hidden',
+          background: 'var(--card)',
+        }}>
+          {/* header row */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(200px,2.5fr) 140px 150px minmax(160px,2fr) 90px',
+            background: 'var(--surface)', borderBottom: '1px solid var(--border)',
+            fontSize: '0.66rem', fontWeight: 700, textTransform: 'uppercase',
+            letterSpacing: '0.06em', color: 'var(--muted)',
+          }}>
+            {headerCols.map(col => (
+              <div
+                key={col.label}
+                onClick={() => {
+                  if (!col.key) return
+                  if (sortKey === col.key) setSortDir(d => d === 'asc' ? 'desc' : 'asc')
+                  else { setSortKey(col.key); setSortDir('asc') }
+                }}
+                style={{
+                  padding: '0.6rem 0.85rem',
+                  cursor: col.key ? 'pointer' : 'default',
+                  userSelect: 'none',
+                  display: 'flex', alignItems: 'center', gap: 4,
+                  justifyContent: col.align === 'right' ? 'flex-end' : 'flex-start',
+                }}
+              >
+                {col.label}
+                {col.key && sortKey === col.key && (
+                  <span style={{ fontSize: '0.55rem', opacity: 0.8 }}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                )}
               </div>
-            </motion.aside>
-          )}
-        </AnimatePresence>
+            ))}
+          </div>
 
+          {/* body */}
+          {rows.length === 0 ? (
+            <div style={{ padding: '3rem 1rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.85rem' }}>
+              No institutions match the current filters.
+            </div>
+          ) : (
+            rows.map((p, i) => (
+              <div
+                key={p.id}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'minmax(200px,2.5fr) 140px 150px minmax(160px,2fr) 90px',
+                  alignItems: 'center',
+                  borderTop: i === 0 ? 'none' : '1px solid var(--border)',
+                  fontSize: '0.8rem',
+                  transition: 'background 0.1s',
+                }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.035)'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
+              >
+                {/* name */}
+                <div style={{ padding: '0.55rem 0.85rem', minWidth: 0 }}>
+                  <span title={p.name} style={{
+                    display: 'block', overflow: 'hidden', textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap', color: 'var(--text)',
+                  }}>{p.name}</span>
+                </div>
+                {/* type */}
+                <div style={{ padding: '0.55rem 0.85rem' }}>
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 5,
+                    fontSize: '0.68rem', fontWeight: 600,
+                    color: tColor(p.tag),
+                    background: tagBgFrom(tColor(p.tag), 0.14),
+                    border: `1px solid ${tColor(p.tag)}44`,
+                    borderRadius: 100, padding: '1px 8px', whiteSpace: 'nowrap',
+                  }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: tColor(p.tag) }} />
+                    {TAG_LABELS[p.tag] || p.tag}
+                  </span>
+                </div>
+                {/* city */}
+                <div style={{ padding: '0.55rem 0.85rem', minWidth: 0 }}>
+                  <a
+                    href={cityMapsUrl(p.cityName || p.city, data.name)}
+                    target="_blank" rel="noopener noreferrer"
+                    title={`Open ${p.cityName || p.city} in Google Maps`}
+                    style={{
+                      color: 'var(--muted)', textDecoration: 'none',
+                      display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = g1}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'var(--muted)'}
+                  >{p.cityName || p.city}</a>
+                </div>
+                {/* native name — hover reveals language labels */}
+                <div style={{ padding: '0.55rem 0.85rem', minWidth: 0 }}>
+                  {p.localNames?.length ? (
+                    p.localNames.map(l => (
+                      <div
+                        key={l.lang}
+                        title={LANG_NAMES[l.lang] ?? l.lang}
+                        style={{
+                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                          color: 'var(--text)', lineHeight: 1.4,
+                        }}
+                      >{l.name}</div>
+                    ))
+                  ) : (
+                    <span style={{ color: 'var(--muted)', opacity: 0.5 }}>—</span>
+                  )}
+                </div>
+                {/* location link */}
+                <div style={{ padding: '0.55rem 0.85rem', textAlign: 'right' }}>
+                  <a
+                    href={gmapsUrl(p.lat, p.lng, p.name)}
+                    target="_blank" rel="noopener noreferrer"
+                    title={`${p.lat.toFixed(4)}, ${p.lng.toFixed(4)} — open in Google Maps`}
+                    style={{ color: g1, textDecoration: 'none', fontSize: '0.72rem', whiteSpace: 'nowrap' }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.textDecoration = 'underline'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.textDecoration = 'none'}
+                  >Map ↗</a>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        <div style={{ height: '2rem' }} />
       </div>
     </div>
   )
+}
+
+function btn(_accent: string, subtle = false): React.CSSProperties {
+  return {
+    background: subtle ? 'rgba(255,255,255,0.06)' : _accent,
+    border: subtle ? '1px solid var(--border)' : 'none',
+    borderRadius: 8, color: subtle ? 'var(--muted)' : '#fff',
+    cursor: 'pointer', padding: '0.3rem 0.75rem', fontSize: '0.78rem',
+    whiteSpace: 'nowrap', flexShrink: 0,
+  }
 }

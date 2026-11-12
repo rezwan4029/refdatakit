@@ -1,5 +1,5 @@
 export const FLAGS: Record<string, string> = {
-  BD: '🇧🇩', BT: '🇧🇹', LK: '🇱🇰', MV: '🇲🇻', NP: '🇳🇵', SG: '🇸🇬',
+  BD: '🇧🇩',
 }
 
 export const TAG_LABELS: Record<string, string> = {
@@ -46,37 +46,6 @@ export const COUNTRY_THEME: Record<string, {
     g1: '#006A4E', g2: '#F42A41',
     mapAccent: '#F42A41',
     description: "People's Republic of Bangladesh",
-  },
-  // Bhutan — yellow (#FFD520) & orange (#FF4E12) halves, white dragon
-  BT: {
-    g1: '#FFD520', g2: '#FF4E12',
-    mapAccent: '#FF4E12',
-    description: 'Kingdom of Bhutan',
-  },
-  // Sri Lanka — maroon field (#8D153A), gold lion (#D4A017),
-  //              orange (#EB7400) & green (#00534E) stripes
-  LK: {
-    g1: '#8D153A', g2: '#EB7400',
-    mapAccent: '#D4A017',
-    description: 'Democratic Socialist Republic of Sri Lanka',
-  },
-  // Maldives — red border (#D21034), green field (#007E3A), white crescent
-  MV: {
-    g1: '#D21034', g2: '#007E3A',
-    mapAccent: '#007E3A',
-    description: 'Republic of Maldives',
-  },
-  // Nepal — crimson field (#DC143C) with blue border (#003893)
-  NP: {
-    g1: '#DC143C', g2: '#003893',
-    mapAccent: '#DC143C',
-    description: 'Federal Democratic Republic of Nepal',
-  },
-  // Singapore — red (#EF3340) over white, crescent & five stars
-  SG: {
-    g1: '#EF3340', g2: '#FFFFFF',
-    mapAccent: '#EF3340',
-    description: 'Republic of Singapore',
   },
 }
 
@@ -179,11 +148,4 @@ export function shade(hex: string, amount = 0.35) {
 /** Human-readable language names for the local-language name labels. */
 export const LANG_NAMES: Record<string, string> = {
   bn: 'Bengali',
-  si: 'Sinhala',
-  ta: 'Tamil',
-  dv: 'Dhivehi',
-  ne: 'Nepali',
-  dz: 'Dzongkha',
-  ms: 'Malay',
-  zh: 'Chinese',
 }
